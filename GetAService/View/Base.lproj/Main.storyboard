@@ -173,6 +173,9 @@
                         <barButtonItem title="Item" width="127" id="ZJC-rf-htS">
                             <imageReference key="image" image="bell" catalog="system" renderingMode="original"/>
                             <color key="tintColor" red="0.2274509804" green="0.2274509804" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <segue destination="aFe-hT-rzS" kind="show" id="IXH-9t-kur"/>
+                            </connections>
                         </barButtonItem>
                         <barButtonItem title="Item" image="person.circle" catalog="system" width="109" id="4M4-Ap-9TD">
                             <color key="tintColor" red="0.2274509804" green="0.2274509804" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -184,6 +187,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NEK-Bb-qIu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1392.753623188406" y="81.696428571428569"/>
+        </scene>
+        <!--Artist List Table View Controller-->
+        <scene sceneID="ipY-uK-jTM">
+            <objects>
+                <tableViewController id="aFe-hT-rzS" customClass="ArtistListTableViewController" customModule="GetAService" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="yDz-Qg-A4n">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <connections>
+                            <outlet property="dataSource" destination="aFe-hT-rzS" id="f1E-cr-D0z"/>
+                            <outlet property="delegate" destination="aFe-hT-rzS" id="gdf-Vg-fzH"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="MCp-io-cZU"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Tbm-Co-Dqw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2146" y="91"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Yei-31-VJ9">
