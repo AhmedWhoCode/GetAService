@@ -54,12 +54,12 @@
                                     <constraint firstAttribute="width" constant="140" id="Dvu-ZU-ne5"/>
                                 </constraints>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BDw-dE-RWj">
-                                <rect key="frame" x="305" y="69" width="52" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Available" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BDw-dE-RWj">
+                                <rect key="frame" x="287" y="69" width="70" height="21"/>
                                 <color key="backgroundColor" red="0.2274509804" green="0.2274509804" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="IiL-tg-c30"/>
-                                    <constraint firstAttribute="width" constant="52" id="afQ-hT-qoA"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="70" id="afQ-hT-qoA"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -73,7 +73,7 @@
                             <constraint firstItem="S3u-Pe-OmK" firstAttribute="leading" secondItem="MCG-1t-hA1" secondAttribute="leading" constant="2" id="YAO-os-vp4"/>
                             <constraint firstAttribute="bottom" secondItem="S3u-Pe-OmK" secondAttribute="bottom" constant="10" id="eqn-rp-kbX"/>
                             <constraint firstAttribute="bottom" secondItem="BDw-dE-RWj" secondAttribute="bottom" constant="18" id="fEo-qs-7JO"/>
-                            <constraint firstItem="BDw-dE-RWj" firstAttribute="leading" secondItem="WRq-QS-oC5" secondAttribute="trailing" constant="60" id="fS4-hv-crv"/>
+                            <constraint firstAttribute="trailing" secondItem="BDw-dE-RWj" secondAttribute="trailing" constant="15" id="xqc-EF-wzd"/>
                             <constraint firstItem="WRq-QS-oC5" firstAttribute="leading" secondItem="S3u-Pe-OmK" secondAttribute="trailing" constant="15" id="zSG-GS-y31"/>
                         </constraints>
                     </view>
