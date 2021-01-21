@@ -11,7 +11,7 @@ class ArtistListTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.register(UINib(nibName:"ArtistListXibTableViewTableViewCell", bundle: nil),forCellReuseIdentifier:"ArtistListXibTableViewTableViewCell")
+        tableView.register(UINib(nibName:"ArtistListXibTableViewTableViewCell", bundle: nil),forCellReuseIdentifier:"artistInfoCell")
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -34,7 +34,7 @@ class ArtistListTableViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ArtistListXibTableViewTableViewCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "artistInfoCell", for: indexPath)
 
         // Configure the cell...
 
