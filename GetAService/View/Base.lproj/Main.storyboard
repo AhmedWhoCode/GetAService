@@ -201,7 +201,25 @@
                             <outlet property="delegate" destination="aFe-hT-rzS" id="gdf-Vg-fzH"/>
                         </connections>
                     </tableView>
+                    <toolbarItems>
+                        <barButtonItem title="Item" image="house" catalog="system" id="ddm-2K-Euo">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <segue destination="3ac-E2-Gvt" kind="show" id="CTA-lQ-8q5"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem title="Item" image="message" catalog="system" width="147.5" id="bht-cC-UfD">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </barButtonItem>
+                        <barButtonItem title="Item" image="bell" catalog="system" width="174.5" id="UyB-O2-pIY">
+                            <color key="tintColor" red="0.2274509804" green="0.2274509804" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
+                        </barButtonItem>
+                        <barButtonItem title="Item" image="person.circle" catalog="system" width="209.5" id="ffP-cw-cyS">
+                            <color key="tintColor" red="0.2274509804" green="0.2274509804" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
+                        </barButtonItem>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" id="MCp-io-cZU"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tbm-Co-Dqw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -227,6 +245,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="CTA-lQ-8q5"/>
         <segue reference="7jh-B6-B6Y"/>
     </inferredMetricsTieBreakers>
     <resources>
