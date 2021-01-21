@@ -174,7 +174,7 @@
                             <imageReference key="image" image="bell" catalog="system" renderingMode="original"/>
                             <color key="tintColor" red="0.2274509804" green="0.2274509804" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <segue destination="aFe-hT-rzS" kind="show" id="IXH-9t-kur"/>
+                                <segue destination="aFe-hT-rzS" kind="show" id="5kh-V3-8JM"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem title="Item" image="person.circle" catalog="system" width="109" id="4M4-Ap-9TD">
@@ -192,7 +192,7 @@
         <scene sceneID="ipY-uK-jTM">
             <objects>
                 <tableViewController id="aFe-hT-rzS" customClass="ArtistListTableViewController" customModule="GetAService" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="yDz-Qg-A4n">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="yDz-Qg-A4n">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
