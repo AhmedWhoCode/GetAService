@@ -13,6 +13,7 @@
 		9378C81925B829DE00B6A183 /* ListOfServicesXibTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9378C81725B829DE00B6A183 /* ListOfServicesXibTableViewCell.swift */; };
 		9378C81A25B829DE00B6A183 /* ListOfServicesXibTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9378C81825B829DE00B6A183 /* ListOfServicesXibTableViewCell.xib */; };
 		9378C82725B834C400B6A183 /* ListOfServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9378C82625B834C400B6A183 /* ListOfServices.swift */; };
+		937994D825BC39C700C85404 /* ArtistInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937994D725BC39C700C85404 /* ArtistInformationViewController.swift */; };
 		937EAAB725B6F13A002CD6EC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937EAAB625B6F13A002CD6EC /* AppDelegate.swift */; };
 		937EAAB925B6F13A002CD6EC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937EAAB825B6F13A002CD6EC /* SceneDelegate.swift */; };
 		937EAABB25B6F13A002CD6EC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937EAABA25B6F13A002CD6EC /* ViewController.swift */; };
@@ -47,6 +48,7 @@
 		9378C81725B829DE00B6A183 /* ListOfServicesXibTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfServicesXibTableViewCell.swift; sourceTree = "<group>"; };
 		9378C81825B829DE00B6A183 /* ListOfServicesXibTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListOfServicesXibTableViewCell.xib; sourceTree = "<group>"; };
 		9378C82625B834C400B6A183 /* ListOfServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfServices.swift; sourceTree = "<group>"; };
+		937994D725BC39C700C85404 /* ArtistInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistInformationViewController.swift; sourceTree = "<group>"; };
 		937EAAB325B6F13A002CD6EC /* GetAService.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GetAService.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		937EAAB625B6F13A002CD6EC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		937EAAB825B6F13A002CD6EC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 				937EAABA25B6F13A002CD6EC /* ViewController.swift */,
 				9378C82625B834C400B6A183 /* ListOfServices.swift */,
 				936783B125B9915000A93B28 /* ArtistListTableViewController.swift */,
+				937994D725BC39C700C85404 /* ArtistInformationViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -306,6 +309,7 @@
 				936783B225B9915000A93B28 /* ArtistListTableViewController.swift in Sources */,
 				937EAAB725B6F13A002CD6EC /* AppDelegate.swift in Sources */,
 				9378C82725B834C400B6A183 /* ListOfServices.swift in Sources */,
+				937994D825BC39C700C85404 /* ArtistInformationViewController.swift in Sources */,
 				9378C81925B829DE00B6A183 /* ListOfServicesXibTableViewCell.swift in Sources */,
 				936783AC25B9896E00A93B28 /* ArtistListXibTableViewTableViewCell.swift in Sources */,
 				937EAAB925B6F13A002CD6EC /* SceneDelegate.swift in Sources */,
