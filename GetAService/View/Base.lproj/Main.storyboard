@@ -160,24 +160,25 @@
                         </connections>
                     </tableView>
                     <toolbarItems>
-                        <barButtonItem title="Home" width="91" id="EcX-lc-21q">
+                        <barButtonItem title="Home" width="95" id="EcX-lc-21q">
                             <imageReference key="image" image="house" catalog="system" symbolScale="medium" renderingMode="original"/>
                             <color key="tintColor" red="0.2274509804" green="0.2274509804" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="BYZ-38-t0r" kind="show" id="7jh-B6-B6Y"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem title="Item" image="message" catalog="system" landscapeImage="pencil" width="90.5" id="Hfe-cV-kgx">
+                        <barButtonItem title="Item" image="message" catalog="system" landscapeImage="pencil" width="95" id="Hfe-cV-kgx">
                             <color key="tintColor" red="0.2274509804" green="0.2274509804" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
                         </barButtonItem>
-                        <barButtonItem title="Item" width="127" id="ZJC-rf-htS">
+                        <barButtonItem title="Item" width="95" id="ZJC-rf-htS">
                             <imageReference key="image" image="bell" catalog="system" renderingMode="original"/>
                             <color key="tintColor" red="0.2274509804" green="0.2274509804" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="aFe-hT-rzS" kind="show" id="SiI-pE-tcs"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem title="Item" image="person.circle" catalog="system" width="109" id="4M4-Ap-9TD">
+                        <barButtonItem title="Item" width="95" id="4M4-Ap-9TD">
+                            <imageReference key="image" image="person.circle" catalog="system" renderingMode="original"/>
                             <color key="tintColor" red="0.2274509804" green="0.2274509804" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
                         </barButtonItem>
                     </toolbarItems>
@@ -202,16 +203,17 @@
                         </connections>
                     </tableView>
                     <toolbarItems>
-                        <barButtonItem title="Item" image="house" catalog="system" id="ddm-2K-Euo">
+                        <barButtonItem title="Item" image="house" catalog="system" width="95" id="ddm-2K-Euo">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </barButtonItem>
-                        <barButtonItem title="Item" image="message" catalog="system" width="147.5" id="bht-cC-UfD">
+                        <barButtonItem title="Item" width="95" id="bht-cC-UfD">
+                            <imageReference key="image" image="message" catalog="system" renderingMode="original"/>
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </barButtonItem>
-                        <barButtonItem title="Item" image="bell" catalog="system" width="174.5" id="UyB-O2-pIY">
+                        <barButtonItem title="Item" image="bell" catalog="system" width="95" id="UyB-O2-pIY">
                             <color key="tintColor" red="0.2274509804" green="0.2274509804" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
                         </barButtonItem>
-                        <barButtonItem title="Item" image="person.circle" catalog="system" width="209.5" id="ffP-cw-cyS">
+                        <barButtonItem title="Item" image="person.circle" catalog="system" width="95" id="ffP-cw-cyS">
                             <color key="tintColor" red="0.2274509804" green="0.2274509804" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="jhg-B6-9Zf" kind="show" id="fdd-v2-92t"/>
@@ -526,7 +528,7 @@
                                 <state key="normal" backgroundImage="chatIcon"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hit-yW-Osi">
-                                <rect key="frame" x="50" y="690" width="314" height="40"/>
+                                <rect key="frame" x="50" y="685" width="314" height="40"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="OPr-jX-GZR"/>
@@ -583,16 +585,24 @@
                             <constraint firstItem="xH9-L2-Cga" firstAttribute="trailing" secondItem="3qx-UT-k6y" secondAttribute="trailing" constant="10" id="mdr-sE-djQ"/>
                             <constraint firstAttribute="trailing" secondItem="hit-yW-Osi" secondAttribute="trailing" constant="50" id="sdo-Fq-apr"/>
                             <constraint firstItem="3qx-UT-k6y" firstAttribute="centerX" secondItem="zTC-xg-MsA" secondAttribute="centerX" id="tsY-qP-dgx"/>
-                            <constraint firstItem="hit-yW-Osi" firstAttribute="top" secondItem="8CR-ta-zTT" secondAttribute="bottom" constant="25" id="vrk-aJ-jO1"/>
+                            <constraint firstItem="hit-yW-Osi" firstAttribute="top" secondItem="8CR-ta-zTT" secondAttribute="bottom" constant="20" id="vrk-aJ-jO1"/>
                             <constraint firstItem="3qx-UT-k6y" firstAttribute="leading" secondItem="xH9-L2-Cga" secondAttribute="leading" constant="10" id="wIO-Pu-z2T"/>
                             <constraint firstItem="xH9-L2-Cga" firstAttribute="trailing" secondItem="lYm-P2-r1r" secondAttribute="trailing" constant="30" id="yY3-OZ-aLb"/>
                         </constraints>
                     </view>
                     <toolbarItems>
-                        <barButtonItem title="Item" id="rLH-LN-IoX"/>
-                        <barButtonItem title="Item" width="91.5" id="JH7-BG-z1I"/>
-                        <barButtonItem title="Item" width="107.5" id="VY7-DH-18S"/>
-                        <barButtonItem title="Item" width="118.5" id="hl8-Kc-OpA"/>
+                        <barButtonItem title="Item" image="house" catalog="system" width="95" id="rLH-LN-IoX">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </barButtonItem>
+                        <barButtonItem title="Item" image="message" catalog="system" width="95" id="JH7-BG-z1I">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </barButtonItem>
+                        <barButtonItem title="Item" image="bell" catalog="system" width="95" id="VY7-DH-18S">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </barButtonItem>
+                        <barButtonItem title="Item" image="person.circle" catalog="system" width="95" id="hl8-Kc-OpA">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </barButtonItem>
                     </toolbarItems>
                     <navigationItem key="navigationItem" id="d5F-vm-ozR"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
@@ -607,10 +617,10 @@
             </objects>
             <point key="canvasLocation" x="3382.608695652174" y="164.73214285714286"/>
         </scene>
-        <!--View Controller-->
+        <!--Fair Details View Controller-->
         <scene sceneID="BHD-8f-qS2">
             <objects>
-                <viewController id="Ugr-OT-R1S" sceneMemberID="viewController">
+                <viewController id="Ugr-OT-R1S" customClass="FairDetailsViewController" customModule="GetAService" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7ml-wr-SgG">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -618,13 +628,13 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C7e-9D-2S4" userLabel="EstimatedPriceView">
                                 <rect key="frame" x="100" y="391.5" width="214" height="50"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Model Price" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="iOh-66-VUs">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Estimated total price" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="iOh-66-VUs">
                                         <rect key="frame" x="0.0" y="1" width="214" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="$70" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="rXM-R8-aqy">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="$70-$110" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="rXM-R8-aqy">
                                         <rect key="frame" x="0.0" y="26.5" width="214" height="20.5"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -676,7 +686,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wbi-Nk-hR9">
                                         <rect key="frame" x="209.5" y="0.0" width="164.5" height="54.5"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Model Price" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="BkP-AA-I8l">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Uber estimated" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="BkP-AA-I8l">
                                                 <rect key="frame" x="0.0" y="0.0" width="164.5" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
@@ -732,7 +742,7 @@
                                     <constraint firstAttribute="height" constant="50" id="97Y-B8-7QH"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
-                                <state key="normal" title="BookNow">
+                                <state key="normal" title="Confrim Booking">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                             </button>
@@ -775,16 +785,36 @@
                             <constraint firstItem="wkE-f3-ckb" firstAttribute="centerX" secondItem="7ml-wr-SgG" secondAttribute="centerX" id="vgu-WH-96b"/>
                         </constraints>
                     </view>
+                    <toolbarItems>
+                        <barButtonItem title="Item" image="house" catalog="system" width="95" id="H1T-r7-rzQ">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </barButtonItem>
+                        <barButtonItem title="Item" image="message" catalog="system" width="95" id="zWh-bG-CV2">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </barButtonItem>
+                        <barButtonItem title="Item" image="bell" catalog="system" width="95" id="pR3-uE-W76">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </barButtonItem>
+                        <barButtonItem title="Item" image="person.circle" catalog="system" width="95" id="Jzm-Gd-TLD">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </barButtonItem>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" id="Q6B-Ly-aAR"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="ModelPriceView" destination="nBa-ov-gIG" id="hpy-uw-qiV"/>
+                        <outlet property="confirmBooking" destination="mi3-9H-dDo" id="sNy-DP-4cG"/>
+                        <outlet property="estimatedPriceView" destination="C7e-9D-2S4" id="i9t-OF-Hly"/>
+                        <outlet property="uberFairView" destination="wbi-Nk-hR9" id="GD8-jT-sw4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H8X-Ph-pna" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4188" y="164.16791604197903"/>
+            <point key="canvasLocation" x="4186.9565217391309" y="164.0625"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Yei-31-VJ9">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="yGU-vM-YUm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aAb-f9-2tY" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="T8c-dO-J7e">
@@ -796,6 +826,7 @@
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="MUW-EN-diZ"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yGU-vM-YUm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-339.13043478260875" y="88.392857142857139"/>
         </scene>
