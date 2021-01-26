@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		931D669825C03AC2002C239E /* ArtistProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931D669725C03AC2002C239E /* ArtistProfile.swift */; };
+		931D669D25C0660E002C239E /* CustomerProvideInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931D669C25C0660E002C239E /* CustomerProvideInformation.swift */; };
 		9352608125BD63270052C0A3 /* FairDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9352608025BD63270052C0A3 /* FairDetails.swift */; };
 		936783AC25B9896E00A93B28 /* ArtistListXibTableViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936783AA25B9896E00A93B28 /* ArtistListXibTableViewTableViewCell.swift */; };
 		936783AD25B9896E00A93B28 /* ArtistListXibTableViewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 936783AB25B9896E00A93B28 /* ArtistListXibTableViewTableViewCell.xib */; };
@@ -45,6 +46,7 @@
 
 /* Begin PBXFileReference section */
 		931D669725C03AC2002C239E /* ArtistProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistProfile.swift; sourceTree = "<group>"; };
+		931D669C25C0660E002C239E /* CustomerProvideInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerProvideInformation.swift; sourceTree = "<group>"; };
 		9352608025BD63270052C0A3 /* FairDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FairDetails.swift; sourceTree = "<group>"; };
 		936783AA25B9896E00A93B28 /* ArtistListXibTableViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistListXibTableViewTableViewCell.swift; sourceTree = "<group>"; };
 		936783AB25B9896E00A93B28 /* ArtistListXibTableViewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArtistListXibTableViewTableViewCell.xib; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 				937994D725BC39C700C85404 /* ArtistInformation.swift */,
 				9352608025BD63270052C0A3 /* FairDetails.swift */,
 				931D669725C03AC2002C239E /* ArtistProfile.swift */,
+				931D669C25C0660E002C239E /* CustomerProvideInformation.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -315,6 +318,7 @@
 				936783B225B9915000A93B28 /* ArtistLists.swift in Sources */,
 				931D669825C03AC2002C239E /* ArtistProfile.swift in Sources */,
 				9352608125BD63270052C0A3 /* FairDetails.swift in Sources */,
+				931D669D25C0660E002C239E /* CustomerProvideInformation.swift in Sources */,
 				937EAAB725B6F13A002CD6EC /* AppDelegate.swift in Sources */,
 				9378C82725B834C400B6A183 /* ListOfServices.swift in Sources */,
 				937994D825BC39C700C85404 /* ArtistInformation.swift in Sources */,
