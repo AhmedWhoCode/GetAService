@@ -173,7 +173,7 @@
                             <imageReference key="image" image="bell" catalog="system" renderingMode="original"/>
                             <color key="tintColor" red="0.2274509804" green="0.2274509804" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <segue destination="aFe-hT-rzS" kind="show" id="SiI-pE-tcs"/>
+                                <segue destination="MNx-Go-r6j" kind="show" id="gew-f8-3qv"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem title="Item" width="95" id="4M4-Ap-9TD">
@@ -219,6 +219,9 @@
                         </barButtonItem>
                         <barButtonItem title="Item" image="bell" catalog="system" width="95" id="UyB-O2-pIY">
                             <color key="tintColor" red="0.2274509804" green="0.2274509804" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <segue destination="MNx-Go-r6j" kind="show" id="ldl-2q-ipN"/>
+                            </connections>
                         </barButtonItem>
                         <barButtonItem title="Item" image="house" catalog="system" width="95" id="ffP-cw-cyS">
                             <color key="tintColor" red="0.2274509804" green="0.2274509804" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -1130,6 +1133,27 @@
             </objects>
             <point key="canvasLocation" x="3162" y="883"/>
         </scene>
+        <!--Notifications List-->
+        <scene sceneID="vek-dX-a2Z">
+            <objects>
+                <tableViewController id="MNx-Go-r6j" customClass="NotificationsList" customModule="GetAService" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Lt1-0C-eFn">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <connections>
+                            <outlet property="dataSource" destination="MNx-Go-r6j" id="fHb-53-s7t"/>
+                            <outlet property="delegate" destination="MNx-Go-r6j" id="TTj-BE-KWq"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="2w3-L5-W9I"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WmA-fH-dMy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4142" y="883"/>
+        </scene>
         <!--Customer Provide Information-->
         <scene sceneID="NbW-QY-LGc">
             <objects>
@@ -1308,6 +1332,9 @@
                     <toolbarItems>
                         <barButtonItem title="Item" image="chevron.backward" catalog="system" width="95" id="wSx-cV-30x">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <segue destination="Ugr-OT-R1S" kind="show" id="jCL-br-Ttl"/>
+                            </connections>
                         </barButtonItem>
                         <barButtonItem title="Item" image="message" catalog="system" width="95" id="vhZ-qj-XkJ">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1336,10 +1363,10 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="ldl-2q-ipN"/>
         <segue reference="4Z4-t7-Ufe"/>
-        <segue reference="F1l-Dg-Mqa"/>
-        <segue reference="kxx-qh-MtL"/>
-        <segue reference="AC9-H9-L9h"/>
+        <segue reference="fdd-v2-92t"/>
+        <segue reference="xLb-NC-lM8"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="ArtistProfile" width="121" height="50.5"/>
