@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ArtistListTableViewController: UITableViewController {
+class ArtistLists: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

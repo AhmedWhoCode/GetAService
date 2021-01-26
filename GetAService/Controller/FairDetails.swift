@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FairDetailsViewController: UIViewController {
+class FairDetails: UIViewController {
 
     @IBOutlet weak var ModelPriceView: UIView!
     @IBOutlet weak var estimatedPriceView: UIView!
@@ -36,7 +36,7 @@ class FairDetailsViewController: UIViewController {
         uberFairView.layer.borderColor = UIColor.black.cgColor
         
         ///MARK: - designing views
-        confirmBooking.layer.cornerRadius = 15
+        confirmBooking.layer.cornerRadius = 20
         confirmBooking.layer.borderWidth = 1
         confirmBooking.layer.borderColor = UIColor.black.cgColor
         

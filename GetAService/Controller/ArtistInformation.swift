@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ArtistInformationViewController: UIViewController {
+class ArtistInformation: UIViewController {
 
     @IBOutlet weak var countryView: UIView!
     @IBOutlet weak var priceView: UIView!
