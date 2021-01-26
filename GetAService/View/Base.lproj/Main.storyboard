@@ -873,10 +873,10 @@
                                                 </constraints>
                                             </imageView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="bsa-7N-6tm" userLabel="ArtistNameStack">
-                                                <rect key="frame" x="20" y="210" width="366" height="69"/>
+                                                <rect key="frame" x="20" y="210" width="366" height="45"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IBd-lR-h3P">
-                                                        <rect key="frame" x="0.0" y="0.0" width="366" height="34"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="366" height="22"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -886,8 +886,8 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </label>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" text="Nicolas" borderStyle="roundedRect" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="etd-bj-hMf">
-                                                        <rect key="frame" x="0.0" y="35" width="366" height="34"/>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" text="Nicolas" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="etd-bj-hMf">
+                                                        <rect key="frame" x="0.0" y="23" width="366" height="22"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" textContentType="name"/>
                                                         <userDefinedRuntimeAttributes>
@@ -899,7 +899,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="KUI-iZ-0UD" userLabel="AddressStack">
-                                                <rect key="frame" x="20" y="378" width="366" height="55.333333333333314"/>
+                                                <rect key="frame" x="20" y="330" width="366" height="55.333333333333314"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XP6-R9-Weq">
                                                         <rect key="frame" x="0.0" y="0.0" width="366" height="20.333333333333332"/>
@@ -921,10 +921,10 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="T58-fD-bQG" userLabel="EmailStack">
-                                                <rect key="frame" x="20" y="289" width="366" height="69"/>
+                                                <rect key="frame" x="20" y="265" width="366" height="45"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="maz-f3-QfK">
-                                                        <rect key="frame" x="0.0" y="0.0" width="366" height="34"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="366" height="22"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -934,8 +934,8 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </label>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" text="johncertain@gmail.com" borderStyle="roundedRect" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="eGR-MG-uBI">
-                                                        <rect key="frame" x="0.0" y="35" width="366" height="34"/>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" text="johncertain@gmail.com" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="eGR-MG-uBI">
+                                                        <rect key="frame" x="0.0" y="23" width="366" height="22"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" textContentType="name"/>
                                                         <userDefinedRuntimeAttributes>
@@ -947,7 +947,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="bXx-V4-D7z" userLabel="PriceStack">
-                                                <rect key="frame" x="20" y="522.33333333333337" width="366" height="69"/>
+                                                <rect key="frame" x="20" y="474.33333333333331" width="366" height="68.999999999999943"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price per hour in dollar" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Ug-CI-aty">
                                                         <rect key="frame" x="0.0" y="0.0" width="366" height="34"/>
@@ -973,7 +973,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="czR-aF-lFE" userLabel="PhoneStack">
-                                                <rect key="frame" x="20" y="443.33333333333331" width="366" height="68.999999999999943"/>
+                                                <rect key="frame" x="20" y="395.33333333333331" width="366" height="69"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7DX-c2-kSO">
                                                         <rect key="frame" x="0.0" y="0.0" width="366" height="34"/>
@@ -999,7 +999,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="DAa-rO-mpX" userLabel="GenderStack">
-                                                <rect key="frame" x="20" y="601.33333333333337" width="366" height="86.666666666666629"/>
+                                                <rect key="frame" x="20" y="553.33333333333337" width="366" height="86.666666666666629"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VhA-FE-tqy">
                                                         <rect key="frame" x="0.0" y="0.0" width="176" height="86.666666666666671"/>
@@ -1012,7 +1012,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="rJk-SE-RaV">
-                                                                <rect key="frame" x="10" y="29" width="156" height="56"/>
+                                                                <rect key="frame" x="10" y="29.333333333333261" width="156" height="55.333333333333343"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             </datePicker>
@@ -1060,7 +1060,7 @@
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="xd4-Of-3Cn" userLabel="ArtistNameStack">
-                                                <rect key="frame" x="100" y="708" width="206" height="50"/>
+                                                <rect key="frame" x="100" y="660" width="206" height="50"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gJ9-Lq-qyV">
                                                         <rect key="frame" x="0.0" y="0.0" width="206" height="50"/>
@@ -1148,6 +1148,13 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="artistAddressTextField" destination="c5U-LZ-gZC" id="b65-CJ-9Yf"/>
+                        <outlet property="artistEmailTextField" destination="eGR-MG-uBI" id="PNw-iu-U6P"/>
+                        <outlet property="artistNameTextField" destination="etd-bj-hMf" id="tkf-4X-jkN"/>
+                        <outlet property="artistNumberTextField" destination="9nm-rp-EBy" id="eO2-LH-Ljq"/>
+                        <outlet property="artistPriceTextField" destination="3Zy-Lg-y20" id="94x-Vx-YPV"/>
+                        <outlet property="datePicker" destination="rJk-SE-RaV" id="iSU-Wa-cap"/>
+                        <outlet property="genderChooser" destination="Qv6-u4-vfI" id="wTt-oa-8Gv"/>
                         <outlet property="submitButton" destination="gJ9-Lq-qyV" id="a1T-Ob-YHc"/>
                     </connections>
                 </viewController>
