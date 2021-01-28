@@ -21,19 +21,19 @@
                         <rect key="frame" x="5" y="5" width="445" height="101"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="aab-w8-PV4" userLabel="RequestedByStack View">
-                                <rect key="frame" x="20" y="48.5" width="405" height="20"/>
+                                <rect key="frame" x="100" y="48.5" width="325" height="20"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Requested By:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="um6-Ep-M1s">
-                                        <rect key="frame" x="0.0" y="0.0" width="150" height="20"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nicolas" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="um6-Ep-M1s">
+                                        <rect key="frame" x="0.0" y="0.0" width="100" height="20"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="150" id="bkH-wo-GAG"/>
+                                            <constraint firstAttribute="width" constant="100" id="bkH-wo-GAG"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hugh Jackman ultra wala" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XD8-yQ-VX0">
-                                        <rect key="frame" x="153" y="0.0" width="252" height="20"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="wants booking at" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XD8-yQ-VX0">
+                                        <rect key="frame" x="103" y="0.0" width="222" height="20"/>
                                         <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -71,7 +71,7 @@
                         <constraints>
                             <constraint firstItem="YXF-YE-oqc" firstAttribute="top" secondItem="z3c-Gi-Aez" secondAttribute="top" constant="3" id="1k6-Xj-1D4"/>
                             <constraint firstAttribute="bottom" secondItem="Zrz-uw-RwB" secondAttribute="bottom" constant="2" id="Bn3-iX-ueS"/>
-                            <constraint firstItem="aab-w8-PV4" firstAttribute="leading" secondItem="z3c-Gi-Aez" secondAttribute="leading" constant="20" id="FU0-LH-IRv"/>
+                            <constraint firstItem="aab-w8-PV4" firstAttribute="leading" secondItem="z3c-Gi-Aez" secondAttribute="leading" constant="100" id="FU0-LH-IRv"/>
                             <constraint firstAttribute="trailing" secondItem="aab-w8-PV4" secondAttribute="trailing" constant="20" id="Q9U-co-f0R"/>
                             <constraint firstItem="Zrz-uw-RwB" firstAttribute="top" secondItem="aab-w8-PV4" secondAttribute="bottom" constant="10" id="RBW-fm-JpN"/>
                             <constraint firstItem="YXF-YE-oqc" firstAttribute="leading" secondItem="z3c-Gi-Aez" secondAttribute="leading" constant="30" id="Vsj-FV-YOR"/>
