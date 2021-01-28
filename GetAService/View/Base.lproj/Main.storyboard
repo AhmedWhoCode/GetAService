@@ -983,7 +983,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="rJk-SE-RaV">
-                                                                <rect key="frame" x="10" y="30" width="156" height="55"/>
+                                                                <rect key="frame" x="10" y="29.5" width="156" height="55"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             </datePicker>
@@ -1146,6 +1146,14 @@
                             <outlet property="delegate" destination="MNx-Go-r6j" id="TTj-BE-KWq"/>
                         </connections>
                     </tableView>
+                    <toolbarItems>
+                        <barButtonItem title="Item" image="chevron.backward" catalog="system" id="Ov5-VD-k5N">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <segue destination="3ac-E2-Gvt" kind="show" id="28K-c7-SVs"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" id="2w3-L5-W9I"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
@@ -1366,7 +1374,7 @@
         <segue reference="ldl-2q-ipN"/>
         <segue reference="4Z4-t7-Ufe"/>
         <segue reference="fdd-v2-92t"/>
-        <segue reference="xLb-NC-lM8"/>
+        <segue reference="28K-c7-SVs"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="ArtistProfile" width="121" height="50.5"/>
