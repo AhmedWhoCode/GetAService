@@ -30,16 +30,32 @@ class CustomerRequestScreen: UIViewController {
     
     func desigingView(){
         
-        customerImage.layer.shadowColor = UIColor.blue.cgColor
-        customerImage.layer.shadowOpacity = 1
-        customerImage.layer.shadowOffset = CGSize.zero
-        customerImage.layer.shadowRadius = 50
-        
+        //MARK: - adding roundness to image
         customerImage.layer.masksToBounds = true
+        customerImage.layer.borderWidth = 1
         customerImage.layer.borderColor = UIColor.black.cgColor
         customerImage.layer.cornerRadius = customerImage.frame.size.height/2
         customerImage.contentMode = .scaleAspectFill
         
+        //MARK: - adding shadow to info view
+        customerInfoView.layer.cornerRadius = 10
+        customerInfoView.layer.shadowColor = UIColor.gray.cgColor
+        customerInfoView.layer.shadowOpacity = 0.5
+        customerInfoView.layer.shadowRadius = 5
+        
+        //MARK: -making views round
+        confirmButton.layer.cornerRadius = 25
+        confirmButton.layer.borderWidth = 1
+        confirmButton.layer.borderColor = UIColor.black.cgColor
+        
+        changeLocationButton.layer.cornerRadius = 25
+        changeLocationButton.layer.borderWidth = 1
+        changeLocationButton.layer.borderColor = UIColor.black.cgColor
+        
+        
+        rejectButton.layer.cornerRadius = 25
+        rejectButton.layer.borderWidth = 1
+        rejectButton.layer.borderColor = UIColor.black.cgColor
         
         
 
