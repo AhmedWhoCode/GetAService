@@ -21,6 +21,7 @@ class CustomerProvideInformation: UIViewController {
         // Do any additional setup after loading the view.
     }
     func designingView() {
+        navigationItem.hidesBackButton = true  
         ///MARK: - designing views
 
         //shadow

@@ -11,6 +11,7 @@ class NotificationsList: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.hidesBackButton = true  
         tableView.register(UINib(nibName:"NotificationsTableViewCell", bundle: nil),forCellReuseIdentifier:"notificationCell")
 
         // Uncomment the following line to preserve selection between presentations

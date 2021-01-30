@@ -23,6 +23,7 @@ class ArtistInformation: UIViewController {
     }
     
     func designingViews(){
+        navigationItem.hidesBackButton = true  
         ///MARK: - designing views
         countryView.layer.cornerRadius = 15
         countryView.layer.borderWidth = 1

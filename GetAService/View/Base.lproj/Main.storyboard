@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Sign up -->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="GetAService" customModuleProvider="target" sceneMemberID="viewController">
@@ -136,7 +136,7 @@
                             <constraint firstItem="rWH-Px-oeu" firstAttribute="top" secondItem="s2V-xP-SsR" secondAttribute="bottom" constant="30" id="nRk-ox-rVu"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="gXH-8m-dpx"/>
+                    <navigationItem key="navigationItem" title="Sign up " id="gXH-8m-dpx"/>
                     <connections>
                         <outlet property="emailView" destination="KeO-6q-olY" id="7VF-ne-4bh"/>
                         <outlet property="passwordView" destination="DGN-jh-gii" id="Ddo-Xq-z4Z"/>
@@ -147,7 +147,7 @@
             </objects>
             <point key="canvasLocation" x="1481.1594202898552" y="88.392857142857139"/>
         </scene>
-        <!--Main Screen-->
+        <!--Services-->
         <scene sceneID="7ED-x3-8s4">
             <objects>
                 <tableViewController id="3ac-E2-Gvt" customClass="ListOfServices" customModule="GetAService" customModuleProvider="target" sceneMemberID="viewController">
@@ -187,16 +187,14 @@
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
-                    <navigationItem key="navigationItem" title="Main Screen" id="08S-dz-6oz">
-                        <barButtonItem key="backBarButtonItem" title="Back" id="frK-kF-4tz"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Services" id="08S-dz-6oz"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NEK-Bb-qIu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2302.898550724638" y="81.696428571428569"/>
         </scene>
-        <!--Artist Lists-->
+        <!--Artists-->
         <scene sceneID="ipY-uK-jTM">
             <objects>
                 <tableViewController id="aFe-hT-rzS" customClass="ArtistLists" customModule="GetAService" customModuleProvider="target" sceneMemberID="viewController">
@@ -233,7 +231,8 @@
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
-                    <navigationItem key="navigationItem" id="MCp-io-cZU"/>
+                    <navigationItem key="navigationItem" title="Artists" id="MCp-io-cZU"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tbm-Co-Dqw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -625,7 +624,7 @@
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </barButtonItem>
                     </toolbarItems>
-                    <navigationItem key="navigationItem" id="d5F-vm-ozR"/>
+                    <navigationItem key="navigationItem" title="Artist Information" id="d5F-vm-ozR"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="artistImage" destination="lYm-P2-r1r" id="L3o-TH-NuH"/>
@@ -648,7 +647,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C7e-9D-2S4" userLabel="EstimatedPriceView">
-                                <rect key="frame" x="100" y="441.5" width="214" height="50"/>
+                                <rect key="frame" x="100" y="435.5" width="214" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Estimated total price" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="iOh-66-VUs">
                                         <rect key="frame" x="0.0" y="1" width="214" height="20.5"/>
@@ -676,7 +675,7 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="45" translatesAutoresizingMaskIntoConstraints="NO" id="wkE-f3-ckb" userLabel="PriceInfoStack">
-                                <rect key="frame" x="20" y="357" width="374" height="54.5"/>
+                                <rect key="frame" x="20" y="351" width="374" height="54.5"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nBa-ov-gIG">
                                         <rect key="frame" x="0.0" y="0.0" width="164.5" height="54.5"/>
@@ -772,14 +771,14 @@
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" image="ArtistProfile" translatesAutoresizingMaskIntoConstraints="NO" id="Chl-Li-NSw">
-                                <rect key="frame" x="82" y="64" width="250" height="250"/>
+                                <rect key="frame" x="107" y="108" width="200" height="200"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="250" id="Nsr-SG-Gpb"/>
-                                    <constraint firstAttribute="width" constant="250" id="gaF-lg-D1n"/>
+                                    <constraint firstAttribute="height" constant="200" id="Nsr-SG-Gpb"/>
+                                    <constraint firstAttribute="width" constant="200" id="gaF-lg-D1n"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gal gadot" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="ao3-Cv-v06">
-                                <rect key="frame" x="30" y="324" width="354" height="23"/>
+                                <rect key="frame" x="30" y="318" width="354" height="23"/>
                                 <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -862,7 +861,7 @@
             </objects>
             <point key="canvasLocation" x="571.01449275362324" y="88.392857142857139"/>
         </scene>
-        <!--Artist Profile-->
+        <!--Profile-->
         <scene sceneID="sc9-83-b7G">
             <objects>
                 <viewController id="pKH-eb-wd4" customClass="ArtistProfile" customModule="GetAService" customModuleProvider="target" sceneMemberID="viewController">
@@ -876,14 +875,15 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zuf-4X-vEq" userLabel="Content View">
                                         <rect key="frame" x="0.0" y="0.0" width="406" height="896"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ArtistProfile" translatesAutoresizingMaskIntoConstraints="NO" id="m5O-PO-vu8">
-                                                <rect key="frame" x="70" y="40" width="266" height="130"/>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ArtistProfile" translatesAutoresizingMaskIntoConstraints="NO" id="m5O-PO-vu8">
+                                                <rect key="frame" x="128" y="40" width="150" height="150"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="130" id="gGN-lv-wBT"/>
+                                                    <constraint firstAttribute="width" constant="150" id="Meq-zB-JvM"/>
+                                                    <constraint firstAttribute="height" constant="150" id="gGN-lv-wBT"/>
                                                 </constraints>
                                             </imageView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="bsa-7N-6tm" userLabel="ArtistNameStack">
-                                                <rect key="frame" x="20" y="210" width="366" height="69"/>
+                                                <rect key="frame" x="20" y="230" width="366" height="69"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IBd-lR-h3P">
                                                         <rect key="frame" x="0.0" y="0.0" width="366" height="34"/>
@@ -899,7 +899,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="KUI-iZ-0UD" userLabel="AddressStack">
-                                                <rect key="frame" x="20" y="378" width="366" height="55.5"/>
+                                                <rect key="frame" x="20" y="398" width="366" height="55.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XP6-R9-Weq">
                                                         <rect key="frame" x="0.0" y="0.0" width="366" height="20.5"/>
@@ -916,7 +916,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="T58-fD-bQG" userLabel="EmailStack">
-                                                <rect key="frame" x="20" y="289" width="366" height="69"/>
+                                                <rect key="frame" x="20" y="309" width="366" height="69"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="maz-f3-QfK">
                                                         <rect key="frame" x="0.0" y="0.0" width="366" height="34"/>
@@ -932,7 +932,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="bXx-V4-D7z" userLabel="PriceStack">
-                                                <rect key="frame" x="20" y="522.5" width="366" height="69"/>
+                                                <rect key="frame" x="20" y="542.5" width="366" height="69"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price per hour in dollar" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Ug-CI-aty">
                                                         <rect key="frame" x="0.0" y="0.0" width="366" height="34"/>
@@ -953,7 +953,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="czR-aF-lFE" userLabel="PhoneStack">
-                                                <rect key="frame" x="20" y="443.5" width="366" height="69"/>
+                                                <rect key="frame" x="20" y="463.5" width="366" height="69"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7DX-c2-kSO">
                                                         <rect key="frame" x="0.0" y="0.0" width="366" height="34"/>
@@ -974,7 +974,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="DAa-rO-mpX" userLabel="GenderStack">
-                                                <rect key="frame" x="20" y="601.5" width="366" height="86.5"/>
+                                                <rect key="frame" x="20" y="621.5" width="366" height="86.5"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VhA-FE-tqy">
                                                         <rect key="frame" x="0.0" y="0.0" width="176" height="86.5"/>
@@ -1035,7 +1035,7 @@
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="xd4-Of-3Cn" userLabel="ArtistNameStack">
-                                                <rect key="frame" x="100" y="708" width="206" height="50"/>
+                                                <rect key="frame" x="100" y="728" width="206" height="50"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gJ9-Lq-qyV">
                                                         <rect key="frame" x="0.0" y="0.0" width="206" height="50"/>
@@ -1056,7 +1056,6 @@
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstItem="bsa-7N-6tm" firstAttribute="top" secondItem="m5O-PO-vu8" secondAttribute="bottom" constant="40" id="0RZ-6K-jtN"/>
-                                            <constraint firstAttribute="trailing" secondItem="m5O-PO-vu8" secondAttribute="trailing" constant="70" id="0i1-fd-75s"/>
                                             <constraint firstAttribute="trailing" secondItem="bsa-7N-6tm" secondAttribute="trailing" constant="20" id="24A-4Y-b3y"/>
                                             <constraint firstItem="bXx-V4-D7z" firstAttribute="leading" secondItem="zuf-4X-vEq" secondAttribute="leading" constant="20" id="4uA-1S-q1t"/>
                                             <constraint firstAttribute="trailing" secondItem="czR-aF-lFE" secondAttribute="trailing" constant="20" id="Aw3-bE-2Le"/>
@@ -1069,6 +1068,7 @@
                                             <constraint firstItem="czR-aF-lFE" firstAttribute="leading" secondItem="zuf-4X-vEq" secondAttribute="leading" constant="20" id="PXj-m2-AYh"/>
                                             <constraint firstItem="bXx-V4-D7z" firstAttribute="top" secondItem="czR-aF-lFE" secondAttribute="bottom" constant="10" id="ROR-zh-Dr8"/>
                                             <constraint firstItem="KUI-iZ-0UD" firstAttribute="top" secondItem="T58-fD-bQG" secondAttribute="bottom" constant="20" id="Un8-zp-dzo"/>
+                                            <constraint firstItem="m5O-PO-vu8" firstAttribute="centerX" secondItem="zuf-4X-vEq" secondAttribute="centerX" id="Wed-uL-Axm"/>
                                             <constraint firstAttribute="trailing" secondItem="KUI-iZ-0UD" secondAttribute="trailing" constant="20" id="X1l-Fd-KAr"/>
                                             <constraint firstItem="xd4-Of-3Cn" firstAttribute="leading" secondItem="zuf-4X-vEq" secondAttribute="leading" constant="100" id="bTr-jh-x7z"/>
                                             <constraint firstItem="KUI-iZ-0UD" firstAttribute="leading" secondItem="zuf-4X-vEq" secondAttribute="leading" constant="20" id="eEM-ZB-HYM"/>
@@ -1078,7 +1078,6 @@
                                             <constraint firstItem="bsa-7N-6tm" firstAttribute="leading" secondItem="zuf-4X-vEq" secondAttribute="leading" constant="20" id="m6k-Rn-rm8"/>
                                             <constraint firstItem="xd4-Of-3Cn" firstAttribute="centerX" secondItem="zuf-4X-vEq" secondAttribute="centerX" id="mli-gL-7M3"/>
                                             <constraint firstItem="czR-aF-lFE" firstAttribute="top" secondItem="KUI-iZ-0UD" secondAttribute="bottom" constant="10" id="sXY-Oa-TyH"/>
-                                            <constraint firstItem="m5O-PO-vu8" firstAttribute="leading" secondItem="zuf-4X-vEq" secondAttribute="leading" constant="70" id="wm5-iQ-MLd"/>
                                             <constraint firstItem="T58-fD-bQG" firstAttribute="top" secondItem="bsa-7N-6tm" secondAttribute="bottom" constant="10" id="zOb-iK-J1P"/>
                                         </constraints>
                                     </view>
@@ -1119,12 +1118,13 @@
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </barButtonItem>
                     </toolbarItems>
-                    <navigationItem key="navigationItem" id="vL8-Nl-RxR"/>
-                    <nil key="simulatedTopBarMetrics"/>
+                    <navigationItem key="navigationItem" title="Profile" id="vL8-Nl-RxR"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="artistAddressTextField" destination="c5U-LZ-gZC" id="b65-CJ-9Yf"/>
                         <outlet property="artistEmailTextField" destination="eGR-MG-uBI" id="PNw-iu-U6P"/>
+                        <outlet property="artistImage" destination="m5O-PO-vu8" id="cnu-mc-cmw"/>
                         <outlet property="artistNameTextField" destination="etd-bj-hMf" id="tkf-4X-jkN"/>
                         <outlet property="artistNumberTextField" destination="9nm-rp-EBy" id="eO2-LH-Ljq"/>
                         <outlet property="artistPriceTextField" destination="3Zy-Lg-y20" id="94x-Vx-YPV"/>
@@ -1137,7 +1137,7 @@
             </objects>
             <point key="canvasLocation" x="3162" y="883"/>
         </scene>
-        <!--Notifications List-->
+        <!--Notifications-->
         <scene sceneID="vek-dX-a2Z">
             <objects>
                 <tableViewController id="MNx-Go-r6j" customClass="NotificationsList" customModule="GetAService" customModuleProvider="target" sceneMemberID="viewController">
@@ -1167,15 +1167,15 @@
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </barButtonItem>
                     </toolbarItems>
-                    <navigationItem key="navigationItem" id="2w3-L5-W9I"/>
-                    <nil key="simulatedTopBarMetrics"/>
+                    <navigationItem key="navigationItem" title="Notifications" id="2w3-L5-W9I"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WmA-fH-dMy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4142" y="883"/>
         </scene>
-        <!--Customer Provide Information-->
+        <!--Information needed-->
         <scene sceneID="NbW-QY-LGc">
             <objects>
                 <viewController id="Vz8-Qo-IYR" customClass="CustomerProvideInformation" customModule="GetAService" customModuleProvider="target" sceneMemberID="viewController">
@@ -1367,8 +1367,8 @@
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </barButtonItem>
                     </toolbarItems>
-                    <navigationItem key="navigationItem" id="3k1-9x-dMS"/>
-                    <nil key="simulatedTopBarMetrics"/>
+                    <navigationItem key="navigationItem" title="Information needed" id="3k1-9x-dMS"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="bookNowButton" destination="X6u-d5-bFW" id="nGt-34-EKy"/>
@@ -1385,10 +1385,10 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="ldl-2q-ipN"/>
-        <segue reference="4Z4-t7-Ufe"/>
+        <segue reference="jCL-br-Ttl"/>
         <segue reference="F1l-Dg-Mqa"/>
         <segue reference="kxx-qh-MtL"/>
-        <segue reference="xLb-NC-lM8"/>
+        <segue reference="28K-c7-SVs"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="ArtistProfile" width="121" height="50.5"/>

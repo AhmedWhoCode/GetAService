@@ -12,8 +12,9 @@ class ListOfServices: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         ///MARK: - enabling bottom toolbar
-        self.navigationController?.isToolbarHidden = false
-
+        navigationController?.isToolbarHidden = false
+        navigationController?.isNavigationBarHidden = false
+        navigationItem.hidesBackButton = true  
         tableView.register(UINib(nibName:"ListOfServicesXibTableViewCell", bundle: nil),forCellReuseIdentifier:"serviceXib")
 
         // Uncomment the following line to preserve selection between presentations

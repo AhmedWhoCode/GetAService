@@ -21,6 +21,7 @@ class FairDetails: UIViewController {
     }
     
     func designingView() {
+        navigationItem.hidesBackButton = true  
         ///MARK: - designing views
         ModelPriceView.layer.cornerRadius = 15
         ModelPriceView.layer.borderWidth = 1

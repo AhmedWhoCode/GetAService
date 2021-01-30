@@ -9,6 +9,7 @@ import UIKit
 
 class ArtistProfile: UIViewController {
 
+    @IBOutlet weak var artistImage: UIImageView!
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var artistNameTextField: UITextField!
     @IBOutlet weak var artistAddressTextField: UITextField!
@@ -25,7 +26,16 @@ class ArtistProfile: UIViewController {
     }
     
     func designingView() {
+        navigationItem.hidesBackButton = true  
+        
         ///MARK: - designing views
+        artistImage.layer.masksToBounds = true
+        artistImage.layer.borderColor = UIColor.black.cgColor
+       artistImage.layer.cornerRadius = artistImage.frame.size.height/2
+        artistImage.contentMode = .scaleAspectFill
+        
+        
+        
 //        artistNameTextField.layer.cornerRadius = 10
 //        artistNameTextField.layer.borderWidth = 0.1
 //        artistNameTextField.layer.borderColor = UIColor.black.cgColor

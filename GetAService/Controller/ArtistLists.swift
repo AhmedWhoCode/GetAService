@@ -11,6 +11,7 @@ class ArtistLists: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.hidesBackButton = true  
         tableView.register(UINib(nibName:"ArtistListXibTableViewTableViewCell", bundle: nil),forCellReuseIdentifier:"artistInfoCell")
 
         // Uncomment the following line to preserve selection between presentations
