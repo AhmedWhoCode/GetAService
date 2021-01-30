@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9318F8AB25C5767D009A6712 /* CustomerRequestScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9318F8AA25C5767D009A6712 /* CustomerRequestScreen.swift */; };
 		931D669825C03AC2002C239E /* ArtistProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931D669725C03AC2002C239E /* ArtistProfile.swift */; };
 		931D669D25C0660E002C239E /* CustomerProvideInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931D669C25C0660E002C239E /* CustomerProvideInformation.swift */; };
 		931D66A225C0873E002C239E /* NotificationsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931D66A125C0873E002C239E /* NotificationsList.swift */; };
@@ -48,6 +49,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9318F8AA25C5767D009A6712 /* CustomerRequestScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerRequestScreen.swift; sourceTree = "<group>"; };
 		931D669725C03AC2002C239E /* ArtistProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistProfile.swift; sourceTree = "<group>"; };
 		931D669C25C0660E002C239E /* CustomerProvideInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerProvideInformation.swift; sourceTree = "<group>"; };
 		931D66A125C0873E002C239E /* NotificationsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsList.swift; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 				931D669725C03AC2002C239E /* ArtistProfile.swift */,
 				931D669C25C0660E002C239E /* CustomerProvideInformation.swift */,
 				931D66A125C0873E002C239E /* NotificationsList.swift */,
+				9318F8AA25C5767D009A6712 /* CustomerRequestScreen.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -337,6 +340,7 @@
 				9378C81925B829DE00B6A183 /* ListOfServicesXibTableViewCell.swift in Sources */,
 				936783AC25B9896E00A93B28 /* ArtistListXibTableViewTableViewCell.swift in Sources */,
 				937EAAB925B6F13A002CD6EC /* SceneDelegate.swift in Sources */,
+				9318F8AB25C5767D009A6712 /* CustomerRequestScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
