@@ -29,6 +29,9 @@
 		937EAAC325B6F13B002CD6EC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 937EAAC125B6F13B002CD6EC /* LaunchScreen.storyboard */; };
 		937EAACE25B6F13C002CD6EC /* GetAServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937EAACD25B6F13C002CD6EC /* GetAServiceTests.swift */; };
 		937EAAD925B6F13C002CD6EC /* GetAServiceUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937EAAD825B6F13C002CD6EC /* GetAServiceUITests.swift */; };
+		93C9691B25C5C0AD00A6217E /* ChatList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C9691A25C5C0AD00A6217E /* ChatList.swift */; };
+		93C9692125C5C14800A6217E /* ChatsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C9691F25C5C14800A6217E /* ChatsTableViewCell.swift */; };
+		93C9692225C5C14800A6217E /* ChatsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93C9692025C5C14800A6217E /* ChatsTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +80,9 @@
 		937EAAD425B6F13C002CD6EC /* GetAServiceUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GetAServiceUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		937EAAD825B6F13C002CD6EC /* GetAServiceUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAServiceUITests.swift; sourceTree = "<group>"; };
 		937EAADA25B6F13C002CD6EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		93C9691A25C5C0AD00A6217E /* ChatList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatList.swift; sourceTree = "<group>"; };
+		93C9691F25C5C14800A6217E /* ChatsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsTableViewCell.swift; sourceTree = "<group>"; };
+		93C9692025C5C14800A6217E /* ChatsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatsTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +127,8 @@
 				936783AB25B9896E00A93B28 /* ArtistListXibTableViewTableViewCell.xib */,
 				931D66A925C087EF002C239E /* NotificationsTableViewCell.swift */,
 				931D66AA25C087EF002C239E /* NotificationsTableViewCell.xib */,
+				93C9691F25C5C14800A6217E /* ChatsTableViewCell.swift */,
+				93C9692025C5C14800A6217E /* ChatsTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -137,6 +145,7 @@
 				931D669C25C0660E002C239E /* CustomerProvideInformation.swift */,
 				931D66A125C0873E002C239E /* NotificationsList.swift */,
 				9318F8AA25C5767D009A6712 /* CustomerRequestScreen.swift */,
+				93C9691A25C5C0AD00A6217E /* ChatList.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -299,6 +308,7 @@
 			files = (
 				937EAAC325B6F13B002CD6EC /* LaunchScreen.storyboard in Resources */,
 				937EAAC025B6F13B002CD6EC /* Assets.xcassets in Resources */,
+				93C9692225C5C14800A6217E /* ChatsTableViewCell.xib in Resources */,
 				931D66AC25C087EF002C239E /* NotificationsTableViewCell.xib in Resources */,
 				936783AD25B9896E00A93B28 /* ArtistListXibTableViewTableViewCell.xib in Resources */,
 				9378C81A25B829DE00B6A183 /* ListOfServicesXibTableViewCell.xib in Resources */,
@@ -329,12 +339,14 @@
 			files = (
 				937EAABB25B6F13A002CD6EC /* ViewController.swift in Sources */,
 				936783B225B9915000A93B28 /* ArtistLists.swift in Sources */,
+				93C9691B25C5C0AD00A6217E /* ChatList.swift in Sources */,
 				931D669825C03AC2002C239E /* ArtistProfile.swift in Sources */,
 				9352608125BD63270052C0A3 /* FairDetails.swift in Sources */,
 				931D669D25C0660E002C239E /* CustomerProvideInformation.swift in Sources */,
 				937EAAB725B6F13A002CD6EC /* AppDelegate.swift in Sources */,
 				931D66A225C0873E002C239E /* NotificationsList.swift in Sources */,
 				9378C82725B834C400B6A183 /* ListOfServices.swift in Sources */,
+				93C9692125C5C14800A6217E /* ChatsTableViewCell.swift in Sources */,
 				931D66AB25C087EF002C239E /* NotificationsTableViewCell.swift in Sources */,
 				937994D825BC39C700C85404 /* ArtistInformation.swift in Sources */,
 				9378C81925B829DE00B6A183 /* ListOfServicesXibTableViewCell.swift in Sources */,

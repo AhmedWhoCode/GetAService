@@ -110,7 +110,7 @@
                 <outlet property="customerImage" destination="jCg-6s-40E" id="k7A-wN-731"/>
                 <outlet property="customerName" destination="sT4-br-raj" id="g4D-Iz-kJU"/>
             </connections>
-            <point key="canvasLocation" x="59.0625" y="-45.625"/>
+            <point key="canvasLocation" x="-110" y="32"/>
         </tableViewCell>
     </objects>
     <resources>
