@@ -86,6 +86,13 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="artistAvailabilityLabel" destination="BDw-dE-RWj" id="LYV-7j-rNL"/>
+                <outlet property="artistCountryLabel" destination="70D-jZ-pXH" id="ltC-rt-kgr"/>
+                <outlet property="artistImage" destination="S3u-Pe-OmK" id="L9N-Ry-F0T"/>
+                <outlet property="artistNameLabel" destination="Sbl-ah-TBX" id="b67-cF-GQ7"/>
+                <outlet property="artistPriceLabel" destination="bXR-m7-epi" id="4w8-AY-Hu0"/>
+            </connections>
             <point key="canvasLocation" x="123.18840579710145" y="121.875"/>
         </tableViewCell>
     </objects>

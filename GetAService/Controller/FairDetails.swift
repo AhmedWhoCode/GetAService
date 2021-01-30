@@ -9,6 +9,7 @@ import UIKit
 
 class FairDetails: UIViewController {
 
+    @IBOutlet weak var artistImage: UIImageView!
     @IBOutlet weak var ModelPriceView: UIView!
     @IBOutlet weak var estimatedPriceView: UIView!
     @IBOutlet weak var uberFairView: UIView!
@@ -40,6 +41,10 @@ class FairDetails: UIViewController {
         confirmBooking.layer.borderWidth = 1
         confirmBooking.layer.borderColor = UIColor.black.cgColor
         
+        artistImage.layer.masksToBounds = true
+        artistImage.layer.borderColor = UIColor.black.cgColor
+       artistImage.layer.cornerRadius=artistImage.frame.size.height/2
+        artistImage.contentMode = .scaleAspectFill
         
     }
 

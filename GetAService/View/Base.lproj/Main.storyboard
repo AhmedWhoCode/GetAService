@@ -628,6 +628,7 @@
                     <navigationItem key="navigationItem" id="d5F-vm-ozR"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="artistImage" destination="lYm-P2-r1r" id="L3o-TH-NuH"/>
                         <outlet property="bookNowButton" destination="hit-yW-Osi" id="rEN-FV-3hB"/>
                         <outlet property="countryView" destination="Awn-Sd-YNz" id="VGt-sL-sGM"/>
                         <outlet property="priceView" destination="Exm-l1-tUh" id="h7y-G8-MuK"/>
@@ -647,7 +648,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C7e-9D-2S4" userLabel="EstimatedPriceView">
-                                <rect key="frame" x="100" y="421.5" width="214" height="50"/>
+                                <rect key="frame" x="100" y="441.5" width="214" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Estimated total price" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="iOh-66-VUs">
                                         <rect key="frame" x="0.0" y="1" width="214" height="20.5"/>
@@ -675,7 +676,7 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="45" translatesAutoresizingMaskIntoConstraints="NO" id="wkE-f3-ckb" userLabel="PriceInfoStack">
-                                <rect key="frame" x="20" y="337" width="374" height="54.5"/>
+                                <rect key="frame" x="20" y="357" width="374" height="54.5"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nBa-ov-gIG">
                                         <rect key="frame" x="0.0" y="0.0" width="164.5" height="54.5"/>
@@ -771,13 +772,14 @@
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" image="ArtistProfile" translatesAutoresizingMaskIntoConstraints="NO" id="Chl-Li-NSw">
-                                <rect key="frame" x="10" y="64" width="394" height="230"/>
+                                <rect key="frame" x="82" y="64" width="250" height="250"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="230" id="Nsr-SG-Gpb"/>
+                                    <constraint firstAttribute="height" constant="250" id="Nsr-SG-Gpb"/>
+                                    <constraint firstAttribute="width" constant="250" id="gaF-lg-D1n"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gal gadot" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="ao3-Cv-v06">
-                                <rect key="frame" x="30" y="304" width="354" height="23"/>
+                                <rect key="frame" x="30" y="324" width="354" height="23"/>
                                 <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -795,16 +797,14 @@
                             <constraint firstItem="C7e-9D-2S4" firstAttribute="top" secondItem="wkE-f3-ckb" secondAttribute="bottom" constant="30" id="7AY-Tt-Ks5"/>
                             <constraint firstItem="mi3-9H-dDo" firstAttribute="top" secondItem="xK9-r4-rPl" secondAttribute="bottom" constant="30" id="9Jl-eQ-4EE"/>
                             <constraint firstItem="ao3-Cv-v06" firstAttribute="top" secondItem="Chl-Li-NSw" secondAttribute="bottom" constant="10" id="Chg-7v-8PV"/>
-                            <constraint firstItem="Chl-Li-NSw" firstAttribute="leading" secondItem="PKm-fh-8Wc" secondAttribute="leading" constant="10" id="Cp1-eO-nwE"/>
                             <constraint firstItem="Chl-Li-NSw" firstAttribute="top" secondItem="PKm-fh-8Wc" secondAttribute="top" constant="20" id="F03-z0-5Fu"/>
                             <constraint firstItem="PKm-fh-8Wc" firstAttribute="bottom" secondItem="mi3-9H-dDo" secondAttribute="bottom" constant="45" id="KAY-Cy-DfN"/>
                             <constraint firstItem="C7e-9D-2S4" firstAttribute="centerX" secondItem="7ml-wr-SgG" secondAttribute="centerX" id="QYs-7a-khG"/>
-                            <constraint firstItem="Chl-Li-NSw" firstAttribute="centerX" secondItem="7ml-wr-SgG" secondAttribute="centerX" id="Rsa-6V-IGf"/>
                             <constraint firstItem="PKm-fh-8Wc" firstAttribute="trailing" secondItem="C7e-9D-2S4" secondAttribute="trailing" constant="100" id="Xpp-kH-9OL"/>
                             <constraint firstItem="wkE-f3-ckb" firstAttribute="top" secondItem="ao3-Cv-v06" secondAttribute="bottom" constant="10" id="au6-JI-DII"/>
                             <constraint firstItem="mi3-9H-dDo" firstAttribute="centerX" secondItem="7ml-wr-SgG" secondAttribute="centerX" id="eJd-ar-5ie"/>
                             <constraint firstItem="xK9-r4-rPl" firstAttribute="leading" secondItem="PKm-fh-8Wc" secondAttribute="leading" constant="50" id="jmc-yW-ZiP"/>
-                            <constraint firstItem="PKm-fh-8Wc" firstAttribute="trailing" secondItem="Chl-Li-NSw" secondAttribute="trailing" constant="10" id="ogR-Y6-lHr"/>
+                            <constraint firstItem="Chl-Li-NSw" firstAttribute="centerX" secondItem="7ml-wr-SgG" secondAttribute="centerX" id="oGw-Ig-J92"/>
                             <constraint firstItem="C7e-9D-2S4" firstAttribute="leading" secondItem="PKm-fh-8Wc" secondAttribute="leading" constant="100" id="q48-dd-H0t"/>
                             <constraint firstItem="PKm-fh-8Wc" firstAttribute="trailing" secondItem="xK9-r4-rPl" secondAttribute="trailing" constant="50" id="tgG-2v-ub4"/>
                             <constraint firstItem="wkE-f3-ckb" firstAttribute="centerX" secondItem="7ml-wr-SgG" secondAttribute="centerX" id="vgu-WH-96b"/>
@@ -833,6 +833,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="ModelPriceView" destination="nBa-ov-gIG" id="hpy-uw-qiV"/>
+                        <outlet property="artistImage" destination="Chl-Li-NSw" id="gGp-MD-qQ4"/>
                         <outlet property="confirmBooking" destination="mi3-9H-dDo" id="sNy-DP-4cG"/>
                         <outlet property="estimatedPriceView" destination="C7e-9D-2S4" id="i9t-OF-Hly"/>
                         <outlet property="uberFairView" destination="wbi-Nk-hR9" id="GD8-jT-sw4"/>
@@ -1150,11 +1151,20 @@
                         </connections>
                     </tableView>
                     <toolbarItems>
-                        <barButtonItem title="Item" image="chevron.backward" catalog="system" id="Ov5-VD-k5N">
+                        <barButtonItem title="Item" image="chevron.backward" catalog="system" width="95" id="Ov5-VD-k5N">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <segue destination="3ac-E2-Gvt" kind="show" id="28K-c7-SVs"/>
                             </connections>
+                        </barButtonItem>
+                        <barButtonItem title="Item" image="message" catalog="system" width="95" id="U8a-NJ-zuY">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </barButtonItem>
+                        <barButtonItem title="Item" image="bell" catalog="system" width="95" id="x0r-ME-D7R">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </barButtonItem>
+                        <barButtonItem title="Item" image="house" catalog="system" width="95" id="AYf-pj-5zV">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </barButtonItem>
                     </toolbarItems>
                     <navigationItem key="navigationItem" id="2w3-L5-W9I"/>
@@ -1188,10 +1198,10 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" text="Nicolas" borderStyle="roundedRect" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="QEk-1b-wes">
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" text="Nicolas" borderStyle="roundedRect" minimumFontSize="12" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="QEk-1b-wes">
                                                         <rect key="frame" x="0.0" y="35" width="366" height="34"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" textContentType="name"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" enablesReturnKeyAutomatically="YES" textContentType="name"/>
                                                     </textField>
                                                 </subviews>
                                             </stackView>
@@ -1204,11 +1214,11 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="house 97 , g82 islamabad" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="zbN-ws-7hn">
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="house 97 , g82 islamabad" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="16" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="zbN-ws-7hn">
                                                         <rect key="frame" x="0.0" y="21.5" width="366" height="34"/>
                                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                                                     </textField>
                                                 </subviews>
                                             </stackView>
@@ -1221,10 +1231,10 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" text="johncertain@gmail.com" borderStyle="roundedRect" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="1kA-jy-xx1">
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" text="johncertain@gmail.com" borderStyle="roundedRect" minimumFontSize="12" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="1kA-jy-xx1">
                                                         <rect key="frame" x="0.0" y="35" width="366" height="34"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" textContentType="name"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" enablesReturnKeyAutomatically="YES" textContentType="name"/>
                                                     </textField>
                                                 </subviews>
                                             </stackView>
@@ -1237,10 +1247,10 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" text="0303-383883737277377" borderStyle="roundedRect" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="JTH-xK-TS5">
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" text="0303-383883737277377" borderStyle="roundedRect" minimumFontSize="12" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="JTH-xK-TS5">
                                                         <rect key="frame" x="0.0" y="35" width="366" height="34"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" textContentType="name"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" enablesReturnKeyAutomatically="YES" textContentType="name"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="textContainer.lineFragmentPadding">
                                                                 <integer key="value" value="20"/>
@@ -1374,10 +1384,10 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="gew-f8-3qv"/>
+        <segue reference="ldl-2q-ipN"/>
         <segue reference="4Z4-t7-Ufe"/>
-        <segue reference="fdd-v2-92t"/>
-        <segue reference="Bza-6n-eov"/>
+        <segue reference="F1l-Dg-Mqa"/>
+        <segue reference="kxx-qh-MtL"/>
         <segue reference="xLb-NC-lM8"/>
     </inferredMetricsTieBreakers>
     <resources>

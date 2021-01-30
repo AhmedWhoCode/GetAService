@@ -12,7 +12,8 @@ class ArtistInformation: UIViewController {
     @IBOutlet weak var countryView: UIView!
     @IBOutlet weak var priceView: UIView!
     @IBOutlet weak var statusView: UIView!
-
+    @IBOutlet weak var artistImage: UIImageView!
+    
     @IBOutlet weak var bookNowButton: UIButton!
     
     override func viewDidLoad() {
@@ -38,6 +39,12 @@ class ArtistInformation: UIViewController {
         bookNowButton.layer.cornerRadius = 20
         bookNowButton.layer.borderWidth = 1
         bookNowButton.layer.borderColor = UIColor.black.cgColor
+        
+        
+        artistImage.layer.masksToBounds = true
+        artistImage.layer.borderColor = UIColor.black.cgColor
+         artistImage.layer.cornerRadius = artistImage.frame.size.height/2
+        artistImage.contentMode = .scaleAspectFill
     }
     /*
     // MARK: - Navigation
