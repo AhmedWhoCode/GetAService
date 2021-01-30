@@ -1636,6 +1636,9 @@
                     <toolbarItems>
                         <barButtonItem title="Item" image="chevron.backward" catalog="system" width="95" id="fVc-8h-EYi">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <segue destination="3ac-E2-Gvt" kind="show" id="lcW-KC-NDA"/>
+                            </connections>
                         </barButtonItem>
                         <barButtonItem title="Item" image="message" catalog="system" width="95" id="KoE-jq-u5V">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1662,7 +1665,7 @@
         <segue reference="4Z4-t7-Ufe"/>
         <segue reference="fdd-v2-92t"/>
         <segue reference="kxx-qh-MtL"/>
-        <segue reference="xLb-NC-lM8"/>
+        <segue reference="lcW-KC-NDA"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="ArtistProfile" width="120.66666412353516" height="50.666667938232422"/>
