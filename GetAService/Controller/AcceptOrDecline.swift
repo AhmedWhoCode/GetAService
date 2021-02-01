@@ -6,12 +6,13 @@
 //
 
 import UIKit
-
+//import Lottie
 class AcceptOrDecline: UIViewController {
 
     @IBOutlet weak var confirmButton: UIButton!
     @IBOutlet weak var rejectButton: UIButton!
 
+    //@IBOutlet weak var //animateView: AnimationView!
     override func viewDidLoad() {
         super.viewDidLoad()
        designingView()
@@ -19,6 +20,25 @@ class AcceptOrDecline: UIViewController {
         // Do any additional setup after loading the view.
     }
     func designingView() {
+        
+//        animateView.contentMode = .scaleAspectFit
+//          
+//          // 2. Set animation loop mode
+//          
+//        animateView.loopMode = .loop
+//          
+//          // 3. Adjust animation speed
+//          
+//        animateView.animationSpeed = 0.5
+//          
+//          // 4. Play animation
+//        animateView.play()
+        
+        
+        
+        
+        
+        
         rejectButton.layer.cornerRadius = 25
         rejectButton.layer.borderWidth = 1
         rejectButton.layer.borderColor = UIColor.black.cgColor
@@ -26,6 +46,8 @@ class AcceptOrDecline: UIViewController {
         confirmButton.layer.cornerRadius = 25
         confirmButton.layer.borderWidth = 1
         confirmButton.layer.borderColor = UIColor.black.cgColor
+        
+        
     }
 
     /*
