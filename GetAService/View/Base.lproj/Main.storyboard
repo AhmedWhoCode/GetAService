@@ -1732,20 +1732,12 @@ Artist.</string>
                                                     <constraint firstAttribute="height" constant="50" id="0YM-gU-Aef"/>
                                                 </constraints>
                                             </stackView>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rQv-Mv-z24">
-                                                <rect key="frame" x="10" y="666" width="394" height="152"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstItem="oXO-iT-V5U" firstAttribute="top" secondItem="jp0-EL-lEN" secondAttribute="top" id="3dl-yA-qd1"/>
                                             <constraint firstItem="bQr-BC-aUp" firstAttribute="leading" secondItem="jp0-EL-lEN" secondAttribute="leading" constant="10" id="ASI-oC-uBb"/>
-                                            <constraint firstAttribute="trailing" secondItem="rQv-Mv-z24" secondAttribute="trailing" constant="10" id="Czb-Md-zK6"/>
                                             <constraint firstItem="bQr-BC-aUp" firstAttribute="top" secondItem="qJc-Bh-f1Y" secondAttribute="bottom" constant="100" id="IMC-sz-4TN"/>
-                                            <constraint firstAttribute="bottom" secondItem="rQv-Mv-z24" secondAttribute="bottom" constant="82" id="KRe-97-Uam"/>
-                                            <constraint firstItem="rQv-Mv-z24" firstAttribute="leading" secondItem="jp0-EL-lEN" secondAttribute="leading" constant="10" id="MHh-3o-bfb"/>
-                                            <constraint firstItem="rQv-Mv-z24" firstAttribute="top" secondItem="bQr-BC-aUp" secondAttribute="bottom" constant="20" id="Qy1-Hh-Pgj"/>
                                             <constraint firstItem="oXO-iT-V5U" firstAttribute="leading" secondItem="jp0-EL-lEN" secondAttribute="leading" id="XVR-O0-jlN"/>
                                             <constraint firstItem="oax-cQ-B5T" firstAttribute="top" secondItem="jp0-EL-lEN" secondAttribute="top" constant="150" id="YOo-p0-Wg9"/>
                                             <constraint firstAttribute="bottom" secondItem="oXO-iT-V5U" secondAttribute="bottom" id="dVC-xT-HOi"/>
@@ -1778,6 +1770,7 @@ Artist.</string>
                     <navigationItem key="navigationItem" title="Meetup" id="vyg-jD-inw"/>
                     <connections>
                         <outlet property="confirmButton" destination="Ggc-g5-ago" id="VPV-Ft-Ptw"/>
+                        <outlet property="imageView" destination="oax-cQ-B5T" id="kEo-Yf-fz0"/>
                         <outlet property="rejectButton" destination="faR-No-g75" id="Ojv-Wi-1ni"/>
                     </connections>
                 </viewController>

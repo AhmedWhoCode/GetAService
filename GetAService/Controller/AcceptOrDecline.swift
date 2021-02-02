@@ -6,12 +6,13 @@
 //
 
 import UIKit
-//import Lottie
+import SwiftyGif
 class AcceptOrDecline: UIViewController {
 
     @IBOutlet weak var confirmButton: UIButton!
     @IBOutlet weak var rejectButton: UIButton!
 
+    @IBOutlet weak var imageView: UIImageView!
     //@IBOutlet weak var //animateView: AnimationView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,22 +22,18 @@ class AcceptOrDecline: UIViewController {
     }
     func designingView() {
         
+        do
+        {
+        let gif = try UIImage(gifName: "myGif.gif")
+        imageView.setGifImage(gif, loopCount: -1)
+            
+        }
         
-        
-        
-//        animateView.contentMode = .scaleAspectFit
-//          
-//          // 2. Set animation loop mode
-//          
-//        animateView.loopMode = .loop
-//          
-//          // 3. Adjust animation speed
-//          
-//        animateView.animationSpeed = 0.5
-//          
-//          // 4. Play animation
-//        animateView.play()
-        
+        catch
+        {
+            
+        }
+              
         
         
         
