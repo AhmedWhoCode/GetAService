@@ -21,6 +21,9 @@ class AcceptOrDecline: UIViewController {
     }
     func designingView() {
         
+        
+        
+        
 //        animateView.contentMode = .scaleAspectFit
 //          
 //          // 2. Set animation loop mode
