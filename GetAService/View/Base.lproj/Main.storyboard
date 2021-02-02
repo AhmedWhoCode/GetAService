@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Hp4-vG-zLW">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qYd-Ng-KtS">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
@@ -1781,7 +1781,7 @@ Artist.</string>
         <!--Waiting-->
         <scene sceneID="Qe6-1a-6Kd">
             <objects>
-                <viewController id="nnC-vx-SiS" customClass="AcceptOrDecline" customModule="GetAService" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="nnC-vx-SiS" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="AFZ-rq-fpK">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1949,7 +1949,7 @@ Artist.</string>
         <!--Meetup-->
         <scene sceneID="0xh-vw-xTy">
             <objects>
-                <viewController id="p8c-Ti-GUf" customClass="AcceptOrDecline" customModule="GetAService" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="p8c-Ti-GUf" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="P9Z-dK-0fA">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2049,7 +2049,7 @@ You complete the service</string>
         <!--Completed-->
         <scene sceneID="veE-as-XwL">
             <objects>
-                <viewController id="cid-Kj-Xa1" customClass="AcceptOrDecline" customModule="GetAService" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="cid-Kj-Xa1" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wJa-Q6-7cG">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2104,28 +2104,20 @@ You complete the service</string>
                                                     <constraint firstAttribute="height" constant="50" id="tv6-nh-9lM"/>
                                                 </constraints>
                                             </stackView>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7c9-I9-q6p">
-                                                <rect key="frame" x="10" y="631.5" width="394" height="186.5"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstItem="sn3-Jp-4n0" firstAttribute="centerX" secondItem="RZR-5K-uDe" secondAttribute="centerX" id="4lT-Ij-96D"/>
-                                            <constraint firstItem="7c9-I9-q6p" firstAttribute="top" secondItem="xO8-Po-GIM" secondAttribute="bottom" constant="20" id="CiR-Fh-H8o"/>
-                                            <constraint firstAttribute="bottom" secondItem="7c9-I9-q6p" secondAttribute="bottom" constant="82" id="DHE-l9-xaD"/>
                                             <constraint firstItem="627-Gc-8l8" firstAttribute="top" secondItem="RZR-5K-uDe" secondAttribute="top" constant="150" id="MDa-yu-x3u"/>
                                             <constraint firstAttribute="bottom" secondItem="C3Z-RW-IkV" secondAttribute="bottom" id="OGU-wL-tYG"/>
                                             <constraint firstItem="xO8-Po-GIM" firstAttribute="leading" secondItem="RZR-5K-uDe" secondAttribute="leading" constant="10" id="UnK-vX-LCY"/>
                                             <constraint firstItem="C3Z-RW-IkV" firstAttribute="leading" secondItem="RZR-5K-uDe" secondAttribute="leading" id="VjB-tQ-ZQx"/>
-                                            <constraint firstItem="7c9-I9-q6p" firstAttribute="leading" secondItem="RZR-5K-uDe" secondAttribute="leading" constant="10" id="bly-kw-VAs"/>
                                             <constraint firstItem="xO8-Po-GIM" firstAttribute="top" secondItem="sn3-Jp-4n0" secondAttribute="bottom" constant="100" id="eyI-Va-e6n"/>
                                             <constraint firstItem="sn3-Jp-4n0" firstAttribute="centerY" secondItem="RZR-5K-uDe" secondAttribute="centerY" id="lbU-jk-sfa"/>
                                             <constraint firstItem="627-Gc-8l8" firstAttribute="centerX" secondItem="RZR-5K-uDe" secondAttribute="centerX" id="pcJ-xy-cOd"/>
                                             <constraint firstItem="C3Z-RW-IkV" firstAttribute="top" secondItem="RZR-5K-uDe" secondAttribute="top" id="qIj-ZV-kUj"/>
                                             <constraint firstAttribute="trailing" secondItem="C3Z-RW-IkV" secondAttribute="trailing" id="rbh-Fi-hhS"/>
                                             <constraint firstItem="xO8-Po-GIM" firstAttribute="centerX" secondItem="RZR-5K-uDe" secondAttribute="centerX" id="sho-u7-Ddk"/>
-                                            <constraint firstAttribute="trailing" secondItem="7c9-I9-q6p" secondAttribute="trailing" constant="10" id="vou-kL-f4p"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -2160,7 +2152,7 @@ You complete the service</string>
         <!--service started-->
         <scene sceneID="GpH-lg-MsH">
             <objects>
-                <viewController id="qYd-Ng-KtS" customClass="AcceptOrDecline" customModule="GetAService" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="qYd-Ng-KtS" customClass="WaitingScreen" customModule="GetAService" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iQn-wR-de3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2236,6 +2228,9 @@ once the service completed</string>
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="service started" id="b8t-oO-Ywe"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="imageView" destination="T19-XS-L4T" id="xXY-KH-nsH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IwR-4X-aQ9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

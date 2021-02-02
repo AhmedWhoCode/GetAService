@@ -15,6 +15,10 @@
 		931D66AB25C087EF002C239E /* NotificationsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931D66A925C087EF002C239E /* NotificationsTableViewCell.swift */; };
 		931D66AC25C087EF002C239E /* NotificationsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 931D66AA25C087EF002C239E /* NotificationsTableViewCell.xib */; };
 		932C487225C97AF700F57308 /* myGif.gif in Resources */ = {isa = PBXBuildFile; fileRef = 932C487125C97AF500F57308 /* myGif.gif */; };
+		932C487A25C9823700F57308 /* myGreenGif.gif in Resources */ = {isa = PBXBuildFile; fileRef = 932C487925C9823700F57308 /* myGreenGif.gif */; };
+		932C488225C9979800F57308 /* inProgress.gif in Resources */ = {isa = PBXBuildFile; fileRef = 932C488125C9979700F57308 /* inProgress.gif */; };
+		932C488725C9980700F57308 /* WaitingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932C488625C9980700F57308 /* WaitingScreen.swift */; };
+		932C488C25C99E8C00F57308 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932C488B25C99E8C00F57308 /* Constants.swift */; };
 		9339113125C828C100913D3E /* AcceptOrDecline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9339113025C828C100913D3E /* AcceptOrDecline.swift */; };
 		9339113C25C8341D00913D3E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9339113B25C8341C00913D3E /* Assets.xcassets */; };
 		9352608125BD63270052C0A3 /* FairDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9352608025BD63270052C0A3 /* FairDetails.swift */; };
@@ -32,7 +36,6 @@
 		937EAAC325B6F13B002CD6EC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 937EAAC125B6F13B002CD6EC /* LaunchScreen.storyboard */; };
 		937EAACE25B6F13C002CD6EC /* GetAServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937EAACD25B6F13C002CD6EC /* GetAServiceTests.swift */; };
 		937EAAD925B6F13C002CD6EC /* GetAServiceUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937EAAD825B6F13C002CD6EC /* GetAServiceUITests.swift */; };
-		93B8E2FC25C9483E00F3034E /* giphy.gif in Resources */ = {isa = PBXBuildFile; fileRef = 93B8E2FB25C9483E00F3034E /* giphy.gif */; };
 		93C9691B25C5C0AD00A6217E /* ChatList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C9691A25C5C0AD00A6217E /* ChatList.swift */; };
 		93C9692125C5C14800A6217E /* ChatsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C9691F25C5C14800A6217E /* ChatsTableViewCell.swift */; };
 		93C9692225C5C14800A6217E /* ChatsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93C9692025C5C14800A6217E /* ChatsTableViewCell.xib */; };
@@ -69,6 +72,10 @@
 		931D66A925C087EF002C239E /* NotificationsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsTableViewCell.swift; sourceTree = "<group>"; };
 		931D66AA25C087EF002C239E /* NotificationsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationsTableViewCell.xib; sourceTree = "<group>"; };
 		932C487125C97AF500F57308 /* myGif.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = myGif.gif; sourceTree = "<group>"; };
+		932C487925C9823700F57308 /* myGreenGif.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = myGreenGif.gif; sourceTree = "<group>"; };
+		932C488125C9979700F57308 /* inProgress.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = inProgress.gif; sourceTree = "<group>"; };
+		932C488625C9980700F57308 /* WaitingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingScreen.swift; sourceTree = "<group>"; };
+		932C488B25C99E8C00F57308 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		9339113025C828C100913D3E /* AcceptOrDecline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptOrDecline.swift; sourceTree = "<group>"; };
 		9339113B25C8341C00913D3E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9352608025BD63270052C0A3 /* FairDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FairDetails.swift; sourceTree = "<group>"; };
@@ -92,7 +99,6 @@
 		937EAAD425B6F13C002CD6EC /* GetAServiceUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GetAServiceUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		937EAAD825B6F13C002CD6EC /* GetAServiceUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAServiceUITests.swift; sourceTree = "<group>"; };
 		937EAADA25B6F13C002CD6EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		93B8E2FB25C9483E00F3034E /* giphy.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = giphy.gif; sourceTree = "<group>"; };
 		93C9691A25C5C0AD00A6217E /* ChatList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatList.swift; sourceTree = "<group>"; };
 		93C9691F25C5C14800A6217E /* ChatsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsTableViewCell.swift; sourceTree = "<group>"; };
 		93C9692025C5C14800A6217E /* ChatsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatsTableViewCell.xib; sourceTree = "<group>"; };
@@ -191,6 +197,7 @@
 				9318F8AA25C5767D009A6712 /* CustomerRequestScreen.swift */,
 				93C9691A25C5C0AD00A6217E /* ChatList.swift */,
 				9339113025C828C100913D3E /* AcceptOrDecline.swift */,
+				932C488625C9980700F57308 /* WaitingScreen.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -229,6 +236,7 @@
 				937EAAB825B6F13A002CD6EC /* SceneDelegate.swift */,
 				937EAAC125B6F13B002CD6EC /* LaunchScreen.storyboard */,
 				937EAAC425B6F13B002CD6EC /* Info.plist */,
+				932C488B25C99E8C00F57308 /* Constants.swift */,
 			);
 			path = GetAService;
 			sourceTree = "<group>";
@@ -254,8 +262,9 @@
 		93B8E2FA25C9482E00F3034E /* gif */ = {
 			isa = PBXGroup;
 			children = (
+				932C488125C9979700F57308 /* inProgress.gif */,
 				932C487125C97AF500F57308 /* myGif.gif */,
-				93B8E2FB25C9483E00F3034E /* giphy.gif */,
+				932C487925C9823700F57308 /* myGreenGif.gif */,
 			);
 			path = gif;
 			sourceTree = "<group>";
@@ -368,6 +377,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				932C488225C9979800F57308 /* inProgress.gif in Resources */,
 				937EAAC325B6F13B002CD6EC /* LaunchScreen.storyboard in Resources */,
 				93C9692225C5C14800A6217E /* ChatsTableViewCell.xib in Resources */,
 				932C487225C97AF700F57308 /* myGif.gif in Resources */,
@@ -375,7 +385,7 @@
 				936783AD25B9896E00A93B28 /* ArtistListXibTableViewTableViewCell.xib in Resources */,
 				9339113C25C8341D00913D3E /* Assets.xcassets in Resources */,
 				9378C81A25B829DE00B6A183 /* ListOfServicesXibTableViewCell.xib in Resources */,
-				93B8E2FC25C9483E00F3034E /* giphy.gif in Resources */,
+				932C487A25C9823700F57308 /* myGreenGif.gif in Resources */,
 				937EAABE25B6F13A002CD6EC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -505,6 +515,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				937EAABB25B6F13A002CD6EC /* ViewController.swift in Sources */,
+				932C488C25C99E8C00F57308 /* Constants.swift in Sources */,
+				932C488725C9980700F57308 /* WaitingScreen.swift in Sources */,
 				936783B225B9915000A93B28 /* ArtistLists.swift in Sources */,
 				9339113125C828C100913D3E /* AcceptOrDecline.swift in Sources */,
 				93C9691B25C5C0AD00A6217E /* ChatList.swift in Sources */,

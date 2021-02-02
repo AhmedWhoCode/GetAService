@@ -24,8 +24,9 @@ class AcceptOrDecline: UIViewController {
         
         do
         {
-        let gif = try UIImage(gifName: "myGif.gif")
+        let gif = try UIImage(gifName: "myGreenGif.gif")
         imageView.setGifImage(gif, loopCount: -1)
+    
             
         }
         
