@@ -12,7 +12,7 @@ class ArtistLists: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.hidesBackButton = true  
-        tableView.register(UINib(nibName:"ArtistListXibTableViewTableViewCell", bundle: nil),forCellReuseIdentifier:"artistInfoCell")
+        tableView.register(UINib(nibName:Constants.cellNibNameArtistList, bundle: nil),forCellReuseIdentifier:Constants.cellIdentifierArtistList)
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -35,9 +35,9 @@ class ArtistLists: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "artistInfoCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier:Constants.cellIdentifierArtistList, for: indexPath)
 
-        // Configure the cell...
+        // Configure the cell.
 
         return cell
     }

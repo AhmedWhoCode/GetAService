@@ -29,6 +29,7 @@ class CustomerRequestScreen: UIViewController {
     }
     
     func desigingView(){
+        //hides back button of top navigation
         navigationItem.hidesBackButton = true
 
         //MARK: - adding roundness to image

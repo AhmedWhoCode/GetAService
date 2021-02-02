@@ -11,8 +11,10 @@ class ChatList: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        //hides back button of top navigation
         navigationItem.hidesBackButton = true
-        tableView.register(UINib(nibName:"ChatsTableViewCell", bundle: nil),forCellReuseIdentifier:"chatsCell")
+        
+        tableView.register(UINib(nibName:Constants.cellNibNameChatList, bundle: nil),forCellReuseIdentifier:Constants.cellIdentifierChatList)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -34,7 +36,7 @@ class ChatList: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "chatsCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier:Constants.cellIdentifierChatList, for: indexPath)
 
         // Configure the cell...
 

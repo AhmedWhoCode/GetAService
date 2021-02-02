@@ -15,7 +15,7 @@ class ListOfServices: UITableViewController {
         navigationController?.isToolbarHidden = false
         navigationController?.isNavigationBarHidden = false
         navigationItem.hidesBackButton = true  
-        tableView.register(UINib(nibName:"ListOfServicesXibTableViewCell", bundle: nil),forCellReuseIdentifier:"serviceXib")
+        tableView.register(UINib(nibName:Constants.cellNibNameServicesList, bundle: nil),forCellReuseIdentifier:Constants.cellIdentifierServicesList)
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -38,7 +38,7 @@ class ListOfServices: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "serviceXib", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier:Constants.cellIdentifierServicesList, for: indexPath)
 
 
         return cell

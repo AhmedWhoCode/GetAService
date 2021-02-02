@@ -227,6 +227,7 @@
 		937EAAB525B6F13A002CD6EC /* GetAService */ = {
 			isa = PBXGroup;
 			children = (
+				932C488B25C99E8C00F57308 /* Constants.swift */,
 				93B8E2FA25C9482E00F3034E /* gif */,
 				9339113B25C8341C00913D3E /* Assets.xcassets */,
 				9378C7FB25B8260200B6A183 /* Model */,
@@ -236,7 +237,6 @@
 				937EAAB825B6F13A002CD6EC /* SceneDelegate.swift */,
 				937EAAC125B6F13B002CD6EC /* LaunchScreen.storyboard */,
 				937EAAC425B6F13B002CD6EC /* Info.plist */,
-				932C488B25C99E8C00F57308 /* Constants.swift */,
 			);
 			path = GetAService;
 			sourceTree = "<group>";

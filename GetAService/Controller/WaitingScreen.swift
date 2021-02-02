@@ -14,7 +14,7 @@ class WaitingScreen: UIViewController {
         super.viewDidLoad()
         do
         {
-        let gif = try UIImage(gifName: "inProgress.gif")
+            let gif = try UIImage(gifName: Constants.gifNames.inProgressGif)
         imageView.setGifImage(gif, loopCount: -1)
         }
         catch
