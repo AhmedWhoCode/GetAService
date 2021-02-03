@@ -166,7 +166,7 @@
                             <imageReference key="image" image="house" catalog="system" symbolScale="large" renderingMode="original"/>
                             <color key="tintColor" red="0.2274509804" green="0.2274509804" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <segue destination="aFe-hT-rzS" kind="show" id="Bza-6n-eov"/>
+                                <segue destination="aFe-hT-rzS" kind="show" id="yce-dJ-LKW"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem title="Item" image="message" catalog="system" landscapeImage="pencil" width="95" id="Hfe-cV-kgx">
@@ -192,6 +192,9 @@
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="Services" id="08S-dz-6oz"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <segue destination="aFe-hT-rzS" kind="show" identifier="servicesToArtists" id="JJh-Y0-L1g"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NEK-Bb-qIu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -243,7 +246,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tbm-Co-Dqw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3222" y="88"/>
+            <point key="canvasLocation" x="3304" y="88"/>
         </scene>
         <!--Artist Information-->
         <scene sceneID="BtA-nH-QlY">
@@ -1865,7 +1868,7 @@ Artist.</string>
         <!--Waiting for artist response-->
         <scene sceneID="kJL-DC-y8g">
             <objects>
-                <viewController id="hXN-Qh-0Ei" customClass="AcceptOrDecline" customModule="GetAService" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="hXN-Qh-0Ei" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="k21-Ur-RQW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2238,12 +2241,12 @@ once the service completed</string>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="EOU-m5-U7c"/>
-        <segue reference="0VI-Es-LLL"/>
-        <segue reference="jCL-br-Ttl"/>
-        <segue reference="65o-WA-YKJ"/>
-        <segue reference="ajZ-lV-TLb"/>
-        <segue reference="9bV-yX-pVO"/>
+        <segue reference="HW2-DR-GRf"/>
+        <segue reference="gew-f8-3qv"/>
+        <segue reference="Xx0-14-tkg"/>
+        <segue reference="DBf-aY-beM"/>
+        <segue reference="JJh-Y0-L1g"/>
+        <segue reference="xLb-NC-lM8"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="ArtistProfile" width="121" height="50.5"/>

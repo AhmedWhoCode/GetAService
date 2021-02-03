@@ -25,7 +25,7 @@ class AcceptOrDecline: UIViewController {
         //Showing gif to imageView
         do
         {
-            let gif = try UIImage(gifName:Constants.gifNames.greenCheckGif)
+        let gif = try UIImage(gifName:Constants.gifNames.greenCheckGif)
         imageView.setGifImage(gif, loopCount: -1)
         }
         

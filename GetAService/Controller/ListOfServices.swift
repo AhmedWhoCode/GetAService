@@ -11,10 +11,16 @@ class ListOfServices: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+    
         ///MARK: - enabling bottom toolbar
         navigationController?.isToolbarHidden = false
         navigationController?.isNavigationBarHidden = false
-        navigationItem.hidesBackButton = true  
+        navigationItem.hidesBackButton = true
+        
+        tableView.isUserInteractionEnabled = true
+        tableView.allowsSelection = true
+
+
         tableView.register(UINib(nibName:Constants.cellNibNameServicesList, bundle: nil),forCellReuseIdentifier:Constants.cellIdentifierServicesList)
 
         // Uncomment the following line to preserve selection between presentations
@@ -23,6 +29,7 @@ class ListOfServices: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
+    
 
     // MARK: - Table view data source
 
@@ -38,13 +45,18 @@ class ListOfServices: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier:Constants.cellIdentifierServicesList, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier:Constants.cellIdentifierServicesList, for: indexPath) as? ListOfServicesXibTableViewCell
+        
+        cell?.buttonClicked =
+        {
+            self.performSegue(withIdentifier: Constants.seguesNames.servicesToArtists, sender: nil)
+            print(indexPath.row)
 
-
-        return cell
+        }
+        
+        return cell!
     }
     
-
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -79,15 +91,20 @@ class ListOfServices: UITableViewController {
         return true
     }
     */
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(indexPath.row)
 
-    /*
+    }
+
+
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        // Get the new view controller using segue.destination.
+//        // Pass the selected object to the new view controller.
+//    }
+
 
 }
+

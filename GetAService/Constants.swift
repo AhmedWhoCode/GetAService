@@ -31,9 +31,11 @@ struct Constants {
     struct gifNames {
         static let inProgressGif = "inProgress.gif"
         static let greenCheckGif = "myGreenGif.gif"
-
-
     }
     
+    struct seguesNames {
+        static let servicesToArtists = "servicesToArtists"
+
+    }
     
 }

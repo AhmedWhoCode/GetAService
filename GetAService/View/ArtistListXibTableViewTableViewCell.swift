@@ -14,6 +14,8 @@ class ArtistListXibTableViewTableViewCell: UITableViewCell {
     @IBOutlet weak var artistNameLabel: UILabel!
     @IBOutlet weak var artistCountryLabel: UILabel!
     @IBOutlet weak var artistAvailabilityLabel: UILabel!
+    var buttonClicked: (() -> Void)? = nil
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -31,6 +33,10 @@ class ArtistListXibTableViewTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+   
+    @IBAction func buttonClicked(_ sender: UIButton) {
+        buttonClicked?()
     }
     
 }

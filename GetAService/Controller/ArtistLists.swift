@@ -11,7 +11,9 @@ class ArtistLists: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.hidesBackButton = true  
+        navigationItem.hidesBackButton = true
+        
+    
         tableView.register(UINib(nibName:Constants.cellNibNameArtistList, bundle: nil),forCellReuseIdentifier:Constants.cellIdentifierArtistList)
 
         // Uncomment the following line to preserve selection between presentations
@@ -35,14 +37,20 @@ class ArtistLists: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier:Constants.cellIdentifierArtistList, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier:Constants.cellIdentifierArtistList, for: indexPath) as? ArtistListXibTableViewTableViewCell
 
+        cell?.buttonClicked =
+            {
+                print(indexPath.row)
+            }
         // Configure the cell.
 
-        return cell
+        return cell!
     }
     
-
+    
+    
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -77,6 +85,9 @@ class ArtistLists: UITableViewController {
         return true
     }
     */
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(indexPath.row)
+    }
 
     /*
     // MARK: - Navigation
