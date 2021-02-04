@@ -7,6 +7,10 @@
 
 import UIKit
 
+//protocol ButtonClickedArtist {
+//    func didButtonPressed(with value : String)
+//}
+
 class ArtistListXibTableViewTableViewCell: UITableViewCell {
 
     @IBOutlet weak var artistPriceLabel: UILabel!
@@ -14,8 +18,10 @@ class ArtistListXibTableViewTableViewCell: UITableViewCell {
     @IBOutlet weak var artistNameLabel: UILabel!
     @IBOutlet weak var artistCountryLabel: UILabel!
     @IBOutlet weak var artistAvailabilityLabel: UILabel!
-    var buttonClicked: (() -> Void)? = nil
+   // var buttonClicked: (() -> Void)? = nil
 
+    var artistButtonDelegant : ButtonPressed?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -36,7 +42,7 @@ class ArtistListXibTableViewTableViewCell: UITableViewCell {
     }
    
     @IBAction func buttonClicked(_ sender: UIButton) {
-        buttonClicked?()
+        artistButtonDelegant?.didButtonPressed(with: "pressed")
     }
     
 }

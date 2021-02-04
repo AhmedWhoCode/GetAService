@@ -8,10 +8,11 @@
 import UIKit
 
 class ListOfServices: UITableViewController {
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-    
         ///MARK: - enabling bottom toolbar
         navigationController?.isToolbarHidden = false
         navigationController?.isNavigationBarHidden = false
@@ -21,6 +22,7 @@ class ListOfServices: UITableViewController {
         tableView.allowsSelection = true
 
 
+        //registering table view
         tableView.register(UINib(nibName:Constants.cellNibNameServicesList, bundle: nil),forCellReuseIdentifier:Constants.cellIdentifierServicesList)
 
         // Uncomment the following line to preserve selection between presentations
@@ -30,6 +32,7 @@ class ListOfServices: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
+   
 
     // MARK: - Table view data source
 
@@ -47,12 +50,16 @@ class ListOfServices: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier:Constants.cellIdentifierServicesList, for: indexPath) as? ListOfServicesXibTableViewCell
         
-        cell?.buttonClicked =
-        {
-            self.performSegue(withIdentifier: Constants.seguesNames.servicesToArtists, sender: nil)
-            print(indexPath.row)
-
-        }
+        //registering for the buttonPressed protocol
+         cell?.buttonDelegantServices = self
+        
+//        cell?.buttonClicked =
+//        {
+//            print(indexPath)
+//            self.performSegue(withIdentifier: Constants.seguesNames.servicesToArtists, sender: nil)
+//
+//
+//        }
         
         return cell!
     }
@@ -91,10 +98,7 @@ class ListOfServices: UITableViewController {
         return true
     }
     */
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.row)
-
-    }
+    
 
 
     // MARK: - Navigation
@@ -107,4 +111,14 @@ class ListOfServices: UITableViewController {
 
 
 }
+
+extension ListOfServices:ButtonPressed
+{
+    // this function will be called whenever the button is pressed , so act accordingly
+    func didButtonPressed(with value: String) {
+        print(value)
+        performSegue(withIdentifier: Constants.seguesNames.servicesToArtists, sender: nil)
+}
+}
+    
 

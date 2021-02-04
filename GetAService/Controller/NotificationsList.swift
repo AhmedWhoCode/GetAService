@@ -35,10 +35,10 @@ class NotificationsList: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.cellIdentifierNotification, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.cellIdentifierNotification, for: indexPath) as? NotificationsTableViewCell
 
-
-        return cell
+        cell?.buttonDelegantNotification = self
+        return cell!
     }
     
 
@@ -87,4 +87,14 @@ class NotificationsList: UITableViewController {
     }
     */
 
+}
+extension NotificationsList : ButtonPressed
+{
+    func didButtonPressed(with value: String) {
+        performSegue(withIdentifier: Constants.seguesNames.notificationsToOrderInfo, sender: nil)
+        print(value)
+    }
+
+    
+    
 }

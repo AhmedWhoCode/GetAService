@@ -34,7 +34,11 @@ struct Constants {
     }
     
     struct seguesNames {
+        
         static let servicesToArtists = "servicesToArtists"
+        static let artistsToArtistsInfo = "artistsToArtistsInfo"
+        static let artistInfoToConfirmBooking = "artistInfoToConfirmBooking"
+        static let notificationsToOrderInfo = "notificationsToOrderInfo"
 
     }
     

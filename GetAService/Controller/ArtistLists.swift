@@ -39,10 +39,11 @@ class ArtistLists: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier:Constants.cellIdentifierArtistList, for: indexPath) as? ArtistListXibTableViewTableViewCell
 
-        cell?.buttonClicked =
-            {
-                print(indexPath.row)
-            }
+        cell?.artistButtonDelegant = self
+//        cell?.buttonClicked =
+//            {
+//                print(indexPath.row)
+//            }
         // Configure the cell.
 
         return cell!
@@ -85,10 +86,7 @@ class ArtistLists: UITableViewController {
         return true
     }
     */
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.row)
-    }
-
+  
     /*
     // MARK: - Navigation
 
@@ -99,4 +97,16 @@ class ArtistLists: UITableViewController {
     }
     */
 
+}
+
+extension ArtistLists: ButtonPressed
+{
+    func didButtonPressed(with value: String) {
+     print(value)
+        performSegue(withIdentifier: Constants.seguesNames.artistsToArtistsInfo, sender: nil)
+        
+    }
+    
+    
+    
 }

@@ -13,6 +13,8 @@ class NotificationsTableViewCell: UITableViewCell {
     @IBOutlet weak var customerCountry: UILabel!
     @IBOutlet weak var customerImage: UIImageView!
     
+    var buttonDelegantNotification:ButtonPressed?
+
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -29,6 +31,10 @@ class NotificationsTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    @IBAction func cellClicked(_ sender: UIButton) {
+        buttonDelegantNotification?.didButtonPressed(with: "pressed")
     }
     
 }
