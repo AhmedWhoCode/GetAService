@@ -8,10 +8,14 @@
 import UIKit
 
 class ArtistLists: UITableViewController {
+    var aritsts = [Artists]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.hidesBackButton = true
+        
+        addingDummyData()
+        
         
     
         tableView.register(UINib(nibName:Constants.cellNibNameArtistList, bundle: nil),forCellReuseIdentifier:Constants.cellIdentifierArtistList)
@@ -23,6 +27,20 @@ class ArtistLists: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
+    func addingDummyData() {
+        // adding dummy data
+        let artist1 = Artists(artistImage: UIImage.init(named: "artistPhoto")!, artistPrice: "$20", artistName: "Emma", artistCountry: "USA", artistAvalability: "Available")
+        
+        let artist2 = Artists(artistImage: UIImage.init(named: "artistPhoto")!, artistPrice: "$30", artistName: "Lina", artistCountry: "France", artistAvalability: "Available")
+        
+        let artist3 = Artists(artistImage: UIImage.init(named: "artistPhoto")!, artistPrice: "$40", artistName: "Alexandra", artistCountry: "France", artistAvalability: "Not Available")
+        
+        let artist4 = Artists(artistImage: UIImage.init(named: "artistPhoto")!, artistPrice: "$50", artistName: "Gal", artistCountry: "Sweden", artistAvalability: "Not Available")
+        
+        aritsts.append(artist1)
+        aritsts.append(artist2)
+        aritsts.append(artist3)
+        aritsts.append(artist4)    }
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -32,14 +50,24 @@ class ArtistLists: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 8
+        return aritsts.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier:Constants.cellIdentifierArtistList, for: indexPath) as? ArtistListXibTableViewTableViewCell
 
+        cell?.artistImage.image = aritsts[indexPath.row].artistImage
+        cell?.artistPriceLabel.text = aritsts[indexPath.row].artistPrice
+        cell?.artistNameLabel.text = aritsts[indexPath.row].artistName
+        cell?.artistCountryLabel.text = aritsts[indexPath.row].artistCountry
+        cell?.artistAvailabilityLabel.text = aritsts[indexPath.row].artistAvalability
+
+        
+        
         cell?.artistButtonDelegant = self
+        
+        //closure to sense onclick
 //        cell?.buttonClicked =
 //            {
 //                print(indexPath.row)

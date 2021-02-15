@@ -13,13 +13,13 @@ class ListOfServices: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         modifyingUi()
-        
-        let image = UIImage(named: "Nails")
+      
+        var image = UIImage(named: "Nails") as String
         // adding dummy data
         let service1 = Services(serviceName: "Nails",serviceImage: image)
-        let service2 = Services(serviceName: "Hairs",serviceImage: image)
-        let service3 = Services(serviceName: "MakeUp",serviceImage: image)
-        let service4 = Services(serviceName: "Pedicure",serviceImage: image)
+        let service2 = Services(serviceName: "Hairs",serviceImage: "img")
+        let service3 = Services(serviceName: "MakeUp",serviceImage: "img")
+        let service4 = Services(serviceName: "Pedicure",serviceImage: "img")
 
         services.append(service1)
         services.append(service2)
@@ -35,7 +35,6 @@ class ListOfServices: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
-    
     
     func modifyingUi()  {
         ///MARK: - enabling bottom toolbar
@@ -65,8 +64,7 @@ class ListOfServices: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier:Constants.cellIdentifierServicesList, for: indexPath) as? ListOfServicesXibTableViewCell
         cell?.listButton.setTitle(services[indexPath.row].serviceName, for: .normal)
-        cell?.listButton.setBackgroundImage(services[indexPath.row].serviceImage, for: .normal)
-
+    
         //registering for the buttonPressed protocol
          cell?.buttonDelegantServices = self
         
@@ -128,16 +126,7 @@ class ListOfServices: UITableViewController {
 
 
 }
-//MARK: - its  an extention function to convert UIimage type to string
-extension UIImage {
-    func toString() -> String? {
-        let data: Data? = self.pngData()
-        return data?.base64EncodedString(options: .endLineWithLineFeed)
-    }
-   
-}
 
-//MARK: - will perform segue
 extension ListOfServices:ButtonPressed
 {
     // this function will be called whenever the button is pressed , so act accordingly
@@ -145,7 +134,6 @@ extension ListOfServices:ButtonPressed
         print(value)
         performSegue(withIdentifier: Constants.seguesNames.servicesToArtists, sender: nil)
 }
-    
 }
     
 

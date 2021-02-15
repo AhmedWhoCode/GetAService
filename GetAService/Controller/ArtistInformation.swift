@@ -13,7 +13,12 @@ class ArtistInformation: UIViewController {
     @IBOutlet weak var priceView: UIView!
     @IBOutlet weak var statusView: UIView!
     @IBOutlet weak var artistImage: UIImageView!
+    @IBOutlet weak var artistDetailLabel: UILabel!
     
+    @IBOutlet weak var artistCountryLabel: UILabel!
+    @IBOutlet weak var artistPriceLabel: UILabel!
+    @IBOutlet weak var artistStatusLabel: UILabel!
+
     @IBOutlet weak var bookNowButton: UIButton!
     
     override func viewDidLoad() {

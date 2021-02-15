@@ -643,7 +643,11 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="artistCountryLabel" destination="3d1-Is-rk1" id="A0o-C7-70U"/>
+                        <outlet property="artistDetailLabel" destination="ct7-YC-LLl" id="m9Z-wu-e1E"/>
                         <outlet property="artistImage" destination="lYm-P2-r1r" id="tmF-2f-9OG"/>
+                        <outlet property="artistPriceLabel" destination="m3r-Jg-EVz" id="mUJ-aF-9lX"/>
+                        <outlet property="artistStatusLabel" destination="cfx-kL-OsE" id="DOx-9Y-Y0C"/>
                         <outlet property="bookNowButton" destination="hit-yW-Osi" id="EMq-3X-cQu"/>
                         <outlet property="countryView" destination="Awn-Sd-YNz" id="ehH-uH-fcJ"/>
                         <outlet property="priceView" destination="Exm-l1-tUh" id="04W-Fd-Zan"/>
@@ -1206,8 +1210,8 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bhS-wY-Her">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4lg-oy-h7p" userLabel="ContentView">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="850"/>
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4lg-oy-h7p" userLabel="ContentView">
+                                        <rect key="frame" x="0.0" y="8" width="414" height="850"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G0x-5g-Ijl" userLabel="Info View">
                                                 <rect key="frame" x="10" y="279" width="394" height="100"/>
@@ -2225,7 +2229,7 @@ once the service completed</string>
                         <barButtonItem title="Item" image="house" catalog="system" width="95" id="BbD-f7-n9y">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
-                                <segue destination="cid-Kj-Xa1" kind="show" id="nCt-S9-LOO"/>
+                                <segue destination="3ac-E2-Gvt" kind="show" id="Azh-Mr-uZv"/>
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
@@ -2241,12 +2245,12 @@ once the service completed</string>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="HW2-DR-GRf"/>
-        <segue reference="gew-f8-3qv"/>
+        <segue reference="EOU-m5-U7c"/>
+        <segue reference="0VI-Es-LLL"/>
         <segue reference="Xx0-14-tkg"/>
-        <segue reference="sA1-sR-Tb7"/>
-        <segue reference="yce-dJ-LKW"/>
-        <segue reference="28K-c7-SVs"/>
+        <segue reference="65o-WA-YKJ"/>
+        <segue reference="ajZ-lV-TLb"/>
+        <segue reference="Azh-Mr-uZv"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="ArtistProfile" width="121" height="50.5"/>
