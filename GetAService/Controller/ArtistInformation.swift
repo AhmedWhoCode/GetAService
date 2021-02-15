@@ -7,11 +7,17 @@
 
 import UIKit
 
-class ArtistInformationViewController: UIViewController {
+class ArtistInformation: UIViewController {
 
     @IBOutlet weak var countryView: UIView!
     @IBOutlet weak var priceView: UIView!
     @IBOutlet weak var statusView: UIView!
+    @IBOutlet weak var artistImage: UIImageView!
+    @IBOutlet weak var artistDetailLabel: UILabel!
+    
+    @IBOutlet weak var artistCountryLabel: UILabel!
+    @IBOutlet weak var artistPriceLabel: UILabel!
+    @IBOutlet weak var artistStatusLabel: UILabel!
 
     @IBOutlet weak var bookNowButton: UIButton!
     
@@ -22,6 +28,7 @@ class ArtistInformationViewController: UIViewController {
     }
     
     func designingViews(){
+        navigationItem.hidesBackButton = true  
         ///MARK: - designing views
         countryView.layer.cornerRadius = 15
         countryView.layer.borderWidth = 1
@@ -38,6 +45,12 @@ class ArtistInformationViewController: UIViewController {
         bookNowButton.layer.cornerRadius = 20
         bookNowButton.layer.borderWidth = 1
         bookNowButton.layer.borderColor = UIColor.black.cgColor
+        
+        
+        artistImage.layer.masksToBounds = true
+        artistImage.layer.borderColor = UIColor.black.cgColor
+         artistImage.layer.cornerRadius = artistImage.frame.size.height/2
+        artistImage.contentMode = .scaleAspectFill
     }
     /*
     // MARK: - Navigation

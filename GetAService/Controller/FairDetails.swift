@@ -7,8 +7,9 @@
 
 import UIKit
 
-class FairDetailsViewController: UIViewController {
+class FairDetails: UIViewController {
 
+    @IBOutlet weak var artistImage: UIImageView!
     @IBOutlet weak var ModelPriceView: UIView!
     @IBOutlet weak var estimatedPriceView: UIView!
     @IBOutlet weak var uberFairView: UIView!
@@ -20,6 +21,7 @@ class FairDetailsViewController: UIViewController {
     }
     
     func designingView() {
+        navigationItem.hidesBackButton = true  
         ///MARK: - designing views
         ModelPriceView.layer.cornerRadius = 15
         ModelPriceView.layer.borderWidth = 1
@@ -36,10 +38,14 @@ class FairDetailsViewController: UIViewController {
         uberFairView.layer.borderColor = UIColor.black.cgColor
         
         ///MARK: - designing views
-        confirmBooking.layer.cornerRadius = 15
+        confirmBooking.layer.cornerRadius = 20
         confirmBooking.layer.borderWidth = 1
         confirmBooking.layer.borderColor = UIColor.black.cgColor
         
+        artistImage.layer.masksToBounds = true
+        artistImage.layer.borderColor = UIColor.black.cgColor
+       artistImage.layer.cornerRadius=artistImage.frame.size.height/2
+        artistImage.contentMode = .scaleAspectFill
         
     }
 

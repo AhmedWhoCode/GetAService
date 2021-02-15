@@ -20,16 +20,16 @@ class ViewController: UIViewController {
 
     }
     override func viewDidAppear(_ animated: Bool) {
-        self.navigationController?.isToolbarHidden = true
-        self.navigationController?.isNavigationBarHidden = true
+//        self.navigationController?.isToolbarHidden = true
+//        self.navigationController?.isNavigationBarHidden = true
     }
     
     func modifyingViews()  {
         
         
         ///MARK: - disabling bottom toolbar
-        self.navigationController?.isToolbarHidden = true
-        self.navigationController?.isNavigationBarHidden = true
+        self.navigationController?.isToolbarHidden = false
+        self.navigationController?.isNavigationBarHidden = false
 
         ///MARK: - making views round
         emailView.layer.cornerRadius = 25

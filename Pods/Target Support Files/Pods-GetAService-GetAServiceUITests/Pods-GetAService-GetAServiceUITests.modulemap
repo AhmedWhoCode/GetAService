@@ -1,0 +1,6 @@
+framework module Pods_GetAService_GetAServiceUITests {
+  umbrella header "Pods-GetAService-GetAServiceUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
