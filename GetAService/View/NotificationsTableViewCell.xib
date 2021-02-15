@@ -82,7 +82,7 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="artistPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="jCg-6s-40E">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="male photo" translatesAutoresizingMaskIntoConstraints="NO" id="jCg-6s-40E">
                                 <rect key="frame" x="1" y="5" width="70" height="70"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="70" id="WJU-bN-bXy"/>
@@ -124,8 +124,8 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="artistPhoto" width="29.5" height="29.5"/>
         <image name="chevron.right" catalog="system" width="96" height="128"/>
+        <image name="male photo" width="204" height="136"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

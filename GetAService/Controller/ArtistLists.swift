@@ -40,7 +40,9 @@ class ArtistLists: UITableViewController {
         aritsts.append(artist1)
         aritsts.append(artist2)
         aritsts.append(artist3)
-        aritsts.append(artist4)    }
+        aritsts.append(artist4)
+        
+    }
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {

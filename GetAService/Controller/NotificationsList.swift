@@ -9,9 +9,12 @@ import UIKit
 
 class NotificationsList: UITableViewController {
 
+    var notifications = [Notifications]()
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.hidesBackButton = true  
+        navigationItem.hidesBackButton = true
+         addingDummyData()
+        
         tableView.register(UINib(nibName:Constants.cellNibNameNotification, bundle: nil),forCellReuseIdentifier:Constants.cellIdentifierNotification)
 
         // Uncomment the following line to preserve selection between presentations
@@ -30,12 +33,15 @@ class NotificationsList: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 8
+        return notifications.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.cellIdentifierNotification, for: indexPath) as? NotificationsTableViewCell
+        cell?.customerImage.image = notifications[indexPath.row].customerImage
+        cell?.customerName.text = notifications[indexPath.row].customerName
+        cell?.customerCountry.text = notifications[indexPath.row].customerCountry
 
         cell?.buttonDelegantNotification = self
         return cell!
@@ -96,5 +102,19 @@ extension NotificationsList : ButtonPressed
     }
 
     
+    func addingDummyData() {
+        let n1 = Notifications(customerImage:UIImage.init(named: "male photo")!, customerName: "John", customerCountry: "USA")
+        let n2 = Notifications(customerImage:UIImage.init(named: "male photo")!, customerName: "TOM", customerCountry: "UK")
+        let n3 = Notifications(customerImage:UIImage.init(named: "male photo")!, customerName: "Ravi", customerCountry: "India")
+        let n4 = Notifications(customerImage:UIImage.init(named: "male photo")!, customerName: "Alexo", customerCountry: "Mexico")
+        let n5 = Notifications(customerImage:UIImage.init(named: "male photo")!, customerName: "Tom Banton", customerCountry: "Swizerland")
+
+        notifications.append(n1)
+        notifications.append(n2)
+        notifications.append(n3)
+        notifications.append(n4)
+        notifications.append(n5)
+
+    }
     
 }
