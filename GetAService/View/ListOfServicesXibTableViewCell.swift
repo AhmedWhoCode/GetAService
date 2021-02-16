@@ -26,10 +26,10 @@ class ListOfServicesXibTableViewCell: UITableViewCell {
         super.awakeFromNib()
         
         // Initialization code
-        cellView.layer.cornerRadius = 18
-        cellView.layer.borderWidth = 1
-        listButton.layer.cornerRadius = 18
-        listButton.layer.borderWidth = 1
+        listButton.layer.masksToBounds = true
+        listButton.layer.borderColor = UIColor.black.cgColor
+        listButton.layer.cornerRadius = 15
+        listButton.contentMode = .scaleAspectFill
         
     }
 

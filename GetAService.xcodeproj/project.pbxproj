@@ -24,6 +24,7 @@
 		932C89C325DAE072008D72D9 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932C89C225DAE072008D72D9 /* Notifications.swift */; };
 		9339113125C828C100913D3E /* AcceptOrDecline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9339113025C828C100913D3E /* AcceptOrDecline.swift */; };
 		9339113C25C8341D00913D3E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9339113B25C8341C00913D3E /* Assets.xcassets */; };
+		933D3A3725DB9E1E001A26B8 /* Chats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933D3A3625DB9E1E001A26B8 /* Chats.swift */; };
 		9352608125BD63270052C0A3 /* FairDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9352608025BD63270052C0A3 /* FairDetails.swift */; };
 		936783AC25B9896E00A93B28 /* ArtistListXibTableViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936783AA25B9896E00A93B28 /* ArtistListXibTableViewTableViewCell.swift */; };
 		936783AD25B9896E00A93B28 /* ArtistListXibTableViewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 936783AB25B9896E00A93B28 /* ArtistListXibTableViewTableViewCell.xib */; };
@@ -85,6 +86,7 @@
 		932C89C225DAE072008D72D9 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		9339113025C828C100913D3E /* AcceptOrDecline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptOrDecline.swift; sourceTree = "<group>"; };
 		9339113B25C8341C00913D3E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		933D3A3625DB9E1E001A26B8 /* Chats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chats.swift; sourceTree = "<group>"; };
 		9352608025BD63270052C0A3 /* FairDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FairDetails.swift; sourceTree = "<group>"; };
 		936783AA25B9896E00A93B28 /* ArtistListXibTableViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistListXibTableViewTableViewCell.swift; sourceTree = "<group>"; };
 		936783AB25B9896E00A93B28 /* ArtistListXibTableViewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArtistListXibTableViewTableViewCell.xib; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 				932C89AF25DAC8E3008D72D9 /* Services.swift */,
 				932C89BA25DAD893008D72D9 /* Artists.swift */,
 				932C89C225DAE072008D72D9 /* Notifications.swift */,
+				933D3A3625DB9E1E001A26B8 /* Chats.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -543,6 +546,7 @@
 				93CE5C9525CBF257002A916E /* ButtonPressed.swift in Sources */,
 				93C9692125C5C14800A6217E /* ChatsTableViewCell.swift in Sources */,
 				931D66AB25C087EF002C239E /* NotificationsTableViewCell.swift in Sources */,
+				933D3A3725DB9E1E001A26B8 /* Chats.swift in Sources */,
 				937994D825BC39C700C85404 /* ArtistInformation.swift in Sources */,
 				9378C81925B829DE00B6A183 /* ListOfServicesXibTableViewCell.swift in Sources */,
 				932C89C325DAE072008D72D9 /* Notifications.swift in Sources */,

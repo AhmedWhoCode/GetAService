@@ -14,6 +14,13 @@ class FairDetails: UIViewController {
     @IBOutlet weak var estimatedPriceView: UIView!
     @IBOutlet weak var uberFairView: UIView!
     @IBOutlet weak var confirmBooking: UIButton!
+    
+    
+    @IBOutlet weak var uberEstimatedLabel: UILabel!
+    @IBOutlet weak var modelPriceLabel: UILabel!
+    @IBOutlet weak var totalEstimatedLabel: UILabel!
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
         designingView()

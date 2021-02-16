@@ -27,22 +27,7 @@ class ArtistLists: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
-    func addingDummyData() {
-        // adding dummy data
-        let artist1 = Artists(artistImage: UIImage.init(named: "artistPhoto")!, artistPrice: "$20", artistName: "Emma", artistCountry: "USA", artistAvalability: "Available")
-        
-        let artist2 = Artists(artistImage: UIImage.init(named: "artistPhoto")!, artistPrice: "$30", artistName: "Lina", artistCountry: "France", artistAvalability: "Available")
-        
-        let artist3 = Artists(artistImage: UIImage.init(named: "artistPhoto")!, artistPrice: "$40", artistName: "Alexandra", artistCountry: "France", artistAvalability: "Not Available")
-        
-        let artist4 = Artists(artistImage: UIImage.init(named: "artistPhoto")!, artistPrice: "$50", artistName: "Gal", artistCountry: "Sweden", artistAvalability: "Not Available")
-        
-        aritsts.append(artist1)
-        aritsts.append(artist2)
-        aritsts.append(artist3)
-        aritsts.append(artist4)
-        
-    }
+   
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -126,7 +111,22 @@ class ArtistLists: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    func addingDummyData() {
+        // adding dummy data
+        let artist1 = Artists(artistImage: UIImage.init(named: "artistPhoto")!, artistPrice: "$20", artistName: "Emma", artistCountry: "USA", artistAvalability: "Available")
+        
+        let artist2 = Artists(artistImage: UIImage.init(named: "artistPhoto")!, artistPrice: "$30", artistName: "Lina", artistCountry: "France", artistAvalability: "Available")
+        
+        let artist3 = Artists(artistImage: UIImage.init(named: "artistPhoto")!, artistPrice: "$40", artistName: "Alexandra", artistCountry: "France", artistAvalability: "Not Available")
+        
+        let artist4 = Artists(artistImage: UIImage.init(named: "artistPhoto")!, artistPrice: "$50", artistName: "Gal", artistCountry: "Sweden", artistAvalability: "Not Available")
+        
+        aritsts.append(artist1)
+        aritsts.append(artist2)
+        aritsts.append(artist3)
+        aritsts.append(artist4)
+        
+    }
 }
 
 extension ArtistLists: ButtonPressed

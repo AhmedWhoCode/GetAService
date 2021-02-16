@@ -656,7 +656,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8lx-P7-31H" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4378" y="21"/>
+            <point key="canvasLocation" x="4377" y="88"/>
         </scene>
         <!--Confirm Booking-->
         <scene sceneID="BHD-8f-qS2">
@@ -856,12 +856,15 @@
                         <outlet property="artistImage" destination="Chl-Li-NSw" id="gGp-MD-qQ4"/>
                         <outlet property="confirmBooking" destination="mi3-9H-dDo" id="sNy-DP-4cG"/>
                         <outlet property="estimatedPriceView" destination="C7e-9D-2S4" id="i9t-OF-Hly"/>
+                        <outlet property="modelPriceLabel" destination="7P7-zL-h2y" id="wie-44-jSm"/>
+                        <outlet property="totalEstimatedLabel" destination="rXM-R8-aqy" id="RDS-4i-3eq"/>
+                        <outlet property="uberEstimatedLabel" destination="CSo-Zp-QZI" id="MGo-ZE-nKL"/>
                         <outlet property="uberFairView" destination="wbi-Nk-hR9" id="GD8-jT-sw4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H8X-Ph-pna" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5362" y="21"/>
+            <point key="canvasLocation" x="5361" y="82"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Tmz-XL-f8L">
@@ -1156,7 +1159,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zb9-kS-HJh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2030" y="976"/>
+            <point key="canvasLocation" x="2303" y="856"/>
         </scene>
         <!--Notifications-->
         <scene sceneID="vek-dX-a2Z">
@@ -1197,7 +1200,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WmA-fH-dMy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3310" y="954"/>
+            <point key="canvasLocation" x="3283" y="876"/>
         </scene>
         <!--Order Information-->
         <scene sceneID="OUq-zz-sci">
@@ -1424,7 +1427,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LEs-mp-3Cr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4845" y="876"/>
+            <point key="canvasLocation" x="4377" y="876"/>
         </scene>
         <!--Information needed-->
         <scene sceneID="NbW-QY-LGc">
@@ -1634,7 +1637,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LFF-CR-pgS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6281" y="21"/>
+            <point key="canvasLocation" x="6280" y="82"/>
         </scene>
         <!--Chats-->
         <scene sceneID="Swl-sL-kCP">
@@ -1672,7 +1675,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rq8-1r-DCr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5977" y="876"/>
+            <point key="canvasLocation" x="5361" y="876"/>
         </scene>
         <!--Meetup-->
         <scene sceneID="wkv-zg-Gpw">
@@ -1783,7 +1786,7 @@ Artist.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WZn-qM-ma2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6842" y="876"/>
+            <point key="canvasLocation" x="6280" y="876"/>
         </scene>
         <!--Waiting-->
         <scene sceneID="Qe6-1a-6Kd">
@@ -1867,7 +1870,7 @@ Artist.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KRI-IB-HAk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5361" y="1511"/>
+            <point key="canvasLocation" x="4377" y="1683"/>
         </scene>
         <!--Waiting for artist response-->
         <scene sceneID="kJL-DC-y8g">
@@ -1951,7 +1954,7 @@ Artist.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gDy-Cr-RAh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7399" y="185"/>
+            <point key="canvasLocation" x="7265" y="82"/>
         </scene>
         <!--Meetup-->
         <scene sceneID="0xh-vw-xTy">
@@ -2051,7 +2054,7 @@ You complete the service</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A5v-1U-k9j" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6154" y="1511"/>
+            <point key="canvasLocation" x="5361" y="1683"/>
         </scene>
         <!--Completed-->
         <scene sceneID="veE-as-XwL">
@@ -2154,7 +2157,7 @@ You complete the service</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ROX-gN-VEb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8688" y="863"/>
+            <point key="canvasLocation" x="6280" y="1683"/>
         </scene>
         <!--service started-->
         <scene sceneID="GpH-lg-MsH">
@@ -2241,16 +2244,16 @@ once the service completed</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IwR-4X-aQ9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7857" y="876"/>
+            <point key="canvasLocation" x="7264" y="856"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="EOU-m5-U7c"/>
         <segue reference="0VI-Es-LLL"/>
-        <segue reference="Xx0-14-tkg"/>
+        <segue reference="jCL-br-Ttl"/>
         <segue reference="65o-WA-YKJ"/>
         <segue reference="ajZ-lV-TLb"/>
-        <segue reference="Azh-Mr-uZv"/>
+        <segue reference="AC9-H9-L9h"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="ArtistProfile" width="121" height="50.5"/>
