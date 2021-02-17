@@ -1213,8 +1213,8 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bhS-wY-Her">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4lg-oy-h7p" userLabel="ContentView">
-                                        <rect key="frame" x="0.0" y="8" width="414" height="850"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4lg-oy-h7p" userLabel="ContentView">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="850"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G0x-5g-Ijl" userLabel="Info View">
                                                 <rect key="frame" x="10" y="279" width="394" height="100"/>
@@ -2253,7 +2253,7 @@ once the service completed</string>
         <segue reference="jCL-br-Ttl"/>
         <segue reference="65o-WA-YKJ"/>
         <segue reference="ajZ-lV-TLb"/>
-        <segue reference="AC9-H9-L9h"/>
+        <segue reference="9bV-yX-pVO"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="ArtistProfile" width="121" height="50.5"/>
