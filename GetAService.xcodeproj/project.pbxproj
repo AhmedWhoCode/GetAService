@@ -40,6 +40,7 @@
 		937EAAC325B6F13B002CD6EC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 937EAAC125B6F13B002CD6EC /* LaunchScreen.storyboard */; };
 		937EAACE25B6F13C002CD6EC /* GetAServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937EAACD25B6F13C002CD6EC /* GetAServiceTests.swift */; };
 		937EAAD925B6F13C002CD6EC /* GetAServiceUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937EAAD825B6F13C002CD6EC /* GetAServiceUITests.swift */; };
+		93A9E83D25DD69C3001A29F9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93A9E83C25DD69C3001A29F9 /* Main.storyboard */; };
 		93C9691B25C5C0AD00A6217E /* ChatList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C9691A25C5C0AD00A6217E /* ChatList.swift */; };
 		93C9692125C5C14800A6217E /* ChatsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C9691F25C5C14800A6217E /* ChatsTableViewCell.swift */; };
 		93C9692225C5C14800A6217E /* ChatsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93C9692025C5C14800A6217E /* ChatsTableViewCell.xib */; };
@@ -108,6 +109,7 @@
 		937EAAD425B6F13C002CD6EC /* GetAServiceUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GetAServiceUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		937EAAD825B6F13C002CD6EC /* GetAServiceUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAServiceUITests.swift; sourceTree = "<group>"; };
 		937EAADA25B6F13C002CD6EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		93A9E83C25DD69C3001A29F9 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		93C9691A25C5C0AD00A6217E /* ChatList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatList.swift; sourceTree = "<group>"; };
 		93C9691F25C5C14800A6217E /* ChatsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsTableViewCell.swift; sourceTree = "<group>"; };
 		93C9692025C5C14800A6217E /* ChatsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatsTableViewCell.xib; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				937EAABC25B6F13A002CD6EC /* Main.storyboard */,
+				93A9E83C25DD69C3001A29F9 /* Main.storyboard */,
 				9378C81725B829DE00B6A183 /* ListOfServicesXibTableViewCell.swift */,
 				9378C81825B829DE00B6A183 /* ListOfServicesXibTableViewCell.xib */,
 				936783AA25B9896E00A93B28 /* ArtistListXibTableViewTableViewCell.swift */,
@@ -296,6 +299,7 @@
 				937EAAB025B6F13A002CD6EC /* Frameworks */,
 				937EAAB125B6F13A002CD6EC /* Resources */,
 				27C90F9CA41021B880E7212F /* [CP] Embed Pods Frameworks */,
+				76CDCE99D3369920565BA1EC /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -334,6 +338,7 @@
 				937EAAD125B6F13C002CD6EC /* Frameworks */,
 				937EAAD225B6F13C002CD6EC /* Resources */,
 				34740F38B893E3CEF87EA941 /* [CP] Embed Pods Frameworks */,
+				81D960143A8833ACD9865E43 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -397,6 +402,7 @@
 				93C9692225C5C14800A6217E /* ChatsTableViewCell.xib in Resources */,
 				932C487225C97AF700F57308 /* myGif.gif in Resources */,
 				931D66AC25C087EF002C239E /* NotificationsTableViewCell.xib in Resources */,
+				93A9E83D25DD69C3001A29F9 /* Main.storyboard in Resources */,
 				936783AD25B9896E00A93B28 /* ArtistListXibTableViewTableViewCell.xib in Resources */,
 				9339113C25C8341D00913D3E /* Assets.xcassets in Resources */,
 				9378C81A25B829DE00B6A183 /* ListOfServicesXibTableViewCell.xib in Resources */,
@@ -476,6 +482,40 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GetAService-GetAServiceUITests/Pods-GetAService-GetAServiceUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		76CDCE99D3369920565BA1EC /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GetAService/Pods-GetAService-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GetAService/Pods-GetAService-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GetAService/Pods-GetAService-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		81D960143A8833ACD9865E43 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GetAService-GetAServiceUITests/Pods-GetAService-GetAServiceUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GetAService-GetAServiceUITests/Pods-GetAService-GetAServiceUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GetAService-GetAServiceUITests/Pods-GetAService-GetAServiceUITests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		9FF83A24ECD214DB37E692C5 /* [CP] Check Pods Manifest.lock */ = {

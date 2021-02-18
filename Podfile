@@ -7,7 +7,14 @@ target 'GetAService' do
 
   # Pods for GetAService
 pod 'SwiftyGif'
-
+#firebase services
+pod 'Firebase/Auth'
+#google sign in
+pod 'GoogleSignIn'
+#drop down list
+pod 'iOSDropDown'
+#image picker
+pod 'YPImagePicker'
   target 'GetAServiceTests' do
     inherit! :search_paths
     # Pods for testing
