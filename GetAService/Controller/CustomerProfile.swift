@@ -1,15 +1,13 @@
 //
-//  ArtistProfile.swift
+//  CustomerProfile.swift
 //  GetAService
 //
-//  Created by Geek on 26/01/2021.
+//  Created by Geek on 18/02/2021.
 //
 
 import UIKit
-import iOSDropDown
 import YPImagePicker
-class ArtistProfile: UIViewController {
-
+class CustomerProfile: UIViewController {
     @IBOutlet weak var artistImage: UIImageView!
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var artistNameTextField: UITextField!
@@ -20,16 +18,9 @@ class ArtistProfile: UIViewController {
     
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var genderChooser: UISegmentedControl!
-    @IBOutlet weak var artistServicesDropDown: DropDown!
-
     override func viewDidLoad() {
         super.viewDidLoad()
         designingView()
-        
-        //will be pressed when the drop down option selects
-        artistServicesDropDown.didSelect { (text, index, id) in
-            print(text)
-        }
         // Do any additional setup after loading the view.
     }
     
@@ -50,10 +41,10 @@ class ArtistProfile: UIViewController {
     }
     
     
+    
     func designingView() {
         navigationItem.hidesBackButton = true
-        //providing dummy  data to dro down
-        artistServicesDropDown.optionArray = ["Hair", "Make over", "Pedicure", "Massage"]
+   
 
         ///MARK: - designing views
         artistImage.layer.masksToBounds = true
@@ -135,18 +126,10 @@ class ArtistProfile: UIViewController {
         submitButton.layer.borderColor = UIColor.black.cgColor
         
         
-        //To apply padding
-        let paddingView6 : UIView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: artistServicesDropDown.frame.height))
-        artistServicesDropDown.leftView = paddingView6
-        artistServicesDropDown.leftViewMode = UITextField.ViewMode.always
-        
-        //shadow
-        artistServicesDropDown.layer.shadowColor = UIColor.gray.cgColor
-        artistServicesDropDown.layer.shadowOpacity = 0.5
-        artistServicesDropDown.layer.shadowOffset = CGSize.zero
-        artistServicesDropDown.layer.shadowRadius = 7
+     
   
     }
+
     /*
     // MARK: - Navigation
 
