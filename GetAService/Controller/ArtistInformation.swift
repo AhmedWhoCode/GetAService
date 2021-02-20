@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class ArtistInformation: UIViewController {
 
@@ -20,6 +21,10 @@ class ArtistInformation: UIViewController {
     @IBOutlet weak var artistStatusLabel: UILabel!
 
     @IBOutlet weak var bookNowButton: UIButton!
+    
+    
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,4 +67,33 @@ class ArtistInformation: UIViewController {
     }
     */
 
+    
+    
+    
+    @IBAction func logOutPressed(_ sender: UIBarButtonItem) {
+        
+//
+//        do {
+//           try Auth.auth().signOut()
+//            performSegue(withIdentifier: Constants.seguesNames.profileToLogin, sender: self)
+//
+//        }
+//        catch{
+//            print(error.localizedDescription)
+//        }
+        
+        logoutUser()
+    }
+    
+    func logoutUser() {
+        // call from any screen
+        
+        do { try Auth.auth().signOut() }
+        catch { print("already logged out") }
+        
+        navigationController?.popToRootViewController(animated: true)
+    }
+    
+    
+    
 }

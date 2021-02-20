@@ -6,8 +6,10 @@
 //
 
 import UIKit
-
+import Firebase
+import FirebaseFirestore
 class BuyerOrSeller: UIViewController {
+    let db = Firestore.firestore()
 
     @IBOutlet weak var buyerButtonPressed: UIButton!
     @IBOutlet weak var sellerButtonPressed: UIButton!
@@ -36,13 +38,32 @@ class BuyerOrSeller: UIViewController {
     */
     @IBAction func buttonPressed(_ sender: UIButton) {
         if sender.titleLabel?.text == "Buyer" {
+            addingInfoInFirestore(with: "Buyer")
             performSegue(withIdentifier: Constants.seguesNames.userTypeToBuyer, sender:self)
         }
         else
         {
+            addingInfoInFirestore(with:"Seller")
+
             performSegue(withIdentifier: Constants.seguesNames.userTypeToSeller, sender:self)
 
         }
     }
+    func addingInfoInFirestore(with userType: String? = "nil") {
+
+        let isUserOrNil = ["Email":Auth.auth().currentUser?.email,"UserType": userType]
+        
+        if let userid = Auth.auth().currentUser?.uid {
+            
+            db.collection("isUserOrNil").document(userid).setData(isUserOrNil) { err in
+                if let err = err {
+                    print("Error writing document: \(err)")
+                } else {
+                    print("Document successfully written!")
+                }
+            }
+        }
+            
+        }
     
 }

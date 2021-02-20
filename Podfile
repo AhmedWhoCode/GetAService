@@ -9,6 +9,10 @@ target 'GetAService' do
 pod 'SwiftyGif'
 #firebase services
 pod 'Firebase/Auth'
+#Firesstore service
+pod 'Firebase/Firestore'
+#Storage service
+pod 'Firebase/Storage'
 #google sign in
 pod 'GoogleSignIn'
 #drop down list

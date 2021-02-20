@@ -45,7 +45,9 @@ struct Constants {
         static let artistsToArtistsInfo = "artistsToArtistsInfo"
         static let artistInfoToConfirmBooking = "artistInfoToConfirmBooking"
         static let notificationsToOrderInfo = "notificationsToOrderInfo"
-
+        static let profileToLogin = "profileToLogin"
+        static let loginToSellerProfile = "loginToSellerProfile"
+        
     }
     
 }
