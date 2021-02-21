@@ -23,10 +23,19 @@ class SubServicesTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         addingDummyData()
-        //number of items in tableview
-        cellChecked = Array(repeating: false, count: subServices.count)
+        
       
-        servicesBrain.retrivingSubServicesFromDatabase(with: mainService!)
+        servicesBrain.retrivingSubServicesFromDatabase(with: mainService) { (data) in
+//            var total = data.count-1
+//            for i in 0...total
+//            {
+//                print(data[i])
+//            }
+            self.subServices = data
+            //number of items in tableview
+            self.cellChecked = Array(repeating: false, count: self.subServices.count)
+            self.tableView.reloadData()
+        }
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: Constants.subServicesCell)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -39,12 +48,12 @@ class SubServicesTableViewController: UITableViewController {
         submitButton.layer.cornerRadius = 20
         submitButton.layer.borderWidth = 1
         submitButton.layer.borderColor = UIColor.black.cgColor
-        subServices.append("Dyer")
-        subServices.append("cleaner")
-        subServices.append("subservice 2")
-        for i in 3...30 {
-            subServices.append("subservice \(i) ")
-        }
+//        subServices.append("Dyer")
+//        subServices.append("cleaner")
+//        subServices.append("subservice 2")
+//        for i in 3...30 {
+//            subServices.append("subservice \(i) ")
+//        }
     }
     // MARK: - Table view data source
     
@@ -62,6 +71,7 @@ class SubServicesTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.subServicesCell, for: indexPath) as UITableViewCell
         //checking if the cell is clicked or not
+    
         cell.accessoryType = cellChecked[indexPath.row] ? UITableViewCell.AccessoryType.checkmark : UITableViewCell.AccessoryType.none
         cell.textLabel?.text = subServices[indexPath.row]
         

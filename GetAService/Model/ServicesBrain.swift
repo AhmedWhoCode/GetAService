@@ -24,6 +24,7 @@ class ServicesBrain {
     let db = Firestore.firestore()
     
     var servicesData = [ServicesModel]()
+    var subServices = [String]()
     
     func retrivingServicesFromDatabase() {
         
@@ -55,7 +56,7 @@ class ServicesBrain {
         }
     }
     
-    func retrivingSubServicesFromDatabase(with category : String) {
+    func retrivingSubServicesFromDatabase(with category : String , completion : @escaping ([String])->()) {
         db.collection("Categories").document(category).collection("SubCategories").getDocuments
         { (snapShot, error) in
             
@@ -64,8 +65,9 @@ class ServicesBrain {
                 let total = snap.count - 1
                 for i in 0...total
                 {
-                    print(snap[i].documentID)
+                    self.subServices.append(snap[i].documentID)
                 }
+                completion(self.subServices)
             }
             
         }
