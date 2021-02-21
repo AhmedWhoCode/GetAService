@@ -26,17 +26,22 @@ class SellerProfile: UIViewController {
     @IBOutlet weak var genderChooser: UISegmentedControl!
     @IBOutlet weak var artistServicesDropDown: DropDown!
     
+    //storing profile image selected by the user
     var profileImage = Data()
+    
     var fireStorage = Storage.storage()
+    
+    
     let sellerProfileBrain = SellerProfileBrain()
+    var selectedService:String!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        sellerProfileBrain.dataUplodedDelegant = self
         designingView()
         
         //will be pressed when the drop down option selects
         artistServicesDropDown.didSelect { (text, index, id) in
-            print(text)
+            self.selectedService = text
         }
         // Do any additional setup after loading the view.
     }
@@ -62,7 +67,14 @@ class SellerProfile: UIViewController {
     func designingView() {
         navigationItem.hidesBackButton = true
         //providing dummy  data to dro down
-        artistServicesDropDown.optionArray = ["Hair", "Make over", "Pedicure", "Massage"]
+        artistServicesDropDown.optionArray = ["Face treatments"
+                                              ,"Hair removel"
+                                              ,"Hair salon"
+                                              ,"Makeup"
+                                              ,"Med spa"
+                                              ,"Nails"
+                                              ,"Tanning"
+                                              ,"Tattoo"]
 
         ///MARK: - designing views
         artistImage.layer.masksToBounds = true
@@ -71,10 +83,6 @@ class SellerProfile: UIViewController {
         artistImage.contentMode = .scaleAspectFill
         
         
-        
-//        artistNameTextField.layer.cornerRadius = 10
-//        artistNameTextField.layer.borderWidth = 0.1
-//        artistNameTextField.layer.borderColor = UIColor.black.cgColor
         
         //shadow
         artistNameTextField.layer.shadowColor = UIColor.gray.cgColor
@@ -156,20 +164,27 @@ class SellerProfile: UIViewController {
         artistServicesDropDown.layer.shadowRadius = 7
   
     }
-    /*
-    // MARK: - Navigation
+    
+     //MARK:Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == Constants.seguesNames.profileToSubservices
+        {
+            if let nextViewController = segue.destination as? SubServicesTableViewController
+            
+            {
+                nextViewController.mainService = selectedService
+            }
+        }
     }
-    */
+
     @IBAction func submitPressed(_ sender: UIButton) {
         //converting image to data , compatible for uploading in storage
         profileImage = (artistImage.image?.jpegData(compressionQuality: 0.8)!)!
         
-        let filePath = sellerProfileBrain.uploadingProfileImage(with: profileImage)!
+        //uncomment this code to upload image to database
+       // let filePath = sellerProfileBrain.uploadingProfileImage(with: profileImage)!
+        let filePath = "uncomment the code"
         let sellerData = SellerProfileModel(uid: Auth.auth().currentUser!.uid,
                                             imageRef: filePath,
                                             name: artistNameTextField.text!,
@@ -177,12 +192,20 @@ class SellerProfile: UIViewController {
                                             address: artistAddressTextField.text!,
                                             phone: artistNumberTextField.text!,
                                             price: artistPriceTextField.text!,
-                                            service: artistServicesDropDown.text!,
+                                            service: selectedService,
                                             dob: datePicker.date,
                                             gender: genderChooser.titleForSegment(at: genderChooser.selectedSegmentIndex)!)
     
          sellerProfileBrain.storingProfileDataToFireBase(with: sellerData)
         
+    }
+    
+}
+
+extension SellerProfile : DataUploaded
+{
+    func didsendData() {
+        performSegue(withIdentifier: Constants.seguesNames.profileToSubservices, sender:self)
     }
     
 }

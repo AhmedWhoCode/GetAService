@@ -9,19 +9,24 @@ import UIKit
 
 class SubServicesTableViewController: UITableViewController {
     @IBOutlet weak var submitButton: UIButton!
-    
+    //all sub services
     var subServices = [String]()
+    //selected subservices
     var selectedServices = [String]()
-    
+    //main service choosen by the user in previous screen
+    var mainService:String!
     //to check if the cell is checked or not , when you scroll the  table view the selection repeats
-    var checked = [Bool]()
+    var cellChecked = [Bool]()
+    
+    var servicesBrain = ServicesBrain()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         addingDummyData()
         //number of items in tableview
-        checked = Array(repeating: false, count: subServices.count)
-        
-        
+        cellChecked = Array(repeating: false, count: subServices.count)
+      
+        servicesBrain.retrivingSubServicesFromDatabase(with: mainService!)
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: Constants.subServicesCell)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -57,7 +62,7 @@ class SubServicesTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.subServicesCell, for: indexPath) as UITableViewCell
         //checking if the cell is clicked or not
-        cell.accessoryType = checked[indexPath.row] ? UITableViewCell.AccessoryType.checkmark : UITableViewCell.AccessoryType.none
+        cell.accessoryType = cellChecked[indexPath.row] ? UITableViewCell.AccessoryType.checkmark : UITableViewCell.AccessoryType.none
         cell.textLabel?.text = subServices[indexPath.row]
         
         
@@ -68,7 +73,7 @@ class SubServicesTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
-        checked[indexPath.row] = true
+        cellChecked[indexPath.row] = true
         cell!.accessoryType = UITableViewCell.AccessoryType.checkmark
         //adding selected subservice in an array
         selectedServices.append((cell?.textLabel?.text!)!)
@@ -77,7 +82,7 @@ class SubServicesTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
-        checked[indexPath.row] = false
+        cellChecked[indexPath.row] = false
         
         cell!.accessoryType = UITableViewCell.AccessoryType.none
         //removing the deselected subservice form array
@@ -85,6 +90,14 @@ class SubServicesTableViewController: UITableViewController {
         print(selectedServices)
 
    }
+    
+    @IBAction func submitPressed(_ sender: UIButton) {
+        if selectedServices.count > 0
+        {
+            //addSubser
+        }
+        
+    }
     /*
      // Override to support conditional editing of the table view.
      override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

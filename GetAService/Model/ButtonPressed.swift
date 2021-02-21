@@ -10,3 +10,4 @@ import Foundation
 protocol ButtonPressed {
     func didButtonPressed(with value : String)
 }
+

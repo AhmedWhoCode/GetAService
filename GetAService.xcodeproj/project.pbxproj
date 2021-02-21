@@ -21,7 +21,7 @@
 		932C488225C9979800F57308 /* inProgress.gif in Resources */ = {isa = PBXBuildFile; fileRef = 932C488125C9979700F57308 /* inProgress.gif */; };
 		932C488725C9980700F57308 /* WaitingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932C488625C9980700F57308 /* WaitingScreen.swift */; };
 		932C488C25C99E8C00F57308 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932C488B25C99E8C00F57308 /* Constants.swift */; };
-		932C89B025DAC8E3008D72D9 /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932C89AF25DAC8E3008D72D9 /* Services.swift */; };
+		932C89B025DAC8E3008D72D9 /* ServicesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932C89AF25DAC8E3008D72D9 /* ServicesModel.swift */; };
 		932C89BB25DAD893008D72D9 /* Artists.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932C89BA25DAD893008D72D9 /* Artists.swift */; };
 		932C89C325DAE072008D72D9 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932C89C225DAE072008D72D9 /* Notifications.swift */; };
 		9339113125C828C100913D3E /* AcceptOrDecline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9339113025C828C100913D3E /* AcceptOrDecline.swift */; };
@@ -50,6 +50,7 @@
 		93C9692125C5C14800A6217E /* ChatsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C9691F25C5C14800A6217E /* ChatsTableViewCell.swift */; };
 		93C9692225C5C14800A6217E /* ChatsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93C9692025C5C14800A6217E /* ChatsTableViewCell.xib */; };
 		93CE5C9525CBF257002A916E /* ButtonPressed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CE5C9425CBF257002A916E /* ButtonPressed.swift */; };
+		93E3F8DB25E23BEC00FB74C3 /* ServicesBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E3F8DA25E23BEC00FB74C3 /* ServicesBrain.swift */; };
 		971D943F4339978E185FE2EE /* Pods_GetAService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7235428ABDF679CC92282A10 /* Pods_GetAService.framework */; };
 		EAF66BF209F16F2C3760CAA7 /* Pods_GetAService_GetAServiceUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3E40969D340B4745BDA501E /* Pods_GetAService_GetAServiceUITests.framework */; };
 /* End PBXBuildFile section */
@@ -89,7 +90,7 @@
 		932C488125C9979700F57308 /* inProgress.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = inProgress.gif; sourceTree = "<group>"; };
 		932C488625C9980700F57308 /* WaitingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingScreen.swift; sourceTree = "<group>"; };
 		932C488B25C99E8C00F57308 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		932C89AF25DAC8E3008D72D9 /* Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
+		932C89AF25DAC8E3008D72D9 /* ServicesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesModel.swift; sourceTree = "<group>"; };
 		932C89BA25DAD893008D72D9 /* Artists.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artists.swift; sourceTree = "<group>"; };
 		932C89C225DAE072008D72D9 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		9339113025C828C100913D3E /* AcceptOrDecline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptOrDecline.swift; sourceTree = "<group>"; };
@@ -125,6 +126,7 @@
 		93C9691F25C5C14800A6217E /* ChatsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsTableViewCell.swift; sourceTree = "<group>"; };
 		93C9692025C5C14800A6217E /* ChatsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatsTableViewCell.xib; sourceTree = "<group>"; };
 		93CE5C9425CBF257002A916E /* ButtonPressed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonPressed.swift; sourceTree = "<group>"; };
+		93E3F8DA25E23BEC00FB74C3 /* ServicesBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesBrain.swift; sourceTree = "<group>"; };
 		9926EF069774AB63FF7879FD /* Pods-GetAService.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GetAService.release.xcconfig"; path = "Target Support Files/Pods-GetAService/Pods-GetAService.release.xcconfig"; sourceTree = "<group>"; };
 		B3E40969D340B4745BDA501E /* Pods_GetAService_GetAServiceUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GetAService_GetAServiceUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1557F5CAE7E93A3ADE76CBC /* Pods-GetAService-GetAServiceUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GetAService-GetAServiceUITests.release.xcconfig"; path = "Target Support Files/Pods-GetAService-GetAServiceUITests/Pods-GetAService-GetAServiceUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -201,13 +203,14 @@
 		9378C7FB25B8260200B6A183 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				932C89AF25DAC8E3008D72D9 /* Services.swift */,
+				932C89AF25DAC8E3008D72D9 /* ServicesModel.swift */,
 				932C89BA25DAD893008D72D9 /* Artists.swift */,
 				932C89C225DAE072008D72D9 /* Notifications.swift */,
 				933D3A3625DB9E1E001A26B8 /* Chats.swift */,
 				93CE5C9425CBF257002A916E /* ButtonPressed.swift */,
 				9370176025E123B100CE177B /* SellerProfileBrain.swift */,
 				9370176525E1289C00CE177B /* SellerProfileModel.swift */,
+				93E3F8DA25E23BEC00FB74C3 /* ServicesBrain.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -613,11 +616,12 @@
 				9370176125E123B100CE177B /* SellerProfileBrain.swift in Sources */,
 				931D669825C03AC2002C239E /* SellerProfile.swift in Sources */,
 				9352608125BD63270052C0A3 /* FairDetails.swift in Sources */,
-				932C89B025DAC8E3008D72D9 /* Services.swift in Sources */,
+				932C89B025DAC8E3008D72D9 /* ServicesModel.swift in Sources */,
 				931D669D25C0660E002C239E /* CustomerProvideInformation.swift in Sources */,
 				937EAAB725B6F13A002CD6EC /* AppDelegate.swift in Sources */,
 				931D66A225C0873E002C239E /* NotificationsList.swift in Sources */,
 				932C89BB25DAD893008D72D9 /* Artists.swift in Sources */,
+				93E3F8DB25E23BEC00FB74C3 /* ServicesBrain.swift in Sources */,
 				9378C82725B834C400B6A183 /* ListOfServices.swift in Sources */,
 				93CE5C9525CBF257002A916E /* ButtonPressed.swift in Sources */,
 				938AE25F25DF927F00CC108B /* BuyerOrSeller.swift in Sources */,

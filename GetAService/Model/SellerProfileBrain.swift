@@ -11,8 +11,14 @@ import FirebaseStorage
 import FirebaseFirestore
 import Firebase
 
-//uid:String,imageRef:String,name:String, email:String, address:String, phone:String, price:String, service:String,dob:String,gender:String
+// defining a protocol
+protocol DataUploaded {
+    func didsendData()
+}
 class SellerProfileBrain {
+    
+    var dataUplodedDelegant:DataUploaded?
+
     
     let db = Firestore.firestore()
     var fireStorage = Storage.storage()
@@ -21,8 +27,6 @@ class SellerProfileBrain {
     
     func storingProfileDataToFireBase(with sellerProfileModel:SellerProfileModel)
     {
-        
-        
         sellerProfileData["uid"] = sellerProfileModel.uid
         sellerProfileData["imageRef"] = sellerProfileModel.imageRef
         sellerProfileData["name"] = sellerProfileModel.name
@@ -41,6 +45,8 @@ class SellerProfileBrain {
                 if let error = error {
                     print("Error writing document: \(error)")
                 } else {
+                    
+                    self.dataUplodedDelegant?.didsendData()
                     print("Document successfully written!")
                     
                 }
@@ -58,10 +64,11 @@ class SellerProfileBrain {
         self.fireStorage.reference().child("Images/profile_images").child(filePath).putData(profileImage, metadata: metaData) { (meta, error) in
             if  error != nil
             {
-                print("error uploadind a file\(error)")
+                print("error uploadind a file\(error?.localizedDescription ?? "Error")")
             }
             else
             {
+                
                 print("image uploaded")
                 
             }
@@ -70,6 +77,9 @@ class SellerProfileBrain {
         return filePath
         
     }
+//    func addingSubServicesToDatabase(<#parameters#>) -> <#return type#> {
+//        <#function body#>
+//    }
     
     
 }

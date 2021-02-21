@@ -47,7 +47,7 @@ struct Constants {
         static let notificationsToOrderInfo = "notificationsToOrderInfo"
         static let profileToLogin = "profileToLogin"
         static let loginToSellerProfile = "loginToSellerProfile"
-        
+        static let profileToSubservices = "profileToSubservices"
     }
     
 }

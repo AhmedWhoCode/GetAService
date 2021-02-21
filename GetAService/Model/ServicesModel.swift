@@ -7,7 +7,7 @@
 
 import Foundation
 import UIKit
-struct Services {
+struct ServicesModel {
     let serviceName :String
     let serviceImage :UIImage?
 
