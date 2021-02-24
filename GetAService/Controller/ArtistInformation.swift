@@ -57,30 +57,27 @@ class ArtistInformation: UIViewController {
          artistImage.layer.cornerRadius = artistImage.frame.size.height/2
         artistImage.contentMode = .scaleAspectFill
     }
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+       
+        if segue.identifier == Constants.seguesNames.artistInfoToProfile
+        {
+            if let destinationSegue = segue.destination as? SellerProfile
+          {
+                destinationSegue.isSourceVcArtistProfile = true
+          }
+        }
+        
     }
-    */
+    
 
     
     
     
     @IBAction func logOutPressed(_ sender: UIBarButtonItem) {
-        
-//
-//        do {
-//           try Auth.auth().signOut()
-//            performSegue(withIdentifier: Constants.seguesNames.profileToLogin, sender: self)
-//
-//        }
-//        catch{
-//            print(error.localizedDescription)
-//        }
         
         logoutUser()
     }
@@ -95,5 +92,8 @@ class ArtistInformation: UIViewController {
     }
     
     
+    @IBAction func profileClicked(_ sender: UIBarButtonItem) {
+        performSegue(withIdentifier: Constants.seguesNames.artistInfoToProfile, sender:self)
+    }
     
 }

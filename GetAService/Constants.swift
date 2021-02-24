@@ -48,6 +48,7 @@ struct Constants {
         static let profileToLogin = "profileToLogin"
         static let loginToSellerProfile = "loginToSellerProfile"
         static let profileToSubservices = "profileToSubservices"
+        static let artistInfoToProfile = "artistInfoToProfile"
     }
     
 }

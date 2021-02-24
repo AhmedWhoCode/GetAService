@@ -6,7 +6,9 @@
 //
 
 import UIKit
-class ListOfServices: UITableViewController,DataManipulation {
+
+
+class ListOfServices: UITableViewController, DataManipulation {
     
     
     var services = [ServicesModel]()
@@ -19,7 +21,7 @@ class ListOfServices: UITableViewController,DataManipulation {
         //calling method to retrieve data
         serviceBrain.retrivingServicesFromDatabase()
         modifyingUi()
-        
+//        enableOffline()
         //registering table view
         tableView.register(UINib(nibName:Constants.cellNibNameServicesList, bundle: nil),forCellReuseIdentifier:Constants.cellIdentifierServicesList)
         
@@ -33,7 +35,9 @@ class ListOfServices: UITableViewController,DataManipulation {
     func didReceiveData(with data: [ServicesModel]) {
         self.servicesData = data
         tableView.reloadData()
+        
     }
+    
     
     func modifyingUi()  {
         

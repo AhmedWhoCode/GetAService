@@ -13,7 +13,7 @@ import FirebaseStorage
 import FirebaseFirestore
 import Firebase
 class SellerProfile: UIViewController {
-
+    
     @IBOutlet weak var artistImage: UIImageView!
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var artistNameTextField: UITextField!
@@ -26,19 +26,28 @@ class SellerProfile: UIViewController {
     @IBOutlet weak var genderChooser: UISegmentedControl!
     @IBOutlet weak var artistServicesDropDown: DropDown!
     
-    //storing profile image selected by the user
-    var profileImage = Data()
+    //storing profile image selected by the user as data
+    var profileImageData = Data()
     
     var fireStorage = Storage.storage()
     
-    
     let sellerProfileBrain = SellerProfileBrain()
+    //stores selected main service selected  by the user
     var selectedService:String!
+    
+    // to check if the source vs is artist profile so that we can retrieve the data, its value comes from segue
+    var isSourceVcArtistProfile : Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         sellerProfileBrain.dataUplodedDelegant = self
-        designingView()
         
+        if isSourceVcArtistProfile
+        {
+            retriveData()
+        }
+        
+        designingView()
         //will be pressed when the drop down option selects
         artistServicesDropDown.didSelect { (text, index, id) in
             self.selectedService = text
@@ -51,18 +60,95 @@ class SellerProfile: UIViewController {
         present(picker, animated: true, completion: nil)
         picker.didFinishPicking { [unowned picker] items, _ in
             if let photo = items.singlePhoto {
-               // print("Image\(photo.fromCamera)")// Image source (camera or library)
-               // print("immg\(self.profileImage)")
+                // print("Image\(photo.fromCamera)")// Image source (camera or library)
+                // print("immg\(self.profileImage)")
                 self.artistImage.image=photo.image // Final image selected by the user
-               // print(photo.originalImage) // original image selected by the user, unfiltered
+                // print(photo.originalImage) // original image selected by the user, unfiltered
                 //print(photo.modifiedImage!) // Transformed image, can be nil
-               // print(photo.exifMeta!) // Print exif meta data of original image.
+                // print(photo.exifMeta!) // Print exif meta data of original image.
             }
             picker.dismiss(animated: true, completion: nil)
         }
         
     }
     
+    
+    
+    
+    //MARK:Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == Constants.seguesNames.profileToSubservices
+        {
+            if let nextViewController = segue.destination as? SubServicesTableViewController
+            
+            {
+                nextViewController.mainService = selectedService
+            }
+        }
+    }
+    
+    @IBAction func submitPressed(_ sender: UIButton) {
+        //converting image to data , compatible for uploading in storage
+        profileImageData = (artistImage.image?.jpegData(compressionQuality: 0.8)!)!
+        // uncomment this code to upload image to database
+         sellerProfileBrain.uploadingProfileImage(with: profileImageData)
+        
+        let filePath = Auth.auth().currentUser?.uid
+        let sellerData = SellerProfileModel(uid: Auth.auth().currentUser!.uid,
+                                            imageRef: filePath!,
+                                            name: artistNameTextField.text!,
+                                            email: artistEmailTextField.text!,
+                                            address: artistAddressTextField.text!,
+                                            phone: artistNumberTextField.text!,
+                                            price: artistPriceTextField.text!,
+                                            service: selectedService,
+                                            dob: datePicker.date,
+                                            gender: genderChooser.titleForSegment(at: genderChooser.selectedSegmentIndex)!)
+        
+        sellerProfileBrain.storingProfileDataToFireBase(with: sellerData)
+        
+    }
+    
+  
+    
+    
+    func retriveData(){
+        sellerProfileBrain.retrivingProfileData { (data) in
+            
+            self.artistNameTextField.text = data.name
+        
+            
+            self.fireStorage.reference().child("Images/profile_images").child(data.imageRef).getData(maxSize: 1 * 1024 * 1024) { (data1, error) in
+                if let data1 = data1
+                {
+                    print(data1)
+                    self.artistImage.image = UIImage(data: data1)
+                    self.artistEmailTextField.text = data.email
+                    self.artistAddressTextField.text = data.address
+                    self.artistNumberTextField.text = data.phone
+                    self.artistPriceTextField.text = data.price
+                    self.selectedService = data.service
+                    self.artistServicesDropDown.selectedIndex = self.artistServicesDropDown.optionArray.firstIndex(of: self.selectedService)!
+                    self.artistServicesDropDown.text = self.selectedService
+                    self.datePicker.setDate(data.dob, animated: true)
+                    
+                    if data.gender == "Male"
+                    {
+                        self.genderChooser.selectedSegmentIndex = 0
+                    }
+                    else
+                    {
+                        self.genderChooser.selectedSegmentIndex = 2
+                        
+                    }
+                }
+                
+            }
+           
+        }
+        
+    }
     
     func designingView() {
         navigationItem.hidesBackButton = true
@@ -75,11 +161,11 @@ class SellerProfile: UIViewController {
                                               ,"Nails"
                                               ,"Tanning"
                                               ,"Tattoo"]
-
+        
         ///MARK: - designing views
         artistImage.layer.masksToBounds = true
         artistImage.layer.borderColor = UIColor.black.cgColor
-       artistImage.layer.cornerRadius = artistImage.frame.size.height/2
+        artistImage.layer.cornerRadius = artistImage.frame.size.height/2
         artistImage.contentMode = .scaleAspectFill
         
         
@@ -89,7 +175,7 @@ class SellerProfile: UIViewController {
         artistNameTextField.layer.shadowOpacity = 0.5
         artistNameTextField.layer.shadowOffset = CGSize.zero
         artistNameTextField.layer.shadowRadius = 7
-  
+        
         //To apply padding
         let paddingView : UIView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: artistNameTextField.frame.height))
         artistNameTextField.leftView = paddingView
@@ -101,46 +187,46 @@ class SellerProfile: UIViewController {
         artistAddressTextField.layer.shadowOpacity = 0.5
         artistAddressTextField.layer.shadowOffset = CGSize.zero
         artistAddressTextField.layer.shadowRadius = 7
-
+        
         //To apply padding
-       let paddingView2 : UIView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: artistAddressTextField.frame.height))
+        let paddingView2 : UIView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: artistAddressTextField.frame.height))
         artistAddressTextField.leftView = paddingView2
         artistAddressTextField.leftViewMode = UITextField.ViewMode.always
-
-
+        
+        
         // 3rd view
         //shadow
         artistEmailTextField.layer.shadowColor = UIColor.gray.cgColor
         artistEmailTextField.layer.shadowOpacity = 0.5
         artistEmailTextField.layer.shadowOffset = CGSize.zero
         artistEmailTextField.layer.shadowRadius = 7
-
+        
         //To apply padding
         let paddingView3 : UIView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: artistAddressTextField.frame.height))
         artistEmailTextField.leftView = paddingView3
         artistEmailTextField.leftViewMode = UITextField.ViewMode.always
-
+        
         //4rth view
-
+        
         //shadow
         artistPriceTextField.layer.shadowColor = UIColor.gray.cgColor
         artistPriceTextField.layer.shadowOpacity = 0.5
         artistPriceTextField.layer.shadowOffset = CGSize.zero
         artistPriceTextField.layer.shadowRadius = 7
-
+        
         //To apply padding
         let paddingView4 : UIView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: artistAddressTextField.frame.height))
         artistPriceTextField.leftView = paddingView4
         artistPriceTextField.leftViewMode = UITextField.ViewMode.always
-
-       // 5th view
-
+        
+        // 5th view
+        
         //shadow
         artistNumberTextField.layer.shadowColor = UIColor.gray.cgColor
         artistNumberTextField.layer.shadowOpacity = 0.5
         artistNumberTextField.layer.shadowOffset = CGSize.zero
         artistNumberTextField.layer.shadowRadius = 7
-
+        
         //To apply padding
         let paddingView5 : UIView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: artistAddressTextField.frame.height))
         artistNumberTextField.leftView = paddingView5
@@ -162,44 +248,8 @@ class SellerProfile: UIViewController {
         artistServicesDropDown.layer.shadowOpacity = 0.5
         artistServicesDropDown.layer.shadowOffset = CGSize.zero
         artistServicesDropDown.layer.shadowRadius = 7
-  
-    }
-    
-     //MARK:Navigation
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == Constants.seguesNames.profileToSubservices
-        {
-            if let nextViewController = segue.destination as? SubServicesTableViewController
-            
-            {
-                nextViewController.mainService = selectedService
-            }
-        }
-    }
-
-    @IBAction func submitPressed(_ sender: UIButton) {
-        //converting image to data , compatible for uploading in storage
-        profileImage = (artistImage.image?.jpegData(compressionQuality: 0.8)!)!
-        
-        //uncomment this code to upload image to database
-       // let filePath = sellerProfileBrain.uploadingProfileImage(with: profileImage)!
-        let filePath = "uncomment the code"
-        let sellerData = SellerProfileModel(uid: Auth.auth().currentUser!.uid,
-                                            imageRef: filePath,
-                                            name: artistNameTextField.text!,
-                                            email: artistEmailTextField.text!,
-                                            address: artistAddressTextField.text!,
-                                            phone: artistNumberTextField.text!,
-                                            price: artistPriceTextField.text!,
-                                            service: selectedService,
-                                            dob: datePicker.date,
-                                            gender: genderChooser.titleForSegment(at: genderChooser.selectedSegmentIndex)!)
-    
-         sellerProfileBrain.storingProfileDataToFireBase(with: sellerData)
         
     }
-    
 }
 
 extension SellerProfile : DataUploaded

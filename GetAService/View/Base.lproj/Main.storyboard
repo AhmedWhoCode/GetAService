@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="pKH-eb-wd4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ryl-t7-gsy">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
@@ -633,15 +633,19 @@
                                 <segue destination="aFe-hT-rzS" kind="show" id="ajZ-lV-TLb"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem title="Item" image="house" catalog="system" width="95" id="TCs-uK-KzY">
+                        <barButtonItem title="Item" image="bell" catalog="system" width="95" id="TCs-uK-KzY">
                             <color key="tintColor" red="0.2274509804" green="0.2274509804" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
                         </barButtonItem>
                         <barButtonItem title="Item" width="95" id="hpZ-75-kR9">
                             <imageReference key="image" image="message" catalog="system" renderingMode="original"/>
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </barButtonItem>
-                        <barButtonItem title="Item" image="bell" catalog="system" width="95" id="Fcy-Zl-7lk">
+                        <barButtonItem title="Item" image="person.circle" catalog="system" width="95" id="Fcy-Zl-7lk">
                             <color key="tintColor" red="0.2274509804" green="0.2274509804" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="profileClicked:" destination="7ZC-Lu-ke0" id="JSf-5p-FXq"/>
+                                <segue destination="pKH-eb-wd4" kind="show" identifier="artistInfoToProfile" id="3ur-lM-Zvk"/>
+                            </connections>
                         </barButtonItem>
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="Artist Information" id="LGz-wM-9d9">
@@ -668,7 +672,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8lx-P7-31H" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5286.9565217391309" y="87.723214285714278"/>
+            <point key="canvasLocation" x="5361" y="-130"/>
         </scene>
         <!--Confirm Booking-->
         <scene sceneID="BHD-8f-qS2">
@@ -1163,7 +1167,7 @@
                         <barButtonItem title="Item" image="chevron.backward" catalog="system" width="95" id="RUP-oH-SRf">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
-                                <segue destination="3ac-E2-Gvt" kind="show" id="AC9-H9-L9h"/>
+                                <segue destination="7ZC-Lu-ke0" kind="show" id="0US-V0-CWU"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem title="Item" image="message" catalog="system" width="95" id="oak-ok-Qcu">
@@ -2861,13 +2865,13 @@ once the service completed</string>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="EOU-m5-U7c"/>
-        <segue reference="0VI-Es-LLL"/>
-        <segue reference="sSN-1t-ZJF"/>
+        <segue reference="HW2-DR-GRf"/>
+        <segue reference="gew-f8-3qv"/>
+        <segue reference="3ur-lM-Zvk"/>
         <segue reference="Xx0-14-tkg"/>
-        <segue reference="2Uc-2Y-RBi"/>
+        <segue reference="sA1-sR-Tb7"/>
         <segue reference="ajZ-lV-TLb"/>
-        <segue reference="AC9-H9-L9h"/>
+        <segue reference="28K-c7-SVs"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="ArtistProfile" width="121" height="50.5"/>

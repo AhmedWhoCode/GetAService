@@ -13,12 +13,15 @@ struct SellerProfileModel {
    var name:String
    var email:String
    var address:String
-   var phone:String
+    var phone:String
    var price:String
    var service:String
    var dob:Date
    var gender:String
-        
+       
+    
+    
+
 //
 //     var sellerProfileData = ["uid":uid,"imageRef":imageRef,"name":name, "email":email, "address":address, "phone":phone, "price":price, "service":service,"dob":dob,"gender":gender]
 }

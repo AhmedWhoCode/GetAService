@@ -9,6 +9,7 @@ import UIKit
 import Firebase
 import GoogleSignIn
 import FirebaseFirestore
+//import FirebaseCore
 class ViewController: UIViewController {
     
     @IBOutlet weak var phoneView: UIView!
@@ -29,9 +30,22 @@ class ViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         modifyingViews()
-        
-        
+//        enableOffline()
     }
+//    private func enableOffline() {
+//            // [START enable_offline]
+//            let settings = FirestoreSettings()
+//            settings.isPersistenceEnabled = true
+//
+//            // Any additional options
+//            // ...
+//            // Enable offline data persistence
+//            let db = Firestore.firestore()
+//            db.settings = settings
+//            // [END enable_offline]
+//        }
+    
+    
     override func viewWillAppear(_ animated: Bool) {
         //checking if the user exist or not
         if Auth.auth().currentUser != nil

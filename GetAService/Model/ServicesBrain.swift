@@ -57,6 +57,7 @@ class ServicesBrain {
     }
     
     func retrivingSubServicesFromDatabase(with category : String , completion : @escaping ([String])->()) {
+        
         db.collection("Categories").document(category).collection("SubCategories").getDocuments
         { (snapShot, error) in
             

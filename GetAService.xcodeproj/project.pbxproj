@@ -204,13 +204,13 @@
 			isa = PBXGroup;
 			children = (
 				932C89AF25DAC8E3008D72D9 /* ServicesModel.swift */,
+				93E3F8DA25E23BEC00FB74C3 /* ServicesBrain.swift */,
 				932C89BA25DAD893008D72D9 /* Artists.swift */,
 				932C89C225DAE072008D72D9 /* Notifications.swift */,
 				933D3A3625DB9E1E001A26B8 /* Chats.swift */,
 				93CE5C9425CBF257002A916E /* ButtonPressed.swift */,
 				9370176025E123B100CE177B /* SellerProfileBrain.swift */,
 				9370176525E1289C00CE177B /* SellerProfileModel.swift */,
-				93E3F8DA25E23BEC00FB74C3 /* ServicesBrain.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
