@@ -6,7 +6,12 @@
 //
 
 import UIKit
+import iOSDropDown
 import YPImagePicker
+import FirebaseAuth
+import FirebaseStorage
+import FirebaseFirestore
+import Firebase
 class CustomerProfile: UIViewController {
     @IBOutlet weak var artistImage: UIImageView!
     @IBOutlet weak var submitButton: UIButton!
@@ -18,11 +23,54 @@ class CustomerProfile: UIViewController {
     
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var genderChooser: UISegmentedControl!
+    
+    
+    //storing profile image selected by the user as data
+    var profileImageData = Data()
+    
+    var fireStorage = Storage.storage()
+    
+    let sellerProfileBrain = SellerProfileBrain()
+    //stores selected main service selected  by the user
+    var selectedService:String!
     override func viewDidLoad() {
         super.viewDidLoad()
         designingView()
         // Do any additional setup after loading the view.
     }
+    
+    @IBAction func submitPressed(_ sender: UIButton) {
+        //converting image to data , compatible for uploading in storage
+        profileImageData = (artistImage.image?.jpegData(compressionQuality: 0.8)!)!
+        // uncomment this code to upload image to database
+         sellerProfileBrain.uploadingProfileImage(with: profileImageData)
+        
+        let filePath = Auth.auth().currentUser?.uid
+        let sellerData = SellerProfileModel(uid: Auth.auth().currentUser!.uid,
+                                            imageRef: filePath!,
+                                            name: artistNameTextField.text!,
+                                            email: artistEmailTextField.text!,
+                                            address: artistAddressTextField.text!,
+                                            phone: artistNumberTextField.text!,
+                                            price: "not defined",
+                                            service: "not defined",
+                                            dob: datePicker.date,
+                                            gender: genderChooser.titleForSegment(at: genderChooser.selectedSegmentIndex)!)
+        
+        sellerProfileBrain.storingProfileDataToFireBase(with: sellerData)
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     @IBAction func imagePressed(_ sender: Any) {
         let picker = YPImagePicker()

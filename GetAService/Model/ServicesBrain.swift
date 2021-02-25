@@ -29,6 +29,9 @@ class ServicesBrain {
     
     func retrivingServicesFromDatabase() {
         
+        
+        
+        
         db.collection("Categories").getDocuments { (snapShot, error) in
             if let snap = snapShot?.documents
             {
@@ -51,7 +54,7 @@ class ServicesBrain {
 //                    self.cache.setObject(image, forKey: (snap[i].data()["ImageRef"] as? NSString)!)
 //                    self.cache.setValue(serviceName, forKey: serviceName)
                     //passing data to servicemodel class
-                    let services = ServicesModel(serviceName: serviceName, serviceImage: serviceImage)
+                    let services = ServicesModel(serviceName: serviceName, serviceImage: image)
                    // adding data to service class
                     self.servicesData.append(services)
                 }

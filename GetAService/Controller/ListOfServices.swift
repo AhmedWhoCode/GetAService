@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import Kingfisher
+
 
 class ListOfServices: UITableViewController, DataManipulation {
     
@@ -72,9 +72,11 @@ class ListOfServices: UITableViewController, DataManipulation {
         //cell?.listButton.setTitle(servicesData[indexPath.row].serviceName, for: .normal)
         cell?.serviceName.text = servicesData[indexPath.row].serviceName
 
-        let imageresource = ImageResource(downloadURL: servicesData[indexPath.row].serviceImage!, cacheKey:urlInString[indexPath.row])
-        cell?.imageForService.kf.setImage(with: imageresource)
+//        let imageresource = ImageResource(downloadURL: servicesData[indexPath.row].serviceImage!, cacheKey:urlInString[indexPath.row])
+//        cell?.imageForService.setImage(with: imageresource)
         //cell?.listButton.setBackgroundImage(servicesData[indexPath.row].serviceImage, for: .normal)
+        
+        cell?.imageForService.image = servicesData[indexPath.row].serviceImage!
 
         //registering for the buttonPressed protocol
         cell?.buttonDelegantServices = self

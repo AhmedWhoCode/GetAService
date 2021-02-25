@@ -9,6 +9,6 @@ import Foundation
 import UIKit
 struct ServicesModel {
     let serviceName :String
-    let serviceImage :URL?
+    let serviceImage :UIImage?
 
 }

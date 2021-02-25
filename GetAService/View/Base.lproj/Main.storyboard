@@ -170,9 +170,6 @@
                         <barButtonItem title="Home" width="95" id="EcX-lc-21q">
                             <imageReference key="image" image="house" catalog="system" symbolScale="large" renderingMode="original"/>
                             <color key="tintColor" red="0.2274509804" green="0.2274509804" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <segue destination="aFe-hT-rzS" kind="show" id="yce-dJ-LKW"/>
-                            </connections>
                         </barButtonItem>
                         <barButtonItem title="Item" image="message" catalog="system" landscapeImage="pencil" width="95" id="Hfe-cV-kgx">
                             <color key="tintColor" red="0.2274509804" green="0.2274509804" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -2656,6 +2653,10 @@ once the service completed</string>
                                                         <state key="normal" title="Submit">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="submitPressed:" destination="fcx-BZ-X0G" eventType="touchUpInside" id="WNC-Y8-UOd"/>
+                                                            <segue destination="3ac-E2-Gvt" kind="show" identifier="buyerProfileToServices" id="aQa-n4-JAu"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2870,8 +2871,8 @@ once the service completed</string>
         <segue reference="hu7-Cb-gSJ"/>
         <segue reference="Xx0-14-tkg"/>
         <segue reference="sA1-sR-Tb7"/>
-        <segue reference="yce-dJ-LKW"/>
-        <segue reference="28K-c7-SVs"/>
+        <segue reference="JJh-Y0-L1g"/>
+        <segue reference="aQa-n4-JAu"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="ArtistProfile" width="121" height="50.5"/>
