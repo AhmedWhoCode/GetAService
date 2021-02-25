@@ -26,8 +26,10 @@ struct Constants {
     static let cellIdentifierChatList = "chatsCell"
     static let cellNibNameChatList = "ChatsTableViewCell"
     
+    //SubServicesList
     
-    
+    static let subServicesCell = "subServicesCell"
+
     struct gifNames {
         static let inProgressGif = "inProgress.gif"
         static let greenCheckGif = "myGreenGif.gif"
@@ -35,11 +37,19 @@ struct Constants {
     
     struct seguesNames {
         
+        static let userTypeToBuyer = "userTypeToBuyer"
+        static let userTypeToSeller = "userTypeToSeller"
+        static let loginToUserType = "loginToUserType"
+        static let loginToServices = "loginToServices"
         static let servicesToArtists = "servicesToArtists"
         static let artistsToArtistsInfo = "artistsToArtistsInfo"
         static let artistInfoToConfirmBooking = "artistInfoToConfirmBooking"
         static let notificationsToOrderInfo = "notificationsToOrderInfo"
-
+        static let profileToLogin = "profileToLogin"
+        static let loginToSellerProfile = "loginToSellerProfile"
+        static let profileToSubservices = "profileToSubservices"
+        static let artistInfoToProfile = "artistInfoToProfile"
     }
     
 }
+

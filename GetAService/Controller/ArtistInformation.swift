@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class ArtistInformation: UIViewController {
 
@@ -20,6 +21,10 @@ class ArtistInformation: UIViewController {
     @IBOutlet weak var artistStatusLabel: UILabel!
 
     @IBOutlet weak var bookNowButton: UIButton!
+    
+    
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,14 +57,43 @@ class ArtistInformation: UIViewController {
          artistImage.layer.cornerRadius = artistImage.frame.size.height/2
         artistImage.contentMode = .scaleAspectFill
     }
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+       
+        if segue.identifier == Constants.seguesNames.artistInfoToProfile
+        {
+            if let destinationSegue = segue.destination as? SellerProfile
+          {
+                destinationSegue.isSourceVcArtistProfile = true
+          }
+        }
+        
     }
-    */
+    
 
+    
+    
+    
+    @IBAction func logOutPressed(_ sender: UIBarButtonItem) {
+        
+        logoutUser()
+    }
+    
+    func logoutUser() {
+        // call from any screen
+        
+        do { try Auth.auth().signOut() }
+        catch { print("already logged out") }
+        
+        navigationController?.popToRootViewController(animated: true)
+    }
+    
+    
+    @IBAction func profileClicked(_ sender: UIBarButtonItem) {
+        performSegue(withIdentifier: Constants.seguesNames.artistInfoToProfile, sender:self)
+    }
+    
 }

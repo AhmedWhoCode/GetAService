@@ -20,11 +20,20 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8fJ-Pa-rQk">
                         <rect key="frame" x="30" y="20" width="431" height="250"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ARs-K0-fwq" userLabel="NAILS">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YvS-qw-uMd">
                                 <rect key="frame" x="0.0" y="0.0" width="431" height="250"/>
-                                <color key="backgroundColor" red="0.2274509804" green="0.2274509804" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="Georgia" family="Georgia" pointSize="38"/>
-                                <state key="normal" title="  NAILS" backgroundImage="imageNail">
+                            </imageView>
+                            <label userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kSB-Oj-NJ3">
+                                <rect key="frame" x="180" y="107" width="71" height="36"/>
+                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ARs-K0-fwq" userLabel="NAILS">
+                                <rect key="frame" x="0.0" y="0.0" width="431" height="250"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="38"/>
+                                <state key="normal">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
@@ -34,11 +43,17 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="ARs-K0-fwq" secondAttribute="bottom" id="CKt-ol-1Ot"/>
+                            <constraint firstAttribute="bottom" secondItem="YvS-qw-uMd" secondAttribute="bottom" id="CL8-lv-MeX"/>
                             <constraint firstAttribute="height" constant="250" id="Dz3-qP-ORG"/>
-                            <constraint firstAttribute="trailing" secondItem="ARs-K0-fwq" secondAttribute="trailing" id="GSk-Qo-rEs"/>
-                            <constraint firstItem="ARs-K0-fwq" firstAttribute="leading" secondItem="8fJ-Pa-rQk" secondAttribute="leading" id="aPN-T2-NlU"/>
-                            <constraint firstItem="ARs-K0-fwq" firstAttribute="top" secondItem="8fJ-Pa-rQk" secondAttribute="top" id="u5W-95-3s6"/>
+                            <constraint firstAttribute="trailing" secondItem="YvS-qw-uMd" secondAttribute="trailing" id="JEk-jW-qZx"/>
+                            <constraint firstAttribute="bottom" secondItem="ARs-K0-fwq" secondAttribute="bottom" id="ZTR-Tc-oDP"/>
+                            <constraint firstItem="YvS-qw-uMd" firstAttribute="top" secondItem="8fJ-Pa-rQk" secondAttribute="top" id="iu2-D5-feS"/>
+                            <constraint firstItem="YvS-qw-uMd" firstAttribute="leading" secondItem="8fJ-Pa-rQk" secondAttribute="leading" id="jc1-Kf-y2s"/>
+                            <constraint firstItem="kSB-Oj-NJ3" firstAttribute="centerX" secondItem="8fJ-Pa-rQk" secondAttribute="centerX" id="m8Z-iP-fKF"/>
+                            <constraint firstItem="ARs-K0-fwq" firstAttribute="top" secondItem="8fJ-Pa-rQk" secondAttribute="top" id="mkD-Sd-L9M"/>
+                            <constraint firstAttribute="trailing" secondItem="ARs-K0-fwq" secondAttribute="trailing" id="pKM-yR-TLq"/>
+                            <constraint firstItem="ARs-K0-fwq" firstAttribute="leading" secondItem="8fJ-Pa-rQk" secondAttribute="leading" id="pMf-Km-WTG"/>
+                            <constraint firstItem="kSB-Oj-NJ3" firstAttribute="centerY" secondItem="8fJ-Pa-rQk" secondAttribute="centerY" id="vG1-ne-TKw"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -53,14 +68,15 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="cellView" destination="8fJ-Pa-rQk" id="O7R-TI-2Rh"/>
+                <outlet property="imageForService" destination="YvS-qw-uMd" id="6tb-mH-6bu"/>
                 <outlet property="listButton" destination="ARs-K0-fwq" id="yKE-JE-fb0"/>
                 <outlet property="mainView" destination="H2p-sc-9uM" id="GQF-6L-g3H"/>
+                <outlet property="serviceName" destination="kSB-Oj-NJ3" id="YZz-7L-9mr"/>
             </connections>
             <point key="canvasLocation" x="-355.79710144927537" y="-70.647321428571431"/>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="imageNail" width="115" height="56"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

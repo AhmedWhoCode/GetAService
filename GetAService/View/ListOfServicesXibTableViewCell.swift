@@ -15,10 +15,12 @@ import UIKit
 class ListOfServicesXibTableViewCell: UITableViewCell {
 
       // initilzaing delegant so that the other class can access the delegant
+    @IBOutlet weak var serviceName: UILabel!
     var buttonDelegantServices:ButtonPressed?
     @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var listButton: UIButton!
     @IBOutlet weak var cellView: UIView!
+    @IBOutlet weak var imageForService: UIImageView!
     //alternative way of sending data , commented out
     //var buttonClicked: (() -> Void)?
     //var services=ListOfServices()
@@ -26,10 +28,10 @@ class ListOfServicesXibTableViewCell: UITableViewCell {
         super.awakeFromNib()
         
         // Initialization code
-        cellView.layer.cornerRadius = 18
-        cellView.layer.borderWidth = 1
-        listButton.layer.cornerRadius = 18
-        listButton.layer.borderWidth = 1
+        listButton.layer.masksToBounds = true
+        listButton.layer.borderColor = UIColor.black.cgColor
+        listButton.layer.cornerRadius = 15
+        listButton.contentMode = .scaleAspectFill
         
     }
 

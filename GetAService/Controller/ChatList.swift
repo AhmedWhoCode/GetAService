@@ -8,12 +8,14 @@
 import UIKit
 
 class ChatList: UITableViewController {
+    var chats = [Chats]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         //hides back button of top navigation
         navigationItem.hidesBackButton = true
-        
+        addingDummyData()
+
         tableView.register(UINib(nibName:Constants.cellNibNameChatList, bundle: nil),forCellReuseIdentifier:Constants.cellIdentifierChatList)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -31,16 +33,18 @@ class ChatList: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 8
+        return chats.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier:Constants.cellIdentifierChatList, for: indexPath)
-
+        let cell = tableView.dequeueReusableCell(withIdentifier:Constants.cellIdentifierChatList, for: indexPath) as? ChatsTableViewCell
+        cell?.chatImage.image = chats[indexPath.row].chatImage
+        cell?.chatName.text = chats[indexPath.row].chatName
+        cell?.chatCountry.text = chats[indexPath.row].chatCountry
         // Configure the cell...
 
-        return cell
+        return cell!
     }
     
 
@@ -88,5 +92,20 @@ class ChatList: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    func addingDummyData() {
+        let c1 = Chats(chatImage:UIImage.init(named: "male photo")!, chatName: "John", chatCountry: "USA")
+        let c2 = Chats(chatImage:UIImage.init(named: "male photo")!, chatName: "anna", chatCountry: "Maxico")
+        let c3 = Chats(chatImage:UIImage.init(named: "male photo")!, chatName: "hugh Jackman", chatCountry: "Newzeland")
+        let c4 = Chats(chatImage:UIImage.init(named: "male photo")!, chatName: "tom lythan", chatCountry: "Brazil")
+        let c5 = Chats(chatImage:UIImage.init(named: "male photo")!, chatName: "John", chatCountry: "USA")
+
+
+        chats.append(c1)
+        chats.append(c2)
+        chats.append(c3)
+        chats.append(c4)
+        chats.append(c5)
+
+    }
 
 }
