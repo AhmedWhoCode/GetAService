@@ -16,8 +16,9 @@ protocol DataUploaded {
     func didsendData()
 }
 class SellerProfileBrain {
-    var sellerProfileData=[String:Any]()
+
     
+    var sellerProfileData=[String:Any]()
     var dataUplodedDelegant:DataUploaded?
     
     let db = Firestore.firestore()

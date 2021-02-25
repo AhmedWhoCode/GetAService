@@ -6,11 +6,12 @@
 //
 
 import UIKit
-
+import Kingfisher
 
 class ListOfServices: UITableViewController, DataManipulation {
     
     
+    var urlInString = [String]()
     var services = [ServicesModel]()
     var serviceBrain = ServicesBrain()
     var servicesData  = [ServicesModel]()
@@ -24,7 +25,7 @@ class ListOfServices: UITableViewController, DataManipulation {
 //        enableOffline()
         //registering table view
         tableView.register(UINib(nibName:Constants.cellNibNameServicesList, bundle: nil),forCellReuseIdentifier:Constants.cellIdentifierServicesList)
-        
+
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
@@ -32,12 +33,11 @@ class ListOfServices: UITableViewController, DataManipulation {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     ///MARK: - will be called when firebase returns data 
-    func didReceiveData(with data: [ServicesModel]) {
+    func didReceiveData(with data: [ServicesModel], urlString: [String]) {
+        urlInString = urlString
         self.servicesData = data
         tableView.reloadData()
-        
     }
-    
     
     func modifyingUi()  {
         
@@ -69,9 +69,13 @@ class ListOfServices: UITableViewController, DataManipulation {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier:Constants.cellIdentifierServicesList, for: indexPath) as? ListOfServicesXibTableViewCell
         
-        cell?.listButton.setTitle(servicesData[indexPath.row].serviceName, for: .normal)
-        cell?.listButton.setBackgroundImage(servicesData[indexPath.row].serviceImage, for: .normal)
-        
+        //cell?.listButton.setTitle(servicesData[indexPath.row].serviceName, for: .normal)
+        cell?.serviceName.text = servicesData[indexPath.row].serviceName
+
+        let imageresource = ImageResource(downloadURL: servicesData[indexPath.row].serviceImage!, cacheKey:urlInString[indexPath.row])
+        cell?.imageForService.kf.setImage(with: imageresource)
+        //cell?.listButton.setBackgroundImage(servicesData[indexPath.row].serviceImage, for: .normal)
+
         //registering for the buttonPressed protocol
         cell?.buttonDelegantServices = self
         
@@ -82,6 +86,7 @@ class ListOfServices: UITableViewController, DataManipulation {
         //
         //
         //        }
+      
         
         return cell!
     }

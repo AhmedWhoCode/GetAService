@@ -15,10 +15,12 @@ import UIKit
 class ListOfServicesXibTableViewCell: UITableViewCell {
 
       // initilzaing delegant so that the other class can access the delegant
+    @IBOutlet weak var serviceName: UILabel!
     var buttonDelegantServices:ButtonPressed?
     @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var listButton: UIButton!
     @IBOutlet weak var cellView: UIView!
+    @IBOutlet weak var imageForService: UIImageView!
     //alternative way of sending data , commented out
     //var buttonClicked: (() -> Void)?
     //var services=ListOfServices()
