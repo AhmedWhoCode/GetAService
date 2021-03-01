@@ -28,9 +28,13 @@ class ArtistInformation: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        navigationController?.hidesBottomBarWhenPushed = false
+
         designingViews()
         // Do any additional setup after loading the view.
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.hidesBottomBarWhenPushed = false
     }
     
     func designingViews(){

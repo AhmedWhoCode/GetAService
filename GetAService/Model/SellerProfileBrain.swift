@@ -18,19 +18,18 @@ protocol DataUploadedSeller
 }
 
 class SellerProfileBrain {
-
+    
     
     var sellerProfileData=[String:Any]()
     var dataUplodedDelegant:DataUploadedSeller?
-    
+    var userId = Auth.auth().currentUser!.uid
     let db = Firestore.firestore()
     var fireStorage = Storage.storage()
     
     func retrivingProfileData(completion : @escaping (SellerProfileModel) -> ()) {
         
-        // db.collection("UserProfileData").document("Seller").collection("AllSellers").document(userid)
         
-        db.collection("UserProfileData").document("Seller").collection("AllSellers").document(Auth.auth().currentUser!.uid).addSnapshotListener
+        db.collection("UserProfileData").document("Seller").collection("AllSellers").document(userId).addSnapshotListener
         { (snapShot, error) in
             
             if let snap = snapShot?.data()
@@ -96,8 +95,7 @@ class SellerProfileBrain {
     func uploadingProfileImage(with profileImage:Data,  completion :@escaping (URL)->() ){
         
         //filePath or unique name of an image , also used a name
-        let filePath = Auth.auth().currentUser!.uid
-        let storageRef = self.fireStorage.reference().child("Images/profile_images").child(filePath)
+        let storageRef = self.fireStorage.reference().child("Images/profile_images").child(userId)
         // meta data such as format of image
         let metaData = StorageMetadata()
         metaData.contentType = "image/jpeg"
@@ -124,8 +122,35 @@ class SellerProfileBrain {
         
         
     }
-}
     
+    func storeSubServivesToFirebase(with subServices:[String] ,  completion :@escaping () -> ()) {
+        
+        
+        db.collection("UserProfileData").document("Seller").collection("AllSellers").document(userId).setData(["SubServices" : subServices], merge: true) { (error) in
+            if let e = error
+            {
+                print(e)
+            }
+            else
+            {
+                completion()
+            }
+        }
+        
+//        db.collection("UserProfileData").document("Seller").collection("AllSellers").document(userId).setValue(["SubServices" : subServices]) { (error) in
+//            
+//            if let e = error
+//            {
+//                print(e)
+//            }
+//            else
+//            {
+//                completion()
+//            }
+//        }
+    }
+}
+
 
 
 //var sellerProfileModel = SellerProfileModel(uid: snap["uid"],imageRef: snap["imageRef"],name:snap["name"],email:snap["email"],address: snap["address"],phone: snap["phone"],price:snap["price"],service: snap["service"],dob: snap["dob"],gender: snap["gender"])

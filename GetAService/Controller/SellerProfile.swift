@@ -59,6 +59,8 @@ class SellerProfile: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.hidesBottomBarWhenPushed = true
+        submitButton.isEnabled = true
+
     }
     
     @IBAction func saveBarButton(_ sender: UIBarButtonItem) {
