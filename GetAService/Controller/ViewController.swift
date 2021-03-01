@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var phoneView: UIView!
     @IBOutlet weak var googleVIew: GIDSignInButton!
+    @IBOutlet weak var facebookView: UIView!
     
     
     let db = Firestore.firestore()
@@ -27,40 +28,41 @@ class ViewController: UIViewController {
         
         //setting app delegant as the class which will be notified when the auth is completed
         GIDSignIn.sharedInstance().clientID = "905977003700-9g7q7lqs4q2163o6pjrhmtg4tmutoflo.apps.googleusercontent.com"
-        
         // Do any additional setup after loading the view.
         modifyingViews()
-//        enableOffline()
     }
-//    private func enableOffline() {
-//            // [START enable_offline]
-//            let settings = FirestoreSettings()
-//            settings.isPersistenceEnabled = true
-//
-//            // Any additional options
-//            // ...
-//            // Enable offline data persistence
-//            let db = Firestore.firestore()
-//            db.settings = settings
-//            // [END enable_offline]
-//        }
-    
-    
+
     override func viewWillAppear(_ animated: Bool) {
         //checking if the user exist or not
         if Auth.auth().currentUser != nil
         {
             checkingUserType()
-//            self.performSegue(withIdentifier: Constants.seguesNames.loginToServices, sender:self)
         }
         
         
     }
-    
+ 
     func modifyingViews()  {
         ///MARK: - disabling bottom toolbar
         self.navigationController?.isToolbarHidden = false
         self.navigationController?.isNavigationBarHidden = false
+        
+        
+        facebookView.layer.shadowColor = UIColor.gray.cgColor
+        facebookView.layer.shadowOpacity = 0.5
+        facebookView.layer.shadowOffset = CGSize.zero
+        facebookView.layer.shadowRadius = 7
+        
+        phoneView.layer.shadowColor = UIColor.gray.cgColor
+        phoneView.layer.shadowOpacity = 0.5
+        phoneView.layer.shadowOffset = CGSize.zero
+        phoneView.layer.shadowRadius = 7
+        
+        googleVIew.layer.shadowColor = UIColor.gray.cgColor
+        googleVIew.layer.shadowOpacity = 0.5
+        googleVIew.layer.shadowOffset = CGSize.zero
+        googleVIew.layer.shadowRadius = 7
+    
     }
     
     

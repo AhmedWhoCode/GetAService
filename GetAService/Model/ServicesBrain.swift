@@ -13,11 +13,11 @@ import Firebase
 
 // defining a protocol
 protocol DataManipulation {
-    func didReceiveData(with data:[ServicesModel], urlString : [String])
+    func didReceiveData(with data:[ServicesModel])
 }
 
 class ServicesBrain {
-    let cache = NSCache<NSString , UIImage>()
+    static let cache = NSCache<NSString , UIImage>()
 
     var urlString = [String]()
     var dataManipulationDelegant:DataManipulation?
@@ -30,8 +30,6 @@ class ServicesBrain {
     func retrivingServicesFromDatabase() {
         
         
-        
-        
         db.collection("Categories").getDocuments { (snapShot, error) in
             if let snap = snapShot?.documents
             {
@@ -41,35 +39,19 @@ class ServicesBrain {
                 {
                     //getting service name
                     let serviceName = snap[i].documentID
-                    
-                    self.urlString.append((snap[i].data()["ImageRef"] as? String)!)
-                 
-                    //getting   image stored as a imagref in firestore and converting to url
-                    let serviceImage = URL(string: snap[i].data()["ImageRef"] as! String)!
-                    // converting url to data
-                    let data = try? Data(contentsOf: serviceImage)
-                    // converting data into the ui image
-                    let image: UIImage = UIImage(data: data!)!
-                
-//                    self.cache.setObject(image, forKey: (snap[i].data()["ImageRef"] as? NSString)!)
-//                    self.cache.setValue(serviceName, forKey: serviceName)
+                    let serviceImage = snap[i].data()["ImageRef"]
                     //passing data to servicemodel class
-                    let services = ServicesModel(serviceName: serviceName, serviceImage: image)
+                    let services = ServicesModel(serviceName: serviceName, serviceImage: serviceImage as! String)
                    // adding data to service class
                     self.servicesData.append(services)
                 }
                  // calling this method when the data is added to array and sending it to services viewController
-                self.dataManipulationDelegant?.didReceiveData(with: self.servicesData,urlString: self.urlString)
+                self.dataManipulationDelegant?.didReceiveData(with: self.servicesData)
             }
             
         }
     }
-    
-    
-//    func gettingCacheData() {
-//        cache.object(forKey: )
-//    }
-    
+
     
     func retrivingSubServicesFromDatabase(with category : String , completion : @escaping ([String])->()) {
         

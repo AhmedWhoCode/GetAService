@@ -28,12 +28,13 @@ class ArtistInformation: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         designingViews()
         // Do any additional setup after loading the view.
     }
     
     func designingViews(){
-        navigationItem.hidesBackButton = true  
+        navigationItem.hidesBackButton = true
         ///MARK: - designing views
         countryView.layer.cornerRadius = 15
         countryView.layer.borderWidth = 1
@@ -47,9 +48,9 @@ class ArtistInformation: UIViewController {
         statusView.layer.borderWidth = 1
         statusView.layer.borderColor = UIColor.black.cgColor
         
-        bookNowButton.layer.cornerRadius = 20
-        bookNowButton.layer.borderWidth = 1
-        bookNowButton.layer.borderColor = UIColor.black.cgColor
+//        bookNowButton.layer.cornerRadius = 20
+//        bookNowButton.layer.borderWidth = 1
+//        bookNowButton.layer.borderColor = UIColor.black.cgColor
         
         
         artistImage.layer.masksToBounds = true
@@ -77,19 +78,7 @@ class ArtistInformation: UIViewController {
     
     
     
-    @IBAction func logOutPressed(_ sender: UIBarButtonItem) {
-        
-        logoutUser()
-    }
     
-    func logoutUser() {
-        // call from any screen
-        
-        do { try Auth.auth().signOut() }
-        catch { print("already logged out") }
-        
-        navigationController?.popToRootViewController(animated: true)
-    }
     
     
     @IBAction func profileClicked(_ sender: UIBarButtonItem) {

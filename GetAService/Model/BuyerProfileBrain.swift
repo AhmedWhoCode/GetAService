@@ -12,25 +12,23 @@ import FirebaseFirestore
 import Firebase
 
 // defining a protocol
-protocol DataUploadedSeller
-{
+protocol DataUploadedBuyer {
     func didsendData()
 }
 
-class SellerProfileBrain {
 
+class BuyerProfileBrain {
     
-    var sellerProfileData=[String:Any]()
-    var dataUplodedDelegant:DataUploadedSeller?
+    
+    var buyerProfileData=[String:Any]()
+    var dataUplodedDelegant:DataUploadedBuyer?
     
     let db = Firestore.firestore()
     var fireStorage = Storage.storage()
     
-    func retrivingProfileData(completion : @escaping (SellerProfileModel) -> ()) {
+    func retrivingProfileData(completion : @escaping (BuyerProfileModel) -> ()) {
         
-        // db.collection("UserProfileData").document("Seller").collection("AllSellers").document(userid)
-        
-        db.collection("UserProfileData").document("Seller").collection("AllSellers").document(Auth.auth().currentUser!.uid).addSnapshotListener
+        db.collection("UserProfileData").document(Auth.auth().currentUser!.uid).addSnapshotListener
         { (snapShot, error) in
             
             if let snap = snapShot?.data()
@@ -42,44 +40,39 @@ class SellerProfileBrain {
                 print("debuk1\(imageRef1)")
                 let name1 = snap["name"]! as! String
                 let email1 = snap["email"]! as! String
-                print("email\(email1)")
                 let address1 = snap["address"]! as! String
                 let phone1 = snap["phone"]! as! String
-                let price1 = snap["price"]! as! String
-                let service1 = snap["service"]! as! String
                 let gender1 = snap["gender"]! as! String
                 let dob = snap["dob"]! as! Timestamp
                 let dob1 = dob.dateValue()
                 let uid1 = snap["uid"]! as! String
                 
-                let sellerProfileModel = SellerProfileModel(uid:uid1, imageRef: imageRef1 , name: name1, email:email1, address: address1, phone: phone1, price: price1, service: service1, dob:dob1, gender: gender1)
+                let buyerProfileModel = BuyerProfileModel(uid:uid1, imageRef: imageRef1 , name: name1, email:email1, address: address1, phone: phone1, dob:dob1, gender: gender1)
                 
-                completion(sellerProfileModel)
+                completion(buyerProfileModel)
             }
             
         }
         
     }
     
-    func storingProfileDataToFireBase(with sellerProfileModel:SellerProfileModel)
+    func storingProfileDataToFireBase(with buyerProfileModel:BuyerProfileModel)
     {
         
         
-        sellerProfileData["uid"] = sellerProfileModel.uid
-        sellerProfileData["imageRef"] = sellerProfileModel.imageRef
-        sellerProfileData["name"] = sellerProfileModel.name
-        sellerProfileData["email"] = sellerProfileModel.email
-        sellerProfileData["address"] = sellerProfileModel.address
-        sellerProfileData["phone"] = sellerProfileModel.phone
-        sellerProfileData["price"] = sellerProfileModel.price
-        sellerProfileData["service"] = sellerProfileModel.service
-        sellerProfileData["dob"] = sellerProfileModel.dob
-        sellerProfileData["gender"] = sellerProfileModel.gender
+        buyerProfileData["uid"] = buyerProfileModel.uid
+        buyerProfileData["imageRef"] = buyerProfileModel.imageRef
+        buyerProfileData["name"] = buyerProfileModel.name
+        buyerProfileData["email"] = buyerProfileModel.email
+        buyerProfileData["address"] = buyerProfileModel.address
+        buyerProfileData["phone"] = buyerProfileModel.phone
+        buyerProfileData["dob"] = buyerProfileModel.dob
+        buyerProfileData["gender"] = buyerProfileModel.gender
         
         
         if let userid = Auth.auth().currentUser?.uid {
             
-            db.collection("UserProfileData").document("Seller").collection("AllSellers").document(userid).setData(sellerProfileData) { (error) in
+            db.collection("UserProfileData").document("Buyer").collection("AllBuyers").document(userid).setData(buyerProfileData) { (error) in
                 if let error = error {
                     print("Error writing document: \(error)")
                 } else {
@@ -124,9 +117,11 @@ class SellerProfileBrain {
         
         
     }
-}
     
-
+    
+    
+    
+}
 
 //var sellerProfileModel = SellerProfileModel(uid: snap["uid"],imageRef: snap["imageRef"],name:snap["name"],email:snap["email"],address: snap["address"],phone: snap["phone"],price:snap["price"],service: snap["service"],dob: snap["dob"],gender: snap["gender"])
 //
@@ -140,4 +135,4 @@ class SellerProfileBrain {
 //self.sellerProfileModel?.service = snap["service"]! as! String
 //self.sellerProfileModel?.gender = snap["gender"]! as! String
 //self.sellerProfileModel?.dob = snap["dob"]! as! Date
-//self.sellerProfileModel?.uid = snap["uid"]! as! String
+//self.sellerProfileModel?.uid = snap["uid"]! as! Strin

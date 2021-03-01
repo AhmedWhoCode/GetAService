@@ -13,7 +13,7 @@ class ChatList: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //hides back button of top navigation
-        navigationItem.hidesBackButton = true
+        navigationItem.hidesBackButton = false
         addingDummyData()
 
         tableView.register(UINib(nibName:Constants.cellNibNameChatList, bundle: nil),forCellReuseIdentifier:Constants.cellIdentifierChatList)

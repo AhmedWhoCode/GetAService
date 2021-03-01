@@ -6,12 +6,11 @@
 //
 
 import UIKit
-
+import Firebase
 
 class ListOfServices: UITableViewController, DataManipulation {
     
     
-    var urlInString = [String]()
     var services = [ServicesModel]()
     var serviceBrain = ServicesBrain()
     var servicesData  = [ServicesModel]()
@@ -22,10 +21,10 @@ class ListOfServices: UITableViewController, DataManipulation {
         //calling method to retrieve data
         serviceBrain.retrivingServicesFromDatabase()
         modifyingUi()
-//        enableOffline()
+        //        enableOffline()
         //registering table view
         tableView.register(UINib(nibName:Constants.cellNibNameServicesList, bundle: nil),forCellReuseIdentifier:Constants.cellIdentifierServicesList)
-
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
@@ -33,8 +32,7 @@ class ListOfServices: UITableViewController, DataManipulation {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     ///MARK: - will be called when firebase returns data 
-    func didReceiveData(with data: [ServicesModel], urlString: [String]) {
-        urlInString = urlString
+    func didReceiveData(with data: [ServicesModel]) {
         self.servicesData = data
         tableView.reloadData()
     }
@@ -71,27 +69,39 @@ class ListOfServices: UITableViewController, DataManipulation {
         
         //cell?.listButton.setTitle(servicesData[indexPath.row].serviceName, for: .normal)
         cell?.serviceName.text = servicesData[indexPath.row].serviceName
-
-//        let imageresource = ImageResource(downloadURL: servicesData[indexPath.row].serviceImage!, cacheKey:urlInString[indexPath.row])
-//        cell?.imageForService.setImage(with: imageresource)
-        //cell?.listButton.setBackgroundImage(servicesData[indexPath.row].serviceImage, for: .normal)
         
-        cell?.imageForService.image = servicesData[indexPath.row].serviceImage!
-
+//        let serviceName = servicesData[indexPath.row].serviceName
+        let servicesImagesRef = servicesData[indexPath.row].serviceImage
+        cell?.imageForService.image = UIImage(named: "servicesimageplaceholder")
+        
+        
+        
+        if let imageRef  = servicesImagesRef{
+            
+            cell?.imageForService.loadCacheImage(with: imageRef)
+            
+        }
+        
+        
         //registering for the buttonPressed protocol
         cell?.buttonDelegantServices = self
-        
-        //        cell?.buttonClicked =
-        //        {
-        //            print(indexPath)
-        //            self.performSegue(withIdentifier: Constants.seguesNames.servicesToArtists, sender: nil)
-        //
-        //
-        //        }
-      
-        
         return cell!
+        
     }
+    @IBAction func logOutPressed(_ sender: UIBarButtonItem) {
+        
+        logoutUser()
+    }
+    
+    func logoutUser() {
+        // call from any screen
+        
+        do { try Auth.auth().signOut() }
+        catch { print("already logged out") }
+        
+        navigationController?.popToRootViewController(animated: true)
+    }
+    
     
     
 }

@@ -12,7 +12,7 @@ class ArtistLists: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.hidesBackButton = true
+        navigationItem.hidesBackButton = false
         
         addingDummyData()
         

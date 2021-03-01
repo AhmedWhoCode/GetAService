@@ -7,6 +7,15 @@
 
 import Foundation
 
-//struct BuyerProfileModel {
-//    <#fields#>
-//}
+struct BuyerProfileModel {
+    var uid:String
+    var imageRef:String
+    var name:String
+    var email:String
+    var address:String
+     var phone:String
+    var dob:Date
+    var gender:String
+        
+     
+}

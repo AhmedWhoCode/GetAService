@@ -30,7 +30,7 @@ class CustomerProfile: UIViewController {
     
     var fireStorage = Storage.storage()
     
-    let sellerProfileBrain = SellerProfileBrain()
+    let buyerProfileBrain = BuyerProfileBrain()
     //stores selected main service selected  by the user
     var selectedService:String!
     override func viewDidLoad() {
@@ -43,21 +43,21 @@ class CustomerProfile: UIViewController {
         //converting image to data , compatible for uploading in storage
         profileImageData = (artistImage.image?.jpegData(compressionQuality: 0.8)!)!
         // uncomment this code to upload image to database
-         sellerProfileBrain.uploadingProfileImage(with: profileImageData)
+        buyerProfileBrain.uploadingProfileImage(with: profileImageData) { (url) in
+            //let filePath = Auth.auth().currentUser?.uid
+            let buyersData = BuyerProfileModel(uid: Auth.auth().currentUser!.uid,
+                                               imageRef: url.absoluteString,
+                                               name: self.artistNameTextField.text!,
+                                               email: self.artistEmailTextField.text!,
+                                               address: self.artistAddressTextField.text!,
+                                               phone: self.artistNumberTextField.text!,
+                                               dob: self.datePicker.date,
+                                               gender: self.genderChooser.titleForSegment(at: self.genderChooser.selectedSegmentIndex)!)
+            
+            self.buyerProfileBrain.storingProfileDataToFireBase(with: buyersData)
+        }
         
-        let filePath = Auth.auth().currentUser?.uid
-        let sellerData = SellerProfileModel(uid: Auth.auth().currentUser!.uid,
-                                            imageRef: filePath!,
-                                            name: artistNameTextField.text!,
-                                            email: artistEmailTextField.text!,
-                                            address: artistAddressTextField.text!,
-                                            phone: artistNumberTextField.text!,
-                                            price: "not defined",
-                                            service: "not defined",
-                                            dob: datePicker.date,
-                                            gender: genderChooser.titleForSegment(at: genderChooser.selectedSegmentIndex)!)
-        
-        sellerProfileBrain.storingProfileDataToFireBase(with: sellerData)
+     
         
     }
     
@@ -79,9 +79,9 @@ class CustomerProfile: UIViewController {
             if let photo = items.singlePhoto {
                 print(photo.fromCamera) // Image source (camera or library)
                 self.artistImage.image=photo.image // Final image selected by the user
-                print(photo.originalImage) // original image selected by the user, unfiltered
-                print(photo.modifiedImage!) // Transformed image, can be nil
-                print(photo.exifMeta!) // Print exif meta data of original image.
+                //print(photo.originalImage) // original image selected by the user, unfiltered
+                //print(photo.modifiedImage!) // Transformed image, can be nil
+                //print(photo.exifMeta!) // Print exif meta data of original image.
             }
             picker.dismiss(animated: true, completion: nil)
         }
@@ -91,7 +91,7 @@ class CustomerProfile: UIViewController {
     
     
     func designingView() {
-        navigationItem.hidesBackButton = true
+        navigationItem.hidesBackButton = false
    
 
         ///MARK: - designing views

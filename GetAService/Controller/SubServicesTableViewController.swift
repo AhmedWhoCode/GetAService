@@ -8,7 +8,7 @@
 import UIKit
 
 class SubServicesTableViewController: UITableViewController {
-    @IBOutlet weak var submitButton: UIButton!
+    @IBOutlet weak var saveBarButton: UIBarButtonItem!
     //all sub services
     var subServices = [String]()
     //selected subservices
@@ -22,7 +22,8 @@ class SubServicesTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        navigationItem.hidesBackButton = false
+
         showData()
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: Constants.subServicesCell)
@@ -33,13 +34,49 @@ class SubServicesTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
+    @IBAction func savePressed(_ sender: UIBarButtonItem) {
+//        let alert = UIAlertController(title: "Alert", message: "Message", preferredStyle: .alert)
+//        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+//              switch action.style{
+//              case .default:
+//                    print("default")
+//
+//              case .cancel:
+//                    print("cancel")
+//
+//              case .destructive:
+//                    print("destructive")
+//
+//
+//        }}))
+//        self.present(alert, animated: true, completion: nil)
+//
+//        self.performSegue(withIdentifier:Constants.seguesNames.subServicesToDashboard , sender: SubServicesTableViewController.self)
+        showToast(controller: self, message: "Data saved", seconds: 1)
+    }
+    
+    
+    func showToast(controller: UIViewController, message : String, seconds: Double) {
+        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        alert.view.backgroundColor = UIColor.green
+        alert.view.alpha = 0.6
+        alert.view.layer.cornerRadius = 15
+
+        controller.present(alert, animated: true)
+
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + seconds) {
+            alert.dismiss(animated: true)
+           
+        }
+        
+    }
     
     
     func showData() {
         
-        submitButton.layer.cornerRadius = 20
-        submitButton.layer.borderWidth = 1
-        submitButton.layer.borderColor = UIColor.black.cgColor
+//        submitButton.layer.cornerRadius = 20
+//        submitButton.layer.borderWidth = 1
+//        submitButton.layer.borderColor = UIColor.black.cgColor
         
         //calling function to retrieve data also passing a closure to get the response
         servicesBrain.retrivingSubServicesFromDatabase(with: mainService) { (data) in
@@ -96,12 +133,17 @@ class SubServicesTableViewController: UITableViewController {
         print(selectedServices)
         
     }
-    
-    @IBAction func submitPressed(_ sender: UIButton) {
-        if selectedServices.count > 0
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+       
+        if segue.identifier == Constants.seguesNames.subServicesToProfile
         {
-            //addSubser
+            if let destinationSegue = segue.destination as? SellerProfile
+          {
+                destinationSegue.isSourceVcArtistProfile = true
+          }
         }
+        
+    }
         
     }
     /*
@@ -139,14 +181,11 @@ class SubServicesTableViewController: UITableViewController {
      }
      */
     
-    /*
+    
      // MARK: - Navigation
      
      // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
+
+     
     
-}
+

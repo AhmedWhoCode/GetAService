@@ -14,6 +14,7 @@ import FirebaseFirestore
 import Firebase
 class SellerProfile: UIViewController {
     
+    @IBOutlet weak var saveBarButton: UIBarButtonItem!
     @IBOutlet weak var artistImage: UIImageView!
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var artistNameTextField: UITextField!
@@ -40,6 +41,8 @@ class SellerProfile: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.hidesBottomBarWhenPushed = true
+        submitButton.isEnabled = true
         sellerProfileBrain.dataUplodedDelegant = self
         
         if isSourceVcArtistProfile
@@ -54,18 +57,23 @@ class SellerProfile: UIViewController {
         }
         // Do any additional setup after loading the view.
     }
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.hidesBottomBarWhenPushed = true
+    }
+    
+    @IBAction func saveBarButton(_ sender: UIBarButtonItem) {
+        
+     
+    }
     
     @IBAction func imagePressed(_ sender: Any) {
         let picker = YPImagePicker()
         present(picker, animated: true, completion: nil)
         picker.didFinishPicking { [unowned picker] items, _ in
             if let photo = items.singlePhoto {
-                // print("Image\(photo.fromCamera)")// Image source (camera or library)
-                // print("immg\(self.profileImage)")
+           
                 self.artistImage.image=photo.image // Final image selected by the user
-                // print(photo.originalImage) // original image selected by the user, unfiltered
-                //print(photo.modifiedImage!) // Transformed image, can be nil
-                // print(photo.exifMeta!) // Print exif meta data of original image.
+             
             }
             picker.dismiss(animated: true, completion: nil)
         }
@@ -89,24 +97,28 @@ class SellerProfile: UIViewController {
     }
     
     @IBAction func submitPressed(_ sender: UIButton) {
+        
+        submitButton.isEnabled = false
         //converting image to data , compatible for uploading in storage
         profileImageData = (artistImage.image?.jpegData(compressionQuality: 0.8)!)!
         // uncomment this code to upload image to database
-         sellerProfileBrain.uploadingProfileImage(with: profileImageData)
+        sellerProfileBrain.uploadingProfileImage(with: profileImageData) { (url) in
+            //let filePath = Auth.auth().currentUser?.uid
+            let sellerData = SellerProfileModel(uid: Auth.auth().currentUser!.uid,
+                                                imageRef: url.absoluteString,
+                                                name: self.artistNameTextField.text!,
+                                                email: self.artistEmailTextField.text!,
+                                                address: self.artistAddressTextField.text!,
+                                                phone: self.artistNumberTextField.text!,
+                                                price: self.artistPriceTextField.text!,
+                                                service: self.selectedService,
+                                                dob: self.datePicker.date,
+                                                gender: self.genderChooser.titleForSegment(at: self.genderChooser.selectedSegmentIndex)!)
+            
+            self.sellerProfileBrain.storingProfileDataToFireBase(with: sellerData)
+        }
         
-        let filePath = Auth.auth().currentUser?.uid
-        let sellerData = SellerProfileModel(uid: Auth.auth().currentUser!.uid,
-                                            imageRef: filePath!,
-                                            name: artistNameTextField.text!,
-                                            email: artistEmailTextField.text!,
-                                            address: artistAddressTextField.text!,
-                                            phone: artistNumberTextField.text!,
-                                            price: artistPriceTextField.text!,
-                                            service: selectedService,
-                                            dob: datePicker.date,
-                                            gender: genderChooser.titleForSegment(at: genderChooser.selectedSegmentIndex)!)
         
-        sellerProfileBrain.storingProfileDataToFireBase(with: sellerData)
         
     }
     
@@ -117,31 +129,31 @@ class SellerProfile: UIViewController {
         sellerProfileBrain.retrivingProfileData { (data) in
             
             self.artistNameTextField.text = data.name
-        
+            self.artistEmailTextField.text = data.email
+            self.artistAddressTextField.text = data.address
+            self.artistNumberTextField.text = data.phone
+            self.artistPriceTextField.text = data.price
+            self.selectedService = data.service
+            self.artistServicesDropDown.selectedIndex = self.artistServicesDropDown.optionArray.firstIndex(of: self.selectedService)!
+            self.artistServicesDropDown.text = self.selectedService
+            self.datePicker.setDate(data.dob, animated: true)
             
-            self.fireStorage.reference().child("Images/profile_images").child(data.imageRef).getData(maxSize: 1 * 1024 * 1024) { (data1, error) in
+            if data.gender == "Male"
+            {
+                self.genderChooser.selectedSegmentIndex = 0
+            }
+            else
+            {
+                self.genderChooser.selectedSegmentIndex = 2
+                
+            }
+            
+            self.fireStorage.reference().child("Images/profile_images").child(Auth.auth().currentUser!.uid).getData(maxSize: 1 * 1024 * 1024) { (data1, error) in
                 if let data1 = data1
                 {
                     print(data1)
                     self.artistImage.image = UIImage(data: data1)
-                    self.artistEmailTextField.text = data.email
-                    self.artistAddressTextField.text = data.address
-                    self.artistNumberTextField.text = data.phone
-                    self.artistPriceTextField.text = data.price
-                    self.selectedService = data.service
-                    self.artistServicesDropDown.selectedIndex = self.artistServicesDropDown.optionArray.firstIndex(of: self.selectedService)!
-                    self.artistServicesDropDown.text = self.selectedService
-                    self.datePicker.setDate(data.dob, animated: true)
-                    
-                    if data.gender == "Male"
-                    {
-                        self.genderChooser.selectedSegmentIndex = 0
-                    }
-                    else
-                    {
-                        self.genderChooser.selectedSegmentIndex = 2
-                        
-                    }
+             
                 }
                 
             }
@@ -150,8 +162,14 @@ class SellerProfile: UIViewController {
         
     }
     
+  
+    
+    
     func designingView() {
-        navigationItem.hidesBackButton = true
+        
+//        saveBarButton.isEnabled = false
+//        saveBarButton.title = ""
+    navigationItem.hidesBackButton = false
         //providing dummy  data to dro down
         artistServicesDropDown.optionArray = ["Face treatments"
                                               ,"Hair removel"
@@ -252,7 +270,7 @@ class SellerProfile: UIViewController {
     }
 }
 
-extension SellerProfile : DataUploaded
+extension SellerProfile : DataUploadedSeller
 {
     func didsendData() {
         performSegue(withIdentifier: Constants.seguesNames.profileToSubservices, sender:self)

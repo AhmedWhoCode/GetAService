@@ -12,7 +12,7 @@ class NotificationsList: UITableViewController {
     var notifications = [Notifications]()
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.hidesBackButton = true
+        navigationItem.hidesBackButton = false
          addingDummyData()
         
         tableView.register(UINib(nibName:Constants.cellNibNameNotification, bundle: nil),forCellReuseIdentifier:Constants.cellIdentifierNotification)
