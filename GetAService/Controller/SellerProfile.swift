@@ -14,6 +14,8 @@ import FirebaseFirestore
 import Firebase
 class SellerProfile: UIViewController {
     
+    @IBOutlet weak var sellerCountryTextField: UITextField!
+    @IBOutlet weak var sellerDescriptionTextVIew: UITextView!
     @IBOutlet weak var saveBarButton: UIBarButtonItem!
     @IBOutlet weak var artistImage: UIImageView!
     @IBOutlet weak var submitButton: UIButton!
@@ -41,7 +43,7 @@ class SellerProfile: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.hidesBottomBarWhenPushed = true
+        hidesBottomBarWhenPushed = true
         submitButton.isEnabled = true
         sellerProfileBrain.dataUplodedDelegant = self
         
@@ -63,10 +65,7 @@ class SellerProfile: UIViewController {
 
     }
     
-    @IBAction func saveBarButton(_ sender: UIBarButtonItem) {
-        
-     
-    }
+   
     
     @IBAction func imagePressed(_ sender: Any) {
         let picker = YPImagePicker()
@@ -114,6 +113,8 @@ class SellerProfile: UIViewController {
                                                 phone: self.artistNumberTextField.text!,
                                                 price: self.artistPriceTextField.text!,
                                                 service: self.selectedService,
+                                                country: self.sellerCountryTextField.text!,
+                                                description: self.sellerDescriptionTextVIew.text! ,
                                                 dob: self.datePicker.date,
                                                 gender: self.genderChooser.titleForSegment(at: self.genderChooser.selectedSegmentIndex)!)
             
@@ -125,10 +126,14 @@ class SellerProfile: UIViewController {
     }
     
   
+    @IBAction func saveBarButton(_ sender: UIBarButtonItem) {
+        hidesBottomBarWhenPushed=false
+        performSegue(withIdentifier: Constants.seguesNames.sellerProfileToDashboard, sender: self)
+    }
     
     
     func retriveData(){
-        sellerProfileBrain.retrivingProfileData { (data) in
+        sellerProfileBrain.retrivingProfileData { (data,subservices) in
             
             self.artistNameTextField.text = data.name
             self.artistEmailTextField.text = data.email
@@ -136,8 +141,11 @@ class SellerProfile: UIViewController {
             self.artistNumberTextField.text = data.phone
             self.artistPriceTextField.text = data.price
             self.selectedService = data.service
+            self.sellerCountryTextField.text = data.country
             self.artistServicesDropDown.selectedIndex = self.artistServicesDropDown.optionArray.firstIndex(of: self.selectedService)!
             self.artistServicesDropDown.text = self.selectedService
+            self.sellerDescriptionTextVIew.text = data.description
+
             self.datePicker.setDate(data.dob, animated: true)
             
             if data.gender == "Male"
@@ -195,6 +203,14 @@ class SellerProfile: UIViewController {
         artistNameTextField.layer.shadowOpacity = 0.5
         artistNameTextField.layer.shadowOffset = CGSize.zero
         artistNameTextField.layer.shadowRadius = 7
+        
+        
+        sellerDescriptionTextVIew.layer.shadowColor = UIColor.gray.cgColor
+        sellerDescriptionTextVIew.layer.shadowOpacity = 0.5
+        sellerDescriptionTextVIew.layer.shadowOffset = CGSize.zero
+        sellerDescriptionTextVIew.layer.shadowRadius = 7
+        
+        
         
         //To apply padding
         let paddingView : UIView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: artistNameTextField.frame.height))
@@ -268,6 +284,11 @@ class SellerProfile: UIViewController {
         artistServicesDropDown.layer.shadowOpacity = 0.5
         artistServicesDropDown.layer.shadowOffset = CGSize.zero
         artistServicesDropDown.layer.shadowRadius = 7
+        
+        sellerCountryTextField.layer.shadowColor = UIColor.gray.cgColor
+        sellerCountryTextField.layer.shadowOpacity = 0.5
+        sellerCountryTextField.layer.shadowOffset = CGSize.zero
+        sellerCountryTextField.layer.shadowRadius = 7
         
     }
 }

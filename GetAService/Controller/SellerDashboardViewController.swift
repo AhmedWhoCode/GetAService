@@ -1,0 +1,247 @@
+//
+//  ArtistInformationViewController.swift
+//  GetAService
+//
+//  Created by Geek on 23/01/2021.
+//
+
+import UIKit
+import Firebase
+import FirebaseStorage
+import FirebaseFirestore
+class SellerDashboardViewController: UIViewController {
+
+    @IBOutlet weak var sellerNameTextField: UILabel!
+    @IBOutlet weak var countryView: UIView!
+    @IBOutlet weak var priceView: UIView!
+    @IBOutlet weak var statusView: UIView!
+    @IBOutlet weak var artistImage: UIImageView!
+    @IBOutlet weak var artistDetailLabel: UILabel!
+    
+    @IBOutlet weak var artistCountryLabel: UILabel!
+    @IBOutlet weak var artistPriceLabel: UILabel!
+    @IBOutlet weak var artistStatusLabel: UILabel!
+
+    @IBOutlet weak var bookNowButton: UIButton!
+    
+    
+    @IBOutlet weak var subService1: UILabel!
+    @IBOutlet weak var subService2: UILabel!
+    @IBOutlet weak var subService3: UILabel!
+    @IBOutlet weak var subService4: UILabel!
+    @IBOutlet weak var subService5: UILabel!
+    @IBOutlet weak var subService6: UILabel!
+    var fireStorage = Storage.storage()
+
+    var sellerProfileBrain = SellerProfileBrain()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+       
+
+        designingViews()
+        // Do any additional setup after loading the view.
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        hidesBottomBarWhenPushed = false
+         retrivingData()
+    }
+    
+    func retrivingData()  {
+        sellerProfileBrain.retrivingProfileData { (data,subservices) in
+            
+            self.sellerNameTextField.text = data.name
+            self.artistCountryLabel.text = data.country
+            self.artistPriceLabel.text = data.price
+            self.artistStatusLabel.text = "available"
+            self.artistDetailLabel.text = data.description
+            self.showSubServices(with: subservices)
+            
+            self.fireStorage.reference().child("Images/profile_images").child(Auth.auth().currentUser!.uid).getData(maxSize: 1 * 1024 * 1024) { (data1, error) in
+                if let data1 = data1
+                {
+                    print(data1)
+                    self.artistImage.image = UIImage(data: data1)
+             
+                }
+                
+            }
+        }
+        
+    }
+    
+    
+    
+    
+    func showSubServices(with subServices:[String]?) {
+        
+        if let subServices = subServices
+        {
+        var numberOfSubServices = subServices.count
+       
+        switch numberOfSubServices {
+        case 1:
+            subService1.isHidden = false
+            subService1.text = subServices[0]
+        case 2:
+            subService1.isHidden = false
+            subService2.isHidden = false
+            subService1.text = subServices[0]
+            subService2.text = subServices[1]
+        case 3:
+            subService1.isHidden = false
+            subService2.isHidden = false
+            subService3.isHidden = false
+
+            subService1.text = subServices[0]
+            subService2.text = subServices[1]
+            subService3.text = subServices[2]
+        case 4:
+            subService1.isHidden = false
+            subService2.isHidden = false
+            subService3.isHidden = false
+            subService4.isHidden = false
+
+            subService1.text = subServices[0]
+            subService2.text = subServices[1]
+            subService3.text = subServices[2]
+            subService4.text = subServices[3]
+        case 5:
+            subService1.isHidden = false
+            subService2.isHidden = false
+            subService3.isHidden = false
+            subService4.isHidden = false
+            subService5.isHidden = false
+
+            subService1.text = subServices[0]
+            subService2.text = subServices[1]
+            subService3.text = subServices[2]
+            subService4.text = subServices[3]
+            subService5.text = subServices[4]
+            
+        case 6:
+            subService1.isHidden = false
+            subService2.isHidden = false
+            subService3.isHidden = false
+            subService4.isHidden = false
+            subService5.isHidden = false
+            subService6.isHidden = false
+
+            subService1.text = subServices[0]
+            subService2.text = subServices[1]
+            subService3.text = subServices[2]
+            subService4.text = subServices[3]
+            subService5.text = subServices[4]
+            subService6.text = subServices[5]
+
+        default:
+            print("no services")
+        }
+        }
+        
+    }
+    
+    func designingViews(){
+        subService1.isHidden = true
+        subService2.isHidden = true
+        subService3.isHidden = true
+        subService4.isHidden = true
+        subService5.isHidden = true
+        subService6.isHidden = true
+        
+        
+        navigationItem.hidesBackButton = true
+        ///MARK: - designing views
+        countryView.layer.cornerRadius = 15
+        countryView.layer.borderWidth = 1
+        countryView.layer.borderColor = UIColor.black.cgColor
+        
+        priceView.layer.cornerRadius = 15
+        priceView.layer.borderWidth = 1
+        priceView.layer.borderColor = UIColor.black.cgColor
+        
+        statusView.layer.cornerRadius = 15
+        statusView.layer.borderWidth = 1
+        statusView.layer.borderColor = UIColor.black.cgColor
+        
+        
+        subService1.layer.cornerRadius = 10
+        subService1.layer.borderWidth = 1
+        subService1.layer.borderColor = UIColor.black.cgColor
+        
+////        subService1.layer.shadowColor = UIColor.blue.cgColor
+////        subService1.layer.shadowOpacity = 0.5
+////        subService1.layer.shadowOffset = CGSize.zero
+//     subService1.layer.shadowRadius = 10
+        
+        
+        subService2.layer.cornerRadius = 10
+        subService2.layer.borderWidth = 1
+        subService2.layer.borderColor = UIColor.black.cgColor
+        
+        
+        subService3.layer.cornerRadius = 10
+        subService3.layer.borderWidth = 1
+        subService3.layer.borderColor = UIColor.black.cgColor
+        
+        subService4.layer.cornerRadius = 10
+        subService4.layer.borderWidth = 1
+        subService4.layer.borderColor = UIColor.black.cgColor
+        
+        subService5.layer.cornerRadius = 10
+        subService5.layer.borderWidth = 1
+        subService5.layer.borderColor = UIColor.black.cgColor
+        
+        subService6.layer.cornerRadius = 10
+        subService6.layer.borderWidth = 1
+        subService6.layer.borderColor = UIColor.black.cgColor
+        
+        
+//        bookNowButton.layer.cornerRadius = 20
+//        bookNowButton.layer.borderWidth = 1
+//        bookNowButton.layer.borderColor = UIColor.black.cgColor
+        
+        
+        artistImage.layer.masksToBounds = true
+        artistImage.layer.borderColor = UIColor.black.cgColor
+         artistImage.layer.cornerRadius = artistImage.frame.size.height/2
+        artistImage.contentMode = .scaleAspectFill
+    }
+    
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+       
+        if segue.identifier == Constants.seguesNames.sellerDashboardToProfile
+        {
+            if let destinationSegue = segue.destination as? SellerProfile
+          {
+                destinationSegue.isSourceVcArtistProfile = true
+          }
+        }
+        
+    }
+    
+
+    @IBAction func logOutPressed(_ sender: Any) {
+        logoutUser()
+    }
+    
+    func logoutUser() {
+        // call from any screen
+        
+        do { try Auth.auth().signOut() }
+        catch { print("already logged out") }
+        
+        navigationController?.popToRootViewController(animated: true)
+    }
+    
+    
+    
+    
+    @IBAction func profileClicked(_ sender: UIBarButtonItem) {
+        performSegue(withIdentifier: Constants.seguesNames.sellerDashboardToProfile, sender:self)
+    }
+    
+}

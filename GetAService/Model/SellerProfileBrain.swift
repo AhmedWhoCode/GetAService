@@ -26,7 +26,7 @@ class SellerProfileBrain {
     let db = Firestore.firestore()
     var fireStorage = Storage.storage()
     
-    func retrivingProfileData(completion : @escaping (SellerProfileModel) -> ()) {
+    func retrivingProfileData(completion : @escaping (SellerProfileModel,[String]?) -> ()) {
         
         
         db.collection("UserProfileData").document("Seller").collection("AllSellers").document(userId).addSnapshotListener
@@ -37,11 +37,8 @@ class SellerProfileBrain {
                 
                 
                 let imageRef1 = snap["imageRef"]! as! String
-                
-                print("debuk1\(imageRef1)")
                 let name1 = snap["name"]! as! String
                 let email1 = snap["email"]! as! String
-                print("email\(email1)")
                 let address1 = snap["address"]! as! String
                 let phone1 = snap["phone"]! as! String
                 let price1 = snap["price"]! as! String
@@ -50,10 +47,13 @@ class SellerProfileBrain {
                 let dob = snap["dob"]! as! Timestamp
                 let dob1 = dob.dateValue()
                 let uid1 = snap["uid"]! as! String
+                let desc = snap["description"]! as! String
+                let country = snap["country"]! as! String
+                let subServices = snap["SubServices"]
                 
-                let sellerProfileModel = SellerProfileModel(uid:uid1, imageRef: imageRef1 , name: name1, email:email1, address: address1, phone: phone1, price: price1, service: service1, dob:dob1, gender: gender1)
+                let sellerProfileModel = SellerProfileModel(uid:uid1, imageRef: imageRef1 , name: name1, email:email1, address: address1, phone: phone1, price: price1, service: service1, country: country, description: desc, dob:dob1, gender: gender1)
                 
-                completion(sellerProfileModel)
+                completion(sellerProfileModel , subServices as? [String])
             }
             
         }
@@ -74,7 +74,9 @@ class SellerProfileBrain {
         sellerProfileData["service"] = sellerProfileModel.service
         sellerProfileData["dob"] = sellerProfileModel.dob
         sellerProfileData["gender"] = sellerProfileModel.gender
-        
+        sellerProfileData["description"] = sellerProfileModel.description
+        sellerProfileData["country"] = sellerProfileModel.country
+
         
         if let userid = Auth.auth().currentUser?.uid {
             

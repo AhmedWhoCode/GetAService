@@ -22,23 +22,31 @@ class ArtistInformation: UIViewController {
 
     @IBOutlet weak var bookNowButton: UIButton!
     
+   
+    @IBOutlet weak var subService1: UILabel!
+    @IBOutlet weak var subService2: UILabel!
+    @IBOutlet weak var subService3: UILabel!
+    @IBOutlet weak var subService4: UILabel!
+    @IBOutlet weak var subService5: UILabel!
+    @IBOutlet weak var subService6: UILabel!
+
     
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.hidesBottomBarWhenPushed = false
+        
 
         designingViews()
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
-        navigationController?.hidesBottomBarWhenPushed = false
+        hidesBottomBarWhenPushed = false
     }
     
     func designingViews(){
-        navigationItem.hidesBackButton = true
+        navigationItem.hidesBackButton = false
         ///MARK: - designing views
         countryView.layer.cornerRadius = 15
         countryView.layer.borderWidth = 1
@@ -52,9 +60,38 @@ class ArtistInformation: UIViewController {
         statusView.layer.borderWidth = 1
         statusView.layer.borderColor = UIColor.black.cgColor
         
-//        bookNowButton.layer.cornerRadius = 20
-//        bookNowButton.layer.borderWidth = 1
-//        bookNowButton.layer.borderColor = UIColor.black.cgColor
+        
+        
+        subService1.layer.cornerRadius = 10
+        subService1.layer.borderWidth = 1
+        subService1.layer.borderColor = UIColor.black.cgColor
+        
+        
+        
+        subService2.layer.cornerRadius = 10
+        subService2.layer.borderWidth = 1
+        subService2.layer.borderColor = UIColor.black.cgColor
+        
+        
+        subService3.layer.cornerRadius = 10
+        subService3.layer.borderWidth = 1
+        subService3.layer.borderColor = UIColor.black.cgColor
+        
+        subService4.layer.cornerRadius = 10
+        subService4.layer.borderWidth = 1
+        subService4.layer.borderColor = UIColor.black.cgColor
+        
+        subService5.layer.cornerRadius = 10
+        subService5.layer.borderWidth = 1
+        subService5.layer.borderColor = UIColor.black.cgColor
+        
+        subService6.layer.cornerRadius = 10
+        subService6.layer.borderWidth = 1
+        subService6.layer.borderColor = UIColor.black.cgColor
+        
+        bookNowButton.layer.cornerRadius = 20
+        bookNowButton.layer.borderWidth = 1
+        bookNowButton.layer.borderColor = UIColor.black.cgColor
         
         
         artistImage.layer.masksToBounds = true

@@ -50,6 +50,8 @@
 		938AE25525DF918A00CC108B /* CustomerProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938AE25425DF918A00CC108B /* CustomerProfile.swift */; };
 		938AE25F25DF927F00CC108B /* BuyerOrSeller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938AE25E25DF927F00CC108B /* BuyerOrSeller.swift */; };
 		93A7936225ED13D000064AA0 /* SellerWaitingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A7936125ED13D000064AA0 /* SellerWaitingViewController.swift */; };
+		93BE8E5625EE00CE008103DA /* SellerDashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BE8E5525EE00CE008103DA /* SellerDashboardViewController.swift */; };
+		93BE8E5B25EE1359008103DA /* ShowToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BE8E5A25EE1359008103DA /* ShowToast.swift */; };
 		93C9691B25C5C0AD00A6217E /* ChatList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C9691A25C5C0AD00A6217E /* ChatList.swift */; };
 		93C9692125C5C14800A6217E /* ChatsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C9691F25C5C14800A6217E /* ChatsTableViewCell.swift */; };
 		93C9692225C5C14800A6217E /* ChatsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93C9692025C5C14800A6217E /* ChatsTableViewCell.xib */; };
@@ -130,6 +132,8 @@
 		938AE25425DF918A00CC108B /* CustomerProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerProfile.swift; sourceTree = "<group>"; };
 		938AE25E25DF927F00CC108B /* BuyerOrSeller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyerOrSeller.swift; sourceTree = "<group>"; };
 		93A7936125ED13D000064AA0 /* SellerWaitingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellerWaitingViewController.swift; sourceTree = "<group>"; };
+		93BE8E5525EE00CE008103DA /* SellerDashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellerDashboardViewController.swift; sourceTree = "<group>"; };
+		93BE8E5A25EE1359008103DA /* ShowToast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowToast.swift; sourceTree = "<group>"; };
 		93C9691A25C5C0AD00A6217E /* ChatList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatList.swift; sourceTree = "<group>"; };
 		93C9691F25C5C14800A6217E /* ChatsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsTableViewCell.swift; sourceTree = "<group>"; };
 		93C9692025C5C14800A6217E /* ChatsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatsTableViewCell.xib; sourceTree = "<group>"; };
@@ -212,6 +216,7 @@
 			isa = PBXGroup;
 			children = (
 				9354847225E8CCD000A76C22 /* Extension.swift */,
+				93BE8E5A25EE1359008103DA /* ShowToast.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -268,6 +273,7 @@
 				9339113025C828C100913D3E /* AcceptOrDecline.swift */,
 				932C488625C9980700F57308 /* WaitingScreen.swift */,
 				93A7936125ED13D000064AA0 /* SellerWaitingViewController.swift */,
+				93BE8E5525EE00CE008103DA /* SellerDashboardViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -647,6 +653,7 @@
 				932C89BB25DAD893008D72D9 /* Artists.swift in Sources */,
 				93E3F8DB25E23BEC00FB74C3 /* ServicesBrain.swift in Sources */,
 				9378C82725B834C400B6A183 /* ListOfServices.swift in Sources */,
+				93BE8E5625EE00CE008103DA /* SellerDashboardViewController.swift in Sources */,
 				93CE5C9525CBF257002A916E /* ButtonPressed.swift in Sources */,
 				938AE25F25DF927F00CC108B /* BuyerOrSeller.swift in Sources */,
 				93C9692125C5C14800A6217E /* ChatsTableViewCell.swift in Sources */,
@@ -654,6 +661,7 @@
 				933D3A3725DB9E1E001A26B8 /* Chats.swift in Sources */,
 				937994D825BC39C700C85404 /* ArtistInformation.swift in Sources */,
 				931CFA2925DED734007C2EE9 /* SubServicesTableViewController.swift in Sources */,
+				93BE8E5B25EE1359008103DA /* ShowToast.swift in Sources */,
 				9378C81925B829DE00B6A183 /* ListOfServicesXibTableViewCell.swift in Sources */,
 				932C89C325DAE072008D72D9 /* Notifications.swift in Sources */,
 				936783AC25B9896E00A93B28 /* ArtistListXibTableViewTableViewCell.swift in Sources */,

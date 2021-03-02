@@ -37,43 +37,31 @@ class SubServicesTableViewController: UITableViewController {
     
     @IBAction func savePressed(_ sender: UIBarButtonItem) {
         
-        if selectedServices.count > 0
+        if selectedServices.count > 0 && selectedServices.count <= 6
         {
             sellerProfileBrain.storeSubServivesToFirebase(with: selectedServices) {
-                self.showToast(controller: self, message: "Data saved", seconds: 1)
+            showToast1(controller: self, message: "Data saved", seconds: 1,color: UIColor.green)
 
             }
         }
+        else if selectedServices.count > 6
+        {
+            showToast1(controller: self, message: "Kindly select only 6 services", seconds: 1,color: UIColor.red)
+
+        }
         else
         {
-            showToast(controller: self, message: "No service selected", seconds: 1)
-
+           showToast1(controller: self, message: "No service selected", seconds: 1, color: UIColor.red)
         }
     }
     
     
-    func showToast(controller: UIViewController, message : String, seconds: Double) {
-        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
-        alert.view.backgroundColor = UIColor.green
-        alert.view.alpha = 0.6
-        alert.view.layer.cornerRadius = 15
 
-        controller.present(alert, animated: true)
-
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + seconds) {
-            alert.dismiss(animated: true)
-           
-        }
-        
-    }
     
     
     func showData() {
         
-//        submitButton.layer.cornerRadius = 20
-//        submitButton.layer.borderWidth = 1
-//        submitButton.layer.borderColor = UIColor.black.cgColor
-        
+
         //calling function to retrieve data also passing a closure to get the response
         servicesBrain.retrivingSubServicesFromDatabase(with: mainService) { (data) in
             
@@ -185,3 +173,17 @@ class SubServicesTableViewController: UITableViewController {
      
     
 
+//    func showToast(controller: UIViewController, message : String, seconds: Double,color :UIColor) {
+//        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+//        alert.view.backgroundColor = color
+//        alert.view.alpha = 0.6
+//        alert.view.layer.cornerRadius = 15
+//
+//        controller.present(alert, animated: true)
+//
+//        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + seconds) {
+//            alert.dismiss(animated: true)
+//
+//        }
+//
+//    }
