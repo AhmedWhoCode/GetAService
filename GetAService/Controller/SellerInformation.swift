@@ -63,15 +63,17 @@ class SellerInformation: UIViewController {
             self.sellerDetailLabel.text = data.description
             self.showSubServices(with: subservices)
             
-            self.fireStorage.reference().child("Images/profile_images").child(self.selectedSellerId).getData(maxSize: 1 * 1024 * 1024) { (data1, error) in
-                if let data1 = data1
-                {
-                    print(data1)
-                    self.sellerImage.image = UIImage(data: data1)
-             
-                }
-                
-            }
+            
+            self.sellerImage.loadCacheImage(with: data.imageRef)
+//            self.fireStorage.reference().child("Images/profile_images").child(self.selectedSellerId).getData(maxSize: 1 * 1024 * 1024) { (data1, error) in
+//                if let data1 = data1
+//                {
+//                    print(data1)
+//                    self.sellerImage.image = UIImage(data: data1)
+//
+//                }
+//
+//            }
         }
         
     }
