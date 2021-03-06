@@ -11,13 +11,14 @@ import UIKit
 //    func didButtonPressed(with value : String)
 //}
 
-class ArtistListXibTableViewTableViewCell: UITableViewCell {
+class SellerListXibTableViewTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var artistPriceLabel: UILabel!
-    @IBOutlet weak var artistImage: UIImageView!
-    @IBOutlet weak var artistNameLabel: UILabel!
-    @IBOutlet weak var artistCountryLabel: UILabel!
-    @IBOutlet weak var artistAvailabilityLabel: UILabel!
+    @IBOutlet weak var sellerInfoButton: UIButton!
+    @IBOutlet weak var sellerPriceLabel: UILabel!
+    @IBOutlet weak var sellerImage: UIImageView!
+    @IBOutlet weak var sellerNameLabel: UILabel!
+    @IBOutlet weak var sellerCountryLabel: UILabel!
+    @IBOutlet weak var sellerAvailabilityLabel: UILabel!
    // var buttonClicked: (() -> Void)? = nil
 
     var artistButtonDelegant : ButtonPressed?
@@ -30,10 +31,10 @@ class ArtistListXibTableViewTableViewCell: UITableViewCell {
     }
 
     func designingViews() {
-        artistImage.layer.masksToBounds = true
-        artistImage.layer.borderColor = UIColor.black.cgColor
-       artistImage.layer.cornerRadius = artistImage.frame.size.height/2
-        artistImage.contentMode = .scaleAspectFill
+        sellerImage.layer.masksToBounds = true
+        sellerImage.layer.borderColor = UIColor.black.cgColor
+       sellerImage.layer.cornerRadius = sellerImage.frame.size.height/2
+        sellerImage.contentMode = .scaleAspectFill
     }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
@@ -42,7 +43,7 @@ class ArtistListXibTableViewTableViewCell: UITableViewCell {
     }
    
     @IBAction func buttonClicked(_ sender: UIButton) {
-        artistButtonDelegant?.didButtonPressed(with: "pressed")
+        artistButtonDelegant?.didButtonPressed(with: sender.title(for: .normal)!)
     }
     
 }

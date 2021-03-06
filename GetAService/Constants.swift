@@ -15,8 +15,8 @@ struct Constants {
     static let cellNibNameNotification = "NotificationsTableViewCell"
     
     //artistList constants
-    static let cellIdentifierArtistList = "artistInfoCell"
-    static let cellNibNameArtistList = "ArtistListXibTableViewTableViewCell"
+    static let cellIdentifierSellerList = "sellerInfoCell"
+    static let cellNibNameSellerList = "SellerListXibTableViewTableViewCell"
 
     //servicesList constants
     static let cellIdentifierServicesList = "serviceXib"
@@ -46,8 +46,8 @@ struct Constants {
         static let userTypeToSeller = "userTypeToSeller"
         static let loginToUserType = "loginToUserType"
         static let loginToServices = "loginToServices"
-        static let servicesToArtists = "servicesToArtists"
-        static let artistsToArtistsInfo = "artistsToArtistsInfo"
+        static let servicesToSellers = "servicesToSellers"
+        static let sellersToSellerInfo = "sellersToSellerInfo"
         static let artistInfoToConfirmBooking = "artistInfoToConfirmBooking"
         static let notificationsToOrderInfo = "notificationsToOrderInfo"
         static let profileToLogin = "profileToLogin"

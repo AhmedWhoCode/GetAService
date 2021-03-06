@@ -8,18 +8,19 @@
 import UIKit
 import Firebase
 
-class ArtistInformation: UIViewController {
+class SellerInformation: UIViewController {
 
     @IBOutlet weak var countryView: UIView!
     @IBOutlet weak var priceView: UIView!
     @IBOutlet weak var statusView: UIView!
     @IBOutlet weak var artistImage: UIImageView!
-    @IBOutlet weak var artistDetailLabel: UILabel!
-    
-    @IBOutlet weak var artistCountryLabel: UILabel!
-    @IBOutlet weak var artistPriceLabel: UILabel!
-    @IBOutlet weak var artistStatusLabel: UILabel!
 
+    @IBOutlet weak var sellerCountryLabel: UILabel!
+    @IBOutlet weak var sellerPriceLabel: UILabel!
+    @IBOutlet weak var sellerStatusLabel: UILabel!
+    @IBOutlet weak var sellerDetailLabel: UILabel!
+
+    
     @IBOutlet weak var bookNowButton: UIButton!
     
    
@@ -31,13 +32,13 @@ class ArtistInformation: UIViewController {
     @IBOutlet weak var subService6: UILabel!
 
     
-    
+    //value of this variable will come from the previous scree
+    var selectedSellerId : String!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
         designingViews()
         // Do any additional setup after loading the view.
     }
@@ -103,27 +104,30 @@ class ArtistInformation: UIViewController {
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-       
-        if segue.identifier == Constants.seguesNames.artistInfoToProfile
-        {
-            if let destinationSegue = segue.destination as? SellerProfile
-          {
-                destinationSegue.isSourceVcArtistProfile = true
-          }
-        }
-        
-    }
-    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//       
+//        if segue.identifier == Constants.seguesNames.artistInfoToProfile
+//        {
+//            if let destinationSegue = segue.destination as? SellerProfile
+//          {
+//                destinationSegue.isSourceVcArtistProfile = true
+//          }
+//        }
+//        
+//    }
+//    
 
     
-    
-    
-    
-    
-    
-    @IBAction func profileClicked(_ sender: UIBarButtonItem) {
-        performSegue(withIdentifier: Constants.seguesNames.artistInfoToProfile, sender:self)
+    @IBAction func bookNow(_ sender: Any) {
+        performSegue(withIdentifier: Constants.seguesNames.artistInfoToConfirmBooking, sender: self)
     }
+    
+    
+    
+    
+    
+//    @IBAction func BookNow(_ sender: UIBarButtonItem) {
+//        performSegue(withIdentifier: Constants.seguesNames.artistInfoToProfile, sender:self)
+//    }
     
 }

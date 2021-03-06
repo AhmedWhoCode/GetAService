@@ -15,12 +15,12 @@ class SellerDashboardViewController: UIViewController {
     @IBOutlet weak var countryView: UIView!
     @IBOutlet weak var priceView: UIView!
     @IBOutlet weak var statusView: UIView!
-    @IBOutlet weak var artistImage: UIImageView!
-    @IBOutlet weak var artistDetailLabel: UILabel!
+    @IBOutlet weak var sellerImage: UIImageView!
+    @IBOutlet weak var sellerDetailLabel: UILabel!
     
-    @IBOutlet weak var artistCountryLabel: UILabel!
-    @IBOutlet weak var artistPriceLabel: UILabel!
-    @IBOutlet weak var artistStatusLabel: UILabel!
+    @IBOutlet weak var sellerCountryLabel: UILabel!
+    @IBOutlet weak var sellerPriceLabel: UILabel!
+    @IBOutlet weak var sellerStatusLabel: UILabel!
 
     @IBOutlet weak var bookNowButton: UIButton!
     
@@ -51,17 +51,17 @@ class SellerDashboardViewController: UIViewController {
         sellerProfileBrain.retrivingProfileData { (data,subservices) in
             
             self.sellerNameTextField.text = data.name
-            self.artistCountryLabel.text = data.country
-            self.artistPriceLabel.text = data.price
-            self.artistStatusLabel.text = "available"
-            self.artistDetailLabel.text = data.description
+            self.sellerCountryLabel.text = data.country
+            self.sellerPriceLabel.text = data.price
+            self.sellerStatusLabel.text = "available"
+            self.sellerDetailLabel.text = data.description
             self.showSubServices(with: subservices)
             
             self.fireStorage.reference().child("Images/profile_images").child(Auth.auth().currentUser!.uid).getData(maxSize: 1 * 1024 * 1024) { (data1, error) in
                 if let data1 = data1
                 {
                     print(data1)
-                    self.artistImage.image = UIImage(data: data1)
+                    self.sellerImage.image = UIImage(data: data1)
              
                 }
                 
@@ -77,7 +77,7 @@ class SellerDashboardViewController: UIViewController {
         
         if let subServices = subServices
         {
-        var numberOfSubServices = subServices.count
+        let numberOfSubServices = subServices.count
        
         switch numberOfSubServices {
         case 1:
@@ -202,10 +202,10 @@ class SellerDashboardViewController: UIViewController {
 //        bookNowButton.layer.borderColor = UIColor.black.cgColor
         
         
-        artistImage.layer.masksToBounds = true
-        artistImage.layer.borderColor = UIColor.black.cgColor
-         artistImage.layer.cornerRadius = artistImage.frame.size.height/2
-        artistImage.contentMode = .scaleAspectFill
+        sellerImage.layer.masksToBounds = true
+        sellerImage.layer.borderColor = UIColor.black.cgColor
+         sellerImage.layer.cornerRadius = sellerImage.frame.size.height/2
+        sellerImage.contentMode = .scaleAspectFill
     }
     
     // MARK: - Navigation

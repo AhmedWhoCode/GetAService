@@ -202,17 +202,17 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <segue destination="aFe-hT-rzS" kind="show" identifier="servicesToArtists" id="JJh-Y0-L1g"/>
+                        <segue destination="aFe-hT-rzS" kind="show" identifier="servicesToSellers" id="JJh-Y0-L1g"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NEK-Bb-qIu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2381" y="-767"/>
         </scene>
-        <!--Artists-->
+        <!--Sellers-->
         <scene sceneID="ipY-uK-jTM">
             <objects>
-                <tableViewController hidesBottomBarWhenPushed="YES" id="aFe-hT-rzS" customClass="ArtistLists" customModule="GetAService" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController hidesBottomBarWhenPushed="YES" id="aFe-hT-rzS" customClass="SellerLists" customModule="GetAService" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="yDz-Qg-A4n">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -246,21 +246,21 @@
                             <color key="tintColor" red="0.2274509804" green="0.2274509804" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
                         </barButtonItem>
                     </toolbarItems>
-                    <navigationItem key="navigationItem" title="Artists" id="MCp-io-cZU"/>
+                    <navigationItem key="navigationItem" title="Sellers" id="MCp-io-cZU"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <segue destination="7ZC-Lu-ke0" kind="show" identifier="artistsToArtistsInfo" id="sA1-sR-Tb7"/>
+                        <segue destination="7ZC-Lu-ke0" kind="show" identifier="sellersToSellerInfo" id="sA1-sR-Tb7"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tbm-Co-Dqw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3461" y="-767"/>
         </scene>
-        <!--Artist Information-->
+        <!--Seller Information-->
         <scene sceneID="BtA-nH-QlY">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="7ZC-Lu-ke0" customClass="ArtistInformation" customModule="GetAService" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="7ZC-Lu-ke0" customClass="SellerInformation" customModule="GetAService" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="g4m-iZ-lDi">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -485,7 +485,7 @@
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
-                                                    <segue destination="Ugr-OT-R1S" kind="show" identifier="artistInfoToConfirmBooking" id="Xx0-14-tkg"/>
+                                                    <action selector="bookNow:" destination="7ZC-Lu-ke0" eventType="touchUpInside" id="Pwx-be-Aro"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wPJ-3T-1iH">
@@ -553,9 +553,6 @@
                     <toolbarItems>
                         <barButtonItem title="Item" image="chevron.backward" catalog="system" width="95" id="ie2-jp-Rny">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <connections>
-                                <segue destination="aFe-hT-rzS" kind="show" id="ajZ-lV-TLb"/>
-                            </connections>
                         </barButtonItem>
                         <barButtonItem title="Item" image="bell" catalog="system" width="95" id="TCs-uK-KzY">
                             <color key="tintColor" red="0.2274509804" green="0.2274509804" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -570,18 +567,18 @@
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
-                    <navigationItem key="navigationItem" title="Artist Information" id="LGz-wM-9d9"/>
+                    <navigationItem key="navigationItem" title="Seller Information" id="LGz-wM-9d9"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="artistCountryLabel" destination="3d1-Is-rk1" id="A0o-C7-70U"/>
-                        <outlet property="artistDetailLabel" destination="ct7-YC-LLl" id="m9Z-wu-e1E"/>
                         <outlet property="artistImage" destination="lYm-P2-r1r" id="tmF-2f-9OG"/>
-                        <outlet property="artistPriceLabel" destination="m3r-Jg-EVz" id="mUJ-aF-9lX"/>
-                        <outlet property="artistStatusLabel" destination="cfx-kL-OsE" id="DOx-9Y-Y0C"/>
                         <outlet property="bookNowButton" destination="hit-yW-Osi" id="EMq-3X-cQu"/>
                         <outlet property="countryView" destination="Awn-Sd-YNz" id="ehH-uH-fcJ"/>
                         <outlet property="priceView" destination="Exm-l1-tUh" id="04W-Fd-Zan"/>
+                        <outlet property="sellerCountryLabel" destination="3d1-Is-rk1" id="A0o-C7-70U"/>
+                        <outlet property="sellerDetailLabel" destination="ct7-YC-LLl" id="m9Z-wu-e1E"/>
+                        <outlet property="sellerPriceLabel" destination="m3r-Jg-EVz" id="mUJ-aF-9lX"/>
+                        <outlet property="sellerStatusLabel" destination="cfx-kL-OsE" id="DOx-9Y-Y0C"/>
                         <outlet property="statusView" destination="msc-C5-zZs" id="ajN-R7-ZW5"/>
                         <outlet property="subService1" destination="r7E-wX-Ddu" id="YgT-Ih-goX"/>
                         <outlet property="subService2" destination="Rqd-qC-G1j" id="RLu-Es-XOU"/>
@@ -589,11 +586,12 @@
                         <outlet property="subService4" destination="JHt-G7-UGf" id="fqa-Vw-aOU"/>
                         <outlet property="subService5" destination="x4U-gl-Fk3" id="klu-Xm-DIo"/>
                         <outlet property="subService6" destination="VSX-Ex-tqi" id="rkV-DB-giN"/>
+                        <segue destination="Ugr-OT-R1S" kind="show" identifier="artistInfoToConfirmBooking" id="CeP-Ce-kkz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8lx-P7-31H" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4246" y="-767"/>
+            <point key="canvasLocation" x="4228" y="-767"/>
         </scene>
         <!--Confirm Booking-->
         <scene sceneID="BHD-8f-qS2">
@@ -770,9 +768,6 @@
                     <toolbarItems>
                         <barButtonItem title="Item" image="chevron.backward" catalog="system" width="95" id="H1T-r7-rzQ">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <connections>
-                                <segue destination="7ZC-Lu-ke0" kind="show" id="65o-WA-YKJ"/>
-                            </connections>
                         </barButtonItem>
                         <barButtonItem title="Item" image="message" catalog="system" width="95" id="zWh-bG-CV2">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -3119,14 +3114,14 @@ once the service completed</string>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="artistCountryLabel" destination="7JL-75-gw4" id="QXc-Ab-TGk"/>
-                        <outlet property="artistDetailLabel" destination="L6U-sT-r0W" id="yD0-tB-iF1"/>
-                        <outlet property="artistImage" destination="yOK-Fo-3sc" id="1IT-SS-dhP"/>
-                        <outlet property="artistPriceLabel" destination="955-gF-Hft" id="Zb6-T2-aUE"/>
-                        <outlet property="artistStatusLabel" destination="5vV-Cn-q5G" id="7x2-pt-ki8"/>
                         <outlet property="countryView" destination="KN3-df-HAU" id="nXh-lY-9Gk"/>
                         <outlet property="priceView" destination="lm2-9H-dHJ" id="bWO-7n-Jzx"/>
+                        <outlet property="sellerCountryLabel" destination="7JL-75-gw4" id="QXc-Ab-TGk"/>
+                        <outlet property="sellerDetailLabel" destination="L6U-sT-r0W" id="yD0-tB-iF1"/>
+                        <outlet property="sellerImage" destination="yOK-Fo-3sc" id="1IT-SS-dhP"/>
                         <outlet property="sellerNameTextField" destination="yDb-wT-mDf" id="Fey-f3-wxc"/>
+                        <outlet property="sellerPriceLabel" destination="955-gF-Hft" id="Zb6-T2-aUE"/>
+                        <outlet property="sellerStatusLabel" destination="5vV-Cn-q5G" id="7x2-pt-ki8"/>
                         <outlet property="statusView" destination="RTr-Mq-ccX" id="aoM-je-HzB"/>
                         <outlet property="subService1" destination="XbY-X3-4nD" id="e7l-nN-YLP"/>
                         <outlet property="subService2" destination="tIg-44-V8n" id="SLU-8L-dte"/>
@@ -3145,13 +3140,11 @@ once the service completed</string>
         <segue reference="8iB-0r-Oea"/>
         <segue reference="tpA-6M-1df"/>
         <segue reference="FPA-js-QD2"/>
-        <segue reference="USO-OD-zsZ"/>
-        <segue reference="CVE-kk-GXw"/>
+        <segue reference="EOU-m5-U7c"/>
+        <segue reference="ldl-2q-ipN"/>
         <segue reference="Vzu-9e-zcL"/>
-        <segue reference="Xx0-14-tkg"/>
-        <segue reference="65o-WA-YKJ"/>
-        <segue reference="ajZ-lV-TLb"/>
-        <segue reference="Tt4-Au-VLt"/>
+        <segue reference="CeP-Ce-kkz"/>
+        <segue reference="xLb-NC-lM8"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="ArtistProfile" width="121" height="50.5"/>

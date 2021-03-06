@@ -18,7 +18,7 @@ protocol DataManipulation {
 
 class ServicesBrain {
     static let cache = NSCache<NSString , UIImage>()
-
+    
     var urlString = [String]()
     var dataManipulationDelegant:DataManipulation?
     
@@ -41,17 +41,17 @@ class ServicesBrain {
                     let serviceName = snap[i].documentID
                     let serviceImage = snap[i].data()["ImageRef"]
                     //passing data to servicemodel class
-                    let services = ServicesModel(serviceName: serviceName, serviceImage: serviceImage as! String)
-                   // adding data to service class
+                    let services = ServicesModel(serviceName: serviceName, serviceImage: serviceImage as? String)
+                    // adding data to service class
                     self.servicesData.append(services)
                 }
-                 // calling this method when the data is added to array and sending it to services viewController
+                // calling this method when the data is added to array and sending it to services viewController
                 self.dataManipulationDelegant?.didReceiveData(with: self.servicesData)
             }
             
         }
     }
-
+    
     
     func retrivingSubServicesFromDatabase(with category : String , completion : @escaping ([String])->()) {
         
@@ -71,4 +71,6 @@ class ServicesBrain {
         }
         
     }
+    
+    
 }

@@ -10,8 +10,8 @@ import Firebase
 
 class ListOfServices: UITableViewController, DataManipulation {
     
-    
-    var services = [ServicesModel]()
+    var selectedService : String!
+    //var services = [ServicesModel]()
     var serviceBrain = ServicesBrain()
     var servicesData  = [ServicesModel]()
     override func viewDidLoad() {
@@ -20,8 +20,9 @@ class ListOfServices: UITableViewController, DataManipulation {
         serviceBrain.dataManipulationDelegant = self
         //calling method to retrieve data
         serviceBrain.retrivingServicesFromDatabase()
+        
         modifyingUi()
-        //        enableOffline()
+        
         //registering table view
         tableView.register(UINib(nibName:Constants.cellNibNameServicesList, bundle: nil),forCellReuseIdentifier:Constants.cellIdentifierServicesList)
         
@@ -73,8 +74,7 @@ class ListOfServices: UITableViewController, DataManipulation {
 //        let serviceName = servicesData[indexPath.row].serviceName
         let servicesImagesRef = servicesData[indexPath.row].serviceImage
         cell?.imageForService.image = UIImage(named: "servicesimageplaceholder")
-        
-        
+        cell?.listButton.text(servicesData[indexPath.row].serviceName)
         
         if let imageRef  = servicesImagesRef{
             
@@ -110,8 +110,9 @@ extension ListOfServices:ButtonPressed
 {
     // this function will be called whenever the button is pressed , so act accordingly
     func didButtonPressed(with value: String) {
-        print(value)
-        performSegue(withIdentifier: Constants.seguesNames.servicesToArtists, sender: nil)
+        selectedService = value
+        //print(selectedService!)
+        performSegue(withIdentifier: Constants.seguesNames.servicesToSellers, sender: nil)
     }
     /*
      // Override to support conditional editing of the table view.
@@ -150,13 +151,18 @@ extension ListOfServices:ButtonPressed
     
     
     
-    // MARK: - Navigation
+     //MARK: - Navigation
     
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    //        // Get the new view controller using segue.destination.
-    //        // Pass the selected object to the new view controller.
-    //    }
+        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+            if segue.identifier == Constants.seguesNames.servicesToSellers
+            {
+                if let destinationSegue = segue.destination as? SellerLists
+              {
+                    destinationSegue.selectedService = selectedService!
+              }
+            }
+            
+        }
     
     
 }

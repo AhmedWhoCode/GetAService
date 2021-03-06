@@ -19,7 +19,7 @@ protocol DataUploadedSeller
 
 class SellerProfileBrain {
     
-    
+    var sellerShortInfoArray  = [SellerShortInfo]()
     var sellerProfileData=[String:Any]()
     var dataUplodedDelegant:DataUploadedSeller?
     var userId = Auth.auth().currentUser!.uid
@@ -76,7 +76,7 @@ class SellerProfileBrain {
         sellerProfileData["gender"] = sellerProfileModel.gender
         sellerProfileData["description"] = sellerProfileModel.description
         sellerProfileData["country"] = sellerProfileModel.country
-
+        
         
         if let userid = Auth.auth().currentUser?.uid {
             
@@ -139,17 +139,33 @@ class SellerProfileBrain {
             }
         }
         
-//        db.collection("UserProfileData").document("Seller").collection("AllSellers").document(userId).setValue(["SubServices" : subServices]) { (error) in
-//            
-//            if let e = error
-//            {
-//                print(e)
-//            }
-//            else
-//            {
-//                completion()
-//            }
-//        }
+        
+    }
+    
+    
+    func retrivingFilteredSellers(with service : String , completion :@escaping ([SellerShortInfo])->()) {
+        db.collection("UserProfileData").document("Seller").collection("AllSellers").whereField("service", isEqualTo: service).getDocuments { (snapshot, error) in
+            
+            if let snap = snapshot?.documents
+            {
+
+                for i in 0...snap.count - 1
+                {
+                    let uid = snap[i].data()["uid"] as! String
+                    let image = snap[i].data()["imageRef"] as! String
+                    let price = snap[i].data()["price"] as! String
+                    let name = snap[i].data()["name"] as! String
+                    let country = snap[i].data()["country"] as! String
+                    let s = SellerShortInfo(uid : uid,image: image, price: price, name: name, country: country, availability: "available")
+                    self.sellerShortInfoArray.append(s)
+                    
+                }
+                
+            }
+            
+            completion(self.sellerShortInfoArray)
+        }
+        
     }
 }
 
@@ -168,3 +184,15 @@ class SellerProfileBrain {
 //self.sellerProfileModel?.gender = snap["gender"]! as! String
 //self.sellerProfileModel?.dob = snap["dob"]! as! Date
 //self.sellerProfileModel?.uid = snap["uid"]! as! String
+
+//        db.collection("UserProfileData").document("Seller").collection("AllSellers").document(userId).setValue(["SubServices" : subServices]) { (error) in
+//
+//            if let e = error
+//            {
+//                print(e)
+//            }
+//            else
+//            {
+//                completion()
+//            }
+//        }

@@ -21,6 +21,8 @@ class ListOfServicesXibTableViewCell: UITableViewCell {
     @IBOutlet weak var listButton: UIButton!
     @IBOutlet weak var cellView: UIView!
     @IBOutlet weak var imageForService: UIImageView!
+    
+    var tableView : UITableView!
     //alternative way of sending data , commented out
     //var buttonClicked: (() -> Void)?
     //var services=ListOfServices()
@@ -47,13 +49,13 @@ class ListOfServicesXibTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    @IBAction func listButton(_ sender: Any) {
-        
-        // calling the delegant , now the classes confirmed the above protocol will be  informed
-        buttonDelegantServices?.didButtonPressed(with: "Hy im pressed")
+    @IBAction func listButton(_ sender: UIButton) {
     
-        //could be used if needed
-      //  buttonClicked?()
+    // calling the delegant , now the classes confirmed the above protocol will be  informed
+    //sending button name 
+        buttonDelegantServices?.didButtonPressed(with:(sender.title(for: .normal)!))
+    
+    
        
     }
 }
