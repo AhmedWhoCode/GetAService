@@ -13,8 +13,10 @@ class SellerInformation: UIViewController {
     @IBOutlet weak var countryView: UIView!
     @IBOutlet weak var priceView: UIView!
     @IBOutlet weak var statusView: UIView!
-    @IBOutlet weak var artistImage: UIImageView!
+    
+    @IBOutlet weak var sellerImage: UIImageView!
 
+    @IBOutlet weak var sellerName: UILabel!
     @IBOutlet weak var sellerCountryLabel: UILabel!
     @IBOutlet weak var sellerPriceLabel: UILabel!
     @IBOutlet weak var sellerStatusLabel: UILabel!
@@ -35,19 +37,129 @@ class SellerInformation: UIViewController {
     //value of this variable will come from the previous scree
     var selectedSellerId : String!
     
+    var fireStorage = Storage.storage()
+
+    var sellerProfileBrain = SellerProfileBrain()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         designingViews()
+        
+        retrivingData()
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
         hidesBottomBarWhenPushed = false
     }
     
+    
+    func retrivingData()  {
+        sellerProfileBrain.retrivingProfileData (using : selectedSellerId){ (data,subservices) in
+            
+            self.sellerName.text = data.name
+            self.sellerCountryLabel.text = data.country
+            self.sellerPriceLabel.text = data.price
+            self.sellerStatusLabel.text = "available"
+            self.sellerDetailLabel.text = data.description
+            self.showSubServices(with: subservices)
+            
+            self.fireStorage.reference().child("Images/profile_images").child(self.selectedSellerId).getData(maxSize: 1 * 1024 * 1024) { (data1, error) in
+                if let data1 = data1
+                {
+                    print(data1)
+                    self.sellerImage.image = UIImage(data: data1)
+             
+                }
+                
+            }
+        }
+        
+    }
+    
+    
+    func showSubServices(with subServices:[String]?) {
+        
+        if let subServices = subServices
+        {
+            let numberOfSubServices = subServices.count
+            
+            switch numberOfSubServices {
+            case 1:
+                subService1.isHidden = false
+                subService1.text = subServices[0]
+            case 2:
+                subService1.isHidden = false
+                subService2.isHidden = false
+                subService1.text = subServices[0]
+                subService2.text = subServices[1]
+            case 3:
+                subService1.isHidden = false
+                subService2.isHidden = false
+                subService3.isHidden = false
+                
+                subService1.text = subServices[0]
+                subService2.text = subServices[1]
+                subService3.text = subServices[2]
+            case 4:
+                subService1.isHidden = false
+                subService2.isHidden = false
+                subService3.isHidden = false
+                subService4.isHidden = false
+                
+                subService1.text = subServices[0]
+                subService2.text = subServices[1]
+                subService3.text = subServices[2]
+                subService4.text = subServices[3]
+            case 5:
+                subService1.isHidden = false
+                subService2.isHidden = false
+                subService3.isHidden = false
+                subService4.isHidden = false
+                subService5.isHidden = false
+                
+                subService1.text = subServices[0]
+                subService2.text = subServices[1]
+                subService3.text = subServices[2]
+                subService4.text = subServices[3]
+                subService5.text = subServices[4]
+                
+            case 6:
+                subService1.isHidden = false
+                subService2.isHidden = false
+                subService3.isHidden = false
+                subService4.isHidden = false
+                subService5.isHidden = false
+                subService6.isHidden = false
+                
+                subService1.text = subServices[0]
+                subService2.text = subServices[1]
+                subService3.text = subServices[2]
+                subService4.text = subServices[3]
+                subService5.text = subServices[4]
+                subService6.text = subServices[5]
+                
+            default:
+                print("no services")
+            }
+        }
+        
+    }
+    
+    
+    
+    
+    
+    
     func designingViews(){
         navigationItem.hidesBackButton = false
+        
+        subService1.isHidden = true
+        subService2.isHidden = true
+        subService3.isHidden = true
+        subService4.isHidden = true
+        subService5.isHidden = true
+        subService6.isHidden = true
+        
         ///MARK: - designing views
         countryView.layer.cornerRadius = 15
         countryView.layer.borderWidth = 1
@@ -95,10 +207,10 @@ class SellerInformation: UIViewController {
         bookNowButton.layer.borderColor = UIColor.black.cgColor
         
         
-        artistImage.layer.masksToBounds = true
-        artistImage.layer.borderColor = UIColor.black.cgColor
-         artistImage.layer.cornerRadius = artistImage.frame.size.height/2
-        artistImage.contentMode = .scaleAspectFill
+        sellerImage.layer.masksToBounds = true
+        sellerImage.layer.borderColor = UIColor.black.cgColor
+         sellerImage.layer.cornerRadius = sellerImage.frame.size.height/2
+        sellerImage.contentMode = .scaleAspectFill
     }
     
     // MARK: - Navigation

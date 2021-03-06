@@ -29,6 +29,8 @@ class SellerProfile: UIViewController {
     @IBOutlet weak var genderChooser: UISegmentedControl!
     @IBOutlet weak var artistServicesDropDown: DropDown!
     
+    var selectedImage : UIImage?
+    
     //storing profile image selected by the user as data
     var profileImageData = Data()
     
@@ -40,6 +42,9 @@ class SellerProfile: UIViewController {
     
     // to check if the source vs is artist profile so that we can retrieve the data, its value comes from segue
     var isSourceVcArtistProfile : Bool = false
+    
+    
+    var isDestinationSubService : Bool?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,7 +79,7 @@ class SellerProfile: UIViewController {
             if let photo = items.singlePhoto {
            
                 self.artistImage.image=photo.image // Final image selected by the user
-             
+                self.selectedImage = photo.image
             }
             picker.dismiss(animated: true, completion: nil)
         }
@@ -97,9 +102,32 @@ class SellerProfile: UIViewController {
         }
     }
     
+
+    
+    
+    
+    
+    
     @IBAction func submitPressed(_ sender: UIButton) {
-        
         submitButton.isEnabled = false
+        isDestinationSubService = true
+
+        storeDataToFirebase()
+        
+    }
+    
+  
+    @IBAction func saveBarButton(_ sender: UIBarButtonItem) {
+        hidesBottomBarWhenPushed=false
+        isDestinationSubService = false
+        sender.isEnabled = false
+        storeDataToFirebase()
+    
+
+    }
+    
+    
+    func storeDataToFirebase() {
         //converting image to data , compatible for uploading in storage
         profileImageData = (artistImage.image?.jpegData(compressionQuality: 0.8)!)!
         // uncomment this code to upload image to database
@@ -119,22 +147,13 @@ class SellerProfile: UIViewController {
                                                 gender: self.genderChooser.titleForSegment(at: self.genderChooser.selectedSegmentIndex)!)
             
             self.sellerProfileBrain.storingProfileDataToFireBase(with: sellerData)
-        }
-        
-        
-        
-    }
-    
-  
-    @IBAction func saveBarButton(_ sender: UIBarButtonItem) {
-        hidesBottomBarWhenPushed=false
-        performSegue(withIdentifier: Constants.seguesNames.sellerProfileToDashboard, sender: self)
-    }
-    
+        }    }
+
     
     func retriveData(){
         sellerProfileBrain.retrivingProfileData { (data,subservices) in
-            
+            self.artistImage.loadCacheImage(with: data.imageRef)
+
             self.artistNameTextField.text = data.name
             self.artistEmailTextField.text = data.email
             self.artistAddressTextField.text = data.address
@@ -158,15 +177,15 @@ class SellerProfile: UIViewController {
                 
             }
             
-            self.fireStorage.reference().child("Images/profile_images").child(Auth.auth().currentUser!.uid).getData(maxSize: 1 * 1024 * 1024) { (data1, error) in
-                if let data1 = data1
-                {
-                    print(data1)
-                    self.artistImage.image = UIImage(data: data1)
-             
-                }
-                
-            }
+//            self.fireStorage.reference().child("Images/profile_images").child(Auth.auth().currentUser!.uid).getData(maxSize: 1 * 1024 * 1024) { (data1, error) in
+//                if let data1 = data1
+//                {
+//                    print(data1)
+//                    self.artistImage.image = UIImage(data: data1)
+//             
+//                }
+//                
+//            }
            
         }
         
@@ -296,7 +315,14 @@ class SellerProfile: UIViewController {
 extension SellerProfile : DataUploadedSeller
 {
     func didsendData() {
+        if isDestinationSubService!
+        {
         performSegue(withIdentifier: Constants.seguesNames.profileToSubservices, sender:self)
+        }
+        else
+        {
+        performSegue(withIdentifier: Constants.seguesNames.sellerProfileToDashboard, sender: self)
+        }
     }
     
 }

@@ -10,7 +10,7 @@ import Firebase
 import FirebaseStorage
 import FirebaseFirestore
 class SellerDashboardViewController: UIViewController {
-
+    
     @IBOutlet weak var sellerNameTextField: UILabel!
     @IBOutlet weak var countryView: UIView!
     @IBOutlet weak var priceView: UIView!
@@ -21,7 +21,7 @@ class SellerDashboardViewController: UIViewController {
     @IBOutlet weak var sellerCountryLabel: UILabel!
     @IBOutlet weak var sellerPriceLabel: UILabel!
     @IBOutlet weak var sellerStatusLabel: UILabel!
-
+    
     @IBOutlet weak var bookNowButton: UIButton!
     
     
@@ -32,19 +32,19 @@ class SellerDashboardViewController: UIViewController {
     @IBOutlet weak var subService5: UILabel!
     @IBOutlet weak var subService6: UILabel!
     var fireStorage = Storage.storage()
-
+    
     var sellerProfileBrain = SellerProfileBrain()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
-
+        
+        
         designingViews()
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
         hidesBottomBarWhenPushed = false
-         retrivingData()
+        retrivingData()
     }
     
     func retrivingData()  {
@@ -57,15 +57,16 @@ class SellerDashboardViewController: UIViewController {
             self.sellerDetailLabel.text = data.description
             self.showSubServices(with: subservices)
             
-            self.fireStorage.reference().child("Images/profile_images").child(Auth.auth().currentUser!.uid).getData(maxSize: 1 * 1024 * 1024) { (data1, error) in
-                if let data1 = data1
-                {
-                    print(data1)
-                    self.sellerImage.image = UIImage(data: data1)
-             
-                }
-                
-            }
+            self.sellerImage.loadCacheImage(with: data.imageRef)
+//            self.fireStorage.reference().child("Images/profile_images").child(Auth.auth().currentUser!.uid).getData(maxSize: 1 * 1024 * 1024) { (data1, error) in
+//                if let data1 = data1
+//                {
+//                    print(data1)
+//                    self.sellerImage.image = UIImage(data: data1)
+//
+//                }
+//
+//            }
         }
         
     }
@@ -77,66 +78,66 @@ class SellerDashboardViewController: UIViewController {
         
         if let subServices = subServices
         {
-        let numberOfSubServices = subServices.count
-       
-        switch numberOfSubServices {
-        case 1:
-            subService1.isHidden = false
-            subService1.text = subServices[0]
-        case 2:
-            subService1.isHidden = false
-            subService2.isHidden = false
-            subService1.text = subServices[0]
-            subService2.text = subServices[1]
-        case 3:
-            subService1.isHidden = false
-            subService2.isHidden = false
-            subService3.isHidden = false
-
-            subService1.text = subServices[0]
-            subService2.text = subServices[1]
-            subService3.text = subServices[2]
-        case 4:
-            subService1.isHidden = false
-            subService2.isHidden = false
-            subService3.isHidden = false
-            subService4.isHidden = false
-
-            subService1.text = subServices[0]
-            subService2.text = subServices[1]
-            subService3.text = subServices[2]
-            subService4.text = subServices[3]
-        case 5:
-            subService1.isHidden = false
-            subService2.isHidden = false
-            subService3.isHidden = false
-            subService4.isHidden = false
-            subService5.isHidden = false
-
-            subService1.text = subServices[0]
-            subService2.text = subServices[1]
-            subService3.text = subServices[2]
-            subService4.text = subServices[3]
-            subService5.text = subServices[4]
+            let numberOfSubServices = subServices.count
             
-        case 6:
-            subService1.isHidden = false
-            subService2.isHidden = false
-            subService3.isHidden = false
-            subService4.isHidden = false
-            subService5.isHidden = false
-            subService6.isHidden = false
-
-            subService1.text = subServices[0]
-            subService2.text = subServices[1]
-            subService3.text = subServices[2]
-            subService4.text = subServices[3]
-            subService5.text = subServices[4]
-            subService6.text = subServices[5]
-
-        default:
-            print("no services")
-        }
+            switch numberOfSubServices {
+            case 1:
+                subService1.isHidden = false
+                subService1.text = subServices[0]
+            case 2:
+                subService1.isHidden = false
+                subService2.isHidden = false
+                subService1.text = subServices[0]
+                subService2.text = subServices[1]
+            case 3:
+                subService1.isHidden = false
+                subService2.isHidden = false
+                subService3.isHidden = false
+                
+                subService1.text = subServices[0]
+                subService2.text = subServices[1]
+                subService3.text = subServices[2]
+            case 4:
+                subService1.isHidden = false
+                subService2.isHidden = false
+                subService3.isHidden = false
+                subService4.isHidden = false
+                
+                subService1.text = subServices[0]
+                subService2.text = subServices[1]
+                subService3.text = subServices[2]
+                subService4.text = subServices[3]
+            case 5:
+                subService1.isHidden = false
+                subService2.isHidden = false
+                subService3.isHidden = false
+                subService4.isHidden = false
+                subService5.isHidden = false
+                
+                subService1.text = subServices[0]
+                subService2.text = subServices[1]
+                subService3.text = subServices[2]
+                subService4.text = subServices[3]
+                subService5.text = subServices[4]
+                
+            case 6:
+                subService1.isHidden = false
+                subService2.isHidden = false
+                subService3.isHidden = false
+                subService4.isHidden = false
+                subService5.isHidden = false
+                subService6.isHidden = false
+                
+                subService1.text = subServices[0]
+                subService2.text = subServices[1]
+                subService3.text = subServices[2]
+                subService4.text = subServices[3]
+                subService5.text = subServices[4]
+                subService6.text = subServices[5]
+                
+            default:
+                print("no services")
+            }
         }
         
     }
@@ -169,10 +170,10 @@ class SellerDashboardViewController: UIViewController {
         subService1.layer.borderWidth = 1
         subService1.layer.borderColor = UIColor.black.cgColor
         
-////        subService1.layer.shadowColor = UIColor.blue.cgColor
-////        subService1.layer.shadowOpacity = 0.5
-////        subService1.layer.shadowOffset = CGSize.zero
-//     subService1.layer.shadowRadius = 10
+        ////        subService1.layer.shadowColor = UIColor.blue.cgColor
+        ////        subService1.layer.shadowOpacity = 0.5
+        ////        subService1.layer.shadowOffset = CGSize.zero
+        //     subService1.layer.shadowRadius = 10
         
         
         subService2.layer.cornerRadius = 10
@@ -197,33 +198,33 @@ class SellerDashboardViewController: UIViewController {
         subService6.layer.borderColor = UIColor.black.cgColor
         
         
-//        bookNowButton.layer.cornerRadius = 20
-//        bookNowButton.layer.borderWidth = 1
-//        bookNowButton.layer.borderColor = UIColor.black.cgColor
+        //        bookNowButton.layer.cornerRadius = 20
+        //        bookNowButton.layer.borderWidth = 1
+        //        bookNowButton.layer.borderColor = UIColor.black.cgColor
         
         
         sellerImage.layer.masksToBounds = true
         sellerImage.layer.borderColor = UIColor.black.cgColor
-         sellerImage.layer.cornerRadius = sellerImage.frame.size.height/2
+        sellerImage.layer.cornerRadius = sellerImage.frame.size.height/2
         sellerImage.contentMode = .scaleAspectFill
     }
     
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-       
+        
         if segue.identifier == Constants.seguesNames.sellerDashboardToProfile
         {
             if let destinationSegue = segue.destination as? SellerProfile
-          {
+            {
                 destinationSegue.isSourceVcArtistProfile = true
-          }
+            }
         }
         
     }
     
-
+    
     @IBAction func logOutPressed(_ sender: Any) {
         logoutUser()
     }

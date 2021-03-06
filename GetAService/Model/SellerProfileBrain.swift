@@ -26,10 +26,13 @@ class SellerProfileBrain {
     let db = Firestore.firestore()
     var fireStorage = Storage.storage()
     
-    func retrivingProfileData(completion : @escaping (SellerProfileModel,[String]?) -> ()) {
+    
+    
+    
+    func retrivingProfileData(using userUid :String = Auth.auth().currentUser!.uid,completion : @escaping (SellerProfileModel,[String]?) -> ()) {
         
         
-        db.collection("UserProfileData").document("Seller").collection("AllSellers").document(userId).addSnapshotListener
+        db.collection("UserProfileData").document("Seller").collection("AllSellers").document(userUid).addSnapshotListener
         { (snapShot, error) in
             
             if let snap = snapShot?.data()
@@ -60,6 +63,7 @@ class SellerProfileBrain {
         
     }
     
+    
     func storingProfileDataToFireBase(with sellerProfileModel:SellerProfileModel)
     {
         
@@ -79,8 +83,11 @@ class SellerProfileBrain {
         
         
         if let userid = Auth.auth().currentUser?.uid {
+//
+//            db.collection("UserProfileData").document("Seller").collection("AllSellers").document(userid).setData(<#T##documentData: [String : Any]##[String : Any]#>, merge: <#T##Bool#>)
             
-            db.collection("UserProfileData").document("Seller").collection("AllSellers").document(userid).setData(sellerProfileData) { (error) in
+            // it also merges the previous data
+            db.collection("UserProfileData").document("Seller").collection("AllSellers").document(userid).setData(sellerProfileData , merge: true ) { (error) in
                 if let error = error {
                     print("Error writing document: \(error)")
                 } else {
@@ -93,6 +100,8 @@ class SellerProfileBrain {
             
         }
     }
+    
+    
     
     func uploadingProfileImage(with profileImage:Data,  completion :@escaping (URL)->() ){
         
@@ -125,6 +134,8 @@ class SellerProfileBrain {
         
     }
     
+    
+    
     func storeSubServivesToFirebase(with subServices:[String] ,  completion :@escaping () -> ()) {
         
         
@@ -148,7 +159,7 @@ class SellerProfileBrain {
             
             if let snap = snapshot?.documents
             {
-
+                
                 for i in 0...snap.count - 1
                 {
                     let uid = snap[i].data()["uid"] as! String

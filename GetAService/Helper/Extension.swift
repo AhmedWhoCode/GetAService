@@ -7,8 +7,28 @@
 
 import UIKit
 
+class ImageCache: NSObject , NSDiscardableContent {
+    public var image: UIImage!
 
-let imageCache = NSCache<NSString , UIImage>()
+    func beginContentAccess() -> Bool {
+        return true
+    }
+
+    func endContentAccess() {
+
+    }
+
+    func discardContentIfPossible() {
+
+    }
+
+    func isContentDiscarded() -> Bool {
+        return false
+    }
+    
+}
+
+let imageCache = NSCache<NSString , ImageCache>()
 
 extension UIImageView{
     
@@ -16,15 +36,17 @@ extension UIImageView{
     {
         if let cachImage = imageCache.object(forKey: imageRefURL as NSString){
             
-            self.image = cachImage
+            print("from cache")
+            self.image = cachImage.image
             
             return
         }
         
         let imageUrl = URL(string: imageRefURL)
-        
+        print("from internet")
+
         //download image from the internet using thread
-        let task  = URLSession.shared.dataTask(with: imageUrl!) { (data, response, error) in
+        URLSession.shared.dataTask(with: imageUrl!) { (data, response, error) in
             
             if let e = error{
                 print(e)
@@ -34,8 +56,10 @@ extension UIImageView{
                 DispatchQueue.main.async() { [weak self] in
                     
                     if let downloadImage = UIImage(data: data!){
-                        
-                        imageCache.setObject(downloadImage, forKey: imageRefURL as NSString)
+                        let cacheImage = ImageCache()
+                        cacheImage.image = downloadImage
+                        //self.cache.setObject(cacheImage, forKey: "somekey" as NSString)
+                        imageCache.setObject(cacheImage, forKey: imageRefURL as NSString)
                         
                         self!.image = downloadImage
                     }
