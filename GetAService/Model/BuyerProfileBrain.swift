@@ -28,7 +28,7 @@ class BuyerProfileBrain {
     
     func retrivingProfileData(completion : @escaping (BuyerProfileModel) -> ()) {
         
-        db.collection("UserProfileData").document(Auth.auth().currentUser!.uid).addSnapshotListener
+        db.collection("UserProfileData").document("Buyer").collection("AllBuyers").document(Auth.auth().currentUser!.uid).addSnapshotListener
         { (snapShot, error) in
             
             if let snap = snapShot?.data()
@@ -48,8 +48,12 @@ class BuyerProfileBrain {
                 let uid1 = snap["uid"]! as! String
                 
                 let buyerProfileModel = BuyerProfileModel(uid:uid1, imageRef: imageRef1 , name: name1, email:email1, address: address1, phone: phone1, dob:dob1, gender: gender1)
-                
+                print("hey yyy")
                 completion(buyerProfileModel)
+            }
+            else
+            {
+                print("nononono")
             }
             
         }

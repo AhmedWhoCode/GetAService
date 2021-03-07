@@ -48,7 +48,7 @@
 		937EAACE25B6F13C002CD6EC /* GetAServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937EAACD25B6F13C002CD6EC /* GetAServiceTests.swift */; };
 		937EAAD925B6F13C002CD6EC /* GetAServiceUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937EAAD825B6F13C002CD6EC /* GetAServiceUITests.swift */; };
 		938AE23D25DF8EB900CC108B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 938AE23C25DF8EB900CC108B /* GoogleService-Info.plist */; };
-		938AE25525DF918A00CC108B /* CustomerProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938AE25425DF918A00CC108B /* CustomerProfile.swift */; };
+		938AE25525DF918A00CC108B /* BuyerProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938AE25425DF918A00CC108B /* BuyerProfile.swift */; };
 		938AE25F25DF927F00CC108B /* BuyerOrSeller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938AE25E25DF927F00CC108B /* BuyerOrSeller.swift */; };
 		93A7936225ED13D000064AA0 /* SellerWaitingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A7936125ED13D000064AA0 /* SellerWaitingViewController.swift */; };
 		93BE8E5625EE00CE008103DA /* SellerDashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BE8E5525EE00CE008103DA /* SellerDashboardViewController.swift */; };
@@ -131,7 +131,7 @@
 		937EAAD825B6F13C002CD6EC /* GetAServiceUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAServiceUITests.swift; sourceTree = "<group>"; };
 		937EAADA25B6F13C002CD6EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		938AE23C25DF8EB900CC108B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		938AE25425DF918A00CC108B /* CustomerProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerProfile.swift; sourceTree = "<group>"; };
+		938AE25425DF918A00CC108B /* BuyerProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyerProfile.swift; sourceTree = "<group>"; };
 		938AE25E25DF927F00CC108B /* BuyerOrSeller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyerOrSeller.swift; sourceTree = "<group>"; };
 		93A7936125ED13D000064AA0 /* SellerWaitingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellerWaitingViewController.swift; sourceTree = "<group>"; };
 		93BE8E5525EE00CE008103DA /* SellerDashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellerDashboardViewController.swift; sourceTree = "<group>"; };
@@ -261,7 +261,7 @@
 			isa = PBXGroup;
 			children = (
 				938AE25E25DF927F00CC108B /* BuyerOrSeller.swift */,
-				938AE25425DF918A00CC108B /* CustomerProfile.swift */,
+				938AE25425DF918A00CC108B /* BuyerProfile.swift */,
 				936783B125B9915000A93B28 /* SellerLists.swift */,
 				931CFA2825DED734007C2EE9 /* SubServicesTableViewController.swift */,
 				937EAABA25B6F13A002CD6EC /* ViewController.swift */,
@@ -639,7 +639,7 @@
 				932C488725C9980700F57308 /* WaitingScreen.swift in Sources */,
 				936783B225B9915000A93B28 /* SellerLists.swift in Sources */,
 				9339113125C828C100913D3E /* AcceptOrDecline.swift in Sources */,
-				938AE25525DF918A00CC108B /* CustomerProfile.swift in Sources */,
+				938AE25525DF918A00CC108B /* BuyerProfile.swift in Sources */,
 				9370176625E1289C00CE177B /* SellerProfileModel.swift in Sources */,
 				9354847325E8CCD000A76C22 /* Extension.swift in Sources */,
 				93C9691B25C5C0AD00A6217E /* ChatList.swift in Sources */,

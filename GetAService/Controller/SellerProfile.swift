@@ -129,7 +129,7 @@ class SellerProfile: UIViewController {
     
     func storeDataToFirebase() {
         //converting image to data , compatible for uploading in storage
-        profileImageData = (artistImage.image?.jpegData(compressionQuality: 0.8)!)!
+        profileImageData = (artistImage.image?.jpegData(compressionQuality: 0.4)!)!
         // uncomment this code to upload image to database
         sellerProfileBrain.uploadingProfileImage(with: profileImageData) { (url) in
             //let filePath = Auth.auth().currentUser?.uid
@@ -177,15 +177,7 @@ class SellerProfile: UIViewController {
                 
             }
             
-//            self.fireStorage.reference().child("Images/profile_images").child(Auth.auth().currentUser!.uid).getData(maxSize: 1 * 1024 * 1024) { (data1, error) in
-//                if let data1 = data1
-//                {
-//                    print(data1)
-//                    self.artistImage.image = UIImage(data: data1)
-//             
-//                }
-//                
-//            }
+
            
         }
         
@@ -326,3 +318,13 @@ extension SellerProfile : DataUploadedSeller
     }
     
 }
+
+//            self.fireStorage.reference().child("Images/profile_images").child(Auth.auth().currentUser!.uid).getData(maxSize: 1 * 1024 * 1024) { (data1, error) in
+//                if let data1 = data1
+//                {
+//                    print(data1)
+//                    self.artistImage.image = UIImage(data: data1)
+//
+//                }
+//
+//            }

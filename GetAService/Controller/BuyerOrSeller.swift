@@ -55,7 +55,7 @@ class BuyerOrSeller: UIViewController {
         
         if let userid = Auth.auth().currentUser?.uid {
             
-            db.collection("isUserOrNil").document(userid).setData(isUserOrNil) { err in
+            db.collection("isUserOrNil").document(userid).setData(isUserOrNil as [String : Any]) { err in
                 if let err = err {
                     print("Error writing document: \(err)")
                 } else {

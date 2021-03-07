@@ -13,7 +13,7 @@ struct BuyerProfileModel {
     var name:String
     var email:String
     var address:String
-     var phone:String
+    var phone:String
     var dob:Date
     var gender:String
         
