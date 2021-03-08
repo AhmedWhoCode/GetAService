@@ -21,6 +21,9 @@ pod 'iOSDropDown'
 pod 'YPImagePicker'
 #caching image
  pod 'Kingfisher', '~> 6.1'
+#for messagesUi
+pod 'MessageKit'
+
 
   target 'GetAServiceTests' do
     inherit! :search_paths

@@ -26,6 +26,7 @@
 		932C89C325DAE072008D72D9 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932C89C225DAE072008D72D9 /* Notifications.swift */; };
 		9339113125C828C100913D3E /* AcceptOrDecline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9339113025C828C100913D3E /* AcceptOrDecline.swift */; };
 		9339113C25C8341D00913D3E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9339113B25C8341C00913D3E /* Assets.xcassets */; };
+		933929EF25F66B0C00DB10FD /* OneToOneChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933929EE25F66B0C00DB10FD /* OneToOneChatViewController.swift */; };
 		933D3A3725DB9E1E001A26B8 /* Chats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933D3A3625DB9E1E001A26B8 /* Chats.swift */; };
 		9342CF7A25F367500099FB73 /* SellerShortInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9342CF7925F367500099FB73 /* SellerShortInfo.swift */; };
 		9352608125BD63270052C0A3 /* FairDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9352608025BD63270052C0A3 /* FairDetails.swift */; };
@@ -102,6 +103,7 @@
 		932C89C225DAE072008D72D9 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		9339113025C828C100913D3E /* AcceptOrDecline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptOrDecline.swift; sourceTree = "<group>"; };
 		9339113B25C8341C00913D3E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		933929EE25F66B0C00DB10FD /* OneToOneChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneToOneChatViewController.swift; sourceTree = "<group>"; };
 		933D3A3625DB9E1E001A26B8 /* Chats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chats.swift; sourceTree = "<group>"; };
 		9342CF7925F367500099FB73 /* SellerShortInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellerShortInfo.swift; sourceTree = "<group>"; };
 		9352608025BD63270052C0A3 /* FairDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FairDetails.swift; sourceTree = "<group>"; };
@@ -277,6 +279,7 @@
 				932C488625C9980700F57308 /* WaitingScreen.swift */,
 				93A7936125ED13D000064AA0 /* SellerWaitingViewController.swift */,
 				93BE8E5525EE00CE008103DA /* SellerDashboardViewController.swift */,
+				933929EE25F66B0C00DB10FD /* OneToOneChatViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -668,6 +671,7 @@
 				93BE8E5B25EE1359008103DA /* ShowToast.swift in Sources */,
 				9378C81925B829DE00B6A183 /* ListOfServicesXibTableViewCell.swift in Sources */,
 				932C89C325DAE072008D72D9 /* Notifications.swift in Sources */,
+				933929EF25F66B0C00DB10FD /* OneToOneChatViewController.swift in Sources */,
 				936783AC25B9896E00A93B28 /* SellerListXibTableViewTableViewCell.swift in Sources */,
 				937EAAB925B6F13A002CD6EC /* SceneDelegate.swift in Sources */,
 				9318F8AB25C5767D009A6712 /* CustomerRequestScreen.swift in Sources */,
