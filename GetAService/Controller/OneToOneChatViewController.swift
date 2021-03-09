@@ -7,83 +7,112 @@
 
 import UIKit
 import MessageKit
-
-//struct Messages {
-//    var senderId : String
-//    var MessageKind : MessageType
-//}
-
-struct Message : MessageType{
-    //var kind: MessageKind
-    
-    var kind: MessageKind
-    
-    var sender: SenderType
-    
-  //  var sender: Sender
-    
-    var messageId: String
-    
-    var sentDate: Date
-    
-    //var kind: MessageKind
-    
-//    var chatId : String
-//    var sender : SenderType
-//    var receiverId : String
-//    var Message : String
-//    var date : Date
-}
+import InputBarAccessoryView
+import FirebaseAuth
+import FirebaseStorage
+import FirebaseFirestore
+import Firebase
 
 
-//struct SenderT {
-//    var senderId : String
-//    va
-//}
-public struct Sender: SenderType {
-    public let senderId: String
-    public let displayName: String
-}
-
-
-class OneToOneChatViewController: MessagesViewController, MessagesDataSource, MessagesLayoutDelegate, MessagesDisplayDelegate {
-    var currentUser : Sender!
+class OneToOneChatViewController: MessagesViewController{
+    //var currentUser : Sender!
     var messageType = [Message]()
+    var currentUser :SenderType!
     var sender :SenderType!
-    var sender2 :SenderType!
-
+    var senderID : String!
+    var senderName : String!
+    
+    //var test : [MessageStructer]!
+    
+    var messages = [Message]()
+    
+    var messageText : String!
+    
+    var messageBrian = MessageBrain()
     override func viewDidLoad() {
         super.viewDidLoad()
-        sender = Sender(senderId: "dd", displayName: "roy")
-        sender2 = Sender(senderId: "30330", displayName: "Kam")
-
+        currentUser = Sender(senderId: Auth.auth().currentUser!.uid, displayName: "roy")
+        sender = Sender(senderId: senderID, displayName: senderName)
+        title = senderName
+        messageInputBar.delegate = self
         messagesCollectionView.messagesDataSource = self
         messagesCollectionView.messagesLayoutDelegate = self
         messagesCollectionView.messagesDisplayDelegate = self
         
-        for _ in  0...20
-        {
-            
-                messageType.append(Message(kind: .text("Hy"), sender: sender2, messageId: "enf", sentDate: Date.init(timeIntervalSince1970: 10000)))
-        
-        messageType.append(Message(kind: .text("Hy"), sender: sender, messageId: "enf", sentDate: Date.init(timeIntervalSince1970: 10000)))
+        messageBrian.retrivingMessagesFormFirebase { (data) in
+            print(data)
+            //self.test = data
+            self.showMessages(with : data)
         }
-        messagesCollectionView.scrollToBottom()
-//        messageType.append(
-//            Message(chatId: "dj" , sender: sender, receiverId: "ssi", Message: "Hy", date:Date.init(timeIntervalSince1970: 10000))
-//            )
-//        messageType.append ( Message(chatId: "dj" , sender: sender, receiverId: "ssi", Message: "Hy", date:Date.init(timeIntervalSince1970: 10000))
-//        )
-//        messageType.append  (Message(chatId: "dj" , sender: sender, receiverId: "ssi", Message: "Hy", date:Date.init(timeIntervalSince1970: 10000))
-//                    )
-              
-                           
         
         
         // Do any additional setup after loading the view.
     }
+    
+    func showMessages(with data : [MessageStructer]) {
+        let dateFormatterUK = DateFormatter()
+        dateFormatterUK.dateFormat = "dd-MM-yyyy"
+        print(data[0].date)
+        
+        for i in 0...data.count - 1
+        {
+         
+            messageType.append(Message(kind: .text(data[i].body), sender: currentUser, messageId: data[i].date, sentDate : Date.init(timeIntervalSinceReferenceDate: 11)))
+        }
+        messagesCollectionView.reloadData()
+        
+        messagesCollectionView.scrollToBottom()
+        
+    }
+    
+//       func insertNewMessage(_ message: Message) {
+//
+//            messages.append(message)
+//
+//            messagesCollectionView.reloadData()
+//
+//            DispatchQueue.main.async {
+//                self.messagesCollectionView.scrollToBottom(animated: true)
+//            }
+//        }
+    
+    /*
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
+    func sendData() {
+        //let uuid = UUID().uuidString
+        let date = Date()
+        let df = DateFormatter()
+        df.dateFormat = "yyyy-MM-dd HH:mm:ss.SSSS"
+        let dateString = df.string(from: date)
+        let message = MessageStructer(body: messageText,
+                                      senderId: Auth.auth().currentUser!.uid,
+                                      date: dateString,
+                                      receiverId:sender.senderId
+        )
+        messageBrian.storeMessageToFireBase(with: message) {
+            self.messagesCollectionView.reloadData()
+
+            //self.showMessages(with: self.test)
+             print("successful")
+        }
+        
+    }
+    
+}
+
+extension OneToOneChatViewController : MessagesDataSource,MessagesLayoutDelegate,MessagesDisplayDelegate , InputBarAccessoryViewDelegate
+
+{
     func currentSender() -> SenderType {
-        return sender2
+        return currentUser
     }
     
     func messageForItem(at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> MessageType {
@@ -95,14 +124,15 @@ class OneToOneChatViewController: MessagesViewController, MessagesDataSource, Me
         messageType.count
     }
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
+    func inputBar(_ inputBar: InputBarAccessoryView, didPressSendButtonWith text: String) {
+        messageText = text
+        sendData()
+       // var m = MessageStructer(body: text, senderId: senderID, date: "s")
+        //fitest.append(m)
+        //showMessages(with: test)
+        inputBar.inputTextView.text = ""
+        messagesCollectionView.scrollToBottom(animated: true)
+        
+    }
     
 }

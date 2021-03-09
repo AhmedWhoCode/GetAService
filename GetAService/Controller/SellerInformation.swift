@@ -41,6 +41,8 @@ class SellerInformation: UIViewController {
 
     var sellerProfileBrain = SellerProfileBrain()
     
+    var sellerNameToSend : String!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         designingViews()
@@ -57,23 +59,16 @@ class SellerInformation: UIViewController {
         sellerProfileBrain.retrivingProfileData (using : selectedSellerId){ (data,subservices) in
             
             self.sellerName.text = data.name
+            self.sellerNameToSend = data.name
             self.sellerCountryLabel.text = data.country
             self.sellerPriceLabel.text = data.price
             self.sellerStatusLabel.text = "available"
             self.sellerDetailLabel.text = data.description
             self.showSubServices(with: subservices)
-            
+        
             
             self.sellerImage.loadCacheImage(with: data.imageRef)
-//            self.fireStorage.reference().child("Images/profile_images").child(self.selectedSellerId).getData(maxSize: 1 * 1024 * 1024) { (data1, error) in
-//                if let data1 = data1
-//                {
-//                    print(data1)
-//                    self.sellerImage.image = UIImage(data: data1)
-//
-//                }
-//
-//            }
+
         }
         
     }
@@ -147,6 +142,9 @@ class SellerInformation: UIViewController {
         
     }
     
+    @IBAction func messageButton(_ sender: UIButton) {
+        performSegue(withIdentifier: Constants.seguesNames.sellerInfoToMessages, sender: self)
+    }
     
     
     
@@ -218,18 +216,20 @@ class SellerInformation: UIViewController {
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//       
-//        if segue.identifier == Constants.seguesNames.artistInfoToProfile
-//        {
-//            if let destinationSegue = segue.destination as? SellerProfile
-//          {
-//                destinationSegue.isSourceVcArtistProfile = true
-//          }
-//        }
-//        
-//    }
-//    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+       
+        if segue.identifier == Constants.seguesNames.sellerInfoToMessages
+        {
+            if let destinationSegue = segue.destination as? OneToOneChatViewController
+          {
+                destinationSegue.senderID = selectedSellerId
+                destinationSegue.senderName = sellerNameToSend
+
+          }
+        }
+        
+    }
+    
 
     
     @IBAction func bookNow(_ sender: Any) {

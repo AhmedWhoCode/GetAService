@@ -83,8 +83,8 @@ class SellerProfileBrain {
         
         
         if let userid = Auth.auth().currentUser?.uid {
-//
-//            db.collection("UserProfileData").document("Seller").collection("AllSellers").document(userid).setData(<#T##documentData: [String : Any]##[String : Any]#>, merge: <#T##Bool#>)
+            //
+            //            db.collection("UserProfileData").document("Seller").collection("AllSellers").document(userid).setData(<#T##documentData: [String : Any]##[String : Any]#>, merge: <#T##Bool#>)
             
             // it also merges the previous data
             db.collection("UserProfileData").document("Seller").collection("AllSellers").document(userid).setData(sellerProfileData , merge: true ) { (error) in
@@ -160,18 +160,20 @@ class SellerProfileBrain {
             if let snap = snapshot?.documents
             {
                 
-                for i in 0...snap.count - 1
+                if snap.count > 0
                 {
-                    let uid = snap[i].data()["uid"] as! String
-                    let image = snap[i].data()["imageRef"] as! String
-                    let price = snap[i].data()["price"] as! String
-                    let name = snap[i].data()["name"] as! String
-                    let country = snap[i].data()["country"] as! String
-                    let s = SellerShortInfo(uid : uid,image: image, price: price, name: name, country: country, availability: "available")
-                    self.sellerShortInfoArray.append(s)
-                    
+                    for i in 0...snap.count - 1
+                    {
+                        let uid = snap[i].data()["uid"] as! String
+                        let image = snap[i].data()["imageRef"] as! String
+                        let price = snap[i].data()["price"] as! String
+                        let name = snap[i].data()["name"] as! String
+                        let country = snap[i].data()["country"] as! String
+                        let s = SellerShortInfo(uid : uid,image: image, price: price, name: name, country: country, availability: "available")
+                        self.sellerShortInfoArray.append(s)
+                        
+                    }
                 }
-                
             }
             
             completion(self.sellerShortInfoArray)

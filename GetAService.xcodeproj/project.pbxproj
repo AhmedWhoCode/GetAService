@@ -36,6 +36,9 @@
 		936783AC25B9896E00A93B28 /* SellerListXibTableViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936783AA25B9896E00A93B28 /* SellerListXibTableViewTableViewCell.swift */; };
 		936783AD25B9896E00A93B28 /* SellerListXibTableViewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 936783AB25B9896E00A93B28 /* SellerListXibTableViewTableViewCell.xib */; };
 		936783B225B9915000A93B28 /* SellerLists.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936783B125B9915000A93B28 /* SellerLists.swift */; };
+		936D2CB325F740BA00F677F8 /* Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936D2CB225F740BA00F677F8 /* Messages.swift */; };
+		936D2CB825F7614200F677F8 /* MessageBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936D2CB725F7614200F677F8 /* MessageBrain.swift */; };
+		936D2CBD25F76A2B00F677F8 /* MessageStructer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936D2CBC25F76A2B00F677F8 /* MessageStructer.swift */; };
 		9370176125E123B100CE177B /* SellerProfileBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9370176025E123B100CE177B /* SellerProfileBrain.swift */; };
 		9370176625E1289C00CE177B /* SellerProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9370176525E1289C00CE177B /* SellerProfileModel.swift */; };
 		9378C81925B829DE00B6A183 /* ListOfServicesXibTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9378C81725B829DE00B6A183 /* ListOfServicesXibTableViewCell.swift */; };
@@ -113,6 +116,9 @@
 		936783AA25B9896E00A93B28 /* SellerListXibTableViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellerListXibTableViewTableViewCell.swift; sourceTree = "<group>"; };
 		936783AB25B9896E00A93B28 /* SellerListXibTableViewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SellerListXibTableViewTableViewCell.xib; sourceTree = "<group>"; };
 		936783B125B9915000A93B28 /* SellerLists.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellerLists.swift; sourceTree = "<group>"; };
+		936D2CB225F740BA00F677F8 /* Messages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Messages.swift; sourceTree = "<group>"; };
+		936D2CB725F7614200F677F8 /* MessageBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBrain.swift; sourceTree = "<group>"; };
+		936D2CBC25F76A2B00F677F8 /* MessageStructer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageStructer.swift; sourceTree = "<group>"; };
 		9370176025E123B100CE177B /* SellerProfileBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellerProfileBrain.swift; sourceTree = "<group>"; };
 		9370176525E1289C00CE177B /* SellerProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellerProfileModel.swift; sourceTree = "<group>"; };
 		9378C81725B829DE00B6A183 /* ListOfServicesXibTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfServicesXibTableViewCell.swift; sourceTree = "<group>"; };
@@ -221,6 +227,7 @@
 			children = (
 				9354847225E8CCD000A76C22 /* Extension.swift */,
 				93BE8E5A25EE1359008103DA /* ShowToast.swift */,
+				936D2CB225F740BA00F677F8 /* Messages.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -239,6 +246,8 @@
 				9352711F25E7899100F368B1 /* BuyerProfileModel.swift */,
 				9354847A25E8DF8A00A76C22 /* BuyerProfileBrain.swift */,
 				9342CF7925F367500099FB73 /* SellerShortInfo.swift */,
+				936D2CB725F7614200F677F8 /* MessageBrain.swift */,
+				936D2CBC25F76A2B00F677F8 /* MessageStructer.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -656,6 +665,7 @@
 				937EAAB725B6F13A002CD6EC /* AppDelegate.swift in Sources */,
 				931D66A225C0873E002C239E /* NotificationsList.swift in Sources */,
 				9354847B25E8DF8A00A76C22 /* BuyerProfileBrain.swift in Sources */,
+				936D2CB325F740BA00F677F8 /* Messages.swift in Sources */,
 				932C89BB25DAD893008D72D9 /* Artists.swift in Sources */,
 				93E3F8DB25E23BEC00FB74C3 /* ServicesBrain.swift in Sources */,
 				9378C82725B834C400B6A183 /* ListOfServices.swift in Sources */,
@@ -670,10 +680,12 @@
 				931CFA2925DED734007C2EE9 /* SubServicesTableViewController.swift in Sources */,
 				93BE8E5B25EE1359008103DA /* ShowToast.swift in Sources */,
 				9378C81925B829DE00B6A183 /* ListOfServicesXibTableViewCell.swift in Sources */,
+				936D2CBD25F76A2B00F677F8 /* MessageStructer.swift in Sources */,
 				932C89C325DAE072008D72D9 /* Notifications.swift in Sources */,
 				933929EF25F66B0C00DB10FD /* OneToOneChatViewController.swift in Sources */,
 				936783AC25B9896E00A93B28 /* SellerListXibTableViewTableViewCell.swift in Sources */,
 				937EAAB925B6F13A002CD6EC /* SceneDelegate.swift in Sources */,
+				936D2CB825F7614200F677F8 /* MessageBrain.swift in Sources */,
 				9318F8AB25C5767D009A6712 /* CustomerRequestScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
