@@ -16,7 +16,7 @@ class MessageBrain {
     var fireStorage = Storage.storage()
     var message = [String:Any]()
     var messagesFromFirbase = [MessageStructer]()
-    
+    var currentUser = (Auth.auth().currentUser?.uid)!
     
     
     
@@ -29,15 +29,18 @@ class MessageBrain {
         message["messageId"] = data.date
         message["receiverId"] = data.receiverId
         // using timeStamp for unique message id
-        db.collection("Chats").document((Auth.auth().currentUser?.uid)!).collection("ChatsId").document(data.date).setData(message) { (error) in
-            
+        
+        
+        db.collection("Chats").document(currentUser).collection("ChatWith").document(data.receiverId).collection("AllSingleChat").document(data.date).setData(message) { (error) in
+            print("1 \(self.currentUser)")
             if let e = error
             {
                 print(e)
             }
             else
             {
-                self.db.collection("Chats").document(data.receiverId).collection("ChatsId").document(data.date).setData(self.message) { (error) in
+                self.db.collection("Chats").document(data.receiverId).collection("ChatWith").document(self.currentUser).collection("AllSingleChat").document(data.date).setData(self.message){ (error) in
+                    print("2 \(data.receiverId)")
                     
                     if let e = error
                     {
@@ -51,6 +54,7 @@ class MessageBrain {
                     
                     
                 }
+                
                 print("message saved")
             }
         }
@@ -58,10 +62,9 @@ class MessageBrain {
     }
     
     
-    func retrivingMessagesFormFirebase(completion : @escaping ([MessageStructer]) -> ()) {
+    func retrivingMessagesFormFirebase(with receiverID:String, completion : @escaping ([MessageStructer]) -> ()) {
         
-        
-        db.collection("Chats").document((Auth.auth().currentUser?.uid)!).collection("ChatsId").addSnapshotListener { (snapShot, error) in
+        db.collection("Chats").document((Auth.auth().currentUser?.uid)!).collection("ChatWith").document(receiverID).collection("AllSingleChat").addSnapshotListener { (snapShot, error) in
             
             self.messagesFromFirbase.removeAll()
             if let snap = snapShot?.documentChanges

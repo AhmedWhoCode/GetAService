@@ -6,14 +6,22 @@
 //
 
 import UIKit
+import FirebaseAuth
+import Firebase
 
 class ChatList: UITableViewController {
     var chats = [Chats]()
-
+    var chatBrain = ChatBrain()
+    var currentUser = Auth.auth().currentUser?.uid
+    
+    var chatList = [ChatModel]()
     override func viewDidLoad() {
         super.viewDidLoad()
         //hides back button of top navigation
         navigationItem.hidesBackButton = false
+        
+    
+        retrivingNames()
         addingDummyData()
 
         tableView.register(UINib(nibName:Constants.cellNibNameChatList, bundle: nil),forCellReuseIdentifier:Constants.cellIdentifierChatList)
@@ -24,6 +32,21 @@ class ChatList: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
+    func retrivingNames() {
+        
+        chatBrain.retrivingChatsFromDatabase { (data) in
+            
+            self.chatBrain.gettingUserInfo(with: data) { (infoData) in
+                
+                self.chatList = infoData
+                self.tableView.reloadData()
+                print("check \(infoData.count)")
+            }
+           
+
+        }
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -33,15 +56,15 @@ class ChatList: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return chats.count
+        return chatList.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier:Constants.cellIdentifierChatList, for: indexPath) as? ChatsTableViewCell
-        cell?.chatImage.image = chats[indexPath.row].chatImage
-        cell?.chatName.text = chats[indexPath.row].chatName
-        cell?.chatCountry.text = chats[indexPath.row].chatCountry
+        cell?.chatImage.loadCacheImage(with: chatList[indexPath.row].image)
+        cell?.chatName.text = chatList[indexPath.row].name
+        cell?.chatCountry.text = chatList[indexPath.row].country
         // Configure the cell...
 
         return cell!

@@ -24,7 +24,7 @@ class OneToOneChatViewController: MessagesViewController{
     
     //var test : [MessageStructer]!
     
-    var messages = [Message]()
+//    var messages = [Message]()
     
     var messageText : String!
     
@@ -39,7 +39,7 @@ class OneToOneChatViewController: MessagesViewController{
         messagesCollectionView.messagesLayoutDelegate = self
         messagesCollectionView.messagesDisplayDelegate = self
         
-        messageBrian.retrivingMessagesFormFirebase { (data) in
+        messageBrian.retrivingMessagesFormFirebase(with : senderID) { (data) in
             print(data)
             //self.test = data
             self.showMessages(with : data)
@@ -97,7 +97,9 @@ class OneToOneChatViewController: MessagesViewController{
                                       date: dateString,
                                       receiverId:sender.senderId
         )
-        messageBrian.storeMessageToFireBase(with: message) {
+        
+        messageBrian.storeMessageToFireBase(with: message)
+        {
             self.messagesCollectionView.reloadData()
 
             //self.showMessages(with: self.test)
@@ -105,6 +107,7 @@ class OneToOneChatViewController: MessagesViewController{
         }
         
     }
+   
     
 }
 

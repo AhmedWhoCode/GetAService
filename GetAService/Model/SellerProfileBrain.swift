@@ -180,6 +180,38 @@ class SellerProfileBrain {
         }
         
     }
+    
+    
+    
+    func retrivingProfileDataForChats(using userUid :String = Auth.auth().currentUser!.uid,completion : @escaping (ChatModel) -> ()) {
+        
+        
+        db.collection("UserProfileData").document("Seller").collection("AllSellers").document(userUid).addSnapshotListener
+        { (snapShot, error) in
+            
+            if let snap = snapShot?.data()
+            {
+                
+                
+                let imageRef1 = snap["imageRef"]! as! String
+                let name1 = snap["name"]! as! String
+                let country = snap["country"]! as! String
+                
+                let chatModel = ChatModel(image: imageRef1, name: name1, country: country)
+                
+                completion(chatModel)
+            }
+            
+        }
+        
+    }
+    
+    
+    
+    
+    
+    
+    
 }
 
 
