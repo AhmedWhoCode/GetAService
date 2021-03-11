@@ -41,7 +41,9 @@ class SellerInformation: UIViewController {
 
     var sellerProfileBrain = SellerProfileBrain()
     
+    //to be send to chats
     var sellerNameToSend : String!
+    var sellerImageToSend : String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,9 +68,10 @@ class SellerInformation: UIViewController {
             self.sellerDetailLabel.text = data.description
             self.showSubServices(with: subservices)
         
+            self.sellerImageToSend = data.imageRef
             
-            self.sellerImage.loadCacheImage(with: data.imageRef)
-
+            self.sellerImage.loadCacheImage(with: self.sellerImageToSend)
+           
         }
         
     }
@@ -222,9 +225,9 @@ class SellerInformation: UIViewController {
         {
             if let destinationSegue = segue.destination as? OneToOneChatViewController
           {
-                destinationSegue.senderID = selectedSellerId
-                destinationSegue.senderName = sellerNameToSend
-
+                destinationSegue.otherUserID = selectedSellerId
+                destinationSegue.otherUserName = sellerNameToSend
+                destinationSegue.otherUserImage = sellerImageToSend
           }
         }
         

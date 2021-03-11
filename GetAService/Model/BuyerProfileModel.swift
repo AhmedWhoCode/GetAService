@@ -16,6 +16,6 @@ struct BuyerProfileModel {
     var phone:String
     var dob:Date
     var gender:String
-        
+    var country : String
      
 }

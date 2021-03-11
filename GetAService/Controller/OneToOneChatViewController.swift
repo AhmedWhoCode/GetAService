@@ -15,33 +15,41 @@ import Firebase
 
 
 class OneToOneChatViewController: MessagesViewController{
-    //var currentUser : Sender!
+    //Type of message structer supported by messagekit
     var messageType = [Message]()
+    
+    //storing current user and other user
     var currentUser :SenderType!
     var sender :SenderType!
-    var senderID : String!
-    var senderName : String!
     
-    //var test : [MessageStructer]!
+    // getting value and name of other user from previous class
+    var otherUserID : String!
+    var otherUserName : String!
+    var otherUserImage : String!
     
-//    var messages = [Message]()
-    
+    //message typed by the user
     var messageText : String!
     
     var messageBrian = MessageBrain()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        //setting up current user
         currentUser = Sender(senderId: Auth.auth().currentUser!.uid, displayName: "roy")
-        sender = Sender(senderId: senderID, displayName: senderName)
-        title = senderName
+        //setting other user
+        sender = Sender(senderId: otherUserID, displayName: otherUserName)
+        //title of navbar
+        title = otherUserName
+        
+        
         messageInputBar.delegate = self
         messagesCollectionView.messagesDataSource = self
         messagesCollectionView.messagesLayoutDelegate = self
         messagesCollectionView.messagesDisplayDelegate = self
         
-        messageBrian.retrivingMessagesFormFirebase(with : senderID) { (data) in
-            print(data)
-            //self.test = data
+        //calling function to retrive messages with other user using senderID
+        messageBrian.retrivingMessagesFormFirebase(with : otherUserID) { (data) in
+            //data contains all the message
             self.showMessages(with : data)
         }
         
@@ -49,39 +57,32 @@ class OneToOneChatViewController: MessagesViewController{
         // Do any additional setup after loading the view.
     }
     
+    //showing messages received from database
     func showMessages(with data : [MessageStructer]) {
+        //formatting date
         let dateFormatterUK = DateFormatter()
         dateFormatterUK.dateFormat = "dd-MM-yyyy"
-        print(data[0].date)
         
         for i in 0...data.count - 1
         {
-         
+            
+            //if the message sender id is of current user then make sender as current user , it is used to make conversation left and right
             if data[i].senderId == currentUser.senderId
             {
-            messageType.append(Message(kind: .text(data[i].body), sender:currentUser, messageId: data[i].date, sentDate : Date.init(timeIntervalSinceReferenceDate: 11)))
+                messageType.append(Message(kind: .text(data[i].body), sender:currentUser, messageId: data[i].date, sentDate : Date.init(timeIntervalSinceReferenceDate: 11)))
             }
             else
             {
                 messageType.append(Message(kind: .text(data[i].body), sender:sender, messageId: data[i].date, sentDate : Date.init(timeIntervalSinceReferenceDate: 11)))
             }
         }
+        
         messagesCollectionView.reloadData()
         
         messagesCollectionView.scrollToBottom()
         
     }
     
-//       func insertNewMessage(_ message: Message) {
-//
-//            messages.append(message)
-//
-//            messagesCollectionView.reloadData()
-//
-//            DispatchQueue.main.async {
-//                self.messagesCollectionView.scrollToBottom(animated: true)
-//            }
-//        }
     
     /*
      // MARK: - Navigation
@@ -93,8 +94,8 @@ class OneToOneChatViewController: MessagesViewController{
      }
      */
     
+    //sending data on pressing send
     func sendData() {
-        //let uuid = UUID().uuidString
         let date = Date()
         let df = DateFormatter()
         df.dateFormat = "yyyy-MM-dd HH:mm:ss.SSSS"
@@ -108,13 +109,12 @@ class OneToOneChatViewController: MessagesViewController{
         messageBrian.storeMessageToFireBase(with: message)
         {
             self.messagesCollectionView.reloadData()
-
-            //self.showMessages(with: self.test)
-             print("successful")
+            
+            print("successful")
         }
         
     }
-   
+    
     
 }
 
@@ -122,7 +122,7 @@ extension OneToOneChatViewController : MessagesDataSource,MessagesLayoutDelegate
 
 {
     func currentSender() -> SenderType {
-      return  currentUser
+        return  currentUser
         
     }
     
@@ -137,12 +137,30 @@ extension OneToOneChatViewController : MessagesDataSource,MessagesLayoutDelegate
     
     func inputBar(_ inputBar: InputBarAccessoryView, didPressSendButtonWith text: String) {
         messageText = text
+        
         sendData()
-       // var m = MessageStructer(body: text, senderId: senderID, date: "s")
-        //fitest.append(m)
-        //showMessages(with: test)
+        
         inputBar.inputTextView.text = ""
         messagesCollectionView.scrollToBottom(animated: true)
+        
+    }
+    
+    //adding images to chats
+    func configureAvatarView(_ avatarView: AvatarView, for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) {
+        
+        if message.sender.senderId == otherUserID
+        {
+            if let image = otherUserImage
+            {
+                avatarView.loadCacheImage(with: image)
+            }
+        }
+        else
+        {
+            avatarView.image = #imageLiteral(resourceName: "profile")
+            
+        }
+        
         
     }
     

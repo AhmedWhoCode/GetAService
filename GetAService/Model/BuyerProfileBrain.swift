@@ -46,8 +46,10 @@ class BuyerProfileBrain {
                 let dob = snap["dob"]! as! Timestamp
                 let dob1 = dob.dateValue()
                 let uid1 = snap["uid"]! as! String
+                let country1 = snap["country"]! as! String
+
                 
-                let buyerProfileModel = BuyerProfileModel(uid:uid1, imageRef: imageRef1 , name: name1, email:email1, address: address1, phone: phone1, dob:dob1, gender: gender1)
+                let buyerProfileModel = BuyerProfileModel(uid:uid1, imageRef: imageRef1 , name: name1, email:email1, address: address1, phone: phone1, dob:dob1, gender: gender1,country: country1)
                 print("hey yyy")
                 completion(buyerProfileModel)
             }
@@ -72,7 +74,8 @@ class BuyerProfileBrain {
         buyerProfileData["phone"] = buyerProfileModel.phone
         buyerProfileData["dob"] = buyerProfileModel.dob
         buyerProfileData["gender"] = buyerProfileModel.gender
-        
+        buyerProfileData["country"] = buyerProfileModel.country
+
         
         if let userid = Auth.auth().currentUser?.uid {
             
@@ -134,7 +137,7 @@ class BuyerProfileBrain {
                 
                 let imageRef1 = snap["imageRef"]! as! String
                 let name1 = snap["name"]! as! String
-                let country = "Not filled"
+                let country = snap["country"]! as! String
                 let userId = userUid
                 
                 let chatModel = ChatModel(image: imageRef1, name: name1, country: country, userId: userId )

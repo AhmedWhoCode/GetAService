@@ -21,9 +21,11 @@ class BuyerProfile: UIViewController {
     @IBOutlet weak var buyerPriceTextField: UITextField!
     @IBOutlet weak var buyerNumberTextField: UITextField!
     
+    @IBOutlet weak var buyerCountry: UITextField!
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var genderChooser: UISegmentedControl!
     
+    @IBOutlet weak var scrollView: UIScrollView!
     
     //storing profile image selected by the user as data
     var profileImageData = Data()
@@ -35,6 +37,9 @@ class BuyerProfile: UIViewController {
     var selectedService:String!
     override func viewDidLoad() {
         super.viewDidLoad()
+        //attaching touch sensor with a view, whenever you press a view keyboard will disappear
+        initializeHideKeyboard()
+        
         retriveData()
 
         designingView()
@@ -54,7 +59,9 @@ class BuyerProfile: UIViewController {
                                                address: self.buyerAddressTextField.text!,
                                                phone: self.buyerNumberTextField.text!,
                                                dob: self.datePicker.date,
-                                               gender: self.genderChooser.titleForSegment(at: self.genderChooser.selectedSegmentIndex)!)
+                                               gender: self.genderChooser.titleForSegment(at: self.genderChooser.selectedSegmentIndex)!,
+                                               country: self.buyerCountry.text!
+            )
             
             self.buyerProfileBrain.storingProfileDataToFireBase(with: buyersData)
         }
@@ -102,6 +109,7 @@ class BuyerProfile: UIViewController {
             self.buyerEmailTextField.text = data.email
             self.buyerAddressTextField.text = data.address
             self.buyerNumberTextField.text = data.phone
+            self.buyerCountry.text = data.country
             //self.buyerCountryTextField.text = data.country
 //            self.artistServicesDropDown.selectedIndex = self.artistServicesDropDown.optionArray.firstIndex(of: self.selectedService)!
 //            self.artistServicesDropDown.text = self.selectedService
@@ -125,100 +133,135 @@ class BuyerProfile: UIViewController {
         
     }
     
+
     
+//    func designingView() {
+//
+//        ///MARK: - adjusting position of keyboard
+//        NotificationCenter.default.addObserver(self,
+//                                               selector: #selector(keyboardWillShow),
+//                                               name:UIResponder.keyboardWillShowNotification,
+//                                               object: nil)
+//
+//        NotificationCenter.default.addObserver(self,
+//                                               selector: #selector(keyboardWillHide),
+//                                               name:UIResponder.keyboardWillHideNotification,
+//                                               object: nil)
+//
+//
+//        navigationItem.hidesBackButton = false
+//
+//
+//        ///MARK: - designing views
+//        buyerImage.layer.masksToBounds = true
+//        buyerImage.layer.borderColor = UIColor.black.cgColor
+//       buyerImage.layer.cornerRadius = buyerImage.frame.size.height/2
+//        buyerImage.contentMode = .scaleAspectFill
+//
+//
+//
+////        artistNameTextField.layer.cornerRadius = 10
+////        artistNameTextField.layer.borderWidth = 0.1
+////        artistNameTextField.layer.borderColor = UIColor.black.cgColor
+//
+//        //shadow
+//        buyerNameTextField.layer.shadowColor = UIColor.gray.cgColor
+//        buyerNameTextField.layer.shadowOpacity = 0.5
+//        buyerNameTextField.layer.shadowOffset = CGSize.zero
+//        buyerNameTextField.layer.shadowRadius = 7
+//
+//        //To apply padding
+//        let paddingView : UIView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: buyerNameTextField.frame.height))
+//        buyerNameTextField.leftView = paddingView
+//        buyerNameTextField.leftViewMode = UITextField.ViewMode.always
+//
+//        //  2nd view
+//        //shadow
+//        buyerAddressTextField.layer.shadowColor = UIColor.gray.cgColor
+//        buyerAddressTextField.layer.shadowOpacity = 0.5
+//        buyerAddressTextField.layer.shadowOffset = CGSize.zero
+//        buyerAddressTextField.layer.shadowRadius = 7
+//
+//        //To apply padding
+//       let paddingView2 : UIView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: buyerAddressTextField.frame.height))
+//        buyerAddressTextField.leftView = paddingView2
+//        buyerAddressTextField.leftViewMode = UITextField.ViewMode.always
+//
+//
+//        // 3rd view
+//        //shadow
+//        buyerEmailTextField.layer.shadowColor = UIColor.gray.cgColor
+//        buyerEmailTextField.layer.shadowOpacity = 0.5
+//        buyerEmailTextField.layer.shadowOffset = CGSize.zero
+//        buyerEmailTextField.layer.shadowRadius = 7
+//
+//        //To apply padding
+//        let paddingView3 : UIView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: buyerAddressTextField.frame.height))
+//        buyerEmailTextField.leftView = paddingView3
+//        buyerEmailTextField.leftViewMode = UITextField.ViewMode.always
+//
+//        //4rth view
+//
+//        //shadow
+//        buyerPriceTextField.layer.shadowColor = UIColor.gray.cgColor
+//        buyerPriceTextField.layer.shadowOpacity = 0.5
+//        buyerPriceTextField.layer.shadowOffset = CGSize.zero
+//        buyerPriceTextField.layer.shadowRadius = 7
+//
+//        //To apply padding
+//        let paddingView4 : UIView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: buyerAddressTextField.frame.height))
+//        buyerPriceTextField.leftView = paddingView4
+//        buyerPriceTextField.leftViewMode = UITextField.ViewMode.always
+//
+//       // 5th view
+//
+//        //shadow
+//        buyerNumberTextField.layer.shadowColor = UIColor.gray.cgColor
+//        buyerNumberTextField.layer.shadowOpacity = 0.5
+//        buyerNumberTextField.layer.shadowOffset = CGSize.zero
+//        buyerNumberTextField.layer.shadowRadius = 7
+//
+//        //To apply padding
+//        let paddingView5 : UIView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: buyerAddressTextField.frame.height))
+//        buyerNumberTextField.leftView = paddingView5
+//        buyerNumberTextField.leftViewMode = UITextField.ViewMode.always
+//
+//        //sth view
+//        submitButton.layer.cornerRadius = 20
+//        submitButton.layer.borderWidth = 1
+//        submitButton.layer.borderColor = UIColor.black.cgColor
+//
+//        // 3rd view
+//        //shadow
+//        buyerCountry.layer.shadowColor = UIColor.gray.cgColor
+//        buyerCountry.layer.shadowOpacity = 0.5
+//        buyerCountry.layer.shadowOffset = CGSize.zero
+//        buyerCountry.layer.shadowRadius = 7
+//
+//        //To apply padding
+//        let paddingViewC : UIView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: buyerCountry.frame.height))
+//        buyerCountry.leftView = paddingViewC
+//        buyerCountry.leftViewMode = UITextField.ViewMode.always
+//
+//
+//    }
     
-    
-    
-    
-    
-    
-    
-    func designingView() {
-        navigationItem.hidesBackButton = false
-   
+    // to adjust keyboard size will typing
+    @objc func keyboardWillShow(notification:NSNotification) {
 
-        ///MARK: - designing views
-        buyerImage.layer.masksToBounds = true
-        buyerImage.layer.borderColor = UIColor.black.cgColor
-       buyerImage.layer.cornerRadius = buyerImage.frame.size.height/2
-        buyerImage.contentMode = .scaleAspectFill
-        
-        
-        
-//        artistNameTextField.layer.cornerRadius = 10
-//        artistNameTextField.layer.borderWidth = 0.1
-//        artistNameTextField.layer.borderColor = UIColor.black.cgColor
-        
-        //shadow
-        buyerNameTextField.layer.shadowColor = UIColor.gray.cgColor
-        buyerNameTextField.layer.shadowOpacity = 0.5
-        buyerNameTextField.layer.shadowOffset = CGSize.zero
-        buyerNameTextField.layer.shadowRadius = 7
-  
-        //To apply padding
-        let paddingView : UIView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: buyerNameTextField.frame.height))
-        buyerNameTextField.leftView = paddingView
-        buyerNameTextField.leftViewMode = UITextField.ViewMode.always
-        
-        //  2nd view
-        //shadow
-        buyerAddressTextField.layer.shadowColor = UIColor.gray.cgColor
-        buyerAddressTextField.layer.shadowOpacity = 0.5
-        buyerAddressTextField.layer.shadowOffset = CGSize.zero
-        buyerAddressTextField.layer.shadowRadius = 7
+        guard let userInfo = notification.userInfo else { return }
+        var keyboardFrame:CGRect = (userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
+        keyboardFrame = self.view.convert(keyboardFrame, from: nil)
 
-        //To apply padding
-       let paddingView2 : UIView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: buyerAddressTextField.frame.height))
-        buyerAddressTextField.leftView = paddingView2
-        buyerAddressTextField.leftViewMode = UITextField.ViewMode.always
+        var contentInset:UIEdgeInsets = self.scrollView.contentInset
+        contentInset.bottom = keyboardFrame.size.height + 20
+        scrollView.contentInset = contentInset
+    }
 
+    @objc func keyboardWillHide(notification:NSNotification) {
 
-        // 3rd view
-        //shadow
-        buyerEmailTextField.layer.shadowColor = UIColor.gray.cgColor
-        buyerEmailTextField.layer.shadowOpacity = 0.5
-        buyerEmailTextField.layer.shadowOffset = CGSize.zero
-        buyerEmailTextField.layer.shadowRadius = 7
-
-        //To apply padding
-        let paddingView3 : UIView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: buyerAddressTextField.frame.height))
-        buyerEmailTextField.leftView = paddingView3
-        buyerEmailTextField.leftViewMode = UITextField.ViewMode.always
-
-        //4rth view
-
-        //shadow
-        buyerPriceTextField.layer.shadowColor = UIColor.gray.cgColor
-        buyerPriceTextField.layer.shadowOpacity = 0.5
-        buyerPriceTextField.layer.shadowOffset = CGSize.zero
-        buyerPriceTextField.layer.shadowRadius = 7
-
-        //To apply padding
-        let paddingView4 : UIView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: buyerAddressTextField.frame.height))
-        buyerPriceTextField.leftView = paddingView4
-        buyerPriceTextField.leftViewMode = UITextField.ViewMode.always
-
-       // 5th view
-
-        //shadow
-        buyerNumberTextField.layer.shadowColor = UIColor.gray.cgColor
-        buyerNumberTextField.layer.shadowOpacity = 0.5
-        buyerNumberTextField.layer.shadowOffset = CGSize.zero
-        buyerNumberTextField.layer.shadowRadius = 7
-
-        //To apply padding
-        let paddingView5 : UIView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: buyerAddressTextField.frame.height))
-        buyerNumberTextField.leftView = paddingView5
-        buyerNumberTextField.leftViewMode = UITextField.ViewMode.always
-        
-        //sth view
-        submitButton.layer.cornerRadius = 20
-        submitButton.layer.borderWidth = 1
-        submitButton.layer.borderColor = UIColor.black.cgColor
-        
-        
-     
-  
+        let contentInset:UIEdgeInsets = UIEdgeInsets.zero
+        scrollView.contentInset = contentInset
     }
 
     /*

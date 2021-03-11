@@ -14,6 +14,7 @@ import FirebaseFirestore
 import Firebase
 class SellerProfile: UIViewController {
     
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var sellerCountryTextField: UITextField!
     @IBOutlet weak var sellerDescriptionTextVIew: UITextView!
     @IBOutlet weak var saveBarButton: UIBarButtonItem!
@@ -50,6 +51,10 @@ class SellerProfile: UIViewController {
         super.viewDidLoad()
         hidesBottomBarWhenPushed = true
         submitButton.isEnabled = true
+        
+        //attaching touch sensor with a view, whenever you press a view keyboard will disappear
+        initializeHideKeyboard()
+        
         sellerProfileBrain.dataUplodedDelegant = self
         
         if isSourceVcArtistProfile
@@ -67,17 +72,17 @@ class SellerProfile: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.hidesBottomBarWhenPushed = true
         submitButton.isEnabled = true
-
+        
     }
     
-   
+    
     
     @IBAction func imagePressed(_ sender: Any) {
         let picker = YPImagePicker()
         present(picker, animated: true, completion: nil)
         picker.didFinishPicking { [unowned picker] items, _ in
             if let photo = items.singlePhoto {
-           
+                
                 self.artistImage.image=photo.image // Final image selected by the user
                 self.selectedImage = photo.image
             }
@@ -102,7 +107,7 @@ class SellerProfile: UIViewController {
         }
     }
     
-
+    
     
     
     
@@ -111,19 +116,19 @@ class SellerProfile: UIViewController {
     @IBAction func submitPressed(_ sender: UIButton) {
         submitButton.isEnabled = false
         isDestinationSubService = true
-
+        
         storeDataToFirebase()
         
     }
     
-  
+    
     @IBAction func saveBarButton(_ sender: UIBarButtonItem) {
         hidesBottomBarWhenPushed=false
         isDestinationSubService = false
         sender.isEnabled = false
         storeDataToFirebase()
-    
-
+        
+        
     }
     
     
@@ -148,12 +153,12 @@ class SellerProfile: UIViewController {
             
             self.sellerProfileBrain.storingProfileDataToFireBase(with: sellerData)
         }    }
-
+    
     
     func retriveData(){
         sellerProfileBrain.retrivingProfileData { (data,subservices) in
             self.artistImage.loadCacheImage(with: data.imageRef)
-
+            
             self.artistNameTextField.text = data.name
             self.artistEmailTextField.text = data.email
             self.artistAddressTextField.text = data.address
@@ -164,7 +169,7 @@ class SellerProfile: UIViewController {
             self.artistServicesDropDown.selectedIndex = self.artistServicesDropDown.optionArray.firstIndex(of: self.selectedService)!
             self.artistServicesDropDown.text = self.selectedService
             self.sellerDescriptionTextVIew.text = data.description
-
+            
             self.datePicker.setDate(data.dob, animated: true)
             
             if data.gender == "Male"
@@ -177,131 +182,31 @@ class SellerProfile: UIViewController {
                 
             }
             
-
-           
+            
+            
         }
         
     }
     
-  
     
-    
-    func designingView() {
+    // to adjust keyboard size will typing
+    @objc func keyboardWillShow(notification:NSNotification) {
         
-//        saveBarButton.isEnabled = false
-//        saveBarButton.title = ""
-    navigationItem.hidesBackButton = false
-        //providing dummy  data to dro down
-        artistServicesDropDown.optionArray = ["Face treatments"
-                                              ,"Hair removel"
-                                              ,"Hair salon"
-                                              ,"Makeup"
-                                              ,"Med spa"
-                                              ,"Nails"
-                                              ,"Tanning"
-                                              ,"Tattoo"]
+        guard let userInfo = notification.userInfo else { return }
+        var keyboardFrame:CGRect = (userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
+        keyboardFrame = self.view.convert(keyboardFrame, from: nil)
         
-        ///MARK: - designing views
-        artistImage.layer.masksToBounds = true
-        artistImage.layer.borderColor = UIColor.black.cgColor
-        artistImage.layer.cornerRadius = artistImage.frame.size.height/2
-        artistImage.contentMode = .scaleAspectFill
-        
-        
-        
-        //shadow
-        artistNameTextField.layer.shadowColor = UIColor.gray.cgColor
-        artistNameTextField.layer.shadowOpacity = 0.5
-        artistNameTextField.layer.shadowOffset = CGSize.zero
-        artistNameTextField.layer.shadowRadius = 7
-        
-        
-        sellerDescriptionTextVIew.layer.shadowColor = UIColor.gray.cgColor
-        sellerDescriptionTextVIew.layer.shadowOpacity = 0.5
-        sellerDescriptionTextVIew.layer.shadowOffset = CGSize.zero
-        sellerDescriptionTextVIew.layer.shadowRadius = 7
-        
-        
-        
-        //To apply padding
-        let paddingView : UIView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: artistNameTextField.frame.height))
-        artistNameTextField.leftView = paddingView
-        artistNameTextField.leftViewMode = UITextField.ViewMode.always
-        
-        //  2nd view
-        //shadow
-        artistAddressTextField.layer.shadowColor = UIColor.gray.cgColor
-        artistAddressTextField.layer.shadowOpacity = 0.5
-        artistAddressTextField.layer.shadowOffset = CGSize.zero
-        artistAddressTextField.layer.shadowRadius = 7
-        
-        //To apply padding
-        let paddingView2 : UIView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: artistAddressTextField.frame.height))
-        artistAddressTextField.leftView = paddingView2
-        artistAddressTextField.leftViewMode = UITextField.ViewMode.always
-        
-        
-        // 3rd view
-        //shadow
-        artistEmailTextField.layer.shadowColor = UIColor.gray.cgColor
-        artistEmailTextField.layer.shadowOpacity = 0.5
-        artistEmailTextField.layer.shadowOffset = CGSize.zero
-        artistEmailTextField.layer.shadowRadius = 7
-        
-        //To apply padding
-        let paddingView3 : UIView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: artistAddressTextField.frame.height))
-        artistEmailTextField.leftView = paddingView3
-        artistEmailTextField.leftViewMode = UITextField.ViewMode.always
-        
-        //4rth view
-        
-        //shadow
-        artistPriceTextField.layer.shadowColor = UIColor.gray.cgColor
-        artistPriceTextField.layer.shadowOpacity = 0.5
-        artistPriceTextField.layer.shadowOffset = CGSize.zero
-        artistPriceTextField.layer.shadowRadius = 7
-        
-        //To apply padding
-        let paddingView4 : UIView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: artistAddressTextField.frame.height))
-        artistPriceTextField.leftView = paddingView4
-        artistPriceTextField.leftViewMode = UITextField.ViewMode.always
-        
-        // 5th view
-        
-        //shadow
-        artistNumberTextField.layer.shadowColor = UIColor.gray.cgColor
-        artistNumberTextField.layer.shadowOpacity = 0.5
-        artistNumberTextField.layer.shadowOffset = CGSize.zero
-        artistNumberTextField.layer.shadowRadius = 7
-        
-        //To apply padding
-        let paddingView5 : UIView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: artistAddressTextField.frame.height))
-        artistNumberTextField.leftView = paddingView5
-        artistNumberTextField.leftViewMode = UITextField.ViewMode.always
-        
-        //sth view
-        submitButton.layer.cornerRadius = 20
-        submitButton.layer.borderWidth = 1
-        submitButton.layer.borderColor = UIColor.black.cgColor
-        
-        
-        //To apply padding
-        let paddingView6 : UIView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: artistServicesDropDown.frame.height))
-        artistServicesDropDown.leftView = paddingView6
-        artistServicesDropDown.leftViewMode = UITextField.ViewMode.always
-        
-        //shadow
-        artistServicesDropDown.layer.shadowColor = UIColor.gray.cgColor
-        artistServicesDropDown.layer.shadowOpacity = 0.5
-        artistServicesDropDown.layer.shadowOffset = CGSize.zero
-        artistServicesDropDown.layer.shadowRadius = 7
-        
-        sellerCountryTextField.layer.shadowColor = UIColor.gray.cgColor
-        sellerCountryTextField.layer.shadowOpacity = 0.5
-        sellerCountryTextField.layer.shadowOffset = CGSize.zero
-        sellerCountryTextField.layer.shadowRadius = 7
-        
+        var contentInset:UIEdgeInsets = self.scrollView.contentInset
+        contentInset.bottom = keyboardFrame.size.height + 20
+        scrollView.contentInset = contentInset
     }
+    
+    @objc func keyboardWillHide(notification:NSNotification) {
+        
+        let contentInset:UIEdgeInsets = UIEdgeInsets.zero
+        scrollView.contentInset = contentInset
+    }
+    
 }
 
 extension SellerProfile : DataUploadedSeller
@@ -309,15 +214,17 @@ extension SellerProfile : DataUploadedSeller
     func didsendData() {
         if isDestinationSubService!
         {
-        performSegue(withIdentifier: Constants.seguesNames.profileToSubservices, sender:self)
+            performSegue(withIdentifier: Constants.seguesNames.profileToSubservices, sender:self)
         }
         else
         {
-        performSegue(withIdentifier: Constants.seguesNames.sellerProfileToDashboard, sender: self)
+            performSegue(withIdentifier: Constants.seguesNames.sellerProfileToDashboard, sender: self)
         }
     }
     
 }
+
+
 
 //            self.fireStorage.reference().child("Images/profile_images").child(Auth.auth().currentUser!.uid).getData(maxSize: 1 * 1024 * 1024) { (data1, error) in
 //                if let data1 = data1

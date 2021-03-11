@@ -19,6 +19,8 @@ class ChatBrain {
     var chatIds = [String]()
     
     var chats = [ChatModel]()
+    
+    
     func retrivingChatsFromDatabase(completion :@escaping ([String]) -> ()) {
         
         
@@ -35,7 +37,6 @@ class ChatBrain {
                         self.chatIds.append(snap[i].documentID)
                     }
                 }
-                //self.gettingUserInfo(with:self.chatIds)
                 completion(self.chatIds)
             }
             
@@ -58,20 +59,20 @@ class ChatBrain {
                 
                 if let snap = snapShot?.data()
                 {
-                    
+                    //getting profile info if an id is of seller
                     if snap["UserType"]! as! String == "Seller"
                     {
                         
                         let sellerProfile = SellerProfileBrain()
+                        
                         sellerProfile.retrivingProfileDataForChats(using: id) { (data) in
-                            //print(data)
                             self.chats.append(data)
-                            
+                            //checking if we are done with all ids , if not then the function will not end
                             if self.chats.count == ids.count
                             {
                                 completion(self.chats)
                             }
-                                                
+                            
                         }
                         
                     }
@@ -80,7 +81,6 @@ class ChatBrain {
                     {
                         let buyerProfile = BuyerProfileBrain()
                         buyerProfile.retrivingProfileDataForChats(using: id) { (data) in
-                            //print(data)
                             self.chats.append(data)
                             if self.chats.count == ids.count
                             {
