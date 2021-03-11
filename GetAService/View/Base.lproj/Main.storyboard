@@ -1708,6 +1708,9 @@
                     <navigationItem key="navigationItem" title="Chats" id="C7n-Gr-WjZ"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <segue destination="cRZ-y6-dYl" kind="show" identifier="chatsToMessages" id="YVH-5z-jkw"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rq8-1r-DCr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -3161,6 +3164,7 @@ once the service completed</string>
         <segue reference="8iB-0r-Oea"/>
         <segue reference="tpA-6M-1df"/>
         <segue reference="Ze1-OI-Ihq"/>
+        <segue reference="vKk-Kv-Ynh"/>
         <segue reference="USO-OD-zsZ"/>
         <segue reference="CVE-kk-GXw"/>
         <segue reference="K6c-bh-6kY"/>

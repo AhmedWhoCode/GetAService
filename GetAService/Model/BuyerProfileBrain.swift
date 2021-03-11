@@ -135,8 +135,9 @@ class BuyerProfileBrain {
                 let imageRef1 = snap["imageRef"]! as! String
                 let name1 = snap["name"]! as! String
                 let country = "Not filled"
+                let userId = userUid
                 
-                let chatModel = ChatModel(image: imageRef1, name: name1, country: country)
+                let chatModel = ChatModel(image: imageRef1, name: name1, country: country, userId: userId )
                 
                 completion(chatModel)
             }

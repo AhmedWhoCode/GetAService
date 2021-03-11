@@ -36,6 +36,8 @@ struct Constants {
     }
     
     struct seguesNames {
+        
+        static let chatsToMessages = "chatsToMessages"
         static let sellerInfoToMessages = "sellerInfoToMessages"
         static let sellerDashboardToProfile = "sellerDashboardToProfile"
         static let sellerDashboardToNotification = "sellerDashboardToNotification"

@@ -12,4 +12,5 @@ struct ChatModel {
     let image : String
     let name : String
     let country : String
+    let userId : String
 }

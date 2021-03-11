@@ -196,8 +196,9 @@ class SellerProfileBrain {
                 let imageRef1 = snap["imageRef"]! as! String
                 let name1 = snap["name"]! as! String
                 let country = snap["country"]! as! String
-                
-                let chatModel = ChatModel(image: imageRef1, name: name1, country: country)
+                let userId = userUid
+
+                let chatModel = ChatModel(image: imageRef1, name: name1, country: country, userId: userId)
                 
                 completion(chatModel)
             }

@@ -276,7 +276,6 @@
 			children = (
 				938AE25E25DF927F00CC108B /* BuyerOrSeller.swift */,
 				938AE25425DF918A00CC108B /* BuyerProfile.swift */,
-				936783B125B9915000A93B28 /* SellerLists.swift */,
 				931CFA2825DED734007C2EE9 /* SubServicesTableViewController.swift */,
 				937EAABA25B6F13A002CD6EC /* ViewController.swift */,
 				9378C82625B834C400B6A183 /* ListOfServices.swift */,
@@ -284,6 +283,7 @@
 				9352608025BD63270052C0A3 /* FairDetails.swift */,
 				931D669C25C0660E002C239E /* CustomerProvideInformation.swift */,
 				931D669725C03AC2002C239E /* SellerProfile.swift */,
+				936783B125B9915000A93B28 /* SellerLists.swift */,
 				931D66A125C0873E002C239E /* NotificationsList.swift */,
 				9318F8AA25C5767D009A6712 /* CustomerRequestScreen.swift */,
 				93C9691A25C5C0AD00A6217E /* ChatList.swift */,

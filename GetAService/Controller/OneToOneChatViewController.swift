@@ -57,7 +57,14 @@ class OneToOneChatViewController: MessagesViewController{
         for i in 0...data.count - 1
         {
          
-            messageType.append(Message(kind: .text(data[i].body), sender: currentUser, messageId: data[i].date, sentDate : Date.init(timeIntervalSinceReferenceDate: 11)))
+            if data[i].senderId == currentUser.senderId
+            {
+            messageType.append(Message(kind: .text(data[i].body), sender:currentUser, messageId: data[i].date, sentDate : Date.init(timeIntervalSinceReferenceDate: 11)))
+            }
+            else
+            {
+                messageType.append(Message(kind: .text(data[i].body), sender:sender, messageId: data[i].date, sentDate : Date.init(timeIntervalSinceReferenceDate: 11)))
+            }
         }
         messagesCollectionView.reloadData()
         
@@ -115,7 +122,8 @@ extension OneToOneChatViewController : MessagesDataSource,MessagesLayoutDelegate
 
 {
     func currentSender() -> SenderType {
-        return currentUser
+      return  currentUser
+        
     }
     
     func messageForItem(at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> MessageType {

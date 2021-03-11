@@ -14,6 +14,9 @@ class ChatList: UITableViewController {
     var chatBrain = ChatBrain()
     var currentUser = Auth.auth().currentUser?.uid
     
+    var userId : String!
+    var userName : String!
+        
     var chatList = [ChatModel]()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,6 +73,28 @@ class ChatList: UITableViewController {
         return cell!
     }
     
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        userId = chatList[indexPath.row].userId
+        userName = chatList[indexPath.row].name
+        performSegue(withIdentifier: Constants.seguesNames.chatsToMessages , sender: self)
+        //tableView.cellForRow(at: indexPath)
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+       
+        if segue.identifier == Constants.seguesNames.chatsToMessages
+        {
+            if let destinationSegue = segue.destination as? OneToOneChatViewController
+          {
+                destinationSegue.senderID = userId
+                destinationSegue.senderName = userName
+
+          }
+        }
+        
+    }
 
     /*
     // Override to support conditional editing of the table view.
