@@ -47,59 +47,105 @@ class ChatBrain {
         
         
     }
-    
-    //checking if the user is buyer or seller , and getting profile accordingly
+
+
+    //checking if the user is buyer or seller , and getting profile accordingly , the function isUserSellerOrBuyer defined in helper file
     func gettingUserInfo(with ids : [String] , completion :@escaping ([ChatModel]) -> ())  {
-        print("chkcount \(self.chatIds.count)")
-        
+
         ids.forEach { (id) in
-            
-            //checking if given id is buyer or seller
-            db.collection("isUserOrNil").document(id).getDocument { (snapShot, error) in
+
+            isUserSellerOrBuyer(userID: id, completion: { (response) in
                 
-                if let snap = snapShot?.data()
+                if response.elementsEqual("seller")
                 {
-                    //getting profile info if an id is of seller
-                    if snap["UserType"]! as! String == "Seller"
-                    {
-                        
-                        let sellerProfile = SellerProfileBrain()
-                        
-                        sellerProfile.retrivingProfileDataForChats(using: id) { (data) in
-                            self.chats.append(data)
-                            //checking if we are done with all ids , if not then the function will not end
-                            if self.chats.count == ids.count
-                            {
-                                completion(self.chats)
-                            }
-                            
+                    let sellerProfile = SellerProfileBrain()
+
+                    sellerProfile.retrivingProfileDataForChats(using: id) { (data) in
+                        self.chats.append(data)
+                        //checking if we are done with all ids , if not then the function will not end
+                        if self.chats.count == ids.count
+                        {
+                            completion(self.chats)
                         }
-                        
+
                     }
-                    
-                    else
-                    {
-                        let buyerProfile = BuyerProfileBrain()
-                        buyerProfile.retrivingProfileDataForChats(using: id) { (data) in
-                            self.chats.append(data)
-                            if self.chats.count == ids.count
-                            {
-                                completion(self.chats)
-                            }
+                }
+
+                else if response.elementsEqual("buyer")
+                {
+                    let buyerProfile = BuyerProfileBrain()
+                    buyerProfile.retrivingProfileDataForChats(using: id) { (data) in
+                        self.chats.append(data)
+                        if self.chats.count == ids.count
+                        {
+                            completion(self.chats)
                         }
-                        
                     }
                     
                 }
-            }
-            
-            
+                else
+                {
+                    print(response)
+                }
+
         }
-        
+
+    )}
     }
+    
     
     
 }
 
 
 
+
+
+////checking if the user is buyer or seller , and getting profile accordingly
+//func gettingUserInfo1(with ids : [String] , completion :@escaping ([ChatModel]) -> ())  {
+//
+//    ids.forEach { (id) in
+//
+//        //checking if given id is buyer or seller
+//        db.collection("isUserOrNil").document(id).getDocument { (snapShot, error) in
+//
+//            if let snap = snapShot?.data()
+//            {
+//                //getting profile info if an id is of seller
+//                if snap["UserType"]! as! String == "Seller"
+//                {
+//
+//                    let sellerProfile = SellerProfileBrain()
+//
+//                    sellerProfile.retrivingProfileDataForChats(using: id) { (data) in
+//                        self.chats.append(data)
+//                        //checking if we are done with all ids , if not then the function will not end
+//                        if self.chats.count == ids.count
+//                        {
+//                            completion(self.chats)
+//                        }
+//
+//                    }
+//
+//                }
+//
+//                else
+//                {
+//                    let buyerProfile = BuyerProfileBrain()
+//                    buyerProfile.retrivingProfileDataForChats(using: id) { (data) in
+//                        self.chats.append(data)
+//                        if self.chats.count == ids.count
+//                        {
+//                            completion(self.chats)
+//                        }
+//                    }
+//
+//                }
+//
+//            }
+//        }
+//
+//
+//    }
+//
+//}

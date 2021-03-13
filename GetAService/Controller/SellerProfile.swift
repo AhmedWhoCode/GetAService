@@ -111,8 +111,6 @@ class SellerProfile: UIViewController {
     
     
     
-    
-    
     @IBAction func submitPressed(_ sender: UIButton) {
         submitButton.isEnabled = false
         isDestinationSubService = true

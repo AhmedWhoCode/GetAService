@@ -21,6 +21,45 @@ class MessageBrain {
     
     
     
+    //getting current user image by calling a function which is placed in a swift file named helper function
+    
+    func gettingCurrentUserImage(with uid : String ,completion: @escaping (String)->() ) {
+           
+           isUserSellerOrBuyer(userID: uid, completion: { (response) in
+               
+               if response.elementsEqual("seller")
+               {
+                   let sellerProfile = SellerProfileBrain()
+                   
+                   sellerProfile.retrivingProfileDataForChats(using: uid) { (data) in
+                       
+                       completion(data.image)
+                       
+                   }
+               }
+               
+               else if response.elementsEqual("buyer")
+               {
+                   let buyerProfile = BuyerProfileBrain()
+                   
+                   buyerProfile.retrivingProfileDataForChats(using: uid) { (data) in
+                       
+                       completion(data.image)
+                       
+                   }
+                   
+               }
+               else
+               {
+                   print(response)
+               }
+           })
+           
+       }
+    
+    
+    
+    
     
     func storeMessageToFireBase(with data : MessageStructer ,completion : @escaping ()-> ()) {
         message["body"] = data.body
@@ -61,6 +100,9 @@ class MessageBrain {
         
     }
     
+  
+    
+    
     
     func retrivingMessagesFormFirebase(with receiverID:String, completion : @escaping ([MessageStructer]) -> ()) {
         
@@ -94,7 +136,7 @@ class MessageBrain {
             }
         }
         
-        
+
         
         
         //

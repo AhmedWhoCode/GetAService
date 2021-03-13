@@ -27,6 +27,9 @@ class ServicesBrain {
     var servicesData = [ServicesModel]()
     var subServices = [String]()
     
+    var selectedSubServices = [String]()
+    
+    
     func retrivingServicesFromDatabase() {
         
         
@@ -73,4 +76,28 @@ class ServicesBrain {
     }
     
     
+    func retrieveSelectedSubservices(completion :@escaping ([String]) -> ()) {
+        
+        db.collection("UserProfileData").document("Seller").collection("AllSellers").document(Auth.auth().currentUser!.uid).addSnapshotListener { (snapShot, error) in
+            
+            if let e = error
+            {
+                print(e.localizedDescription)
+            }
+            else
+            {
+                if let snap = snapShot?.data()
+                {
+                    
+                    if let subServices = snap["SubServices"]
+                    {
+                        self.selectedSubServices = subServices as! [String]
+                        completion(self.selectedSubServices)
+                    }
+                    
+                }
+            }
+        }
+        
+    }
 }

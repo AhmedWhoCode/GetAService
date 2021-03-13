@@ -34,7 +34,8 @@
 		9352712025E7899100F368B1 /* BuyerProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9352711F25E7899100F368B1 /* BuyerProfileModel.swift */; };
 		9354847325E8CCD000A76C22 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9354847225E8CCD000A76C22 /* Extension.swift */; };
 		9354847B25E8DF8A00A76C22 /* BuyerProfileBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9354847A25E8DF8A00A76C22 /* BuyerProfileBrain.swift */; };
-		93593BC925FA7BA700BFCA71 /* Misc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93593BC825FA7BA700BFCA71 /* Misc.swift */; };
+		9355988325FCC03B0049CF28 /* Helper Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9355988225FCC03B0049CF28 /* Helper Functions.swift */; };
+		93593BC925FA7BA700BFCA71 /* UpdatingViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93593BC825FA7BA700BFCA71 /* UpdatingViews.swift */; };
 		936783AC25B9896E00A93B28 /* SellerListXibTableViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936783AA25B9896E00A93B28 /* SellerListXibTableViewTableViewCell.swift */; };
 		936783AD25B9896E00A93B28 /* SellerListXibTableViewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 936783AB25B9896E00A93B28 /* SellerListXibTableViewTableViewCell.xib */; };
 		936783B225B9915000A93B28 /* SellerLists.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936783B125B9915000A93B28 /* SellerLists.swift */; };
@@ -116,7 +117,8 @@
 		9352711F25E7899100F368B1 /* BuyerProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyerProfileModel.swift; sourceTree = "<group>"; };
 		9354847225E8CCD000A76C22 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		9354847A25E8DF8A00A76C22 /* BuyerProfileBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyerProfileBrain.swift; sourceTree = "<group>"; };
-		93593BC825FA7BA700BFCA71 /* Misc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Misc.swift; sourceTree = "<group>"; };
+		9355988225FCC03B0049CF28 /* Helper Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Helper Functions.swift"; sourceTree = "<group>"; };
+		93593BC825FA7BA700BFCA71 /* UpdatingViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatingViews.swift; sourceTree = "<group>"; };
 		936783AA25B9896E00A93B28 /* SellerListXibTableViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellerListXibTableViewTableViewCell.swift; sourceTree = "<group>"; };
 		936783AB25B9896E00A93B28 /* SellerListXibTableViewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SellerListXibTableViewTableViewCell.xib; sourceTree = "<group>"; };
 		936783B125B9915000A93B28 /* SellerLists.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellerLists.swift; sourceTree = "<group>"; };
@@ -232,7 +234,8 @@
 				9354847225E8CCD000A76C22 /* Extension.swift */,
 				93BE8E5A25EE1359008103DA /* ShowToast.swift */,
 				936D2CB225F740BA00F677F8 /* Messages.swift */,
-				93593BC825FA7BA700BFCA71 /* Misc.swift */,
+				93593BC825FA7BA700BFCA71 /* UpdatingViews.swift */,
+				9355988225FCC03B0049CF28 /* Helper Functions.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -674,6 +677,7 @@
 				9354847B25E8DF8A00A76C22 /* BuyerProfileBrain.swift in Sources */,
 				936D2CB325F740BA00F677F8 /* Messages.swift in Sources */,
 				932C89BB25DAD893008D72D9 /* ChatModel.swift in Sources */,
+				9355988325FCC03B0049CF28 /* Helper Functions.swift in Sources */,
 				93E3F8DB25E23BEC00FB74C3 /* ServicesBrain.swift in Sources */,
 				9378C82725B834C400B6A183 /* ListOfServices.swift in Sources */,
 				93BE8E5625EE00CE008103DA /* SellerDashboardViewController.swift in Sources */,
@@ -693,7 +697,7 @@
 				936783AC25B9896E00A93B28 /* SellerListXibTableViewTableViewCell.swift in Sources */,
 				937EAAB925B6F13A002CD6EC /* SceneDelegate.swift in Sources */,
 				936D2CB825F7614200F677F8 /* MessageBrain.swift in Sources */,
-				93593BC925FA7BA700BFCA71 /* Misc.swift in Sources */,
+				93593BC925FA7BA700BFCA71 /* UpdatingViews.swift in Sources */,
 				9318F8AB25C5767D009A6712 /* CustomerRequestScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

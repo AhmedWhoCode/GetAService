@@ -41,10 +41,11 @@ class BuyerProfile: UIViewController {
         initializeHideKeyboard()
         
         retriveData()
-
+        
         designingView()
         // Do any additional setup after loading the view.
     }
+    
     
     @IBAction func submitPressed(_ sender: UIButton) {
         //converting image to data , compatible for uploading in storage
@@ -66,20 +67,9 @@ class BuyerProfile: UIViewController {
             self.buyerProfileBrain.storingProfileDataToFireBase(with: buyersData)
         }
         
-     
+        
         
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     @IBAction func imagePressed(_ sender: Any) {
         let picker = YPImagePicker()
@@ -104,17 +94,12 @@ class BuyerProfile: UIViewController {
     func retriveData(){
         buyerProfileBrain.retrivingProfileData { (data) in
             self.buyerImage.loadCacheImage(with: data.imageRef)
-
+            
             self.buyerNameTextField.text = data.name
             self.buyerEmailTextField.text = data.email
             self.buyerAddressTextField.text = data.address
             self.buyerNumberTextField.text = data.phone
             self.buyerCountry.text = data.country
-            //self.buyerCountryTextField.text = data.country
-//            self.artistServicesDropDown.selectedIndex = self.artistServicesDropDown.optionArray.firstIndex(of: self.selectedService)!
-//            self.artistServicesDropDown.text = self.selectedService
-//            self.sellerDescriptionTextVIew.text = data.description
-
             self.datePicker.setDate(data.dob, animated: true)
             
             if data.gender == "Male"
@@ -127,151 +112,38 @@ class BuyerProfile: UIViewController {
                 
             }
             
-
-           
+            
+            
         }
         
     }
     
-
-    
-//    func designingView() {
-//
-//        ///MARK: - adjusting position of keyboard
-//        NotificationCenter.default.addObserver(self,
-//                                               selector: #selector(keyboardWillShow),
-//                                               name:UIResponder.keyboardWillShowNotification,
-//                                               object: nil)
-//
-//        NotificationCenter.default.addObserver(self,
-//                                               selector: #selector(keyboardWillHide),
-//                                               name:UIResponder.keyboardWillHideNotification,
-//                                               object: nil)
-//
-//
-//        navigationItem.hidesBackButton = false
-//
-//
-//        ///MARK: - designing views
-//        buyerImage.layer.masksToBounds = true
-//        buyerImage.layer.borderColor = UIColor.black.cgColor
-//       buyerImage.layer.cornerRadius = buyerImage.frame.size.height/2
-//        buyerImage.contentMode = .scaleAspectFill
-//
-//
-//
-////        artistNameTextField.layer.cornerRadius = 10
-////        artistNameTextField.layer.borderWidth = 0.1
-////        artistNameTextField.layer.borderColor = UIColor.black.cgColor
-//
-//        //shadow
-//        buyerNameTextField.layer.shadowColor = UIColor.gray.cgColor
-//        buyerNameTextField.layer.shadowOpacity = 0.5
-//        buyerNameTextField.layer.shadowOffset = CGSize.zero
-//        buyerNameTextField.layer.shadowRadius = 7
-//
-//        //To apply padding
-//        let paddingView : UIView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: buyerNameTextField.frame.height))
-//        buyerNameTextField.leftView = paddingView
-//        buyerNameTextField.leftViewMode = UITextField.ViewMode.always
-//
-//        //  2nd view
-//        //shadow
-//        buyerAddressTextField.layer.shadowColor = UIColor.gray.cgColor
-//        buyerAddressTextField.layer.shadowOpacity = 0.5
-//        buyerAddressTextField.layer.shadowOffset = CGSize.zero
-//        buyerAddressTextField.layer.shadowRadius = 7
-//
-//        //To apply padding
-//       let paddingView2 : UIView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: buyerAddressTextField.frame.height))
-//        buyerAddressTextField.leftView = paddingView2
-//        buyerAddressTextField.leftViewMode = UITextField.ViewMode.always
-//
-//
-//        // 3rd view
-//        //shadow
-//        buyerEmailTextField.layer.shadowColor = UIColor.gray.cgColor
-//        buyerEmailTextField.layer.shadowOpacity = 0.5
-//        buyerEmailTextField.layer.shadowOffset = CGSize.zero
-//        buyerEmailTextField.layer.shadowRadius = 7
-//
-//        //To apply padding
-//        let paddingView3 : UIView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: buyerAddressTextField.frame.height))
-//        buyerEmailTextField.leftView = paddingView3
-//        buyerEmailTextField.leftViewMode = UITextField.ViewMode.always
-//
-//        //4rth view
-//
-//        //shadow
-//        buyerPriceTextField.layer.shadowColor = UIColor.gray.cgColor
-//        buyerPriceTextField.layer.shadowOpacity = 0.5
-//        buyerPriceTextField.layer.shadowOffset = CGSize.zero
-//        buyerPriceTextField.layer.shadowRadius = 7
-//
-//        //To apply padding
-//        let paddingView4 : UIView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: buyerAddressTextField.frame.height))
-//        buyerPriceTextField.leftView = paddingView4
-//        buyerPriceTextField.leftViewMode = UITextField.ViewMode.always
-//
-//       // 5th view
-//
-//        //shadow
-//        buyerNumberTextField.layer.shadowColor = UIColor.gray.cgColor
-//        buyerNumberTextField.layer.shadowOpacity = 0.5
-//        buyerNumberTextField.layer.shadowOffset = CGSize.zero
-//        buyerNumberTextField.layer.shadowRadius = 7
-//
-//        //To apply padding
-//        let paddingView5 : UIView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: buyerAddressTextField.frame.height))
-//        buyerNumberTextField.leftView = paddingView5
-//        buyerNumberTextField.leftViewMode = UITextField.ViewMode.always
-//
-//        //sth view
-//        submitButton.layer.cornerRadius = 20
-//        submitButton.layer.borderWidth = 1
-//        submitButton.layer.borderColor = UIColor.black.cgColor
-//
-//        // 3rd view
-//        //shadow
-//        buyerCountry.layer.shadowColor = UIColor.gray.cgColor
-//        buyerCountry.layer.shadowOpacity = 0.5
-//        buyerCountry.layer.shadowOffset = CGSize.zero
-//        buyerCountry.layer.shadowRadius = 7
-//
-//        //To apply padding
-//        let paddingViewC : UIView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: buyerCountry.frame.height))
-//        buyerCountry.leftView = paddingViewC
-//        buyerCountry.leftViewMode = UITextField.ViewMode.always
-//
-//
-//    }
-    
     // to adjust keyboard size will typing
     @objc func keyboardWillShow(notification:NSNotification) {
-
+        
         guard let userInfo = notification.userInfo else { return }
         var keyboardFrame:CGRect = (userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
         keyboardFrame = self.view.convert(keyboardFrame, from: nil)
-
+        
         var contentInset:UIEdgeInsets = self.scrollView.contentInset
         contentInset.bottom = keyboardFrame.size.height + 20
         scrollView.contentInset = contentInset
     }
-
+    
     @objc func keyboardWillHide(notification:NSNotification) {
-
+        
         let contentInset:UIEdgeInsets = UIEdgeInsets.zero
         scrollView.contentInset = contentInset
     }
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

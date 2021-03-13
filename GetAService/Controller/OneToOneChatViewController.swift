@@ -18,6 +18,9 @@ class OneToOneChatViewController: MessagesViewController{
     //Type of message structer supported by messagekit
     var messageType = [Message]()
     
+    var messageBrian = MessageBrain()
+
+    
     //storing current user and other user
     var currentUser :SenderType!
     var sender :SenderType!
@@ -29,9 +32,9 @@ class OneToOneChatViewController: MessagesViewController{
     
     //message typed by the user
     var messageText : String!
+
     
-    var messageBrian = MessageBrain()
-    
+    var currentUserImage : String!
     override func viewDidLoad() {
         super.viewDidLoad()
         //setting up current user
@@ -46,6 +49,15 @@ class OneToOneChatViewController: MessagesViewController{
         messagesCollectionView.messagesDataSource = self
         messagesCollectionView.messagesLayoutDelegate = self
         messagesCollectionView.messagesDisplayDelegate = self
+        
+        
+        //retriving current user image form firebase
+        messageBrian.gettingCurrentUserImage(with: currentUser.senderId) { (imageInString) in
+            self.currentUserImage = imageInString
+            self.messagesCollectionView.reloadData()
+
+        }
+        
         
         //calling function to retrive messages with other user using senderID
         messageBrian.retrivingMessagesFormFirebase(with : otherUserID) { (data) in
@@ -157,7 +169,10 @@ extension OneToOneChatViewController : MessagesDataSource,MessagesLayoutDelegate
         }
         else
         {
-            avatarView.image = #imageLiteral(resourceName: "profile")
+            if let image = currentUserImage
+            {
+                avatarView.loadCacheImage(with: image)
+            }
             
         }
         
