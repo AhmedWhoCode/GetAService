@@ -61,7 +61,11 @@ extension UIImageView{
                         //self.cache.setObject(cacheImage, forKey: "somekey" as NSString)
                         imageCache.setObject(cacheImage, forKey: imageRefURL as NSString)
                         
+                        //checking if the imageView is loaded or not
+                        if self?.image != nil
+                        {
                         self!.image = downloadImage
+                        }
                     }
                     
                 }

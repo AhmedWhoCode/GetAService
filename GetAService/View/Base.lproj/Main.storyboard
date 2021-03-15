@@ -801,7 +801,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H8X-Ph-pna" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5030" y="-767"/>
+            <point key="canvasLocation" x="5351" y="-767"/>
         </scene>
         <!--Seller Profile-->
         <scene sceneID="sc9-83-b7G">
@@ -1650,9 +1650,6 @@
                     <toolbarItems>
                         <barButtonItem title="Item" image="chevron.backward" catalog="system" width="95" id="wSx-cV-30x">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <connections>
-                                <segue destination="Ugr-OT-R1S" kind="show" id="jCL-br-Ttl"/>
-                            </connections>
                         </barButtonItem>
                         <barButtonItem title="Item" image="message" catalog="system" width="95" id="vhZ-qj-XkJ">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1677,7 +1674,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LFF-CR-pgS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6248" y="-767"/>
+            <point key="canvasLocation" x="6314" y="-767"/>
         </scene>
         <!--Chats-->
         <scene sceneID="Swl-sL-kCP">
@@ -2010,7 +2007,7 @@ Artist.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gDy-Cr-RAh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7396" y="-767"/>
+            <point key="canvasLocation" x="7116" y="-767"/>
         </scene>
         <!--Meetup-->
         <scene sceneID="0xh-vw-xTy">
@@ -3171,8 +3168,7 @@ once the service completed</string>
         <segue reference="USO-OD-zsZ"/>
         <segue reference="CVE-kk-GXw"/>
         <segue reference="Vzu-9e-zcL"/>
-        <segue reference="CeP-Ce-kkz"/>
-        <segue reference="aQa-n4-JAu"/>
+        <segue reference="Azh-Mr-uZv"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="ArtistProfile" width="121" height="50.5"/>
