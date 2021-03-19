@@ -75,6 +75,14 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="r7J-79-YLt">
+                                <rect key="frame" x="75" y="83" width="15" height="15"/>
+                                <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="15" id="cDL-Xo-uDb"/>
+                                    <constraint firstAttribute="width" constant="15" id="hOK-Xo-gIG"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
@@ -82,6 +90,8 @@
                             <constraint firstAttribute="bottom" secondItem="eV3-jK-IcL" secondAttribute="bottom" id="1YU-9K-rtN"/>
                             <constraint firstAttribute="trailing" secondItem="eV3-jK-IcL" secondAttribute="trailing" id="HvQ-nn-Q6B"/>
                             <constraint firstItem="eV3-jK-IcL" firstAttribute="leading" secondItem="MCG-1t-hA1" secondAttribute="leading" id="KqX-6J-LU9"/>
+                            <constraint firstItem="r7J-79-YLt" firstAttribute="bottom" secondItem="S3u-Pe-OmK" secondAttribute="bottom" id="Mu8-j0-4t8"/>
+                            <constraint firstItem="r7J-79-YLt" firstAttribute="trailing" secondItem="S3u-Pe-OmK" secondAttribute="trailing" id="SEu-Ij-78X"/>
                             <constraint firstItem="eV3-jK-IcL" firstAttribute="top" secondItem="MCG-1t-hA1" secondAttribute="top" id="Sgs-CI-JsG"/>
                             <constraint firstItem="S3u-Pe-OmK" firstAttribute="top" secondItem="MCG-1t-hA1" secondAttribute="top" constant="10" id="X7T-Yd-RVD"/>
                             <constraint firstItem="S3u-Pe-OmK" firstAttribute="leading" secondItem="MCG-1t-hA1" secondAttribute="leading" constant="2" id="YAO-os-vp4"/>
@@ -101,6 +111,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="onlineStatusImage" destination="r7J-79-YLt" id="Zfu-UT-7Aj"/>
                 <outlet property="sellerAvailabilityLabel" destination="BDw-dE-RWj" id="LYV-7j-rNL"/>
                 <outlet property="sellerCountryLabel" destination="70D-jZ-pXH" id="ltC-rt-kgr"/>
                 <outlet property="sellerImage" destination="S3u-Pe-OmK" id="L9N-Ry-F0T"/>
@@ -108,13 +119,16 @@
                 <outlet property="sellerNameLabel" destination="Sbl-ah-TBX" id="b67-cF-GQ7"/>
                 <outlet property="sellerPriceLabel" destination="bXR-m7-epi" id="4w8-AY-Hu0"/>
             </connections>
-            <point key="canvasLocation" x="123.18840579710145" y="121.875"/>
+            <point key="canvasLocation" x="166.66666666666669" y="126.5625"/>
         </tableViewCell>
     </objects>
     <resources>
         <image name="test" width="29.333333969116211" height="29.333333969116211"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

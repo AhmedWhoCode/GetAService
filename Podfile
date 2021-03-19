@@ -23,6 +23,12 @@ pod 'YPImagePicker'
  pod 'Kingfisher', '~> 6.1'
 #for messagesUi
 pod 'MessageKit'
+#google maps
+pod 'GoogleMaps'
+#google places
+pod 'GooglePlaces'
+#floating panel
+pod 'FloatingPanel'
 
 
   target 'GetAServiceTests' do

@@ -6,88 +6,63 @@
 //
 
 import UIKit
+import Firebase
 
 class CustomerProvideInformation: UIViewController {
     @IBOutlet weak var bookNowButton: UIButton!
     @IBOutlet weak var recepientNameTextField: UITextField!
-    @IBOutlet weak var dropOffAddressTextField: UITextField!
-    @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var phoneNumberTextField: UITextField!
+    @IBOutlet weak var phone: UITextField!
+    @IBOutlet weak var serviceNeeded: UITextField!
+    @IBOutlet weak var dateAndTime: UIDatePicker!
+    @IBOutlet weak var eventDescription: UITextView!
 
+    
+    var notification:NotificationModel?
+    //this id will come from the sellerInformation class
+    var sellerId : String?
+    
+    var buyerId = Auth.auth().currentUser?.uid
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        dateAndTime.timeZone = .autoupdatingCurrent
+        
+        //function defined in UpdatingViews file
         designingView()
-
-        // Do any additional setup after loading the view.
-    }
-    func designingView() {
-        navigationItem.hidesBackButton = false
-        ///MARK: - designing views
-
-        //shadow
-        recepientNameTextField.layer.shadowColor = UIColor.gray.cgColor
-        recepientNameTextField.layer.shadowOpacity = 0.5
-        recepientNameTextField.layer.shadowOffset = CGSize.zero
-        recepientNameTextField.layer.shadowRadius = 7
-  
-        //To apply padding
-        let paddingView : UIView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: recepientNameTextField.frame.height))
-        recepientNameTextField.leftView = paddingView
-        recepientNameTextField.leftViewMode = UITextField.ViewMode.always
         
-        //  2nd view
-        //shadow
-        dropOffAddressTextField.layer.shadowColor = UIColor.gray.cgColor
-        dropOffAddressTextField.layer.shadowOpacity = 0.5
-        dropOffAddressTextField.layer.shadowOffset = CGSize.zero
-        dropOffAddressTextField.layer.shadowRadius = 7
-
-        //To apply padding
-       let paddingView2 : UIView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: dropOffAddressTextField.frame.height))
-        dropOffAddressTextField.leftView = paddingView2
-        dropOffAddressTextField.leftViewMode = UITextField.ViewMode.always
-
-
-        // 3rd view
-        //shadow
-        emailTextField.layer.shadowColor = UIColor.gray.cgColor
-        emailTextField.layer.shadowOpacity = 0.5
-        emailTextField.layer.shadowOffset = CGSize.zero
-        emailTextField.layer.shadowRadius = 7
-
-        //To apply padding
-        let paddingView3 : UIView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: emailTextField.frame.height))
-        emailTextField.leftView = paddingView3
-        emailTextField.leftViewMode = UITextField.ViewMode.always
-
-        //4rth view
-
-        //shadow
-        phoneNumberTextField.layer.shadowColor = UIColor.gray.cgColor
-        phoneNumberTextField.layer.shadowOpacity = 0.5
-        phoneNumberTextField.layer.shadowOffset = CGSize.zero
-        phoneNumberTextField.layer.shadowRadius = 7
-
-        //To apply padding
-        let paddingView4 : UIView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: phoneNumberTextField.frame.height))
-        phoneNumberTextField.leftView = paddingView4
-        phoneNumberTextField.leftViewMode = UITextField.ViewMode.always
-
-        
-        //sth view
-        bookNowButton.layer.cornerRadius = 20
-        bookNowButton.layer.borderWidth = 1
-        bookNowButton.layer.borderColor = UIColor.black.cgColor
     }
+    
+    
+    @IBAction func proceedPressed(_ sender: UIButton) {
 
-    /*
+        notification = NotificationModel(
+                                         buyerId :buyerId!,
+                                         sellerId: sellerId!,
+                                         recepientName: recepientNameTextField.text!,
+                                         servicesNeeded: serviceNeeded.text!,
+                                         phoneNumber: phone.text!,
+                                         eventTimeAndDate: dateAndTime.date.convertDateToLocalTime(),
+                                         eventDescription: eventDescription.text!,
+                                         eventLocation: nil,
+                                         dateForUniqueId: dateAndTime.date.timeIntervalSince1970
+        )
+        
+        performSegue(withIdentifier: Constants.seguesNames.informationToMaps, sender: self)
+        
+    }
+    
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == Constants.seguesNames.informationToMaps
+        {
+            if let destinationSegue = segue.destination as? GoogleMapViewController
+            {
+                destinationSegue.notificationModel = notification
+            }
+        }
     }
-    */
-
+    
+    
 }

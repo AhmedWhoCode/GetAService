@@ -6,8 +6,17 @@
 //
 
 import Foundation
+import UIKit
+import CoreLocation
 
-protocol ButtonPressed {
+ protocol ButtonPressed {
+    
     func didButtonPressed(with value : String)
 }
+
+protocol ButtonPressed2 {
+   
+   func didButtonPressed(with button : UIButton)
+}
+
 

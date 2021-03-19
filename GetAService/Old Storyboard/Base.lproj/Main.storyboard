@@ -1609,10 +1609,10 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="bookNowButton" destination="X6u-d5-bFW" id="nGt-34-EKy"/>
-                        <outlet property="dropOffAddressTextField" destination="zbN-ws-7hn" id="j2c-88-jhL"/>
-                        <outlet property="emailTextField" destination="1kA-jy-xx1" id="VW2-do-zZB"/>
+                        <outlet property="phone" destination="zbN-ws-7hn" id="j2c-88-jhL"/>
                         <outlet property="phoneNumberTextField" destination="JTH-xK-TS5" id="9PV-EE-aoL"/>
                         <outlet property="recepientNameTextField" destination="QEk-1b-wes" id="swN-qZ-UJP"/>
+                        <outlet property="serviceNeeded" destination="1kA-jy-xx1" id="VW2-do-zZB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LFF-CR-pgS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

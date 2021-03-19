@@ -77,3 +77,19 @@ extension UIImageView{
     
     
 }
+
+
+//convert date to local time
+extension Date
+{
+    func convertDateToLocalTime() -> String{
+        let dateString = DateFormatter.localizedString(
+            from: self ,
+            dateStyle: .medium,
+            timeStyle: .medium)
+        
+        return dateString
+
+    }
+    
+}

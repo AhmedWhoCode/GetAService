@@ -231,12 +231,20 @@ class SellerInformation: UIViewController {
           }
         }
         
+        else if segue.identifier == Constants.seguesNames.sellerInfoToInformation
+        {
+            if let destinationSegue = segue.destination as? CustomerProvideInformation
+          {
+                destinationSegue.sellerId = selectedSellerId
+                
+          }
+        }
     }
     
 
     
     @IBAction func bookNow(_ sender: Any) {
-        performSegue(withIdentifier: Constants.seguesNames.artistInfoToConfirmBooking, sender: self)
+        performSegue(withIdentifier: Constants.seguesNames.sellerInfoToInformation, sender: self)
     }
     
     

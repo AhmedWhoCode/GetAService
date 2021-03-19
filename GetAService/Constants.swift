@@ -10,6 +10,9 @@ import Foundation
 
 struct Constants {
     
+    
+    static let googleMapAPi = "AIzaSyBG6ZqI7kxdR5BqY40jFSJ4K0PPZ1HLqsU"
+    
     //notificationlist constants
     static let cellIdentifierNotification = "notificationCell"
     static let cellNibNameNotification = "NotificationsTableViewCell"
@@ -36,7 +39,7 @@ struct Constants {
     }
     
     struct seguesNames {
-        
+        static let informationToMaps = "informationToMaps"
         static let chatsToMessages = "chatsToMessages"
         static let sellerInfoToMessages = "sellerInfoToMessages"
         static let sellerDashboardToProfile = "sellerDashboardToProfile"
@@ -50,13 +53,14 @@ struct Constants {
         static let loginToServices = "loginToServices"
         static let servicesToSellers = "servicesToSellers"
         static let sellersToSellerInfo = "sellersToSellerInfo"
-        static let artistInfoToConfirmBooking = "artistInfoToConfirmBooking"
+        static let sellerInfoToInformation = "sellerInfoToInformation"
         static let notificationsToOrderInfo = "notificationsToOrderInfo"
         static let profileToLogin = "profileToLogin"
         static let loginToSellerProfile = "loginToSellerProfile"
         static let profileToSubservices = "profileToSubservices"
         static let artistInfoToProfile = "artistInfoToProfile"
         static let buyerProfileToServices = "buyerProfileToServices"
+        static let locationToWaiting = "locationToWaiting"
     }
     
 }

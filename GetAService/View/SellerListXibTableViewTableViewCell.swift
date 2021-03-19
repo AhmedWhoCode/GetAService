@@ -20,7 +20,8 @@ class SellerListXibTableViewTableViewCell: UITableViewCell {
     @IBOutlet weak var sellerCountryLabel: UILabel!
     @IBOutlet weak var sellerAvailabilityLabel: UILabel!
    // var buttonClicked: (() -> Void)? = nil
-
+    @IBOutlet weak var onlineStatusImage: UIImageView!
+    
     var artistButtonDelegant : ButtonPressed?
     
     override func awakeFromNib() {
@@ -35,6 +36,13 @@ class SellerListXibTableViewTableViewCell: UITableViewCell {
         sellerImage.layer.borderColor = UIColor.black.cgColor
        sellerImage.layer.cornerRadius = sellerImage.frame.size.height/2
         sellerImage.contentMode = .scaleAspectFill
+        
+        onlineStatusImage.layer.masksToBounds = true
+        onlineStatusImage.layer.borderColor = UIColor.black.cgColor
+        onlineStatusImage.layer.cornerRadius = onlineStatusImage.frame.size.height/2
+        onlineStatusImage.contentMode = .scaleAspectFill
+        
+        
     }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
