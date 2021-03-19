@@ -20,7 +20,7 @@ protocol DataUploadedSeller
 class SellerProfileBrain {
     
     var sellerShortInfoArray  = [SellerShortInfo]()
-    var sellerProfileData=[String:Any]()
+    var sellerProfileData = [String:Any]()
     var dataUplodedDelegant:DataUploadedSeller?
     var userId = Auth.auth().currentUser!.uid
     let db = Firestore.firestore()
@@ -83,8 +83,7 @@ class SellerProfileBrain {
         
         
         if let userid = Auth.auth().currentUser?.uid {
-            //
-            //            db.collection("UserProfileData").document("Seller").collection("AllSellers").document(userid).setData(<#T##documentData: [String : Any]##[String : Any]#>, merge: <#T##Bool#>)
+           
             
             // it also merges the previous data
             db.collection("UserProfileData").document("Seller").collection("AllSellers").document(userid).setData(sellerProfileData , merge: true ) { (error) in

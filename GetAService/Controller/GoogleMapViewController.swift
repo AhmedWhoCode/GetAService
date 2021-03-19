@@ -9,7 +9,9 @@ import UIKit
 import GoogleMaps
 import GooglePlaces
 import CoreLocation
-class GoogleMapViewController: UIViewController{
+class GoogleMapViewController: UIViewController, GoogleMapBrainDelegant{
+    
+    
     
     var bookingModel : BookingModel?
     
@@ -33,13 +35,29 @@ class GoogleMapViewController: UIViewController{
         //track the location changes
         locationManager.delegate = self
         
+        GoogleMapBrain.sharedInstance.googleMapBrainDelegant = self
+        
         designView()
         
-        GoogleMapBrain.sharedInstance.updateCurrentLocationOnMap(with: locationManager, mapView: mapView) ///updateCurrentLocationOnMap()
-        
-        //print("n1 \(bookingModel)")
+        GoogleMapBrain.sharedInstance.updateCurrentLocationOnMap(with: locationManager, mapView: mapView) 
         
     }
+    
+    func didSendTheBookingDetails() {
+
+        performSegue(withIdentifier:Constants.seguesNames.locationToWaiting, sender: self)
+    }
+    
+    
+    @IBAction func proceedButton(_ sender: UIButton) {
+        
+        if let booking = bookingModel
+        {
+        GoogleMapBrain.sharedInstance.insertBookingInfomationToFirebase(with: booking)
+        }
+    }
+    
+    
     
     @IBAction func getLocation(_ sender: UIButton) {
         // to know the selected location of user
