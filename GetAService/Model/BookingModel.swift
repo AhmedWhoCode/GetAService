@@ -13,7 +13,7 @@ struct LocationModel {
     var coordinates :  CLLocationCoordinate2D
 }
 
-struct NotificationModel {
+struct BookingModel {
     var buyerId : String
     var sellerId : String
     var recepientName : String

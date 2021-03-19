@@ -116,3 +116,5 @@ fastlane/test_output
 iOSInjectionProject/
 
 # End of https://www.toptal.com/developers/gitignore/api/macos,swift
+GetAService/Helper/APIKeys.swift
+GetAService/Helper/APIKeys.swift

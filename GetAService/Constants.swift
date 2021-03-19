@@ -11,7 +11,6 @@ import Foundation
 struct Constants {
     
     
-    static let googleMapAPi = "AIzaSyBG6ZqI7kxdR5BqY40jFSJ4K0PPZ1HLqsU"
     
     //notificationlist constants
     static let cellIdentifierNotification = "notificationCell"

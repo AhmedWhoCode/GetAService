@@ -17,7 +17,7 @@ class CustomerProvideInformation: UIViewController {
     @IBOutlet weak var eventDescription: UITextView!
 
     
-    var notification:NotificationModel?
+    var booking:BookingModel?
     //this id will come from the sellerInformation class
     var sellerId : String?
     
@@ -25,7 +25,7 @@ class CustomerProvideInformation: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        dateAndTime.timeZone = .autoupdatingCurrent
+       // dateAndTime.timeZone = .autoupdatingCurrent
         
         //function defined in UpdatingViews file
         designingView()
@@ -35,7 +35,7 @@ class CustomerProvideInformation: UIViewController {
     
     @IBAction func proceedPressed(_ sender: UIButton) {
 
-        notification = NotificationModel(
+        booking = BookingModel(
                                          buyerId :buyerId!,
                                          sellerId: sellerId!,
                                          recepientName: recepientNameTextField.text!,
@@ -59,7 +59,7 @@ class CustomerProvideInformation: UIViewController {
         {
             if let destinationSegue = segue.destination as? GoogleMapViewController
             {
-                destinationSegue.notificationModel = notification
+                destinationSegue.bookingModel = booking
             }
         }
     }
