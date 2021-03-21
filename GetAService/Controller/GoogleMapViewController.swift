@@ -9,7 +9,7 @@ import UIKit
 import GoogleMaps
 import GooglePlaces
 import CoreLocation
-class GoogleMapViewController: UIViewController, GoogleMapBrainDelegant{
+class GoogleMapViewController: UIViewController, BookingBrainDelegant{
     
     
     
@@ -35,13 +35,14 @@ class GoogleMapViewController: UIViewController, GoogleMapBrainDelegant{
         //track the location changes
         locationManager.delegate = self
         
-        GoogleMapBrain.sharedInstance.googleMapBrainDelegant = self
+        BookingBrain.sharedInstance.bookingBrainDelegant = self
         
         designView()
         
         GoogleMapBrain.sharedInstance.updateCurrentLocationOnMap(with: locationManager, mapView: mapView) 
         
     }
+    
     
     func didSendTheBookingDetails() {
 
@@ -53,7 +54,7 @@ class GoogleMapViewController: UIViewController, GoogleMapBrainDelegant{
         
         if let booking = bookingModel
         {
-        GoogleMapBrain.sharedInstance.insertBookingInfomationToFirebase(with: booking)
+        BookingBrain.sharedInstance.insertBookingInfomationToFirebase(with: booking)
         }
     }
     
@@ -132,5 +133,6 @@ class GoogleMapViewController: UIViewController, GoogleMapBrainDelegant{
         
         print("2ndTime \(bookingModel.unsafelyUnwrapped)")
     }
+
 }
 

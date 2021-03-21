@@ -209,6 +209,11 @@ class SellerDashboardViewController: UIViewController {
         sellerImage.contentMode = .scaleAspectFill
     }
     
+    
+    @IBAction func notificatiobBarButton(_ sender: Any) {
+        performSegue(withIdentifier: Constants.seguesNames.sellerDashboardToNotification, sender: self)
+    }
+    
     // MARK: - Navigation
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -219,6 +224,14 @@ class SellerDashboardViewController: UIViewController {
             if let destinationSegue = segue.destination as? SellerProfile
             {
                 destinationSegue.isSourceVcArtistProfile = true
+            }
+        }
+        
+        else if segue.identifier == Constants.seguesNames.sellerDashboardToNotification
+        {
+            if let destinationSegue = segue.destination as? NotificationsList
+            {
+                destinationSegue.areSellerNotifications = true
             }
         }
         

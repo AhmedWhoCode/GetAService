@@ -149,6 +149,30 @@ class BuyerProfileBrain {
         
     }
     
+    func retrivingProfileDataForNotifications(using userUid :String,completion : @escaping (NotificationModel) -> ()) {
+        
+        
+        db.collection("UserProfileData").document("Buyer").collection("AllBuyers").document(userUid).addSnapshotListener
+        { (snapShot, error) in
+            
+            if let snap = snapShot?.data()
+            {
+                
+                
+                let imageRef1 = snap["imageRef"]! as! String
+                let name1 = snap["name"]! as! String
+                let country = snap["country"]! as! String
+                let uid = snap["uid"]! as! String
+
+                let notificationModel = NotificationModel(buyerImage: imageRef1, buyerName: name1, buyerCountry: country,buyerUID: uid)
+                
+                completion(notificationModel)
+            }
+            
+        }
+        
+    }
+
     
 }
 

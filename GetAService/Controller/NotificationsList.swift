@@ -7,21 +7,36 @@
 
 import UIKit
 
-class NotificationsList: UITableViewController {
+class NotificationsList: UITableViewController, NotificationBrainDelegant {
 
-    var notifications = [Notifications]()
+    var notifications = [NotificationModel]()
+    
+    var notificationBrain = NotificationBrain()
+    
+    //to check the previuos class , to differentiate seller and buyer notifications
+    var areSellerNotifications : Bool?
+    
+    var buyerID : String?
+    var buyerImage : String?
+    var buyerName : String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.hidesBackButton = false
-         addingDummyData()
+        notificationBrain.notificationBrainDelegant = self
         
         tableView.register(UINib(nibName:Constants.cellNibNameNotification, bundle: nil),forCellReuseIdentifier:Constants.cellIdentifierNotification)
+        //addingDummyData()
+       
+        notificationBrain.retrivingNotifications()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+    
+    func didReceiveTheData(values: [NotificationModel]) {
+        notifications = values
+        tableView.reloadData()
+        print(values)
     }
 
     // MARK: - Table view data source
@@ -39,82 +54,60 @@ class NotificationsList: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.cellIdentifierNotification, for: indexPath) as? NotificationsTableViewCell
-        cell?.customerImage.image = notifications[indexPath.row].customerImage
-        cell?.customerName.text = notifications[indexPath.row].customerName
-        cell?.customerCountry.text = notifications[indexPath.row].customerCountry
-
+         buyerName = notifications[indexPath.row].buyerName
+         buyerImage = notifications[indexPath.row].buyerImage
+        cell?.customerImage.loadCacheImage(with: notifications[indexPath.row].buyerImage )
+        cell?.customerName.text = notifications[indexPath.row].buyerName
+        cell?.customerCountry.text = notifications[indexPath.row].buyerCountry
+        cell?.button.setTitle( notifications[indexPath.row].buyerUID , for: .normal)
         cell?.buttonDelegantNotification = self
         return cell!
     }
     
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        
+        if segue.identifier == Constants.seguesNames.notificationsToOrderInfo
+        {
+            if let destinationSegue = segue.destination as? CustomerRequestScreen
+            {
+                
+                guard let buyerID = buyerID else {return}
+                guard let buyerImage = buyerImage else {return}
+                guard let buyerName = buyerName else {return}
+                
+                destinationSegue.buyerName = buyerName
+                destinationSegue.buyerImage = buyerImage
+                destinationSegue.buyerID = buyerID
+            }
+        }
     }
-    */
 
 }
 extension NotificationsList : ButtonPressed
 {
     func didButtonPressed(with value: String) {
+        
+        buyerID = value
+        
+        print("idb \(value)")
+
         performSegue(withIdentifier: Constants.seguesNames.notificationsToOrderInfo, sender: nil)
-        print(value)
     }
 
     
-    func addingDummyData() {
-        let n1 = Notifications(customerImage:UIImage.init(named: "male photo")!, customerName: "John", customerCountry: "USA")
-        let n2 = Notifications(customerImage:UIImage.init(named: "male photo")!, customerName: "TOM", customerCountry: "UK")
-        let n3 = Notifications(customerImage:UIImage.init(named: "male photo")!, customerName: "Ravi", customerCountry: "India")
-        let n4 = Notifications(customerImage:UIImage.init(named: "male photo")!, customerName: "Alexo", customerCountry: "Mexico")
-        let n5 = Notifications(customerImage:UIImage.init(named: "male photo")!, customerName: "Tom Banton", customerCountry: "Swizerland")
-
-        notifications.append(n1)
-        notifications.append(n2)
-        notifications.append(n3)
-        notifications.append(n4)
-        notifications.append(n5)
-
-    }
+//    func addingDummyData() {
+//        let n1 = NotificationModel(buyerImage:UIImage.init(named: "male photo")!, buyerName: "John", buyerCountry: "USA")
+//        let n2 = NotificationModel(buyerImage:UIImage.init(named: "male photo")!, buyerName: "TOM", buyerCountry: "UK")
+//        let n3 = NotificationModel(buyerImage:UIImage.init(named: "male photo")!, buyerName: "Ravi", buyerCountry: "India")
+//        let n4 = NotificationModel(buyerImage:UIImage.init(named: "male photo")!, buyerName: "Alexo", buyerCountry: "Mexico")
+//        let n5 = NotificationModel(buyerImage:UIImage.init(named: "male photo")!, buyerName: "Tom Banton", buyerCountry: "Swizerland")
+//
+//        notifications.append(n1)
+//        notifications.append(n2)
+//        notifications.append(n3)
+//        notifications.append(n4)
+//        notifications.append(n5)
+//
+//    }
     
 }

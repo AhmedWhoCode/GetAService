@@ -13,6 +13,7 @@ class NotificationsTableViewCell: UITableViewCell {
     @IBOutlet weak var customerCountry: UILabel!
     @IBOutlet weak var customerImage: UIImageView!
     
+    @IBOutlet weak var button: UIButton!
     var buttonDelegantNotification:ButtonPressed?
 
     
@@ -34,7 +35,7 @@ class NotificationsTableViewCell: UITableViewCell {
     }
     
     @IBAction func cellClicked(_ sender: UIButton) {
-        buttonDelegantNotification?.didButtonPressed(with: "pressed")
+        buttonDelegantNotification?.didButtonPressed(with: sender.currentTitle!)
     }
     
 }

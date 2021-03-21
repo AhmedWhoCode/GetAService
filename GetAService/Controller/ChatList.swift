@@ -10,7 +10,7 @@ import FirebaseAuth
 import Firebase
 
 class ChatList: UITableViewController {
-    var chats = [Chats]()
+   // var chats = [Chats]()
     var chatBrain = ChatBrain()
     
     var currentUser = Auth.auth().currentUser?.uid
@@ -29,7 +29,7 @@ class ChatList: UITableViewController {
         
         
         retrivingChats()
-        addingDummyData()
+       // addingDummyData()
         
         tableView.register(UINib(nibName:Constants.cellNibNameChatList, bundle: nil),forCellReuseIdentifier:Constants.cellIdentifierChatList)
         // Uncomment the following line to preserve selection between presentations
@@ -149,20 +149,20 @@ class ChatList: UITableViewController {
      // Pass the selected object to the new view controller.
      }
      */
-    func addingDummyData() {
-        let c1 = Chats(chatImage:UIImage.init(named: "male photo")!, chatName: "John", chatCountry: "USA")
-        let c2 = Chats(chatImage:UIImage.init(named: "male photo")!, chatName: "anna", chatCountry: "Maxico")
-        let c3 = Chats(chatImage:UIImage.init(named: "male photo")!, chatName: "hugh Jackman", chatCountry: "Newzeland")
-        let c4 = Chats(chatImage:UIImage.init(named: "male photo")!, chatName: "tom lythan", chatCountry: "Brazil")
-        let c5 = Chats(chatImage:UIImage.init(named: "male photo")!, chatName: "John", chatCountry: "USA")
-        
-        
-        chats.append(c1)
-        chats.append(c2)
-        chats.append(c3)
-        chats.append(c4)
-        chats.append(c5)
-        
-    }
+//    func addingDummyData() {
+//        let c1 = Chats(chatImage:UIImage.init(named: "male photo")!, chatName: "John", chatCountry: "USA")
+//        let c2 = Chats(chatImage:UIImage.init(named: "male photo")!, chatName: "anna", chatCountry: "Maxico")
+//        let c3 = Chats(chatImage:UIImage.init(named: "male photo")!, chatName: "hugh Jackman", chatCountry: "Newzeland")
+//        let c4 = Chats(chatImage:UIImage.init(named: "male photo")!, chatName: "tom lythan", chatCountry: "Brazil")
+//        let c5 = Chats(chatImage:UIImage.init(named: "male photo")!, chatName: "John", chatCountry: "USA")
+//
+//
+//        chats.append(c1)
+//        chats.append(c2)
+//        chats.append(c3)
+//        chats.append(c4)
+//        chats.append(c5)
+//
+//    }
     
 }
