@@ -31,33 +31,7 @@ class NotificationBrain {
     
     
     func retrivingNotifications() {
-       
         
-//        db.collection("Bookings")
-//            .document("Seller")
-//            .collection("AllSellerWhoReceivedOrders")
-//            .document(currentUser!)
-//            .addSnapshotListener { (snap, error) in
-//                self.buyerIds.removeAll()
-//                if let s = snap?
-//                          {
-//                              if s.count > 0
-//                              {
-//                                  for i in 0...s.count - 1
-//                                  {
-//                                      self.buyerIds.append(s[i].document.documentID)
-//
-//                                  }
-//                                  //print(self.buyerIds)
-//                                  self.getProfileInformations(with: self.buyerIds)
-//                              }
-//                          }
-//                          else
-//                          {
-//                              print(error?.localizedDescription)
-//                          }
-//
-//            }
         
         db.collection("Bookings")
             .document("Seller")
@@ -74,7 +48,7 @@ class NotificationBrain {
                         for i in 0...s.count - 1
                         {
                             self.buyerIds.append(s[i].document.documentID)
-
+                            
                         }
                         //print(self.buyerIds)
                         self.getProfileInformations(with: self.buyerIds)
@@ -87,33 +61,6 @@ class NotificationBrain {
             }
         
         
-        
-//
-//        db.collection("Bookings")
-//            .document("Seller")
-//            .collection("AllSellerWhoReceivedOrders")
-//            .document(currentUser!)
-//            .collection("BookedBy").addSnapshotListener(includeMetadataChanges: true, listener: { (snap, error) in
-//                self.buyerIds.removeAll()
-//                if let s = snap?.documentChanges
-//                {
-//                    if s.count > 0
-//                    {
-//                        for i in 0...s.count - 1
-//                        {
-//                            self.buyerIds.append(s[i].document.documentID)
-//
-//                        }
-//                        //print(self.buyerIds)
-//                        self.getProfileInformations(with: self.buyerIds)
-//                    }
-//                }
-//                else
-//                {
-//                    print(error?.localizedDescription)
-//                }
-//            })
-
     }
     
     func getProfileInformations(with ids : [String]) {
@@ -136,7 +83,7 @@ class NotificationBrain {
         
     }
     
-    func retrivingNotificationDetail(using buyerId : String , completion : @escaping (NotificationDetailModel) -> ()) {
+    func retrivingNotificationDetail(using buyerId : String , completion : @escaping (NotificationDetailModel,String) -> ()) {
         
         //retriving notification detail and ordered by the last document added , most recent one
         db.collection("Bookings")
@@ -146,8 +93,8 @@ class NotificationBrain {
             .collection("BookedBy")
             .document(buyerId)
             .collection("WithBookingID")
-            .order(by: "eventTimeAndDate", descending: true).limit(to: 1)
-            .addSnapshotListener { (query, error) in
+            .order(by: "totalSeonds", descending: true).limit(to: 1)
+            .getDocuments { (query, error) in
                 
                 if let q = query?.documents
                 {
@@ -165,12 +112,62 @@ class NotificationBrain {
                                                                      eventTimeAndDate: eventTimeAndDate,
                                                                      eventlocationAddress: eventlocationAddress,
                                                                      eventDescription: eventDescription)
-                    completion(notificationDetail)
+                    completion(notificationDetail,q[0].documentID)
                     
                     
                 }
             }
         
         
+    }
+    
+    
+    func updateBookingStatus(with status : String , buyerId : String , notificationId : String )  {
+        
+        
+        self.db.collection("Bookings")
+            .document("Seller")
+            .collection("AllSellerWhoReceivedOrders")
+            .document(self.currentUser!)
+            .collection("BookedBy")
+            .document(buyerId)
+            .collection("WithBookingID")
+            .document(notificationId)
+            .updateData(["bookingStatus" : status]) { (error) in
+                
+                if let e = error
+                {
+                    print("this is the error while updating status \(e.localizedDescription)")
+                }
+                else
+                {
+                    print("232")
+                    self.updatingBuyerSide(with: notificationId, buyerID: buyerId, status: status)
+                }
+            }
+        
+        
+    }
+    
+    func updatingBuyerSide(with bookingId :String , buyerID : String , status :String) {
+        db.collection("Bookings")
+            .document("Buyer")
+            .collection("AllBuyersWhoOrdered")
+            .document(buyerID)
+            .collection("Books")
+            .document(currentUser!)
+            .collection("WithBookingID")
+            .document(bookingId)
+            .updateData(["bookingStatus" : status]) { (error) in
+                
+                if let e = error
+                {
+                    print("this is the error while updating status \(e.localizedDescription)")
+                }
+                else
+                {
+                    print("status updated")
+                }
+            }
     }
 }

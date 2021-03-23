@@ -27,6 +27,8 @@
 		932C89B025DAC8E3008D72D9 /* ServicesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932C89AF25DAC8E3008D72D9 /* ServicesModel.swift */; };
 		932C89BB25DAD893008D72D9 /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932C89BA25DAD893008D72D9 /* ChatModel.swift */; };
 		932C89C325DAE072008D72D9 /* NotificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932C89C225DAE072008D72D9 /* NotificationModel.swift */; };
+		932DD7C22609D73A007BD665 /* CustomerScreenExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932DD7C12609D73A007BD665 /* CustomerScreenExtension.swift */; };
+		932DD7CA2609F69E007BD665 /* BuyerWaitingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932DD7C92609F69E007BD665 /* BuyerWaitingViewController.swift */; };
 		9339113125C828C100913D3E /* AcceptOrDecline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9339113025C828C100913D3E /* AcceptOrDecline.swift */; };
 		9339113C25C8341D00913D3E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9339113B25C8341C00913D3E /* Assets.xcassets */; };
 		933929EF25F66B0C00DB10FD /* OneToOneChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933929EE25F66B0C00DB10FD /* OneToOneChatViewController.swift */; };
@@ -120,6 +122,8 @@
 		932C89AF25DAC8E3008D72D9 /* ServicesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesModel.swift; sourceTree = "<group>"; };
 		932C89BA25DAD893008D72D9 /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
 		932C89C225DAE072008D72D9 /* NotificationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationModel.swift; sourceTree = "<group>"; };
+		932DD7C12609D73A007BD665 /* CustomerScreenExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerScreenExtension.swift; sourceTree = "<group>"; };
+		932DD7C92609F69E007BD665 /* BuyerWaitingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyerWaitingViewController.swift; sourceTree = "<group>"; };
 		9339113025C828C100913D3E /* AcceptOrDecline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptOrDecline.swift; sourceTree = "<group>"; };
 		9339113B25C8341C00913D3E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		933929EE25F66B0C00DB10FD /* OneToOneChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneToOneChatViewController.swift; sourceTree = "<group>"; };
@@ -255,9 +259,10 @@
 				93BE8E5A25EE1359008103DA /* ShowToast.swift */,
 				936D2CB225F740BA00F677F8 /* Messages.swift */,
 				93593BC825FA7BA700BFCA71 /* UpdatingViews.swift */,
-				9355988225FCC03B0049CF28 /* Helper Functions.swift */,
 				93C95E0F26010F9800F8E3C2 /* LocationManager.swift */,
+				9355988225FCC03B0049CF28 /* Helper Functions.swift */,
 				934F0CA22604BF23002AE2E0 /* APIKeys.swift */,
+				932DD7C12609D73A007BD665 /* CustomerScreenExtension.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -275,11 +280,11 @@
 				9352711F25E7899100F368B1 /* BuyerProfileModel.swift */,
 				9354847A25E8DF8A00A76C22 /* BuyerProfileBrain.swift */,
 				9342CF7925F367500099FB73 /* SellerShortInfo.swift */,
-				936D2CB725F7614200F677F8 /* MessageBrain.swift */,
 				936D2CBC25F76A2B00F677F8 /* MessageStructer.swift */,
 				936D790326033B9B00E1A04D /* BookingModel.swift */,
-				9360136D2603A4780096BCEF /* GoogleMapBrain.swift */,
 				93233E8626071CDB00812732 /* BookingBrain.swift */,
+				936D2CB725F7614200F677F8 /* MessageBrain.swift */,
+				9360136D2603A4780096BCEF /* GoogleMapBrain.swift */,
 				93233E9426072B2800812732 /* NotificationBrain.swift */,
 				932C89C225DAE072008D72D9 /* NotificationModel.swift */,
 			);
@@ -328,6 +333,7 @@
 				93BE8E5525EE00CE008103DA /* SellerDashboardViewController.swift */,
 				93C95E052600BEF500F8E3C2 /* AppleMapViewController.swift */,
 				93C95E0A2600BF8500F8E3C2 /* SearchViewController.swift */,
+				932DD7C92609F69E007BD665 /* BuyerWaitingViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -713,12 +719,14 @@
 				931D66A225C0873E002C239E /* NotificationsList.swift in Sources */,
 				9354847B25E8DF8A00A76C22 /* BuyerProfileBrain.swift in Sources */,
 				93233E8726071CDB00812732 /* BookingBrain.swift in Sources */,
+				932DD7CA2609F69E007BD665 /* BuyerWaitingViewController.swift in Sources */,
 				936D2CB325F740BA00F677F8 /* Messages.swift in Sources */,
 				932C89BB25DAD893008D72D9 /* ChatModel.swift in Sources */,
 				9355988325FCC03B0049CF28 /* Helper Functions.swift in Sources */,
 				93C95E062600BEF500F8E3C2 /* AppleMapViewController.swift in Sources */,
 				93E3F8DB25E23BEC00FB74C3 /* ServicesBrain.swift in Sources */,
 				936D790426033B9B00E1A04D /* BookingModel.swift in Sources */,
+				932DD7C22609D73A007BD665 /* CustomerScreenExtension.swift in Sources */,
 				9378C82725B834C400B6A183 /* ListOfServices.swift in Sources */,
 				93BE8E5625EE00CE008103DA /* SellerDashboardViewController.swift in Sources */,
 				93CE5C9525CBF257002A916E /* ButtonPressed.swift in Sources */,

@@ -49,9 +49,16 @@ class GoogleMapViewController: UIViewController, BookingBrainDelegant{
         performSegue(withIdentifier:Constants.seguesNames.locationToWaiting, sender: self)
     }
     
+    //this is optional method, not needed
+    func didSellerRespond(result: String)
+    {
+        
+    }
+    
     
     @IBAction func proceedButton(_ sender: UIButton) {
         
+        sender.isUserInteractionEnabled = false
         if let booking = bookingModel
         {
         BookingBrain.sharedInstance.insertBookingInfomationToFirebase(with: booking)

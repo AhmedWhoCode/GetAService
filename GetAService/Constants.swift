@@ -19,7 +19,7 @@ struct Constants {
     //artistList constants
     static let cellIdentifierSellerList = "sellerInfoCell"
     static let cellNibNameSellerList = "SellerListXibTableViewTableViewCell"
-
+    
     //servicesList constants
     static let cellIdentifierServicesList = "serviceXib"
     static let cellNibNameServicesList = "ListOfServicesXibTableViewCell"
@@ -31,7 +31,7 @@ struct Constants {
     //SubServicesList
     
     static let subServicesCell = "subServicesCell"
-
+    
     struct gifNames {
         static let inProgressGif = "inProgress.gif"
         static let greenCheckGif = "myGreenGif.gif"
@@ -60,6 +60,8 @@ struct Constants {
         static let artistInfoToProfile = "artistInfoToProfile"
         static let buyerProfileToServices = "buyerProfileToServices"
         static let locationToWaiting = "locationToWaiting"
+        static let waitingToUberInfo = "waitingToUberInfo"
+        static let waitingToServices = "waitingToServices"
     }
     
 }

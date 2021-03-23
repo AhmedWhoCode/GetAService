@@ -12,6 +12,7 @@ import FirebaseAuth
 
 protocol BookingBrainDelegant {
     func didSendTheBookingDetails()
+    func didSellerRespond(result : String)
 }
 
 
@@ -22,8 +23,8 @@ class BookingBrain {
     var bookingInfoMap = [String:Any]()
     let db = Firestore.firestore()
     var dateForUniqueId : String = ""
-    
-    
+    var buyerId : String?
+    var sellerId : String?
     
     func insertBookingInfomationToFirebase(with bookingData : BookingModel) {
         
@@ -34,8 +35,10 @@ class BookingBrain {
         guard let longitude = bookingData.eventLocation?.coordinates.longitude.description  else {
             return
         }
+        buyerId = bookingData.buyerId
+        sellerId = bookingData.sellerId
         
-        dateForUniqueId = String(format: "%f", bookingData.dateForUniqueId)
+       dateForUniqueId = String(format: "%.1f", bookingData.dateForUniqueId)
         
         bookingInfoMap["buyerId"] = bookingData.buyerId
         bookingInfoMap["sellerId"] = bookingData.sellerId
@@ -48,6 +51,9 @@ class BookingBrain {
         bookingInfoMap["eventLocationAddress"] = bookingData.eventLocation?.address
         bookingInfoMap["eventLocationLatitude"] = latitude
         bookingInfoMap["eventLocationLongitude"] = longitude
+        bookingInfoMap["totalSeonds"] = Int(bookingData.dateForUniqueId)
+        bookingInfoMap["bookingStatus"] = bookingData.bookingStatus
+        print(bookingData.dateForUniqueId)
         
         db.collection("Bookings")
             .document("Buyer")
@@ -57,11 +63,11 @@ class BookingBrain {
             .document(bookingData.sellerId)
             .collection("WithBookingID")
             .document(dateForUniqueId)
-            .setData(bookingInfoMap, merge:true) { (error) in
+            .setData(bookingInfoMap, merge:false) { (error) in
                 
                 if let e = error
                 {
-                    print(e.localizedDescription)
+                    print("error while making booking \(e.localizedDescription)")
                 }
                 else
                 {
@@ -72,7 +78,7 @@ class BookingBrain {
     }
     
     func addDataForSellers(with bookingInfo:[String:Any] , bookingData : BookingModel) {
-       
+        
         db.collection("Bookings")
             .document("Seller")
             .collection("AllSellerWhoReceivedOrders")
@@ -111,9 +117,52 @@ class BookingBrain {
                 
             }
         
-    
-       
+        
+        
     }
-
+    //with buyerId :String , sellerId :String
+    
+    func sellerResponded() {
+        
+        //retriving notification detail and ordered by the last document added , most recent one
+        db.collection("Bookings")
+            .document("Seller")
+            .collection("AllSellerWhoReceivedOrders")
+            .document(sellerId!)
+            .collection("BookedBy")
+            .document(buyerId!)
+            .collection("WithBookingID")
+            .order(by: "totalSeonds", descending: true).limit(to: 1)
+            .addSnapshotListener { (query, error) in
+                
+                if let q = query?.documentChanges
+                {
+                    
+                    print(q[0].document.data())
+                    if(q[0].document.data().isEmpty)
+                    {
+                        
+                    }
+                    else
+                    {
+                        
+                        if (q[0].document.data()["bookingStatus"] as? String)! == "accepted"
+                        {
+                            self.bookingBrainDelegant?.didSellerRespond(result : "accepted")
+                            print("yes, its happen")
+                        }
+                        else if (q[0].document.data()["bookingStatus"] as? String)! == "rejected"
+                        {
+                            self.bookingBrainDelegant?.didSellerRespond(result : "rejected")
+                            print("noooooooooo")
+                        }
+                    }
+                    
+                }
+            }
+        
+        
+    }
+    
     
 }

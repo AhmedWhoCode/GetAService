@@ -47,19 +47,19 @@ class ChatBrain {
         
         
     }
-
-
+    
+    
     //checking if the user is buyer or seller , and getting profile accordingly , the function isUserSellerOrBuyer defined in helper file
     func gettingUserInfo(with ids : [String] , completion :@escaping ([ChatModel]) -> ())  {
-
+        
         ids.forEach { (id) in
-
+            
             isUserSellerOrBuyer(userID: id, completion: { (response) in
                 
                 if response.elementsEqual("seller")
                 {
                     let sellerProfile = SellerProfileBrain()
-
+                    
                     sellerProfile.retrivingProfileDataForChats(using: id) { (data) in
                         self.chats.append(data)
                         //checking if we are done with all ids , if not then the function will not end
@@ -67,10 +67,10 @@ class ChatBrain {
                         {
                             completion(self.chats)
                         }
-
+                        
                     }
                 }
-
+                
                 else if response.elementsEqual("buyer")
                 {
                     let buyerProfile = BuyerProfileBrain()
@@ -87,10 +87,10 @@ class ChatBrain {
                 {
                     print(response)
                 }
-
-        }
-
-    )}
+                
+            }
+            
+            )}
     }
     
     
