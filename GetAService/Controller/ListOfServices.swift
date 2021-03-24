@@ -16,6 +16,8 @@ class ListOfServices: UITableViewController, DataManipulation {
     var servicesData  = [ServicesModel]()
     override func viewDidLoad() {
         super.viewDidLoad()
+        BookingBrain.sharedInstance.check = true
+
         //registering this class so that it could receive data from data model
         serviceBrain.dataManipulationDelegant = self
         //calling method to retrieve data

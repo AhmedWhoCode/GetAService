@@ -23,6 +23,8 @@ class FairDetails: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        BookingBrain.sharedInstance.check = true
+
         designingView()
         // Do any additional setup after loading the view.
     }

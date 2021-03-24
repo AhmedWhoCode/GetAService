@@ -54,8 +54,9 @@ class CustomerProvideInformation: UIViewController {
                                          eventTimeAndDate: dateAndTime.date.convertDateToLocalTime(),
                                          eventDescription: eventDescription.text!,
                                          eventLocation: nil,
-                                         dateForUniqueId: dateAndTime.date.timeIntervalSince1970,
-                                         bookingStatus: "unSeen"
+                                         dateForUniqueId: date,
+                                         bookingStatus: "unSeen",
+                                         dateFor : dateString
                 
         )
         print("dddd  \(dateString)")

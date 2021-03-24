@@ -8,10 +8,11 @@
 import UIKit
 
 class BuyerWaitingViewController: UIViewController , BookingBrainDelegant {
- 
+    
     
     var buyerId :String?
     var sellerId :String?
+    //var boookingBrain 
     override func viewDidLoad() {
         super.viewDidLoad()
         BookingBrain.sharedInstance.bookingBrainDelegant = self
@@ -22,29 +23,38 @@ class BuyerWaitingViewController: UIViewController , BookingBrainDelegant {
     func didSendTheBookingDetails(){}
     
     func didSellerRespond(result: String) {
-        print(result)
         if result == "accepted"
         {
             print("why22")
-        performSegue(withIdentifier: Constants.seguesNames.waitingToUberInfo, sender: self)
+            // BookingBrain.sharedInstance.check = true
+            showToast1(controller: self, message: "Offer Accepted", seconds: 2, color: .red)
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
+                
+                self.performSegue(withIdentifier: Constants.seguesNames.waitingToUberInfo, sender: self)
+                
+            }
+            
         }
         else if result == "rejected"
         {
+            // BookingBrain.sharedInstance.check = true
+            
             showToast1(controller: self, message: "Offer Rejected", seconds: 2, color: .red)
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3) {
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
+                
                 self.performSegue(withIdentifier: Constants.seguesNames.waitingToServices, sender: self)
-
+                
             }
         }
     }
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

@@ -25,7 +25,7 @@ class BookingBrain {
     var dateForUniqueId : String = ""
     var buyerId : String?
     var sellerId : String?
-    
+    var check = true
     func insertBookingInfomationToFirebase(with bookingData : BookingModel) {
         
         guard let latitude = bookingData.eventLocation?.coordinates.latitude.description else {
@@ -38,7 +38,7 @@ class BookingBrain {
         buyerId = bookingData.buyerId
         sellerId = bookingData.sellerId
         
-       dateForUniqueId = String(format: "%.1f", bookingData.dateForUniqueId)
+      // dateForUniqueId = String(format: "%.1f", bookingData.dateForUniqueId)
         
         bookingInfoMap["buyerId"] = bookingData.buyerId
         bookingInfoMap["sellerId"] = bookingData.sellerId
@@ -51,7 +51,7 @@ class BookingBrain {
         bookingInfoMap["eventLocationAddress"] = bookingData.eventLocation?.address
         bookingInfoMap["eventLocationLatitude"] = latitude
         bookingInfoMap["eventLocationLongitude"] = longitude
-        bookingInfoMap["totalSeonds"] = Int(bookingData.dateForUniqueId)
+        bookingInfoMap["totalSeonds"] = bookingData.dateForUniqueId
         bookingInfoMap["bookingStatus"] = bookingData.bookingStatus
         print(bookingData.dateForUniqueId)
         
@@ -62,7 +62,7 @@ class BookingBrain {
             .collection("Books")
             .document(bookingData.sellerId)
             .collection("WithBookingID")
-            .document(dateForUniqueId)
+            .document(bookingData.dateFor)
             .setData(bookingInfoMap, merge:false) { (error) in
                 
                 if let e = error
@@ -101,7 +101,7 @@ class BookingBrain {
                         .collection("BookedBy")
                         .document(bookingData.buyerId)
                         .collection("WithBookingID")
-                        .document(self.dateForUniqueId)
+                        .document(bookingData.dateFor)
                         .setData(bookingInfo, merge:true) { (error) in
                             
                             if let e = error
@@ -134,29 +134,32 @@ class BookingBrain {
             .collection("WithBookingID")
             .order(by: "totalSeonds", descending: true).limit(to: 1)
             .addSnapshotListener { (query, error) in
-                
-                if let q = query?.documentChanges
+                print("how many times")
+                if let q = query?.documents
                 {
                     
-                    print(q[0].document.data())
-                    if(q[0].document.data().isEmpty)
-                    {
-                        
-                    }
-                    else
-                    {
-                        
-                        if (q[0].document.data()["bookingStatus"] as? String)! == "accepted"
+                        if (q[0].data()["bookingStatus"] as? String)! == "accepted"
                         {
+                            if self.check == true
+                            {
+
                             self.bookingBrainDelegant?.didSellerRespond(result : "accepted")
+                            self.check = false
                             print("yes, its happen")
+                            }
                         }
-                        else if (q[0].document.data()["bookingStatus"] as? String)! == "rejected"
+                        else if (q[0].data()["bookingStatus"] as? String)! == "rejected"
                         {
+                            if self.check == true
+                            {
+
                             self.bookingBrainDelegant?.didSellerRespond(result : "rejected")
+                            self.check = false
                             print("noooooooooo")
+
+                            }
                         }
-                    }
+                    
                     
                 }
             }

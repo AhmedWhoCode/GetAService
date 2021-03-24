@@ -22,6 +22,7 @@ struct BookingModel {
     var eventTimeAndDate  : String
     var eventDescription : String
     var eventLocation  : LocationModel?
-    var dateForUniqueId : Double
+    var dateForUniqueId : Date
     var bookingStatus  : String
+    var dateFor : String
 }
