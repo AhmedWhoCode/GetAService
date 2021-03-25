@@ -52,7 +52,8 @@ class CustomerRequestScreen: UIViewController {
     }
     
     @IBAction func confirmPressed(_ sender: UIButton) {
-        notificationBrain.updateBookingStatus(with: "accepted", buyerId: buyerID!, notificationId: notificationId!)
+        //notificationBrain.updateBookingStatus(with: "accepted", buyerId: buyerID!, notificationId: notificationId!)
+        performSegue(withIdentifier: Constants.seguesNames.orderInfoToMaps, sender: nil)
         
     }
     
@@ -61,9 +62,7 @@ class CustomerRequestScreen: UIViewController {
         notificationBrain.updateBookingStatus(with: "rejected", buyerId: buyerID!, notificationId: notificationId!)
 
     }
-    
-    
-    
+
     
     
     func updatingViewsValue() {
@@ -75,6 +74,31 @@ class CustomerRequestScreen: UIViewController {
         eventLocation.text = notificationData?.eventlocationAddress
         eventDetail.text = notificationData?.eventDescription
         
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == Constants.seguesNames.orderInfoToMaps
+        {
+            if let destinationSegue = segue.destination as? GoogleMapViewController
+            {
+            
+                guard let notificationID = notificationId else {
+                    return
+                }
+                
+                guard let buyerID = buyerID else {
+                    return
+                }
+                
+                
+                destinationSegue.isSellerASourceVc = true
+                destinationSegue.notificationId = notificationID
+                destinationSegue.buyerId = buyerID
+                destinationSegue.bookingStatus = Constants.orderAccepted
+
+
+            }
+        }
     }
 
 }

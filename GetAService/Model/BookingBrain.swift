@@ -22,7 +22,7 @@ class BookingBrain {
     static let sharedInstance = BookingBrain()
     var bookingInfoMap = [String:Any]()
     let db = Firestore.firestore()
-    var dateForUniqueId : String = ""
+    //var dateForUniqueId : String = ""
     var buyerId : String?
     var sellerId : String?
     var check = true
@@ -38,7 +38,7 @@ class BookingBrain {
         buyerId = bookingData.buyerId
         sellerId = bookingData.sellerId
         
-      // dateForUniqueId = String(format: "%.1f", bookingData.dateForUniqueId)
+        // dateForUniqueId = String(format: "%.1f", bookingData.dateForUniqueId)
         
         bookingInfoMap["buyerId"] = bookingData.buyerId
         bookingInfoMap["sellerId"] = bookingData.sellerId
@@ -51,9 +51,14 @@ class BookingBrain {
         bookingInfoMap["eventLocationAddress"] = bookingData.eventLocation?.address
         bookingInfoMap["eventLocationLatitude"] = latitude
         bookingInfoMap["eventLocationLongitude"] = longitude
-        bookingInfoMap["totalSeonds"] = bookingData.dateForUniqueId
+        bookingInfoMap["totalSeonds"] = bookingData.timeOfOrder
         bookingInfoMap["bookingStatus"] = bookingData.bookingStatus
-        print(bookingData.dateForUniqueId)
+        bookingInfoMap["sellerLatitude"] = bookingData.sellerLatitude
+        bookingInfoMap["sellerLongitude"] = bookingData.sellerLongitude
+        bookingInfoMap["sellerAddress"] = bookingData.sellerLocationAddress
+
+
+
         
         db.collection("Bookings")
             .document("Buyer")
@@ -62,7 +67,7 @@ class BookingBrain {
             .collection("Books")
             .document(bookingData.sellerId)
             .collection("WithBookingID")
-            .document(bookingData.dateFor)
+            .document(bookingData.dateForUniqueId)
             .setData(bookingInfoMap, merge:false) { (error) in
                 
                 if let e = error
@@ -101,7 +106,7 @@ class BookingBrain {
                         .collection("BookedBy")
                         .document(bookingData.buyerId)
                         .collection("WithBookingID")
-                        .document(bookingData.dateFor)
+                        .document(bookingData.dateForUniqueId)
                         .setData(bookingInfo, merge:true) { (error) in
                             
                             if let e = error
@@ -120,7 +125,6 @@ class BookingBrain {
         
         
     }
-    //with buyerId :String , sellerId :String
     
     func sellerResponded() {
         
@@ -138,27 +142,29 @@ class BookingBrain {
                 if let q = query?.documents
                 {
                     
-                        if (q[0].data()["bookingStatus"] as? String)! == "accepted"
+                    if (q[0].data()["bookingStatus"] as? String)! == "accepted"
+                    {
+                        //the snapshot was provoking this line again and again so i put the condition to execute this
+                        //command for once
+                        if self.check == true
                         {
-                            if self.check == true
-                            {
-
+                            
                             self.bookingBrainDelegant?.didSellerRespond(result : "accepted")
                             self.check = false
                             print("yes, its happen")
-                            }
                         }
-                        else if (q[0].data()["bookingStatus"] as? String)! == "rejected"
+                    }
+                    else if (q[0].data()["bookingStatus"] as? String)! == "rejected"
+                    {
+                        if self.check == true
                         {
-                            if self.check == true
-                            {
-
+                            
                             self.bookingBrainDelegant?.didSellerRespond(result : "rejected")
                             self.check = false
                             print("noooooooooo")
-
-                            }
+                            
                         }
+                    }
                     
                     
                 }

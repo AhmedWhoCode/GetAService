@@ -10,7 +10,9 @@ import Foundation
 
 struct Constants {
     
-    
+    static let orderAccepted = "accepted"
+    static let orderRejected = "rejected"
+
     
     //notificationlist constants
     static let cellIdentifierNotification = "notificationCell"
@@ -62,6 +64,7 @@ struct Constants {
         static let locationToWaiting = "locationToWaiting"
         static let waitingToUberInfo = "waitingToUberInfo"
         static let waitingToServices = "waitingToServices"
+        static let orderInfoToMaps = "orderInfoToMaps"
     }
     
 }

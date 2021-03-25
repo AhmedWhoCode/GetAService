@@ -16,6 +16,7 @@ class CustomerProvideInformation: UIViewController {
     @IBOutlet weak var dateAndTime: UIDatePicker!
     @IBOutlet weak var eventDescription: UITextView!
 
+    @IBOutlet weak var scrollView: UIScrollView!
     
     var booking:BookingModel?
     //this id will come from the sellerInformation class
@@ -27,6 +28,8 @@ class CustomerProvideInformation: UIViewController {
         super.viewDidLoad()
        // dateAndTime.timeZone = .autoupdatingCurrent
         
+        //attaching touch sensor with a view, whenever you press a view keyboard will disappear
+        initializeHideKeyboard()
         //function defined in UpdatingViews file
         designingView()
         
@@ -41,8 +44,7 @@ class CustomerProvideInformation: UIViewController {
         let df = DateFormatter()
         df.dateFormat = "yyyy-MM-dd HH:mm:ss.SSSS"
         let dateString = df.string(from: date)
-       // let date = Date(timeIntervalSince1970: date)
-       // let date = Date(timeIntervalSince1970: date.seconds)
+       
 
 
         booking = BookingModel(
@@ -54,22 +56,19 @@ class CustomerProvideInformation: UIViewController {
                                          eventTimeAndDate: dateAndTime.date.convertDateToLocalTime(),
                                          eventDescription: eventDescription.text!,
                                          eventLocation: nil,
-                                         dateForUniqueId: date,
+                                         timeOfOrder: date,
                                          bookingStatus: "unSeen",
-                                         dateFor : dateString
+                                         dateForUniqueId : dateString,
+                                         sellerLatitude: "not Defined yet",
+                                         sellerLongitude: "not defined yet",
+                                         sellerLocationAddress: "not defined yet"
                 
         )
-        print("dddd  \(dateString)")
 
         performSegue(withIdentifier: Constants.seguesNames.informationToMaps, sender: self)
         
     }
-    func currentTimeInMilliSeconds()-> Int
-        {
-            let currentDate = Date()
-            let since1970 = currentDate.timeIntervalSince1970
-            return Int(since1970 * 1000)
-        }
+  
     
     // MARK: - Navigation
     
@@ -84,5 +83,23 @@ class CustomerProvideInformation: UIViewController {
         }
     }
     
+    ///MARK: - To adjust the size of keyboard with scroll view , this function is called from extention
+    // to adjust keyboard size will typing
+    @objc func keyboardWillShow(notification:NSNotification) {
+        
+        guard let userInfo = notification.userInfo else { return }
+        var keyboardFrame:CGRect = (userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
+        keyboardFrame = self.view.convert(keyboardFrame, from: nil)
+        
+        var contentInset:UIEdgeInsets = self.scrollView.contentInset
+        contentInset.bottom = keyboardFrame.size.height + 20
+        scrollView.contentInset = contentInset
+    }
+    
+    @objc func keyboardWillHide(notification:NSNotification) {
+        
+        let contentInset:UIEdgeInsets = UIEdgeInsets.zero
+        scrollView.contentInset = contentInset
+    }
     
 }

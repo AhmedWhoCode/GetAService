@@ -122,7 +122,14 @@ class NotificationBrain {
     }
     
     
-    func updateBookingStatus(with status : String , buyerId : String , notificationId : String )  {
+    func updateBookingStatus(
+        with status : String ,
+        buyerId : String ,
+        notificationId : String,
+        sellerLatitude : String = "Not defined",
+        sellerLongitude : String = "Not defined",
+        sellerAddress : String = "Not defined"
+    )  {
         
         
         self.db.collection("Bookings")
@@ -133,7 +140,14 @@ class NotificationBrain {
             .document(buyerId)
             .collection("WithBookingID")
             .document(notificationId)
-            .updateData(["bookingStatus" : status]) { (error) in
+            .updateData(
+                ["bookingStatus" : status ,
+                 "sellerLatitude" : sellerLatitude ,
+                 "sellerLongitude" : sellerLongitude ,
+                 "sellerAddress" : sellerAddress
+                ]
+                )
+            { (error) in
                 
                 if let e = error
                 {
@@ -141,15 +155,22 @@ class NotificationBrain {
                 }
                 else
                 {
-                    print("232")
-                    self.updatingBuyerSide(with: notificationId, buyerID: buyerId, status: status)
+                    print("updated the document")
+                    self.updatingBuyerSide(with: notificationId, buyerID: buyerId, status: status,sellerLatitude: sellerLatitude, sellerLongitude: sellerLongitude , sellerAddress:sellerAddress)
                 }
             }
         
         
     }
     
-    func updatingBuyerSide(with bookingId :String , buyerID : String , status :String) {
+    func updatingBuyerSide(with bookingId :String ,
+                           buyerID : String ,
+                           status :String,
+                           sellerLatitude : String = "Not defined",
+                           sellerLongitude : String = "Not defined",
+                           sellerAddress : String = "Not defined"
+    )
+    {
         db.collection("Bookings")
             .document("Buyer")
             .collection("AllBuyersWhoOrdered")
@@ -158,7 +179,13 @@ class NotificationBrain {
             .document(currentUser!)
             .collection("WithBookingID")
             .document(bookingId)
-            .updateData(["bookingStatus" : status]) { (error) in
+            .updateData(
+                ["bookingStatus" : status ,
+                           "sellerLatitude" : sellerLatitude ,
+                           "sellerLongitude" : sellerLongitude ,
+                           "sellerAddress" : sellerAddress
+                          ])
+            { (error) in
                 
                 if let e = error
                 {

@@ -313,16 +313,30 @@ extension SearchViewController
 
 extension CustomerProvideInformation
 {
+    
+    
+    
     func designingView() {
+        ///MARK: - adjusting position of keyboard
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillShow),
+                                               name:UIResponder.keyboardWillShowNotification,
+                                               object: nil)
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillHide),
+                                               name:UIResponder.keyboardWillHideNotification,
+                                               object: nil)
+        
         navigationItem.hidesBackButton = false
         ///MARK: - designing views
-
+        
         //shadow
         recepientNameTextField.layer.shadowColor = UIColor.gray.cgColor
         recepientNameTextField.layer.shadowOpacity = 0.5
         recepientNameTextField.layer.shadowOffset = CGSize.zero
         recepientNameTextField.layer.shadowRadius = 7
-  
+        
         //To apply padding
         let paddingView : UIView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: recepientNameTextField.frame.height))
         recepientNameTextField.leftView = paddingView
@@ -334,30 +348,46 @@ extension CustomerProvideInformation
         phone.layer.shadowOpacity = 0.5
         phone.layer.shadowOffset = CGSize.zero
         phone.layer.shadowRadius = 7
-
+        
         //To apply padding
-       let paddingView2 : UIView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: phone.frame.height))
+        let paddingView2 : UIView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: phone.frame.height))
         phone.leftView = paddingView2
         phone.leftViewMode = UITextField.ViewMode.always
-
-
+        
+        
         // 3rd view
         //shadow
         serviceNeeded.layer.shadowColor = UIColor.gray.cgColor
         serviceNeeded.layer.shadowOpacity = 0.5
         serviceNeeded.layer.shadowOffset = CGSize.zero
         serviceNeeded.layer.shadowRadius = 7
-
+        
         //To apply padding
         let paddingView3 : UIView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: serviceNeeded.frame.height))
         serviceNeeded.leftView = paddingView3
         serviceNeeded.leftViewMode = UITextField.ViewMode.always
-
-
+        
+        
         
         //sth view
         bookNowButton.layer.cornerRadius = 20
         bookNowButton.layer.borderWidth = 1
         bookNowButton.layer.borderColor = UIColor.black.cgColor
+    }
+    
+    
+    func initializeHideKeyboard(){
+        
+        //Declare a Tap Gesture Recognizer which will trigger our dismissMyKeyboard() function
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(
+            target: self,
+            action: #selector(dismissMyKeyboard))
+        //Add this tap gesture recognizer to the parent view
+        view.addGestureRecognizer(tap)
+    }
+    @objc func dismissMyKeyboard(){
+        //endEditing causes the view (or one of its embedded text fields) to resign the first responder status.
+        //In short- Dismiss the active keyboard.
+        view.endEditing(true)
     }
 }

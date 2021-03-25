@@ -22,7 +22,11 @@ struct BookingModel {
     var eventTimeAndDate  : String
     var eventDescription : String
     var eventLocation  : LocationModel?
-    var dateForUniqueId : Date
+    var timeOfOrder : Date
     var bookingStatus  : String
-    var dateFor : String
+    var dateForUniqueId : String
+    var sellerLatitude : String
+    var sellerLongitude : String
+    var sellerLocationAddress : String
+
 }

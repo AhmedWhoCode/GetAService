@@ -25,7 +25,16 @@ class GoogleMapViewController: UIViewController, BookingBrainDelegant{
     @IBOutlet weak var addressLabel: UILabel!
     
     let locationManager = CLLocationManager()
-
+    
+    
+    //if the control is coming from seller side
+    var isSellerASourceVc = false
+    var notificationId : String?
+    var buyerId : String?
+    var bookingStatus : String?
+    var notificationBrain  = NotificationBrain()
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,7 +54,7 @@ class GoogleMapViewController: UIViewController, BookingBrainDelegant{
     
     
     func didSendTheBookingDetails() {
-
+        
         performSegue(withIdentifier:Constants.seguesNames.locationToWaiting, sender: self)
     }
     
@@ -59,9 +68,42 @@ class GoogleMapViewController: UIViewController, BookingBrainDelegant{
     @IBAction func proceedButton(_ sender: UIButton) {
         
         sender.isUserInteractionEnabled = false
-        if let booking = bookingModel
+        
+        if isSellerASourceVc
         {
-        BookingBrain.sharedInstance.insertBookingInfomationToFirebase(with: booking)
+            guard let latitude = locationManager.location?.coordinate.latitude.description else {
+                return
+            }
+            guard let longitude = locationManager.location?.coordinate.longitude.description else {
+                return
+            }
+            guard let address = addressLabel.text else {
+                return
+            }
+            
+            print("seller")
+                        print(addressLabel.text)
+                        print(latitude)
+                        print(longitude)
+                        print(address)
+                        print(bookingStatus)
+            notificationBrain.updateBookingStatus(with: "accepted",
+                                                  buyerId: buyerId!,
+                                                  notificationId:notificationId!,
+                                                  sellerLatitude: latitude,
+                                                  sellerLongitude: longitude,
+                                                  sellerAddress: address)
+        }
+        
+        else
+        
+        {
+            print("buyer")
+            
+            if let booking = bookingModel
+            {
+                BookingBrain.sharedInstance.insertBookingInfomationToFirebase(with: booking)
+            }
         }
     }
     
@@ -90,7 +132,7 @@ class GoogleMapViewController: UIViewController, BookingBrainDelegant{
             self.addressLabel.text = lines.joined()
             
             //calling method to update location to be send to firebase
-
+            
             self.updatingLocation(with: lines.joined(), coordinates: location.coordinate)
             UIView.animate(withDuration: 0.25) {
                 self.view.layoutIfNeeded()
@@ -118,9 +160,12 @@ class GoogleMapViewController: UIViewController, BookingBrainDelegant{
         present(autocompleteController!, animated: true, completion: nil)
         
     }
-
+    
     
     func designView() {
+        if isSellerASourceVc{
+            searchPressed.isHidden = true
+        }
         
         proceedButton.layer.cornerRadius = 25
         proceedButton.layer.borderWidth = 1
@@ -138,8 +183,8 @@ class GoogleMapViewController: UIViewController, BookingBrainDelegant{
         let locationModel = LocationModel(address: address, coordinates: coordinates)
         bookingModel?.eventLocation = locationModel
         
-        print("2ndTime \(bookingModel.unsafelyUnwrapped)")
+        //print("2ndTime \(bookingModel.unsafelyUnwrapped)")
     }
-
+    
 }
 

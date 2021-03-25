@@ -17,7 +17,6 @@ class BuyerWaitingViewController: UIViewController , BookingBrainDelegant {
         super.viewDidLoad()
         BookingBrain.sharedInstance.bookingBrainDelegant = self
         BookingBrain.sharedInstance.sellerResponded()
-        // Do any additional setup after loading the view.
     }
     
     func didSendTheBookingDetails(){}
@@ -25,9 +24,7 @@ class BuyerWaitingViewController: UIViewController , BookingBrainDelegant {
     func didSellerRespond(result: String) {
         if result == "accepted"
         {
-            print("why22")
-            // BookingBrain.sharedInstance.check = true
-            showToast1(controller: self, message: "Offer Accepted", seconds: 2, color: .red)
+            showToast1(controller: self, message: "Offer Accepted", seconds: 1, color: .green)
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
                 
                 self.performSegue(withIdentifier: Constants.seguesNames.waitingToUberInfo, sender: self)
@@ -37,7 +34,6 @@ class BuyerWaitingViewController: UIViewController , BookingBrainDelegant {
         }
         else if result == "rejected"
         {
-            // BookingBrain.sharedInstance.check = true
             
             showToast1(controller: self, message: "Offer Rejected", seconds: 2, color: .red)
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
@@ -47,14 +43,5 @@ class BuyerWaitingViewController: UIViewController , BookingBrainDelegant {
             }
         }
     }
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
     
 }
