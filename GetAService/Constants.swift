@@ -40,6 +40,7 @@ struct Constants {
     }
     
     struct seguesNames {
+        
         static let informationToMaps = "informationToMaps"
         static let chatsToMessages = "chatsToMessages"
         static let sellerInfoToMessages = "sellerInfoToMessages"

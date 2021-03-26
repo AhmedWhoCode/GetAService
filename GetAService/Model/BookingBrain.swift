@@ -18,6 +18,8 @@ protocol BookingBrainDelegant {
 
 class BookingBrain {
     
+    //not implemented yet
+    var currentBookingDocumentId : String?
     var bookingBrainDelegant : BookingBrainDelegant?
     static let sharedInstance = BookingBrain()
     var bookingInfoMap = [String:Any]()
