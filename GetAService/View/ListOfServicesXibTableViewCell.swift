@@ -14,7 +14,7 @@ import UIKit
 
 class ListOfServicesXibTableViewCell: UITableViewCell {
 
-      // initilzaing delegant so that the other class can access the delegant
+      // initilzaing delegate so that the other class can access the delegant
     @IBOutlet weak var serviceName: UILabel!
     var buttonDelegantServices:ButtonPressed?
     @IBOutlet weak var mainView: UIView!

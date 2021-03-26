@@ -223,23 +223,23 @@ PODS:
   - BoringSSL-GRPC/Implementation (0.0.7):
     - BoringSSL-GRPC/Interface (= 0.0.7)
   - BoringSSL-GRPC/Interface (0.0.7)
-  - Firebase/Auth (7.8.1):
+  - Firebase/Auth (7.9.0):
     - Firebase/CoreOnly
-    - FirebaseAuth (~> 7.8.0)
-  - Firebase/CoreOnly (7.8.1):
-    - FirebaseCore (= 7.8.0)
-  - Firebase/Firestore (7.8.1):
+    - FirebaseAuth (~> 7.9.0)
+  - Firebase/CoreOnly (7.9.0):
+    - FirebaseCore (= 7.9.0)
+  - Firebase/Firestore (7.9.0):
     - Firebase/CoreOnly
-    - FirebaseFirestore (~> 7.8.0)
-  - Firebase/Storage (7.8.1):
+    - FirebaseFirestore (~> 7.9.0)
+  - Firebase/Storage (7.9.0):
     - Firebase/CoreOnly
-    - FirebaseStorage (~> 7.8.0)
-  - FirebaseAuth (7.8.0):
+    - FirebaseStorage (~> 7.9.0)
+  - FirebaseAuth (7.9.0):
     - FirebaseCore (~> 7.0)
     - GoogleUtilities/AppDelegateSwizzler (~> 7.0)
     - GoogleUtilities/Environment (~> 7.0)
     - GTMSessionFetcher/Core (~> 1.4)
-  - FirebaseCore (7.8.0):
+  - FirebaseCore (7.9.0):
     - FirebaseCoreDiagnostics (~> 7.4)
     - GoogleUtilities/Environment (~> 7.0)
     - GoogleUtilities/Logger (~> 7.0)
@@ -248,7 +248,7 @@ PODS:
     - GoogleUtilities/Environment (~> 7.0)
     - GoogleUtilities/Logger (~> 7.0)
     - nanopb (~> 2.30907.0)
-  - FirebaseFirestore (7.8.0):
+  - FirebaseFirestore (7.9.0):
     - abseil/algorithm (= 0.20200225.0)
     - abseil/base (= 0.20200225.0)
     - abseil/memory (= 0.20200225.0)
@@ -260,7 +260,7 @@ PODS:
     - "gRPC-C++ (~> 1.28.0)"
     - leveldb-library (~> 1.22)
     - nanopb (~> 2.30907.0)
-  - FirebaseStorage (7.8.0):
+  - FirebaseStorage (7.9.0):
     - FirebaseCore (~> 7.0)
     - GTMSessionFetcher/Core (~> 1.4)
   - FloatingPanel (2.3.0)
@@ -398,12 +398,12 @@ SPEC CHECKSUMS:
   abseil: 6c8eb7892aefa08d929b39f9bb108e5367e3228f
   AppAuth: 31bcec809a638d7bd2f86ea8a52bd45f6e81e7c7
   BoringSSL-GRPC: 8edf627ee524575e2f8d19d56f068b448eea3879
-  Firebase: d59ad4129167f9f0d2a4f6c1f0c462254b6002c8
-  FirebaseAuth: 667e576a716f6f9fe31687791406f61135002d47
-  FirebaseCore: 049029df3096e5c118917029be7da75ee16f3b1b
+  Firebase: d8bd6bd34b4c7ed57bfdd056c66ff5adcdde53ab
+  FirebaseAuth: 20625f04fdd213995249a82375b3dab39b1c136c
+  FirebaseCore: 0798738ad1ae0fda67e17c7b9081241c431c6859
   FirebaseCoreDiagnostics: 3d36e05da74cb8b7ce30e6594a8f201b982c725c
-  FirebaseFirestore: f1ededef972dea136e88a7bae9732f52afe64221
-  FirebaseStorage: 84d1eb7bfe8c3cbfe6beeeb02ce712f65dcb8b83
+  FirebaseFirestore: a2de10a51530efd84f2309acbe774f498285e93a
+  FirebaseStorage: 0646be9a7552aac5703d095961081942e693967d
   FloatingPanel: 373478513a197cf140abd219ca9a9c049967332b
   GoogleDataTransport: b006084b73915a42c28a3466961a4edda3065da6
   GoogleMaps: eb03e327edfd70b06de1e6e321653f73712df7ad
@@ -428,4 +428,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: cd51e9e4ef912e29e28adcfe9fb22617ca970a84
 
-COCOAPODS: 1.10.0
+COCOAPODS: 1.10.1
