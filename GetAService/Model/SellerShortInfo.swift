@@ -14,4 +14,5 @@ struct SellerShortInfo {
     var name : String
     var country : String
     var availability  : String
+    var status  : String
 }

@@ -80,7 +80,8 @@ class SellerProfileBrain {
         sellerProfileData["gender"] = sellerProfileModel.gender
         sellerProfileData["description"] = sellerProfileModel.description
         sellerProfileData["country"] = sellerProfileModel.country
-        
+        sellerProfileData["status"] = Constants.online
+
         
         if let userid = Auth.auth().currentUser?.uid {
            
@@ -154,10 +155,11 @@ class SellerProfileBrain {
     
     
     func retrivingFilteredSellers(with service : String , completion :@escaping ([SellerShortInfo])->()) {
-        db.collection("UserProfileData").document("Seller").collection("AllSellers").whereField("service", isEqualTo: service).getDocuments { (snapshot, error) in
+        db.collection("UserProfileData").document("Seller").collection("AllSellers").whereField("service", isEqualTo: service).addSnapshotListener { (snapshot, error) in
             
             if let snap = snapshot?.documents
             {
+                self.sellerShortInfoArray.removeAll()
                 
                 if snap.count > 0
                 {
@@ -168,7 +170,9 @@ class SellerProfileBrain {
                         let price = snap[i].data()["price"] as! String
                         let name = snap[i].data()["name"] as! String
                         let country = snap[i].data()["country"] as! String
-                        let s = SellerShortInfo(uid : uid,image: image, price: price, name: name, country: country, availability: "available")
+                        let status = snap[i].data()["status"] as! String
+
+                        let s = SellerShortInfo(uid : uid,image: image, price: price, name: name, country: country, availability: "available",status: status)
                         self.sellerShortInfoArray.append(s)
                         
                     }
@@ -207,8 +211,43 @@ class SellerProfileBrain {
     }
     
     
-    
-    
+    func retrivingProfileDataForBooking(using userUid :String,completion : @escaping (String) -> ()) {
+        
+        
+        db.collection("UserProfileData").document("Seller").collection("AllSellers").document(userUid).addSnapshotListener
+        { (snapShot, error) in
+            
+            if let snap = snapShot?.data()
+            {
+                
+                
+                let price = snap["price"]! as! String
+                               
+                completion(price)
+            }
+            
+        }
+        
+    }
+   
+    func updateOnlineStatus(with status : String){
+        db.collection("UserProfileData")
+            .document("Seller")
+            .collection("AllSellers")
+            .document(Auth.auth().currentUser!.uid)
+            .updateData(["status" : status]) { (error) in
+                if let e = error
+                {
+                    print("error while updating seller status : \(e)")
+                }
+                else
+                {
+                    print("updated seller status")
+
+                }
+            }
+        
+    }
     
     
     

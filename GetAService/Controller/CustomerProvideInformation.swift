@@ -61,7 +61,8 @@ class CustomerProvideInformation: UIViewController {
                                          dateForUniqueId : dateString,
                                          sellerLatitude: "not Defined yet",
                                          sellerLongitude: "not defined yet",
-                                         sellerLocationAddress: "not defined yet"
+                                         sellerLocationAddress: "not defined yet",
+                                         sellerPrice: "Nil for now"
                 
         )
 

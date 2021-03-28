@@ -7,14 +7,44 @@
 
 import UIKit
 
-class SellerWaitingViewController: UIViewController {
-
+class SellerWaitingViewController: UIViewController,BookingBrainDelegate  {
+  
+    
+   
+    @IBOutlet weak var imageView: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.hidesBackButton = false
+        BookingBrain.sharedInstance.bookingBrainDelegate = self
+        BookingBrain.sharedInstance.acknowledgmentUpdated()
+        
+        do
+        {
+        let gif = try UIImage(gifName: Constants.gifNames.inProgressGif)
+        imageView.setGifImage(gif, loopCount: -1)
+        }
+        catch
+        {
+            
+        }
 
         // Do any additional setup after loading the view.
     }
+   
+    func didSendTheBookingDetails() {}
     
+    func didSellerRespond(result: String) {}
+    
+    func didAcknowledgementChange(result: String) {
+        
+        if result == "started"
+        {
+            print("why 4")
+            performSegue(withIdentifier: Constants.seguesNames.sellerWaitingToMeetup, sender: self)
+        }
+        
+    }
 
     /*
     // MARK: - Navigation
@@ -25,5 +55,5 @@ class SellerWaitingViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+  
 }

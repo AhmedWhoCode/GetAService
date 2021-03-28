@@ -39,7 +39,7 @@ class NotificationBrain {
             .document(currentUser!)
             .collection("BookedBy")
             .addSnapshotListener { (snap, error) in
-                print(snap?.count)
+                //print(snap?.count)
                 self.buyerIds.removeAll()
                 if let s = snap?.documentChanges
                 {
@@ -128,8 +128,12 @@ class NotificationBrain {
         notificationId : String,
         sellerLatitude : String = "Not defined",
         sellerLongitude : String = "Not defined",
-        sellerAddress : String = "Not defined"
-    )  {
+        sellerAddress : String = "Not defined",
+        sellerUpdatedPrice : String = "Not defined"
+
+    )
+    
+    {
         
         
         self.db.collection("Bookings")
@@ -144,9 +148,10 @@ class NotificationBrain {
                 ["bookingStatus" : status ,
                  "sellerLatitude" : sellerLatitude ,
                  "sellerLongitude" : sellerLongitude ,
-                 "sellerAddress" : sellerAddress
+                 "sellerAddress" : sellerAddress,
+                 "sellerPrice" : sellerUpdatedPrice
                 ]
-                )
+            )
             { (error) in
                 
                 if let e = error
@@ -156,7 +161,7 @@ class NotificationBrain {
                 else
                 {
                     print("updated the document")
-                    self.updatingBuyerSide(with: notificationId, buyerID: buyerId, status: status,sellerLatitude: sellerLatitude, sellerLongitude: sellerLongitude , sellerAddress:sellerAddress)
+                    self.updatingBuyerSide(with: notificationId, buyerID: buyerId, status: status,sellerLatitude: sellerLatitude, sellerLongitude: sellerLongitude , sellerAddress:sellerAddress,sellerUpdatedPrice: sellerUpdatedPrice)
                 }
             }
         
@@ -168,7 +173,8 @@ class NotificationBrain {
                            status :String,
                            sellerLatitude : String = "Not defined",
                            sellerLongitude : String = "Not defined",
-                           sellerAddress : String = "Not defined"
+                           sellerAddress : String = "Not defined",
+                           sellerUpdatedPrice : String
     )
     {
         db.collection("Bookings")
@@ -181,10 +187,11 @@ class NotificationBrain {
             .document(bookingId)
             .updateData(
                 ["bookingStatus" : status ,
-                           "sellerLatitude" : sellerLatitude ,
-                           "sellerLongitude" : sellerLongitude ,
-                           "sellerAddress" : sellerAddress
-                          ])
+                 "sellerLatitude" : sellerLatitude ,
+                 "sellerLongitude" : sellerLongitude ,
+                 "sellerAddress" : sellerAddress,
+                 "sellerPrice" : sellerUpdatedPrice
+                ])
             { (error) in
                 
                 if let e = error
@@ -196,5 +203,42 @@ class NotificationBrain {
                     print("status updated")
                 }
             }
+    }
+    
+    
+    
+    
+    func retrivingNotifications1() {
+        
+        
+        db.collection("Bookings")
+            .document("Seller")
+            .collection("AllSellerWhoReceivedOrders")
+            .document(currentUser!)
+            .collection("BookedBy")
+            
+            .addSnapshotListener { (snap, error) in
+                //print(snap?.count)
+                self.buyerIds.removeAll()
+                if let s = snap?.documentChanges
+                {
+                    if s.count > 0
+                    {
+                        for i in 0...s.count - 1
+                        {
+                            self.buyerIds.append(s[i].document.documentID)
+                            
+                        }
+                        //print(self.buyerIds)
+                        self.getProfileInformations(with: self.buyerIds)
+                    }
+                }
+                else
+                {
+                    print(error?.localizedDescription)
+                }
+            }
+        
+        
     }
 }

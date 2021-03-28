@@ -12,7 +12,8 @@ struct Constants {
     
     static let orderAccepted = "accepted"
     static let orderRejected = "rejected"
-
+    static let online = "online"
+    static let offline = "offline"
     
     //notificationlist constants
     static let cellIdentifierNotification = "notificationCell"
@@ -66,6 +67,10 @@ struct Constants {
         static let waitingToUberInfo = "waitingToUberInfo"
         static let waitingToServices = "waitingToServices"
         static let orderInfoToMaps = "orderInfoToMaps"
+        static let mapsToSellerWaiting = "mapsToSellerWaiting"
+        static let serviceStartedToCompleted = "serviceStartedToCompleted"
+        static let sellerWaitingToMeetup = "sellerWaitingToMeetup"
+        static let locationInfoToStarted = "locationInfoToStarted"
     }
     
 }

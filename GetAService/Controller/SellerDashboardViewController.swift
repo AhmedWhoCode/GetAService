@@ -38,7 +38,8 @@ class SellerDashboardViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        hidesBottomBarWhenPushed = false
+
         designingViews()
         // Do any additional setup after loading the view.
     }
@@ -58,15 +59,7 @@ class SellerDashboardViewController: UIViewController {
             self.showSubServices(with: subservices)
             
             self.sellerImage.loadCacheImage(with: data.imageRef)
-//            self.fireStorage.reference().child("Images/profile_images").child(Auth.auth().currentUser!.uid).getData(maxSize: 1 * 1024 * 1024) { (data1, error) in
-//                if let data1 = data1
-//                {
-//                    print(data1)
-//                    self.sellerImage.image = UIImage(data: data1)
-//
-//                }
-//
-//            }
+
         }
         
     }
@@ -75,6 +68,7 @@ class SellerDashboardViewController: UIViewController {
     
     
     func showSubServices(with subServices:[String]?) {
+        //sellerProfileBrain.updateOnlineStatus(with: Constants.online)
         
         if let subServices = subServices
         {
@@ -143,6 +137,8 @@ class SellerDashboardViewController: UIViewController {
     }
     
     func designingViews(){
+        navigationController?.isToolbarHidden = false
+        navigationController?.isNavigationBarHidden = false
         subService1.isHidden = true
         subService2.isHidden = true
         subService3.isHidden = true

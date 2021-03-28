@@ -7,14 +7,19 @@
 
 import UIKit
 
-class WaitingScreen: UIViewController {
+class WaitingScreen: UIViewController , BookingBrainDelegate {
+    
+    
 
     @IBOutlet weak var imageView: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("coming")
+        BookingBrain.sharedInstance.bookingBrainDelegate  = self
+        BookingBrain.sharedInstance.acknowledgmentUpdated()
         do
         {
-            let gif = try UIImage(gifName: Constants.gifNames.inProgressGif)
+        let gif = try UIImage(gifName: Constants.gifNames.inProgressGif)
         imageView.setGifImage(gif, loopCount: -1)
         }
         catch
@@ -24,7 +29,18 @@ class WaitingScreen: UIViewController {
            
         // Do any additional setup after loading the view.
     }
+    func didSendTheBookingDetails() {}
     
+    func didSellerRespond(result: String) {}
+    
+    func didAcknowledgementChange(result: String) {
+        print("not sure")
+        if result == "completed"
+        {
+            performSegue(withIdentifier: Constants.seguesNames.waitingToServices, sender: self)
+        }
+        
+    }
 
     /*
     // MARK: - Navigation

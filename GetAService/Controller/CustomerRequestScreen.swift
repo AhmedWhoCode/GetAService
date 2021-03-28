@@ -6,7 +6,10 @@
 //
 
 import UIKit
-
+import FirebaseAuth
+import FirebaseStorage
+import FirebaseFirestore
+import Firebase
 
 
 
@@ -27,11 +30,14 @@ class CustomerRequestScreen: UIViewController {
     
     @IBOutlet weak var locationView: UIView!
   
-    
+    var sellerProfileBrain = SellerProfileBrain()
     //these values were came from previous class
     var buyerID : String?
     var buyerImage : String?
     var buyerName : String?
+    
+    var sellerUpdatedPrice : String?
+    
     
     var notificationBrain  = NotificationBrain()
     var notificationData : NotificationDetailModel?
@@ -41,19 +47,39 @@ class CustomerRequestScreen: UIViewController {
         super.viewDidLoad()
         desigingView()
         
+      
+
         notificationBrain.retrivingNotificationDetail(using: buyerID!) { data,id  in
             //print(data)
             self.notificationData = data
             print("this is the id \(id)")
             self.notificationId = id
+            
+            BookingBrain.sharedInstance.buyerId = self.buyerID
+            BookingBrain.sharedInstance.sellerId = Auth.auth().currentUser?.uid
+            BookingBrain.sharedInstance.currentBookingDocumentId = id
             self.updatingViewsValue()
         }
         // Do any additional setup after loading the view.
     }
     
     @IBAction func confirmPressed(_ sender: UIButton) {
+        showInputDialog(title: "Add your price", subtitle: "if you pressed retain then your profile price will be used", actionTitle: "Add", cancelTitle: "Retain the price", inputPlaceholder: "Enter price", inputKeyboardType: .numberPad) { (alert) in
+            
+            self.sellerProfileBrain.retrivingProfileDataForBooking(using:(Auth.auth().currentUser?.uid)! , completion: { (sellerPrice) in
+                self.sellerUpdatedPrice = sellerPrice
+                self.performSegue(withIdentifier: Constants.seguesNames.orderInfoToMaps, sender: nil)
+
+            })
+
+        } actionHandler: { (amount) in
+            self.sellerUpdatedPrice = amount
+            self.performSegue(withIdentifier: Constants.seguesNames.orderInfoToMaps, sender: nil)
+
+        }
+
+        
         //notificationBrain.updateBookingStatus(with: "accepted", buyerId: buyerID!, notificationId: notificationId!)
-        performSegue(withIdentifier: Constants.seguesNames.orderInfoToMaps, sender: nil)
         
     }
     
@@ -90,15 +116,46 @@ class CustomerRequestScreen: UIViewController {
                     return
                 }
                 
+                guard let sellerUpdatedPrice = sellerUpdatedPrice else {
+                    return
+                }
+                
                 
                 destinationSegue.isSellerASourceVc = true
                 destinationSegue.notificationId = notificationID
                 destinationSegue.buyerId = buyerID
                 destinationSegue.bookingStatus = Constants.orderAccepted
-
+                destinationSegue.sellerPriceUpdated = sellerUpdatedPrice
 
             }
         }
     }
 
+}
+extension CustomerRequestScreen {
+    func showInputDialog(title:String? = nil,
+                         subtitle:String? = nil,
+                         actionTitle:String? = "Add",
+                         cancelTitle:String? = "Cancel",
+                         inputPlaceholder:String? = nil,
+                         inputKeyboardType:UIKeyboardType = UIKeyboardType.default,
+                         cancelHandler: ((UIAlertAction) -> Swift.Void)? = nil,
+                         actionHandler: ((_ text: String?) -> Void)? = nil) {
+        
+        let alert = UIAlertController(title: title, message: subtitle, preferredStyle: .alert)
+        alert.addTextField { (textField:UITextField) in
+            textField.placeholder = inputPlaceholder
+            textField.keyboardType = inputKeyboardType
+        }
+        alert.addAction(UIAlertAction(title: actionTitle, style: .default, handler: { (action:UIAlertAction) in
+            guard let textField =  alert.textFields?.first else {
+                actionHandler?(nil)
+                return
+            }
+            actionHandler?(textField.text)
+        }))
+        alert.addAction(UIAlertAction(title: cancelTitle, style: .cancel, handler: cancelHandler))
+        
+        self.present(alert, animated: true, completion: nil)
+    }
 }

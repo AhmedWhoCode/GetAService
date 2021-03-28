@@ -22,6 +22,9 @@ class NotificationsList: UITableViewController, NotificationBrainDelegant {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.isToolbarHidden = true
+        navigationController?.isNavigationBarHidden = false
+
         navigationItem.hidesBackButton = false
         notificationBrain.notificationBrainDelegant = self
         
@@ -94,20 +97,5 @@ extension NotificationsList : ButtonPressed
         performSegue(withIdentifier: Constants.seguesNames.notificationsToOrderInfo, sender: nil)
     }
 
-    
-//    func addingDummyData() {
-//        let n1 = NotificationModel(buyerImage:UIImage.init(named: "male photo")!, buyerName: "John", buyerCountry: "USA")
-//        let n2 = NotificationModel(buyerImage:UIImage.init(named: "male photo")!, buyerName: "TOM", buyerCountry: "UK")
-//        let n3 = NotificationModel(buyerImage:UIImage.init(named: "male photo")!, buyerName: "Ravi", buyerCountry: "India")
-//        let n4 = NotificationModel(buyerImage:UIImage.init(named: "male photo")!, buyerName: "Alexo", buyerCountry: "Mexico")
-//        let n5 = NotificationModel(buyerImage:UIImage.init(named: "male photo")!, buyerName: "Tom Banton", buyerCountry: "Swizerland")
-//
-//        notifications.append(n1)
-//        notifications.append(n2)
-//        notifications.append(n3)
-//        notifications.append(n4)
-//        notifications.append(n5)
-//
-//    }
     
 }

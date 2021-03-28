@@ -9,7 +9,7 @@ import UIKit
 import GoogleMaps
 import GooglePlaces
 import CoreLocation
-class GoogleMapViewController: UIViewController, BookingBrainDelegant{
+class GoogleMapViewController: UIViewController, BookingBrainDelegate{
     
     
     
@@ -33,7 +33,7 @@ class GoogleMapViewController: UIViewController, BookingBrainDelegant{
     var buyerId : String?
     var bookingStatus : String?
     var notificationBrain  = NotificationBrain()
-    
+    var sellerPriceUpdated : String?
     
     
     override func viewDidLoad() {
@@ -44,7 +44,7 @@ class GoogleMapViewController: UIViewController, BookingBrainDelegant{
         //track the location changes
         locationManager.delegate = self
         
-        BookingBrain.sharedInstance.bookingBrainDelegant = self
+        BookingBrain.sharedInstance.bookingBrainDelegate = self
         
         designView()
         
@@ -58,11 +58,9 @@ class GoogleMapViewController: UIViewController, BookingBrainDelegant{
         performSegue(withIdentifier:Constants.seguesNames.locationToWaiting, sender: self)
     }
     
-    //this is optional method, not needed
-    func didSellerRespond(result: String)
-    {
-        
-    }
+    //these are the optional method, not needed
+    func didSellerRespond(result: String){}
+    func didAcknowledgementChange(result: String) {}
     
     
     @IBAction func proceedButton(_ sender: UIButton) {
@@ -71,6 +69,8 @@ class GoogleMapViewController: UIViewController, BookingBrainDelegant{
         
         if isSellerASourceVc
         {
+            //BookingBrain.sharedInstance.sellerCoordinates = locationManager.location?.coordinate
+            
             guard let latitude = locationManager.location?.coordinate.latitude.description else {
                 return
             }
@@ -80,26 +80,22 @@ class GoogleMapViewController: UIViewController, BookingBrainDelegant{
             guard let address = addressLabel.text else {
                 return
             }
-            
-            print("seller")
-                        print(addressLabel.text)
-                        print(latitude)
-                        print(longitude)
-                        print(address)
-                        print(bookingStatus)
+    
             notificationBrain.updateBookingStatus(with: "accepted",
                                                   buyerId: buyerId!,
                                                   notificationId:notificationId!,
                                                   sellerLatitude: latitude,
                                                   sellerLongitude: longitude,
-                                                  sellerAddress: address)
+                                                  sellerAddress: address,
+                                                  sellerUpdatedPrice: sellerPriceUpdated!
+                                                                   )
+            performSegue(withIdentifier: Constants.seguesNames.mapsToSellerWaiting, sender: self)
         }
         
         else
         
         {
             print("buyer")
-            
             if let booking = bookingModel
             {
                 BookingBrain.sharedInstance.insertBookingInfomationToFirebase(with: booking)

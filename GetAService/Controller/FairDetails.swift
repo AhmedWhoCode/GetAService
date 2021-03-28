@@ -6,6 +6,14 @@
 //
 
 import UIKit
+import CoreLocation
+
+
+//protocol FairDetailsDelegate
+//{
+//    func buyerDidConfirm()
+//}
+
 
 class FairDetails: UIViewController {
 
@@ -21,9 +29,45 @@ class FairDetails: UIViewController {
     @IBOutlet weak var totalEstimatedLabel: UILabel!
 
 
+    
+    var buyerId : String?
+    var sellerId : String?
+ 
+    //var fairDetailDelegate : FairDetailsDelegate?
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        buyerId = BookingBrain.sharedInstance.buyerId
+        sellerId = BookingBrain.sharedInstance.sellerId
+        
+        // changing this varible to allow proceed button work
         BookingBrain.sharedInstance.check = true
+ 
+        
+        BookingBrain.sharedInstance.gettingSellerLocation(with: buyerId!, sellerId: sellerId!) { (lat, long, address,price) in
+            //converting seller lat, lon to double
+            let sellerLat = Double(lat)
+            let sellerLong = Double (long)
+            
+            //converting buyer lat, lon to double
+            let buyerLat = Double(BookingBrain.sharedInstance.buyerLatitude!)
+            let buyerLong = Double (BookingBrain.sharedInstance.buyerLongitude!)
+            
+
+             //setting lat long values
+            let sellerCoordinates =  CLLocation(latitude: sellerLat!, longitude: sellerLong!)
+            let buyerCoordinates =   CLLocation(latitude: buyerLat!, longitude: buyerLong!)
+
+           //getting distance
+            let distance = buyerCoordinates.distance(from: sellerCoordinates) / 1000
+            
+            self.uberEstimatedLabel.text = String(format: "%.1f", distance) + " KM"
+            self.modelPriceLabel.text = price
+            self.totalEstimatedLabel.text = address
+            
+
+
+        }
 
         designingView()
         // Do any additional setup after loading the view.
@@ -53,11 +97,19 @@ class FairDetails: UIViewController {
         
         artistImage.layer.masksToBounds = true
         artistImage.layer.borderColor = UIColor.black.cgColor
-       artistImage.layer.cornerRadius=artistImage.frame.size.height/2
+        artistImage.layer.cornerRadius=artistImage.frame.size.height/2
         artistImage.contentMode = .scaleAspectFill
         
     }
 
+    @IBAction func startServicePressed(_ sender: UIButton) {
+        
+       // fairDetailDelegate?.buyerDidConfirm()
+        BookingBrain.sharedInstance.updateAcknowledgeStatus(value: "started") {
+            print("why")
+            self.performSegue(withIdentifier: Constants.seguesNames.locationInfoToStarted, sender:  nil)
+        }
+    }
     /*
     // MARK: - Navigation
 

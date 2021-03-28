@@ -29,6 +29,7 @@
 		932C89C325DAE072008D72D9 /* NotificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932C89C225DAE072008D72D9 /* NotificationModel.swift */; };
 		932DD7C22609D73A007BD665 /* CustomerScreenExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932DD7C12609D73A007BD665 /* CustomerScreenExtension.swift */; };
 		932DD7CA2609F69E007BD665 /* BuyerWaitingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932DD7C92609F69E007BD665 /* BuyerWaitingViewController.swift */; };
+		9334E70026105C0F0046EB0C /* MeetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9334E6FF26105C0F0046EB0C /* MeetupViewController.swift */; };
 		9339113125C828C100913D3E /* AcceptOrDecline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9339113025C828C100913D3E /* AcceptOrDecline.swift */; };
 		9339113C25C8341D00913D3E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9339113B25C8341C00913D3E /* Assets.xcassets */; };
 		933929EF25F66B0C00DB10FD /* OneToOneChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933929EE25F66B0C00DB10FD /* OneToOneChatViewController.swift */; };
@@ -126,6 +127,7 @@
 		932C89C225DAE072008D72D9 /* NotificationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationModel.swift; sourceTree = "<group>"; };
 		932DD7C12609D73A007BD665 /* CustomerScreenExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerScreenExtension.swift; sourceTree = "<group>"; };
 		932DD7C92609F69E007BD665 /* BuyerWaitingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyerWaitingViewController.swift; sourceTree = "<group>"; };
+		9334E6FF26105C0F0046EB0C /* MeetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetupViewController.swift; sourceTree = "<group>"; };
 		9339113025C828C100913D3E /* AcceptOrDecline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptOrDecline.swift; sourceTree = "<group>"; };
 		9339113B25C8341C00913D3E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		933929EE25F66B0C00DB10FD /* OneToOneChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneToOneChatViewController.swift; sourceTree = "<group>"; };
@@ -274,9 +276,9 @@
 				93E3F8DA25E23BEC00FB74C3 /* ServicesBrain.swift */,
 				932C89BA25DAD893008D72D9 /* ChatModel.swift */,
 				9346426425F8BA2E0096F114 /* ChatBrain.swift */,
-				9370176025E123B100CE177B /* SellerProfileBrain.swift */,
 				93CE5C9425CBF257002A916E /* ButtonPressed.swift */,
 				9370176525E1289C00CE177B /* SellerProfileModel.swift */,
+				9370176025E123B100CE177B /* SellerProfileBrain.swift */,
 				9352711F25E7899100F368B1 /* BuyerProfileModel.swift */,
 				9354847A25E8DF8A00A76C22 /* BuyerProfileBrain.swift */,
 				9342CF7925F367500099FB73 /* SellerShortInfo.swift */,
@@ -334,6 +336,7 @@
 				93C95E052600BEF500F8E3C2 /* AppleMapViewController.swift */,
 				93C95E0A2600BF8500F8E3C2 /* SearchViewController.swift */,
 				932DD7C92609F69E007BD665 /* BuyerWaitingViewController.swift */,
+				9334E6FF26105C0F0046EB0C /* MeetupViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -712,6 +715,7 @@
 				931D669825C03AC2002C239E /* SellerProfile.swift in Sources */,
 				9352712025E7899100F368B1 /* BuyerProfileModel.swift in Sources */,
 				9352608125BD63270052C0A3 /* FairDetails.swift in Sources */,
+				9334E70026105C0F0046EB0C /* MeetupViewController.swift in Sources */,
 				932C89B025DAC8E3008D72D9 /* ServicesModel.swift in Sources */,
 				931D669D25C0660E002C239E /* CustomerProvideInformation.swift in Sources */,
 				93A7936225ED13D000064AA0 /* SellerWaitingViewController.swift in Sources */,

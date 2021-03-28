@@ -28,5 +28,5 @@ struct BookingModel {
     var sellerLatitude : String
     var sellerLongitude : String
     var sellerLocationAddress : String
-
+    var sellerPrice : String
 }
