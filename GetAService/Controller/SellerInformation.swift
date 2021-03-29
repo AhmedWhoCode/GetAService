@@ -25,7 +25,8 @@ class SellerInformation: UIViewController {
     
     @IBOutlet weak var bookNowButton: UIButton!
     
-   
+    @IBOutlet weak var starAverageLabel: UILabel!
+    
     @IBOutlet weak var subService1: UILabel!
     @IBOutlet weak var subService2: UILabel!
     @IBOutlet weak var subService3: UILabel!
@@ -34,7 +35,7 @@ class SellerInformation: UIViewController {
     @IBOutlet weak var subService6: UILabel!
 
     
-    //value of this variable will come from the previous scree
+    //value of this variable will come from the previous screen
     var selectedSellerId : String!
     
     var fireStorage = Storage.storage()
@@ -45,11 +46,16 @@ class SellerInformation: UIViewController {
     var sellerNameToSend : String!
     var sellerImageToSend : String!
     
+    //review list
+    var reviewList  = [SellerRetrievalReviewsModel]()
+    // adding the star
+    var totalStar = 0.0
     override func viewDidLoad() {
         super.viewDidLoad()
         designingViews()
         
         retrivingData()
+        retrivingReviewsInformation()
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -216,6 +222,23 @@ class SellerInformation: UIViewController {
         sellerImage.contentMode = .scaleAspectFill
     }
     
+    func retrivingReviewsInformation() {
+        sellerProfileBrain.retrivingSellerReviews(with: selectedSellerId) { (reviews) in
+            self.reviewList  = reviews
+            
+            self.reviewList.forEach { (data) in
+                self.totalStar = self.totalStar + Double(Float(data.star)!)
+            }
+            
+            if self.reviewList.count > 0
+            {
+                let starAverage = self.totalStar / Double(Float(self.reviewList.count))
+            self.starAverageLabel.text = String(starAverage)
+            }
+        }
+        
+    }
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -239,6 +262,16 @@ class SellerInformation: UIViewController {
                 
           }
         }
+        else if segue.identifier == Constants.seguesNames.sellerInfoToReviews
+        {
+            if let destinationSegue = segue.destination as? ReviewsTableViewController
+          {
+                destinationSegue.sellerId  = selectedSellerId
+                destinationSegue.reviewList = reviewList
+                
+          }
+        }
+        
     }
     
 
@@ -248,6 +281,9 @@ class SellerInformation: UIViewController {
     }
     
     
+    @IBAction func reviewsPressed(_ sender: Any) {
+        performSegue(withIdentifier: Constants.seguesNames.sellerInfoToReviews, sender: self)
+    }
     
     
     

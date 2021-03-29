@@ -64,7 +64,8 @@ class CustomerRequestScreen: UIViewController {
     }
     
     @IBAction func confirmPressed(_ sender: UIButton) {
-        showInputDialog(title: "Add your price", subtitle: "if you pressed retain then your profile price will be used", actionTitle: "Add", cancelTitle: "Retain the price", inputPlaceholder: "Enter price", inputKeyboardType: .numberPad) { (alert) in
+        sender.isEnabled = false
+        showInputDialog(title: "Add your price", subtitle: "if you pressed retain then your profile price will be used", actionTitle: "Add", cancelTitle: "Retain the price", inputPlaceholder: "New price", inputKeyboardType: .numberPad) { (alert) in
             
             self.sellerProfileBrain.retrivingProfileDataForBooking(using:(Auth.auth().currentUser?.uid)! , completion: { (sellerPrice) in
                 self.sellerUpdatedPrice = sellerPrice

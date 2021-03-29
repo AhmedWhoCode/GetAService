@@ -32,8 +32,11 @@ struct Constants {
     static let cellNibNameChatList = "ChatsTableViewCell"
     
     //SubServicesList
-    
     static let subServicesCell = "subServicesCell"
+    
+    //Reviews constants
+    static let reviewCell = "reviewCell"
+    static let reviewsTableViewCell = "ReviewsTableViewCell"
     
     struct gifNames {
         static let inProgressGif = "inProgress.gif"
@@ -71,6 +74,12 @@ struct Constants {
         static let serviceStartedToCompleted = "serviceStartedToCompleted"
         static let sellerWaitingToMeetup = "sellerWaitingToMeetup"
         static let locationInfoToStarted = "locationInfoToStarted"
+        static let meetupToReview = "meetupToReview"
+        static let reviewToSellerDash = "reviewToSellerDash"
+        static let buyerWaitingToReviews = "buyerWaitingToReviews"
+        static let buyerReviewToServices = "buyerReviewToServices"
+        static let sellerReviewToDash = "sellerReviewToDash"
+        static let sellerInfoToReviews = "sellerInfoToReviews"
     }
     
 }

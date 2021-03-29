@@ -20,13 +20,17 @@ protocol DataUploadedSeller
 class SellerProfileBrain {
     
     var sellerShortInfoArray  = [SellerShortInfo]()
+    
     var sellerProfileData = [String:Any]()
+    
     var dataUplodedDelegant:DataUploadedSeller?
+    
     var userId = Auth.auth().currentUser!.uid
+    
     let db = Firestore.firestore()
     var fireStorage = Storage.storage()
     
-    
+    var reviewsList = [SellerRetrievalReviewsModel]()
     
     
     func retrivingProfileData(using userUid :String = Auth.auth().currentUser!.uid,completion : @escaping (SellerProfileModel,[String]?) -> ()) {
@@ -81,10 +85,10 @@ class SellerProfileBrain {
         sellerProfileData["description"] = sellerProfileModel.description
         sellerProfileData["country"] = sellerProfileModel.country
         sellerProfileData["status"] = Constants.online
-
+        
         
         if let userid = Auth.auth().currentUser?.uid {
-           
+            
             
             // it also merges the previous data
             db.collection("UserProfileData").document("Seller").collection("AllSellers").document(userid).setData(sellerProfileData , merge: true ) { (error) in
@@ -171,7 +175,7 @@ class SellerProfileBrain {
                         let name = snap[i].data()["name"] as! String
                         let country = snap[i].data()["country"] as! String
                         let status = snap[i].data()["status"] as! String
-
+                        
                         let s = SellerShortInfo(uid : uid,image: image, price: price, name: name, country: country, availability: "available",status: status)
                         self.sellerShortInfoArray.append(s)
                         
@@ -200,7 +204,7 @@ class SellerProfileBrain {
                 let name1 = snap["name"]! as! String
                 let country = snap["country"]! as! String
                 let userId = userUid
-
+                
                 let chatModel = ChatModel(image: imageRef1, name: name1, country: country, userId: userId)
                 
                 completion(chatModel)
@@ -214,7 +218,7 @@ class SellerProfileBrain {
     func retrivingProfileDataForBooking(using userUid :String,completion : @escaping (String) -> ()) {
         
         
-        db.collection("UserProfileData").document("Seller").collection("AllSellers").document(userUid).addSnapshotListener
+        db.collection("UserProfileData").document("Seller").collection("AllSellers").document(userUid).getDocument
         { (snapShot, error) in
             
             if let snap = snapShot?.data()
@@ -222,14 +226,14 @@ class SellerProfileBrain {
                 
                 
                 let price = snap["price"]! as! String
-                               
+                
                 completion(price)
             }
             
         }
         
     }
-   
+    
     func updateOnlineStatus(with status : String){
         db.collection("UserProfileData")
             .document("Seller")
@@ -243,40 +247,69 @@ class SellerProfileBrain {
                 else
                 {
                     print("updated seller status")
-
+                    
                 }
             }
         
     }
     
+    func addReviewsToProfile(with sellerId : String , buyerId : String , star : String , comment : String , uniqueId:String,completion :@escaping () -> ()) {
+        db.collection("UserProfileData")
+            .document("Seller")
+            .collection("AllSellers")
+            .document(sellerId)
+            .collection("Reviews")
+            .document(uniqueId)
+            .setData(["buyerId":buyerId,"star":star,"comment":comment,"sellerId":sellerId]) { (error) in
+                
+                if let e = error
+                {
+                    print("error while addind reviews to seller side : \(e)")
+                }
+                else
+                {
+                    completion()
+                }
+                
+            }
+    }
     
+    
+    func retrivingSellerReviews(with sellerId : String , completion : @escaping ([SellerRetrievalReviewsModel]) -> ()) {
+        
+        db.collection("UserProfileData")
+            .document("Seller")
+            .collection("AllSellers")
+            .document(sellerId)
+            .collection("Reviews")
+            .getDocuments { (snapshot, error) in
+                
+                if let e = error
+                {
+                  print("error while retriving seller reviews \(e)")
+                }
+                
+                else
+                {
+                    
+                if snapshot!.count > 0
+                    {
+                    snapshot?.documents.forEach({ (data) in
+                       let star =  data.data()["star"] as? String
+                       let comment =  data.data()["comment"] as? String
+                       let review = SellerRetrievalReviewsModel(star: star!, comment:comment!)
+                    
+                      self.reviewsList.append(review)
+                    })
+                    completion(self.reviewsList)
+                    }
+                    
+                }
+                
+            }
+        
+    }
     
 }
 
 
-
-//var sellerProfileModel = SellerProfileModel(uid: snap["uid"],imageRef: snap["imageRef"],name:snap["name"],email:snap["email"],address: snap["address"],phone: snap["phone"],price:snap["price"],service: snap["service"],dob: snap["dob"],gender: snap["gender"])
-//
-
-//self.sellerProfileModel?.imageRef = snap["imageRef"]! as! String
-//self.sellerProfileModel?.name = snap["name"]! as! String
-//self.sellerProfileModel?.email = snap["email"]! as! String
-//self.sellerProfileModel?.address = snap["address"]! as! String
-//self.sellerProfileModel?.phone = snap["phone"]! as! String
-//self.sellerProfileModel?.price = snap["price"]! as! String
-//self.sellerProfileModel?.service = snap["service"]! as! String
-//self.sellerProfileModel?.gender = snap["gender"]! as! String
-//self.sellerProfileModel?.dob = snap["dob"]! as! Date
-//self.sellerProfileModel?.uid = snap["uid"]! as! String
-
-//        db.collection("UserProfileData").document("Seller").collection("AllSellers").document(userId).setValue(["SubServices" : subServices]) { (error) in
-//
-//            if let e = error
-//            {
-//                print(e)
-//            }
-//            else
-//            {
-//                completion()
-//            }
-//        }

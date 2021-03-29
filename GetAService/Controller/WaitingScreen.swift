@@ -37,7 +37,7 @@ class WaitingScreen: UIViewController , BookingBrainDelegate {
         print("not sure")
         if result == "completed"
         {
-            performSegue(withIdentifier: Constants.seguesNames.waitingToServices, sender: self)
+            performSegue(withIdentifier: Constants.seguesNames.buyerWaitingToReviews, sender: self)
         }
         
     }

@@ -287,7 +287,7 @@ class BookingBrain {
                         }
                 }
             })
-
+        
         
     }
     
@@ -316,9 +316,9 @@ class BookingBrain {
                     else if (snap["acknowlegdeStatus"] as? String)! == "completed"
                     {
                         self.bookingBrainDelegate?.didAcknowledgementChange(result: "completed")
-
+                        
                     }
-
+                    
                     
                 }
                 else
@@ -329,4 +329,105 @@ class BookingBrain {
     }
     
     
+    func sellerToBuyerReview(with star : String , comment : String , completion:@escaping () -> ()) {
+        
+        print("here2")
+        db.collection("Bookings")
+            .document("Seller")
+            .collection("AllSellerWhoReceivedOrders")
+            .document(sellerId!)
+            .collection("BookedBy")
+            .document(buyerId!)
+            .collection("WithBookingID")
+            .document(currentBookingDocumentId!)
+            .collection("Review")
+            .document("SellerToBuyerReview")
+            .setData(["star" : star , "comment" : comment]) { (error) in
+                
+                if let e = error
+                {
+                    print("error while adding sellerToBuyerReview \(e)")
+                }
+                
+                else
+                {
+                    print("here 3")
+                    self.db.collection("Bookings")
+                        .document("Buyer")
+                        .collection("AllBuyersWhoOrdered")
+                        .document(self.buyerId!)
+                        .collection("Books")
+                        .document(self.sellerId!)
+                        .collection("WithBookingID")
+                        .document(self.currentBookingDocumentId!)
+                        .collection("Review")
+                        .document("SellerToBuyerReview")
+                        .setData(["star" : star , "comment" : comment]) { (error) in
+                            
+                            if let e = error
+                            {
+                                print("error while adding sellerToBuyerReview \(e)")
+                            }
+                            
+                            else
+                            {
+                                completion()
+                            }
+                            
+                        }
+                    
+                }
+                
+            }
+    }
+    func buyerToSellerReview(with star : String , comment : String , completion:@escaping () -> ()) {
+        
+        print("here2")
+        db.collection("Bookings")
+            .document("Seller")
+            .collection("AllSellerWhoReceivedOrders")
+            .document(sellerId!)
+            .collection("BookedBy")
+            .document(buyerId!)
+            .collection("WithBookingID")
+            .document(currentBookingDocumentId!)
+            .collection("Review")
+            .document("BuyerToSellerReview")
+            .setData(["star" : star , "comment" : comment]) { (error) in
+                
+                if let e = error
+                {
+                    print("error while adding sellerToBuyerReview \(e)")
+                }
+                
+                else
+                {
+                    self.db.collection("Bookings")
+                        .document("Buyer")
+                        .collection("AllBuyersWhoOrdered")
+                        .document(self.buyerId!)
+                        .collection("Books")
+                        .document(self.sellerId!)
+                        .collection("WithBookingID")
+                        .document(self.currentBookingDocumentId!)
+                        .collection("Review")
+                        .document("BuyerToSellerReview")
+                        .setData(["star" : star , "comment" : comment]) { (error) in
+                            
+                            if let e = error
+                            {
+                                print("error while adding sellerToBuyerReview \(e)")
+                            }
+                            
+                            else
+                            {
+                                completion()
+                            }
+                            
+                        }
+                    
+                }
+                
+            }
+    }
 }

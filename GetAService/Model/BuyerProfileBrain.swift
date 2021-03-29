@@ -173,19 +173,26 @@ class BuyerProfileBrain {
         
     }
 
-    
+    func addReviewsToProfile(with sellerId : String , buyerId : String , star : String , comment : String , uniqueId:String,completion :@escaping () -> ()) {
+        db.collection("UserProfileData")
+            .document("Buyer")
+            .collection("AllBuyers")
+            .document(buyerId)
+            .collection("Reviews")
+            .document(uniqueId)
+            .setData(["buyerId":buyerId,"star":star,"comment":comment,"sellerId":sellerId]) { (error) in
+                
+                if let e = error
+                {
+                    print("error while addind reviews to buyer side : \(e)")
+                }
+                else
+                {
+                    completion()
+                }
+                
+            }
+    }
+
 }
 
-//var sellerProfileModel = SellerProfileModel(uid: snap["uid"],imageRef: snap["imageRef"],name:snap["name"],email:snap["email"],address: snap["address"],phone: snap["phone"],price:snap["price"],service: snap["service"],dob: snap["dob"],gender: snap["gender"])
-//
-
-//self.sellerProfileModel?.imageRef = snap["imageRef"]! as! String
-//self.sellerProfileModel?.name = snap["name"]! as! String
-//self.sellerProfileModel?.email = snap["email"]! as! String
-//self.sellerProfileModel?.address = snap["address"]! as! String
-//self.sellerProfileModel?.phone = snap["phone"]! as! String
-//self.sellerProfileModel?.price = snap["price"]! as! String
-//self.sellerProfileModel?.service = snap["service"]! as! String
-//self.sellerProfileModel?.gender = snap["gender"]! as! String
-//self.sellerProfileModel?.dob = snap["dob"]! as! Date
-//self.sellerProfileModel?.uid = snap["uid"]! as! Strin

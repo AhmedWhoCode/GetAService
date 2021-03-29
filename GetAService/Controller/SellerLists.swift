@@ -19,6 +19,7 @@ class SellerLists: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.hidesBackButton = false
+        hidesBottomBarWhenPushed = true
         print(selectedService!)
         sellerProfileBrain.retrivingFilteredSellers(with: selectedService) { (data) in
             print(data)

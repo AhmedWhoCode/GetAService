@@ -20,7 +20,20 @@ class MeetupViewController: UIViewController {
     @IBAction func completePressed(_ sender: UIButton) {
         BookingBrain.sharedInstance.updateAcknowledgeStatus(value: "completed") {
             self.hidesBottomBarWhenPushed = false
-            self.performSegue(withIdentifier: "completedToSellerDashboard", sender: self)
+            self.performSegue(withIdentifier: Constants.seguesNames.meetupToReview, sender: self)
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == Constants.seguesNames.meetupToReview
+        {
+            if let destinationSegue = segue.destination as? ReviewsAndRatingsViewController
+            {
+            
+                destinationSegue.isSourceAMeetupVc = true
+
+            }
         }
     }
 }

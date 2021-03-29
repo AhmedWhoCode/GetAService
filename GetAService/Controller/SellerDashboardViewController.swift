@@ -24,6 +24,7 @@ class SellerDashboardViewController: UIViewController {
     
     @IBOutlet weak var bookNowButton: UIButton!
     
+    @IBOutlet weak var sellerRating: UILabel!
     
     @IBOutlet weak var subService1: UILabel!
     @IBOutlet weak var subService2: UILabel!
@@ -41,6 +42,7 @@ class SellerDashboardViewController: UIViewController {
         hidesBottomBarWhenPushed = false
 
         designingViews()
+        retrivingReviewsInformation()
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -63,7 +65,23 @@ class SellerDashboardViewController: UIViewController {
         }
         
     }
-    
+    func retrivingReviewsInformation() {
+        sellerProfileBrain.retrivingSellerReviews(with: Auth.auth().currentUser!.uid) { (reviews) in
+            let reviewList  = reviews
+            var totalStar = 0.0
+            
+            reviewList.forEach { (data) in
+            totalStar = totalStar + Double(Float(data.star)!)
+            }
+            
+            if reviewList.count > 0
+            {
+                let starAverage = totalStar / Double(Float(reviewList.count))
+            self.sellerRating.text = String(starAverage)
+            }
+        }
+        
+    }
     
     
     

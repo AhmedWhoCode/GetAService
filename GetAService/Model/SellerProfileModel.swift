@@ -20,10 +20,10 @@ struct SellerProfileModel {
    var description:String
    var dob:Date
    var gender:String
-       
-    
-    
 
-//
-//     var sellerProfileData = ["uid":uid,"imageRef":imageRef,"name":name, "email":email, "address":address, "phone":phone, "price":price, "service":service,"dob":dob,"gender":gender]
+}
+
+struct SellerRetrievalReviewsModel {
+    var star : String
+    var comment : String
 }

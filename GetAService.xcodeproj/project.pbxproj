@@ -41,6 +41,10 @@
 		9354847B25E8DF8A00A76C22 /* BuyerProfileBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9354847A25E8DF8A00A76C22 /* BuyerProfileBrain.swift */; };
 		9355988325FCC03B0049CF28 /* Helper Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9355988225FCC03B0049CF28 /* Helper Functions.swift */; };
 		93593BC925FA7BA700BFCA71 /* UpdatingViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93593BC825FA7BA700BFCA71 /* UpdatingViews.swift */; };
+		935E31BF2611AEE900D3CCD5 /* ReviewsAndRatingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935E31BE2611AEE900D3CCD5 /* ReviewsAndRatingsViewController.swift */; };
+		935E31C42612221600D3CCD5 /* ReviewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935E31C32612221600D3CCD5 /* ReviewsTableViewController.swift */; };
+		935E31CA2612226100D3CCD5 /* ReviewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935E31C82612226100D3CCD5 /* ReviewsTableViewCell.swift */; };
+		935E31CB2612226100D3CCD5 /* ReviewsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 935E31C92612226100D3CCD5 /* ReviewsTableViewCell.xib */; };
 		9360136E2603A4780096BCEF /* GoogleMapBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9360136D2603A4780096BCEF /* GoogleMapBrain.swift */; };
 		936783AC25B9896E00A93B28 /* SellerListXibTableViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936783AA25B9896E00A93B28 /* SellerListXibTableViewTableViewCell.swift */; };
 		936783AD25B9896E00A93B28 /* SellerListXibTableViewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 936783AB25B9896E00A93B28 /* SellerListXibTableViewTableViewCell.xib */; };
@@ -139,6 +143,10 @@
 		9354847A25E8DF8A00A76C22 /* BuyerProfileBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyerProfileBrain.swift; sourceTree = "<group>"; };
 		9355988225FCC03B0049CF28 /* Helper Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Helper Functions.swift"; sourceTree = "<group>"; };
 		93593BC825FA7BA700BFCA71 /* UpdatingViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatingViews.swift; sourceTree = "<group>"; };
+		935E31BE2611AEE900D3CCD5 /* ReviewsAndRatingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsAndRatingsViewController.swift; sourceTree = "<group>"; };
+		935E31C32612221600D3CCD5 /* ReviewsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsTableViewController.swift; sourceTree = "<group>"; };
+		935E31C82612226100D3CCD5 /* ReviewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsTableViewCell.swift; sourceTree = "<group>"; };
+		935E31C92612226100D3CCD5 /* ReviewsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewsTableViewCell.xib; sourceTree = "<group>"; };
 		9360136D2603A4780096BCEF /* GoogleMapBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMapBrain.swift; sourceTree = "<group>"; };
 		936783AA25B9896E00A93B28 /* SellerListXibTableViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellerListXibTableViewTableViewCell.swift; sourceTree = "<group>"; };
 		936783AB25B9896E00A93B28 /* SellerListXibTableViewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SellerListXibTableViewTableViewCell.xib; sourceTree = "<group>"; };
@@ -307,6 +315,8 @@
 				93C9692025C5C14800A6217E /* ChatsTableViewCell.xib */,
 				93226A2E2601E5BF001A7A86 /* LocationTableViewCell.swift */,
 				93226A2F2601E5BF001A7A86 /* LocationTableViewCell.xib */,
+				935E31C82612226100D3CCD5 /* ReviewsTableViewCell.swift */,
+				935E31C92612226100D3CCD5 /* ReviewsTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -332,11 +342,13 @@
 				93A7936125ED13D000064AA0 /* SellerWaitingViewController.swift */,
 				933929EE25F66B0C00DB10FD /* OneToOneChatViewController.swift */,
 				93C95D8C2600985100F8E3C2 /* GoogleMapViewController.swift */,
-				93BE8E5525EE00CE008103DA /* SellerDashboardViewController.swift */,
 				93C95E052600BEF500F8E3C2 /* AppleMapViewController.swift */,
+				93BE8E5525EE00CE008103DA /* SellerDashboardViewController.swift */,
 				93C95E0A2600BF8500F8E3C2 /* SearchViewController.swift */,
 				932DD7C92609F69E007BD665 /* BuyerWaitingViewController.swift */,
 				9334E6FF26105C0F0046EB0C /* MeetupViewController.swift */,
+				935E31BE2611AEE900D3CCD5 /* ReviewsAndRatingsViewController.swift */,
+				935E31C32612221600D3CCD5 /* ReviewsTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -526,6 +538,7 @@
 				938AE23D25DF8EB900CC108B /* GoogleService-Info.plist in Resources */,
 				93226A312601E5BF001A7A86 /* LocationTableViewCell.xib in Resources */,
 				936D78FF2603358600E1A04D /* Main.storyboard in Resources */,
+				935E31CB2612226100D3CCD5 /* ReviewsTableViewCell.xib in Resources */,
 				937EAAC325B6F13B002CD6EC /* LaunchScreen.storyboard in Resources */,
 				93C9692225C5C14800A6217E /* ChatsTableViewCell.xib in Resources */,
 				932C487225C97AF700F57308 /* myGif.gif in Resources */,
@@ -711,8 +724,10 @@
 				9354847325E8CCD000A76C22 /* Extension.swift in Sources */,
 				93C9691B25C5C0AD00A6217E /* ChatList.swift in Sources */,
 				9370176125E123B100CE177B /* SellerProfileBrain.swift in Sources */,
+				935E31C42612221600D3CCD5 /* ReviewsTableViewController.swift in Sources */,
 				9360136E2603A4780096BCEF /* GoogleMapBrain.swift in Sources */,
 				931D669825C03AC2002C239E /* SellerProfile.swift in Sources */,
+				935E31BF2611AEE900D3CCD5 /* ReviewsAndRatingsViewController.swift in Sources */,
 				9352712025E7899100F368B1 /* BuyerProfileModel.swift in Sources */,
 				9352608125BD63270052C0A3 /* FairDetails.swift in Sources */,
 				9334E70026105C0F0046EB0C /* MeetupViewController.swift in Sources */,
@@ -738,6 +753,7 @@
 				938AE25F25DF927F00CC108B /* BuyerOrSeller.swift in Sources */,
 				93C9692125C5C14800A6217E /* ChatsTableViewCell.swift in Sources */,
 				931D66AB25C087EF002C239E /* NotificationsTableViewCell.swift in Sources */,
+				935E31CA2612226100D3CCD5 /* ReviewsTableViewCell.swift in Sources */,
 				9342CF7A25F367500099FB73 /* SellerShortInfo.swift in Sources */,
 				937994D825BC39C700C85404 /* SellerInformation.swift in Sources */,
 				931CFA2925DED734007C2EE9 /* SubServicesTableViewController.swift in Sources */,
