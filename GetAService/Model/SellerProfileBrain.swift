@@ -24,8 +24,13 @@ class SellerProfileBrain {
     var sellerProfileData = [String:Any]()
     
     var dataUplodedDelegant:DataUploadedSeller?
+    //
+    //    if let userId1 = Auth.auth().currentUser?.uid
+    //    {
+    //        print("ss")
+    //    }
     
-    var userId = Auth.auth().currentUser!.uid
+    // let userId = Auth.auth().currentUser!.uid
     
     let db = Firestore.firestore()
     var fireStorage = Storage.storage()
@@ -35,6 +40,7 @@ class SellerProfileBrain {
     
     func retrivingProfileData(using userUid :String = Auth.auth().currentUser!.uid,completion : @escaping (SellerProfileModel,[String]?) -> ()) {
         
+        // let userId = Auth.auth().currentUser!.uid
         
         db.collection("UserProfileData").document("Seller").collection("AllSellers").document(userUid).addSnapshotListener
         { (snapShot, error) in
@@ -71,6 +77,7 @@ class SellerProfileBrain {
     func storingProfileDataToFireBase(with sellerProfileModel:SellerProfileModel)
     {
         
+        // let userId = Auth.auth().currentUser!.uid
         
         sellerProfileData["uid"] = sellerProfileModel.uid
         sellerProfileData["imageRef"] = sellerProfileModel.imageRef
@@ -108,6 +115,7 @@ class SellerProfileBrain {
     
     
     func uploadingProfileImage(with profileImage:Data,  completion :@escaping (URL)->() ){
+        let userId = Auth.auth().currentUser!.uid
         
         //filePath or unique name of an image , also used a name
         let storageRef = self.fireStorage.reference().child("Images/profile_images").child(userId)
@@ -142,6 +150,7 @@ class SellerProfileBrain {
     
     func storeSubServivesToFirebase(with subServices:[String] ,  completion :@escaping () -> ()) {
         
+        let userId = Auth.auth().currentUser!.uid
         
         db.collection("UserProfileData").document("Seller").collection("AllSellers").document(userId).setData(["SubServices" : subServices], merge: true) { (error) in
             if let e = error
@@ -160,6 +169,8 @@ class SellerProfileBrain {
     
     func retrivingFilteredSellers(with service : String , completion :@escaping ([SellerShortInfo])->()) {
         db.collection("UserProfileData").document("Seller").collection("AllSellers").whereField("service", isEqualTo: service).addSnapshotListener { (snapshot, error) in
+            
+            //  let userId = Auth.auth().currentUser!.uid
             
             if let snap = snapshot?.documents
             {
@@ -192,6 +203,7 @@ class SellerProfileBrain {
     
     func retrivingProfileDataForChats(using userUid :String = Auth.auth().currentUser!.uid,completion : @escaping (ChatModel) -> ()) {
         
+        // let userId = Auth.auth().currentUser!.uid
         
         db.collection("UserProfileData").document("Seller").collection("AllSellers").document(userUid).addSnapshotListener
         { (snapShot, error) in
@@ -217,6 +229,7 @@ class SellerProfileBrain {
     
     func retrivingProfileDataForBooking(using userUid :String,completion : @escaping (String) -> ()) {
         
+        //let userId = Auth.auth().currentUser!.uid
         
         db.collection("UserProfileData").document("Seller").collection("AllSellers").document(userUid).getDocument
         { (snapShot, error) in
@@ -234,26 +247,10 @@ class SellerProfileBrain {
         
     }
     
-    func updateOnlineStatus(with status : String){
-        db.collection("UserProfileData")
-            .document("Seller")
-            .collection("AllSellers")
-            .document(Auth.auth().currentUser!.uid)
-            .updateData(["status" : status]) { (error) in
-                if let e = error
-                {
-                    print("error while updating seller status : \(e)")
-                }
-                else
-                {
-                    print("updated seller status")
-                    
-                }
-            }
-        
-    }
     
     func addReviewsToProfile(with sellerId : String , buyerId : String , star : String , comment : String , uniqueId:String,completion :@escaping () -> ()) {
+        // let userId = Auth.auth().currentUser!.uid
+        
         db.collection("UserProfileData")
             .document("Seller")
             .collection("AllSellers")
@@ -276,6 +273,7 @@ class SellerProfileBrain {
     
     
     func retrivingSellerReviews(with sellerId : String , completion : @escaping ([SellerRetrievalReviewsModel]) -> ()) {
+        // let userId = Auth.auth().currentUser!.uid
         
         db.collection("UserProfileData")
             .document("Seller")
@@ -286,22 +284,22 @@ class SellerProfileBrain {
                 
                 if let e = error
                 {
-                  print("error while retriving seller reviews \(e)")
+                    print("error while retriving seller reviews \(e)")
                 }
                 
                 else
                 {
                     
-                if snapshot!.count > 0
+                    if snapshot!.count > 0
                     {
-                    snapshot?.documents.forEach({ (data) in
-                       let star =  data.data()["star"] as? String
-                       let comment =  data.data()["comment"] as? String
-                       let review = SellerRetrievalReviewsModel(star: star!, comment:comment!)
-                    
-                      self.reviewsList.append(review)
-                    })
-                    completion(self.reviewsList)
+                        snapshot?.documents.forEach({ (data) in
+                            let star =  data.data()["star"] as? String
+                            let comment =  data.data()["comment"] as? String
+                            let review = SellerRetrievalReviewsModel(star: star!, comment:comment!)
+                            
+                            self.reviewsList.append(review)
+                        })
+                        completion(self.reviewsList)
                     }
                     
                 }
@@ -310,6 +308,41 @@ class SellerProfileBrain {
         
     }
     
+    func updateOnlineStatus(with status : String){
+        
+        if let id = Auth.auth().currentUser
+        {
+            isUserSellerOrBuyer(userID:id.uid) { (reponse) in
+                
+                if reponse == "seller"
+                {
+                    self.db.collection("UserProfileData")
+                        .document("Seller")
+                        .collection("AllSellers")
+                        .document(id.uid)
+                        .updateData(["status" : status]) { (error) in
+                            if let e = error
+                            {
+                                print("error while updating seller status : \(e)")
+                            }
+                            else
+                            {
+                                print("updated seller status")
+                                
+                            }
+                        }
+                }
+                
+                
+                
+            }
+        }
+        
+        
+        
+        
+        
+    }
 }
 
 

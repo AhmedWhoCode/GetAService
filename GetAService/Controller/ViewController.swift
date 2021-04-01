@@ -22,6 +22,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var facebookLogin: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
+     
         // Do any additional setup after loading the view.
         GIDSignIn.sharedInstance().presentingViewController = self
         GIDSignIn.sharedInstance().delegate = self

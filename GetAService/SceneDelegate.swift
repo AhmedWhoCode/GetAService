@@ -8,8 +8,9 @@
 import UIKit
 import Firebase
 import FirebaseFirestore
-
+import FirebaseAuth
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+    
     let sellerProfileBrain = SellerProfileBrain()
 
     var window: UIWindow?
@@ -60,7 +61,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func sceneDidEnterBackground(_ scene: UIScene) {
         print("sceneDidEnterBackground")
-        sellerProfileBrain.updateOnlineStatus(with: Constants.offline)
+     sellerProfileBrain.updateOnlineStatus(with: Constants.offline)
     
         // Called as the scene transitions from the foreground to the background.
         // Use this method to save data, release shared resources, and store enough scene-specific state information
