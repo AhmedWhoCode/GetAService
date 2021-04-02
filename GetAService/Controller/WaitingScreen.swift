@@ -9,12 +9,16 @@ import UIKit
 
 class WaitingScreen: UIViewController , BookingBrainDelegate {
     
-    
+    let userDefault = UserDefaults.standard
+
 
     @IBOutlet weak var imageView: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("coming")
+        
+        
+      
+
         BookingBrain.sharedInstance.bookingBrainDelegate  = self
         BookingBrain.sharedInstance.acknowledgmentUpdated()
         do
@@ -29,6 +33,8 @@ class WaitingScreen: UIViewController , BookingBrainDelegate {
            
         // Do any additional setup after loading the view.
     }
+    
+  
     func didSendTheBookingDetails() {}
     
     func didSellerRespond(result: String) {}
@@ -37,9 +43,18 @@ class WaitingScreen: UIViewController , BookingBrainDelegate {
         print("not sure")
         if result == "completed"
         {
+            userDefault.set("completed", forKey: "navigationInfo")
             performSegue(withIdentifier: Constants.seguesNames.buyerWaitingToReviews, sender: self)
         }
         
+    }
+    func settingUpUserDefaultValues() {
+        //setting up user defaults
+        userDefault.set("started", forKey: Constants.navigationInfo)
+        userDefault.set(BookingBrain.sharedInstance.sellerId, forKey: Constants.sellerIdForNavigation)
+        userDefault.set(BookingBrain.sharedInstance.buyerId, forKey: Constants.buyerIdForNavigation)
+        userDefault.set(BookingBrain.sharedInstance.currentBookingDocumentId, forKey: Constants.notificationIdForNavigation)
+        userDefault.set("started", forKey: Constants.navigationInfo)
     }
 
     /*

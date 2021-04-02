@@ -81,6 +81,7 @@
 		93C9692125C5C14800A6217E /* ChatsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C9691F25C5C14800A6217E /* ChatsTableViewCell.swift */; };
 		93C9692225C5C14800A6217E /* ChatsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93C9692025C5C14800A6217E /* ChatsTableViewCell.xib */; };
 		93CE5C9525CBF257002A916E /* ButtonPressed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CE5C9425CBF257002A916E /* ButtonPressed.swift */; };
+		93DBF77826172421003C9B03 /* MyUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DBF77726172421003C9B03 /* MyUserDefaults.swift */; };
 		93E3F8DB25E23BEC00FB74C3 /* ServicesBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E3F8DA25E23BEC00FB74C3 /* ServicesBrain.swift */; };
 		E7CB7608C4737307D01F9320 /* Pods_GetAService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ABBE2378B21E0A110DB8A65 /* Pods_GetAService.framework */; };
 		E804C129398C500E56A4C5A8 /* Pods_GetAService_GetAServiceUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2234B55B1A6E846296569767 /* Pods_GetAService_GetAServiceUITests.framework */; };
@@ -190,6 +191,7 @@
 		93C9691F25C5C14800A6217E /* ChatsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsTableViewCell.swift; sourceTree = "<group>"; };
 		93C9692025C5C14800A6217E /* ChatsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatsTableViewCell.xib; sourceTree = "<group>"; };
 		93CE5C9425CBF257002A916E /* ButtonPressed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonPressed.swift; sourceTree = "<group>"; };
+		93DBF77726172421003C9B03 /* MyUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyUserDefaults.swift; sourceTree = "<group>"; };
 		93E3F8DA25E23BEC00FB74C3 /* ServicesBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesBrain.swift; sourceTree = "<group>"; };
 		959110249FFA8B6C172BD4D1 /* Pods-GetAService.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GetAService.debug.xcconfig"; path = "Target Support Files/Pods-GetAService/Pods-GetAService.debug.xcconfig"; sourceTree = "<group>"; };
 		B66B316AE8DE4536DF445148 /* Pods-GetAServiceTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GetAServiceTests.debug.xcconfig"; path = "Target Support Files/Pods-GetAServiceTests/Pods-GetAServiceTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -273,6 +275,7 @@
 				93C95E0F26010F9800F8E3C2 /* LocationManager.swift */,
 				9355988225FCC03B0049CF28 /* Helper Functions.swift */,
 				932DD7C12609D73A007BD665 /* CustomerScreenExtension.swift */,
+				93DBF77726172421003C9B03 /* MyUserDefaults.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -744,6 +747,7 @@
 				932C89BB25DAD893008D72D9 /* ChatModel.swift in Sources */,
 				9355988325FCC03B0049CF28 /* Helper Functions.swift in Sources */,
 				93C95E062600BEF500F8E3C2 /* AppleMapViewController.swift in Sources */,
+				93DBF77826172421003C9B03 /* MyUserDefaults.swift in Sources */,
 				93E3F8DB25E23BEC00FB74C3 /* ServicesBrain.swift in Sources */,
 				936D790426033B9B00E1A04D /* BookingModel.swift in Sources */,
 				932DD7C22609D73A007BD665 /* CustomerScreenExtension.swift in Sources */,
@@ -854,8 +858,10 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = T358HTMQN4;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -915,8 +921,10 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = T358HTMQN4;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -943,15 +951,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEAD_CODE_STRIPPING = NO;
+				DEVELOPMENT_TEAM = BXQHK9SN8A;
 				INFOPLIST_FILE = GetAService/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "Ali-Tehseen.slayOnTheGo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -963,15 +975,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEAD_CODE_STRIPPING = NO;
+				DEVELOPMENT_TEAM = BXQHK9SN8A;
 				INFOPLIST_FILE = GetAService/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "Ali-Tehseen.slayOnTheGo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

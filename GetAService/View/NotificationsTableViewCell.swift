@@ -8,7 +8,8 @@
 import UIKit
 
 class NotificationsTableViewCell: UITableViewCell {
-
+    @IBOutlet weak var view: UIView!
+    
     @IBOutlet weak var customerName: UILabel!
     @IBOutlet weak var customerCountry: UILabel!
     @IBOutlet weak var customerImage: UIImageView!

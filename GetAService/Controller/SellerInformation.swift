@@ -233,7 +233,7 @@ class SellerInformation: UIViewController {
             if self.reviewList.count > 0
             {
                 let starAverage = self.totalStar / Double(Float(self.reviewList.count))
-            self.starAverageLabel.text = String(starAverage)
+                self.starAverageLabel.text = String(format: "%.1f",starAverage)
             }
         }
         

@@ -130,7 +130,7 @@ class NotificationBrain {
         sellerLongitude : String = "Not defined",
         sellerAddress : String = "Not defined",
         sellerUpdatedPrice : String = "Not defined"
-
+        
     )
     
     {
@@ -239,6 +239,91 @@ class NotificationBrain {
                 }
             }
         
+        
+    }
+    
+    //function to take user to correct screen in notification
+    func navigateToCorrectScreen(with buyerId : String , completion : @escaping (String) -> ())  {
+        
+        //checking if the user is buyer or buyer
+        isUserSellerOrBuyer(userID: currentUser!) { (response) in
+            if response == "seller"
+            {
+                //getting notification id
+                self.getLatestNotificationId(with: self.currentUser!, buyerId: buyerId) { (notificationId) in
+                    
+                    self.db.collection("Bookings")
+                        .document("Seller")
+                        .collection("AllSellerWhoReceivedOrders")
+                        .document(self.currentUser!)
+                        .collection("BookedBy")
+                        .document(buyerId)
+                        .collection("WithBookingID")
+                        .document(notificationId)
+                        .collection("tracking")
+                        .document("TrackBooking")
+                        .getDocument { (snapshot, error) in
+                            
+                            if let e = error
+                            {
+                                print("error while navigateToCorrectScreen : \(e.localizedDescription) ")
+                            }
+                            else
+                            {
+                                if let snap = snapshot?.data()
+                                {
+                                    if (snap.count) > 0
+                                    {
+                                        let response = snapshot?.data()!["acknowlegdeStatus"] as? String
+                                        BookingBrain.sharedInstance.sellerId = self.currentUser
+                                        BookingBrain.sharedInstance.buyerId = buyerId
+                                        BookingBrain.sharedInstance.currentBookingDocumentId = notificationId
+                                        completion(response!)
+                                    }
+                                    else
+                                    {
+                                        completion("continue")
+                                    }
+                                }
+                                else
+                                {
+                                    completion("continue")
+                                }
+                            }
+                        }
+                }
+            }
+            
+            
+        }
+        
+        
+    }
+    
+    func getLatestNotificationId(with sellerId:String , buyerId :String , completion :@escaping (String) -> ()) {
+        db.collection("Bookings")
+            .document("Seller")
+            .collection("AllSellerWhoReceivedOrders")
+            .document(sellerId)
+            .collection("BookedBy")
+            .document(buyerId)
+            .collection("WithBookingID")
+            .order(by: "totalSeonds", descending: true).limit(to: 1)
+            .getDocuments { (snapshot, error) in
+                
+                if let e = error
+                {
+                    print("error while getting notification id \(e.localizedDescription) ")
+                }
+                else if snapshot!.count > 0
+                {
+                    if let id = snapshot?.documents[0].documentID
+                    {
+                        completion(id)
+                    }
+                    //print("this \(snapshot?.documents[0].documentID)")
+                }
+            }
         
     }
 }

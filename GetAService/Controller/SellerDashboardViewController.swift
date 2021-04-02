@@ -77,7 +77,7 @@ class SellerDashboardViewController: UIViewController {
             if reviewList.count > 0
             {
                 let starAverage = totalStar / Double(Float(reviewList.count))
-            self.sellerRating.text = String(starAverage)
+                self.sellerRating.text = String(format: "%.1f",starAverage)
             }
         }
         

@@ -17,7 +17,7 @@ class ListOfServices: UITableViewController, DataManipulation {
     override func viewDidLoad() {
         super.viewDidLoad()
         BookingBrain.sharedInstance.check = true
-
+        
         //registering this class so that it could receive data from data model
         serviceBrain.dataManipulationDelegant = self
         //calling method to retrieve data
@@ -33,6 +33,30 @@ class ListOfServices: UITableViewController, DataManipulation {
         
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        let userDefault = UserDefaults.standard
+        
+        //checking if the service was started or not
+        if userDefault.string(forKey: Constants.navigationInfo) == "started"
+        {
+            //setting global values
+            if let sellerId = userDefault.string(forKey: Constants.sellerIdForNavigation)
+            {
+                BookingBrain.sharedInstance.sellerId = sellerId
+            }
+            
+            if let notificationId = userDefault.string(forKey: Constants.notificationIdForNavigation)
+            {
+                BookingBrain.sharedInstance.currentBookingDocumentId = notificationId
+            }
+            
+            if let buyerId = userDefault.string(forKey: Constants.buyerIdForNavigation)
+            {
+                BookingBrain.sharedInstance.buyerId = buyerId
+            }
+            performSegue(withIdentifier: Constants.seguesNames.servicesToStarted, sender: self)
+        }
     }
     ///MARK: - will be called when firebase returns data 
     func didReceiveData(with data: [ServicesModel]) {
@@ -73,7 +97,7 @@ class ListOfServices: UITableViewController, DataManipulation {
         //cell?.listButton.setTitle(servicesData[indexPath.row].serviceName, for: .normal)
         cell?.serviceName.text = servicesData[indexPath.row].serviceName
         
-//        let serviceName = servicesData[indexPath.row].serviceName
+        //        let serviceName = servicesData[indexPath.row].serviceName
         let servicesImagesRef = servicesData[indexPath.row].serviceImage
         cell?.imageForService.image = UIImage(named: "servicesimageplaceholder")
         cell?.listButton.text(servicesData[indexPath.row].serviceName)
@@ -153,18 +177,18 @@ extension ListOfServices:ButtonPressed
     
     
     
-     //MARK: - Navigation
+    //MARK: - Navigation
     
-        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-            if segue.identifier == Constants.seguesNames.servicesToSellers
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == Constants.seguesNames.servicesToSellers
+        {
+            if let destinationSegue = segue.destination as? SellerLists
             {
-                if let destinationSegue = segue.destination as? SellerLists
-              {
-                    destinationSegue.selectedService = selectedService!
-              }
+                destinationSegue.selectedService = selectedService!
             }
-            
         }
+        
+    }
     
     
 }

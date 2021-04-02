@@ -18,7 +18,8 @@ protocol BookingBrainDelegate {
 
 
 class BookingBrain {
-    
+    let defaults = UserDefaults.standard
+
     //var sellerCoordinates : CLLocationCoordinate2D?
     var buyerCoordinates : CLLocationCoordinate2D?
     var buyerLatitude : String?
@@ -96,6 +97,9 @@ class BookingBrain {
         bookingInfoMap["sellerAddress"] = bookingData.sellerLocationAddress
         bookingInfoMap["sellerPrice"] = sellerPrice
         
+        defaults.set(bookingData.sellerId, forKey: Constants.sellerIdForNavigation)
+        defaults.set(bookingData.dateForUniqueId, forKey: Constants.notificationIdForNavigation)
+
         //storing current document id
         currentBookingDocumentId = bookingData.dateForUniqueId
         buyerLatitude = latitude

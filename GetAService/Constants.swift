@@ -9,6 +9,11 @@ import Foundation
 
 
 struct Constants {
+    static let buyerIdForNavigation = "buyerIdForNavigation"
+    static let sellerIdForNavigation = "sellerIdForNavigation"
+    static let notificationIdForNavigation = "notificationIdForNavigation"
+    static let navigationInfo = "navigationInfo"
+    
     
     static let orderAccepted = "accepted"
     static let orderRejected = "rejected"
@@ -80,6 +85,8 @@ struct Constants {
         static let buyerReviewToServices = "buyerReviewToServices"
         static let sellerReviewToDash = "sellerReviewToDash"
         static let sellerInfoToReviews = "sellerInfoToReviews"
+        static let notificationsToStarted = "notificationsToStarted"
+        static let servicesToStarted = "servicesToStarted"
     }
     
 }
