@@ -7,7 +7,7 @@
 
 import UIKit
 
-class WaitingScreen: UIViewController , BookingBrainDelegate {
+class ServiceStartedBuyer: UIViewController , BookingBrainDelegate {
     
     let userDefault = UserDefaults.standard
 
@@ -15,10 +15,11 @@ class WaitingScreen: UIViewController , BookingBrainDelegate {
     @IBOutlet weak var imageView: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-      
+        navigationItem.hidesBackButton = true
+        hidesBottomBarWhenPushed = true
 
+        MyUserDefaults.sharedInstance.settingUpUserDefaultValues(with: "started")
+        
         BookingBrain.sharedInstance.bookingBrainDelegate  = self
         BookingBrain.sharedInstance.acknowledgmentUpdated()
         do
@@ -33,7 +34,11 @@ class WaitingScreen: UIViewController , BookingBrainDelegate {
            
         // Do any additional setup after loading the view.
     }
-    
+  
+    override func viewWillAppear(_ animated: Bool) {
+        navigationItem.hidesBackButton = true
+        hidesBottomBarWhenPushed = true
+    }
   
     func didSendTheBookingDetails() {}
     
@@ -43,19 +48,20 @@ class WaitingScreen: UIViewController , BookingBrainDelegate {
         print("not sure")
         if result == "completed"
         {
-            userDefault.set("completed", forKey: "navigationInfo")
+            MyUserDefaults.sharedInstance.updatingNavigationStatus(with:"completed")
+           // userDefault.set("completed", forKey: "navigationInfo")
             performSegue(withIdentifier: Constants.seguesNames.buyerWaitingToReviews, sender: self)
         }
         
     }
-    func settingUpUserDefaultValues() {
-        //setting up user defaults
-        userDefault.set("started", forKey: Constants.navigationInfo)
-        userDefault.set(BookingBrain.sharedInstance.sellerId, forKey: Constants.sellerIdForNavigation)
-        userDefault.set(BookingBrain.sharedInstance.buyerId, forKey: Constants.buyerIdForNavigation)
-        userDefault.set(BookingBrain.sharedInstance.currentBookingDocumentId, forKey: Constants.notificationIdForNavigation)
-        userDefault.set("started", forKey: Constants.navigationInfo)
-    }
+//    func settingUpUserDefaultValues() {
+//        //setting up user defaults
+//        userDefault.set("started", forKey: Constants.navigationInfo)
+//        userDefault.set(BookingBrain.sharedInstance.sellerId, forKey: Constants.sellerIdForNavigation)
+//        userDefault.set(BookingBrain.sharedInstance.buyerId, forKey: Constants.buyerIdForNavigation)
+//        userDefault.set(BookingBrain.sharedInstance.currentBookingDocumentId, forKey: Constants.notificationIdForNavigation)
+//        userDefault.set("started", forKey: Constants.navigationInfo)
+//    }
 
     /*
     // MARK: - Navigation

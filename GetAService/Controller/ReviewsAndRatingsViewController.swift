@@ -33,7 +33,11 @@ class ReviewsAndRatingsViewController: UIViewController {
         
         
         
-        
+    }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationItem.hidesBackButton = true
     }
     
     @IBAction func publishPressed(_ sender: UIButton) {
@@ -73,7 +77,7 @@ class ReviewsAndRatingsViewController: UIViewController {
                                                star: self.starCount.description,
                                                comment: comment,
                                                uniqueId: BookingBrain.sharedInstance.currentBookingDocumentId!) {
-
+            
             self.performSegue(withIdentifier: Constants.seguesNames.buyerReviewToServices, sender: self)
         }
         
@@ -90,7 +94,7 @@ class ReviewsAndRatingsViewController: UIViewController {
         
     }
     
-
+    
     
     @IBAction func oneStar(_ sender: Any) {
         if isGrey

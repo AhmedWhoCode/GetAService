@@ -62,41 +62,64 @@ class MessageBrain {
     
     
     func storeMessageToFireBase(with data : MessageStructer ,completion : @escaping ()-> ()) {
+        
         message["body"] = data.body
         message["senderId"] = data.senderId
         message["date"] = data.date
         message["messageId"] = data.date
         message["receiverId"] = data.receiverId
         // using timeStamp for unique message id
-        
-        
-        db.collection("Chats").document(currentUser).collection("ChatWith").document(data.receiverId).collection("AllSingleChat").document(data.date).setData(message) { (error) in
-            print("1 \(self.currentUser)")
+        db.collection("Chats").document(currentUser).collection("ChatWith").document(data.receiverId).setData(["mm" : "mm"]) { (error) in
+            
             if let e = error
             {
-                print(e)
+                print("error while creating message to firebase \(e.localizedDescription)")
+
             }
             else
             {
-                self.db.collection("Chats").document(data.receiverId).collection("ChatWith").document(self.currentUser).collection("AllSingleChat").document(data.date).setData(self.message){ (error) in
-                    print("2 \(data.receiverId)")
-                    
+                self.db.collection("Chats").document(self.currentUser).collection("ChatWith").document(data.receiverId).collection("AllSingleChat").document(data.date).setData(self.message) { (error) in
+                    print("1 \(self.currentUser)")
                     if let e = error
                     {
-                        print(e)
+                        print("error while storing message: \(e.localizedDescription)")
                     }
                     else
                     {
-                        completion()
+                        self.db.collection("Chats").document(data.receiverId).collection("ChatWith").document(self.currentUser).setData(["mm" : "mm"]) { (error) in
+                            if let e = error
+                            {
+                                print("seller ki chat \(e.localizedDescription)")
+                            }
+                            else
+                            {
+                                self.db.collection("Chats").document(data.receiverId).collection("ChatWith").document(self.currentUser).collection("AllSingleChat").document(data.date).setData(self.message){ (error) in
+                                    print("2 \(data.receiverId)")
+                                    
+                                    if let e = error
+                                    {
+                                        print(e)
+                                    }
+                                    else
+                                    {
+                                        completion()
+                                        
+                                    }
+                                    
+                                    
+                                }
+                            }
+                        }
                         
+                     
+                        
+                        print("message saved")
                     }
-                    
-                    
                 }
-                
-                print("message saved")
             }
+            
         }
+        
         
     }
     
@@ -116,12 +139,11 @@ class MessageBrain {
                     for i in 0...snap.count - 1
                     {
                         
-                        
-                        let body = snap[i].document["body"] as! String
-                        let date = snap[i].document["date"] as! String
+                        guard let body = snap[i].document["body"] as? String else {return}
+                        guard let date = snap[i].document["date"] as? String else {return}
                         //let messageId = snap[i].data()["messageId"] as! String
-                        let senderId = snap[i].document["senderId"] as! String
-                        let receiverId = snap[i].document["receiverId"] as! String
+                        guard let senderId = snap[i].document["senderId"] as? String else {return}
+                        guard let receiverId = snap[i].document["receiverId"] as? String else {return}
                         
                         let messages = MessageStructer(body: body , senderId: senderId, date: date , receiverId: receiverId)
                         

@@ -12,12 +12,18 @@ class MeetupViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        MyUserDefaults.sharedInstance.settingUpUserDefaultValues(with: "started")
         // Do any additional setup after loading the view.
     }
     
-
+    override func viewWillAppear(_ animated: Bool) {
+        navigationItem.hidesBackButton = true
+        hidesBottomBarWhenPushed = true
+    }
 
     @IBAction func completePressed(_ sender: UIButton) {
+        MyUserDefaults.sharedInstance.updatingNavigationStatus(with: "completed")
+
         BookingBrain.sharedInstance.updateAcknowledgeStatus(value: "completed") {
             self.hidesBottomBarWhenPushed = false
             self.performSegue(withIdentifier: Constants.seguesNames.meetupToReview, sender: self)

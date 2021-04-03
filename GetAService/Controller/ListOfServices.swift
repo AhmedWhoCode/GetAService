@@ -35,27 +35,32 @@ class ListOfServices: UITableViewController, DataManipulation {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     override func viewWillAppear(_ animated: Bool) {
+        hidesBottomBarWhenPushed = false
+        navigationController?.hidesBottomBarWhenPushed = false
         let userDefault = UserDefaults.standard
         
         //checking if the service was started or not
         if userDefault.string(forKey: Constants.navigationInfo) == "started"
         {
-            //setting global values
-            if let sellerId = userDefault.string(forKey: Constants.sellerIdForNavigation)
-            {
-                BookingBrain.sharedInstance.sellerId = sellerId
-            }
-            
-            if let notificationId = userDefault.string(forKey: Constants.notificationIdForNavigation)
-            {
-                BookingBrain.sharedInstance.currentBookingDocumentId = notificationId
-            }
-            
-            if let buyerId = userDefault.string(forKey: Constants.buyerIdForNavigation)
-            {
-                BookingBrain.sharedInstance.buyerId = buyerId
-            }
-            performSegue(withIdentifier: Constants.seguesNames.servicesToStarted, sender: self)
+                    //setting global values
+                    if let sellerId = userDefault.string(forKey: Constants.sellerIdForNavigation)
+                    {
+                        BookingBrain.sharedInstance.sellerId = sellerId
+                    }
+                    
+                    if let notificationId = userDefault.string(forKey: Constants.notificationIdForNavigation)
+                    {
+                        BookingBrain.sharedInstance.currentBookingDocumentId = notificationId
+                    }
+                    
+                    if let buyerId = userDefault.string(forKey: Constants.buyerIdForNavigation)
+                    {
+                        BookingBrain.sharedInstance.buyerId = buyerId
+                    }
+                    performSegue(withIdentifier: Constants.seguesNames.servicesToStarted, sender: self)
+                    navigationItem.hidesBackButton = true
+                    hidesBottomBarWhenPushed = true
+         
         }
     }
     ///MARK: - will be called when firebase returns data 
@@ -128,7 +133,10 @@ class ListOfServices: UITableViewController, DataManipulation {
         navigationController?.popToRootViewController(animated: true)
     }
     
-    
+    override func viewWillDisappear(_ animated: Bool) {
+        hidesBottomBarWhenPushed = true
+        navigationController?.hidesBottomBarWhenPushed = true
+    }
     
 }
 //MARK: - will perform segue

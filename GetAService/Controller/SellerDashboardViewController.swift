@@ -39,16 +39,45 @@ class SellerDashboardViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        hidesBottomBarWhenPushed = false
-
+        //hidesBottomBarWhenPushed = false
+        
         designingViews()
         retrivingReviewsInformation()
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
+        let userDefault = UserDefaults.standard
+        
+        //checking if the service was started or not
+        if userDefault.string(forKey: Constants.navigationInfo) == "started"
+        {
+            //setting global values
+            if let sellerId = userDefault.string(forKey: Constants.sellerIdForNavigation)
+            {
+                BookingBrain.sharedInstance.sellerId = sellerId
+            }
+            
+            if let notificationId = userDefault.string(forKey: Constants.notificationIdForNavigation)
+            {
+                BookingBrain.sharedInstance.currentBookingDocumentId = notificationId
+            }
+            
+            if let buyerId = userDefault.string(forKey: Constants.buyerIdForNavigation)
+            {
+                BookingBrain.sharedInstance.buyerId = buyerId
+            }
+            navigationItem.hidesBackButton = true
+            hidesBottomBarWhenPushed = true
+            performSegue(withIdentifier: Constants.seguesNames.sellerDashToMeetup, sender: self)
+            
+            
+        }
         hidesBottomBarWhenPushed = false
+        navigationController?.hidesBottomBarWhenPushed = false
         retrivingData()
     }
+    
+    
     
     func retrivingData()  {
         sellerProfileBrain.retrivingProfileData { (data,subservices) in
@@ -61,7 +90,7 @@ class SellerDashboardViewController: UIViewController {
             self.showSubServices(with: subservices)
             
             self.sellerImage.loadCacheImage(with: data.imageRef)
-
+            
         }
         
     }
@@ -71,7 +100,7 @@ class SellerDashboardViewController: UIViewController {
             var totalStar = 0.0
             
             reviewList.forEach { (data) in
-            totalStar = totalStar + Double(Float(data.star)!)
+                totalStar = totalStar + Double(Float(data.star)!)
             }
             
             if reviewList.count > 0
@@ -154,74 +183,6 @@ class SellerDashboardViewController: UIViewController {
         
     }
     
-    func designingViews(){
-        navigationController?.isToolbarHidden = false
-        navigationController?.isNavigationBarHidden = false
-        subService1.isHidden = true
-        subService2.isHidden = true
-        subService3.isHidden = true
-        subService4.isHidden = true
-        subService5.isHidden = true
-        subService6.isHidden = true
-        
-        
-        navigationItem.hidesBackButton = true
-        ///MARK: - designing views
-        countryView.layer.cornerRadius = 15
-        countryView.layer.borderWidth = 1
-        countryView.layer.borderColor = UIColor.black.cgColor
-        
-        priceView.layer.cornerRadius = 15
-        priceView.layer.borderWidth = 1
-        priceView.layer.borderColor = UIColor.black.cgColor
-        
-        statusView.layer.cornerRadius = 15
-        statusView.layer.borderWidth = 1
-        statusView.layer.borderColor = UIColor.black.cgColor
-        
-        
-        subService1.layer.cornerRadius = 10
-        subService1.layer.borderWidth = 1
-        subService1.layer.borderColor = UIColor.black.cgColor
-        
-        ////        subService1.layer.shadowColor = UIColor.blue.cgColor
-        ////        subService1.layer.shadowOpacity = 0.5
-        ////        subService1.layer.shadowOffset = CGSize.zero
-        //     subService1.layer.shadowRadius = 10
-        
-        
-        subService2.layer.cornerRadius = 10
-        subService2.layer.borderWidth = 1
-        subService2.layer.borderColor = UIColor.black.cgColor
-        
-        
-        subService3.layer.cornerRadius = 10
-        subService3.layer.borderWidth = 1
-        subService3.layer.borderColor = UIColor.black.cgColor
-        
-        subService4.layer.cornerRadius = 10
-        subService4.layer.borderWidth = 1
-        subService4.layer.borderColor = UIColor.black.cgColor
-        
-        subService5.layer.cornerRadius = 10
-        subService5.layer.borderWidth = 1
-        subService5.layer.borderColor = UIColor.black.cgColor
-        
-        subService6.layer.cornerRadius = 10
-        subService6.layer.borderWidth = 1
-        subService6.layer.borderColor = UIColor.black.cgColor
-        
-        
-        //        bookNowButton.layer.cornerRadius = 20
-        //        bookNowButton.layer.borderWidth = 1
-        //        bookNowButton.layer.borderColor = UIColor.black.cgColor
-        
-        
-        sellerImage.layer.masksToBounds = true
-        sellerImage.layer.borderColor = UIColor.black.cgColor
-        sellerImage.layer.cornerRadius = sellerImage.frame.size.height/2
-        sellerImage.contentMode = .scaleAspectFill
-    }
     
     
     @IBAction func notificatiobBarButton(_ sender: Any) {

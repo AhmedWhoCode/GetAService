@@ -2142,7 +2142,7 @@ You complete the service</string>
         <!--service started-->
         <scene sceneID="GpH-lg-MsH">
             <objects>
-                <viewController id="qYd-Ng-KtS" customClass="WaitingScreen" customModule="GetAService" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="qYd-Ng-KtS" customClass="ServiceStartedBuyer" customModule="GetAService" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iQn-wR-de3">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
