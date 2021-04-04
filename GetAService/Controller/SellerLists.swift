@@ -80,7 +80,10 @@ class SellerLists: UITableViewController {
         return cell!
     }
     
-    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.isToolbarHidden = true
+        navigationItem.hidesBackButton = false
+    }
     
     
     /*

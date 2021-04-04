@@ -59,7 +59,8 @@ class SellerInformation: UIViewController {
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
-        hidesBottomBarWhenPushed = false
+        navigationController?.isToolbarHidden = true
+        navigationItem.hidesBackButton = false
     }
     
     

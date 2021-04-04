@@ -25,7 +25,7 @@ class ChatList: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //hides back button of top navigation
-        navigationItem.hidesBackButton = false
+        //navigationItem.hidesBackButton = false
         
         
         retrivingChats()
@@ -37,6 +37,17 @@ class ChatList: UITableViewController {
         
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.isToolbarHidden = true
+    navigationController?.isNavigationBarHidden = false
+        navigationItem.hidesBackButton = false
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        print("ye kia ha")
+        hidesBottomBarWhenPushed = false
+        //navigationController?.hidesBottomBarWhenPushed = false
     }
    
     

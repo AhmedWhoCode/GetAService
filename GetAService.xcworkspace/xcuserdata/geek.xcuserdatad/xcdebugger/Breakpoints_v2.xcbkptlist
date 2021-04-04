@@ -126,10 +126,229 @@
             filePath = "GetAService/Controller/SellerDashboardViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "193"
-            endingLineNumber = "193"
+            startingLineNumber = "198"
+            endingLineNumber = "198"
             landmarkName = "SellerDashboardViewController"
             landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8BAA9123-242A-4401-A082-789BE0F88334"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GetAService/Controller/ListOfServices.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "5"
+            endingLineNumber = "5"
+            landmarkName = "unknown"
+            landmarkType = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0D8B103C-8321-4CFC-8414-6807BF99FA61"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GetAService/Controller/ListOfServices.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "4"
+            endingLineNumber = "4"
+            landmarkName = "unknown"
+            landmarkType = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4796D4CD-AE0F-490E-A4F9-3203E59A011D"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GetAService/Controller/ChatList.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "8"
+            endingLineNumber = "8"
+            landmarkName = "unknown"
+            landmarkType = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DB948900-0437-43F3-BFD8-D795BD067E03"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GetAService/Controller/ReviewsAndRatingsViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
+            landmarkName = "ReviewsAndRatingsViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "DB948900-0437-43F3-BFD8-D795BD067E03 - 626be09b7fccfccd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GetAService.ReviewsAndRatingsViewController.isSourceAMeetupVc.getter : Swift.Bool"
+                  moduleName = "GetAService"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/geek/Desktop/Slay%20on%20the%20go/GetAService/Controller/ReviewsAndRatingsViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "24"
+                  endingLineNumber = "24"
+                  offsetFromSymbolStart = "89">
+               </Location>
+               <Location
+                  uuid = "DB948900-0437-43F3-BFD8-D795BD067E03 - 69efc35b7493d4f9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GetAService.ReviewsAndRatingsViewController.isSourceAMeetupVc.setter : Swift.Bool"
+                  moduleName = "GetAService"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/geek/Desktop/Slay%20on%20the%20go/GetAService/Controller/ReviewsAndRatingsViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "24"
+                  endingLineNumber = "24"
+                  offsetFromSymbolStart = "118">
+               </Location>
+               <Location
+                  uuid = "DB948900-0437-43F3-BFD8-D795BD067E03 - 82b396135266d9f6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GetAService.ReviewsAndRatingsViewController.isSourceAMeetupVc.modify : Swift.Bool"
+                  moduleName = "GetAService"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/geek/Desktop/Slay%20on%20the%20go/GetAService/Controller/ReviewsAndRatingsViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "18">
+               </Location>
+               <Location
+                  uuid = "DB948900-0437-43F3-BFD8-D795BD067E03 - 218a2f8179e12e01"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GetAService.ReviewsAndRatingsViewController.isSourceAMeetupVc.modify : Swift.Bool with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "GetAService"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/geek/Desktop/Slay%20on%20the%20go/GetAService/Controller/ReviewsAndRatingsViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "24"
+                  endingLineNumber = "24"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  uuid = "DB948900-0437-43F3-BFD8-D795BD067E03 - 99e5a4c51ea9bc3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GetAService.ReviewsAndRatingsViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; GetAService.ReviewsAndRatingsViewController"
+                  moduleName = "GetAService"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/geek/Desktop/Slay%20on%20the%20go/GetAService/Controller/ReviewsAndRatingsViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "24"
+                  endingLineNumber = "24"
+                  offsetFromSymbolStart = "1466">
+               </Location>
+               <Location
+                  uuid = "DB948900-0437-43F3-BFD8-D795BD067E03 - 6ea717ba3f623188"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GetAService.ReviewsAndRatingsViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;GetAService.ReviewsAndRatingsViewController&gt;"
+                  moduleName = "GetAService"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/geek/Desktop/Slay%20on%20the%20go/GetAService/Controller/ReviewsAndRatingsViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "24"
+                  endingLineNumber = "24"
+                  offsetFromSymbolStart = "1401">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "892A936A-F6B2-413D-9E33-1E6FA330BC60"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GetAService/Controller/ReviewsAndRatingsViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
+            landmarkName = "ReviewsAndRatingsViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "892A936A-F6B2-413D-9E33-1E6FA330BC60 - cea98db94b6d334b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GetAService.ReviewsAndRatingsViewController.sellerProfile.getter : GetAService.SellerProfileBrain"
+                  moduleName = "GetAService"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/geek/Desktop/Slay%20on%20the%20go/GetAService/Controller/ReviewsAndRatingsViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "26"
+                  endingLineNumber = "26"
+                  offsetFromSymbolStart = "52">
+               </Location>
+               <Location
+                  uuid = "892A936A-F6B2-413D-9E33-1E6FA330BC60 - 99e5a4c51ea9c1d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GetAService.ReviewsAndRatingsViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; GetAService.ReviewsAndRatingsViewController"
+                  moduleName = "GetAService"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/geek/Desktop/Slay%20on%20the%20go/GetAService/Controller/ReviewsAndRatingsViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "26"
+                  endingLineNumber = "26"
+                  offsetFromSymbolStart = "1562">
+               </Location>
+               <Location
+                  uuid = "892A936A-F6B2-413D-9E33-1E6FA330BC60 - 6ea717ba3f623656"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GetAService.ReviewsAndRatingsViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;GetAService.ReviewsAndRatingsViewController&gt;"
+                  moduleName = "GetAService"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/geek/Desktop/Slay%20on%20the%20go/GetAService/Controller/ReviewsAndRatingsViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "26"
+                  endingLineNumber = "26"
+                  offsetFromSymbolStart = "1497">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

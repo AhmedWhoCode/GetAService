@@ -17,13 +17,14 @@ class ListOfServices: UITableViewController, DataManipulation {
     override func viewDidLoad() {
         super.viewDidLoad()
         BookingBrain.sharedInstance.check = true
-        
+       // hidesBottomBarWhenPushed = false
+        //navigationController?.hidesBottomBarWhenPushed = false
         //registering this class so that it could receive data from data model
         serviceBrain.dataManipulationDelegant = self
         //calling method to retrieve data
         serviceBrain.retrivingServicesFromDatabase()
         
-        modifyingUi()
+       // modifyingUi()
         
         //registering table view
         tableView.register(UINib(nibName:Constants.cellNibNameServicesList, bundle: nil),forCellReuseIdentifier:Constants.cellIdentifierServicesList)
@@ -35,8 +36,9 @@ class ListOfServices: UITableViewController, DataManipulation {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     override func viewWillAppear(_ animated: Bool) {
-        hidesBottomBarWhenPushed = false
-        navigationController?.hidesBottomBarWhenPushed = false
+        modifyingUi()
+        //hidesBottomBarWhenPushed = false
+        //navigationController?.hidesBottomBarWhenPushed = false
         let userDefault = UserDefaults.standard
         
         //checking if the service was started or not

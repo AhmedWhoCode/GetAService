@@ -24,6 +24,10 @@ class ReviewsTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         tableView.register(UINib(nibName:Constants.reviewsTableViewCell, bundle: nil),forCellReuseIdentifier:Constants.reviewCell)
     }
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.isToolbarHidden = true
+        navigationItem.hidesBackButton = false
+    }
 
     // MARK: - Table view data source
 

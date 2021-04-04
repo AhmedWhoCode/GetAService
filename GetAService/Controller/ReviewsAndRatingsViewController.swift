@@ -18,6 +18,7 @@ class ReviewsAndRatingsViewController: UIViewController {
     @IBOutlet weak var reviewTextView: UITextView!
     @IBOutlet weak var publishButton: UIButton!
     
+    @IBOutlet weak var scrollView: UIScrollView!
     
     var isGrey = true
     var starCount = 0
@@ -25,19 +26,34 @@ class ReviewsAndRatingsViewController: UIViewController {
     
     let sellerProfile =  SellerProfileBrain()
     let buyerProfile  =  BuyerProfileBrain()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.reviewTextView.layer.borderColor = UIColor.lightGray.cgColor
         self.reviewTextView.layer.borderWidth = 1
         
-        
+        initializeHideKeyboard()
         
     }
     
     
     override func viewWillAppear(_ animated: Bool) {
         navigationItem.hidesBackButton = true
+        ///MARK: - adjusting position of keyboard
+        //method are defined in a view controller
+        //these methods will invoke when the keyboard is appear and disappear so set the size of scroll view accordingly
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillShow),
+                                               name:UIResponder.keyboardWillShowNotification,
+                                               object: nil)
+
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillHide),
+                                               name:UIResponder.keyboardWillHideNotification,
+                                               object: nil)
+        
     }
     
     @IBAction func publishPressed(_ sender: UIButton) {
@@ -190,5 +206,39 @@ class ReviewsAndRatingsViewController: UIViewController {
         isGrey = true
         starCount = 0
         
+    }
+    
+    func initializeHideKeyboard(){
+        //Declare a Tap Gesture Recognizer which will trigger our dismissMyKeyboard() function
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(
+            target: self,
+            action: #selector(dismissMyKeyboard))
+        //Add this tap gesture recognizer to the parent view
+        view.addGestureRecognizer(tap)
+    }
+    @objc func dismissMyKeyboard(){
+        //endEditing causes the view (or one of its embedded text fields) to resign the first responder status.
+        //In short- Dismiss the active keyboard.
+        view.endEditing(true)
+    }
+
+    
+    
+    // to adjust keyboard size will typing
+    @objc func keyboardWillShow(notification:NSNotification) {
+        
+        guard let userInfo = notification.userInfo else { return }
+        var keyboardFrame:CGRect = (userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
+        keyboardFrame = self.view.convert(keyboardFrame, from: nil)
+        
+        var contentInset:UIEdgeInsets = self.scrollView.contentInset
+        contentInset.bottom = keyboardFrame.size.height + 20
+        scrollView.contentInset = contentInset
+    }
+    
+    @objc func keyboardWillHide(notification:NSNotification) {
+        
+        let contentInset:UIEdgeInsets = UIEdgeInsets.zero
+        scrollView.contentInset = contentInset
     }
 }

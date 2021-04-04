@@ -60,7 +60,6 @@ class MessageBrain {
     
     
     
-    
     func storeMessageToFireBase(with data : MessageStructer ,completion : @escaping ()-> ()) {
         
         message["body"] = data.body
@@ -69,23 +68,27 @@ class MessageBrain {
         message["messageId"] = data.date
         message["receiverId"] = data.receiverId
         // using timeStamp for unique message id
+        
+        //storing the redundant data to prevent the bug
         db.collection("Chats").document(currentUser).collection("ChatWith").document(data.receiverId).setData(["mm" : "mm"]) { (error) in
             
             if let e = error
             {
                 print("error while creating message to firebase \(e.localizedDescription)")
-
+                
             }
             else
             {
+                // stroing data on current user side
                 self.db.collection("Chats").document(self.currentUser).collection("ChatWith").document(data.receiverId).collection("AllSingleChat").document(data.date).setData(self.message) { (error) in
-                    print("1 \(self.currentUser)")
                     if let e = error
                     {
                         print("error while storing message: \(e.localizedDescription)")
                     }
                     else
                     {
+                        //storing the redundant data to prevent the bug
+                        
                         self.db.collection("Chats").document(data.receiverId).collection("ChatWith").document(self.currentUser).setData(["mm" : "mm"]) { (error) in
                             if let e = error
                             {
@@ -93,8 +96,8 @@ class MessageBrain {
                             }
                             else
                             {
+                                // stroing data on other user side
                                 self.db.collection("Chats").document(data.receiverId).collection("ChatWith").document(self.currentUser).collection("AllSingleChat").document(data.date).setData(self.message){ (error) in
-                                    print("2 \(data.receiverId)")
                                     
                                     if let e = error
                                     {
@@ -111,7 +114,7 @@ class MessageBrain {
                             }
                         }
                         
-                     
+                        
                         
                         print("message saved")
                     }
@@ -158,35 +161,5 @@ class MessageBrain {
             }
         }
         
-        
-        
-        
-        //
-        //        db.collection("Chats").document((Auth.auth().currentUser?.uid)!).collection("ChatsId").getDocuments { (snapShot, error) in
-        //
-        //            if let snap = snapShot?.documents
-        //            {
-        //                if snap.count > 0
-        //                {
-        //                    for i in 0...snap.count - 1
-        //                    {
-        //                        let body = snap[i].data()["body"] as! String
-        //                        let date = snap[i].data()["date"] as! String
-        //                        //let messageId = snap[i].data()["messageId"] as! String
-        //                        let senderId = snap[i].data()["senderId"] as! String
-        //
-        //                        let messages = MessageStructer(body: body , senderId: senderId, date: date)
-        //
-        //                        self.messagesFromFirbase.append(messages)
-        //                    }
-        //                    completion(self.messagesFromFirbase)
-        //                }
-        //            }
-        //            else
-        //            {
-        //                print(error!.localizedDescription)
-        //            }
-        //
-        //        }
     }
 }

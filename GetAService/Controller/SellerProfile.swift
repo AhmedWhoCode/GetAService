@@ -69,12 +69,16 @@ class SellerProfile: UIViewController {
         }
         // Do any additional setup after loading the view.
     }
+//    override func viewWillAppear(_ animated: Bool) {
+//        navigationController?.hidesBottomBarWhenPushed = true
+//        
+//    }
     override func viewWillAppear(_ animated: Bool) {
-        navigationController?.hidesBottomBarWhenPushed = true
+        navigationController?.isToolbarHidden = true
+        navigationItem.hidesBackButton = false
         submitButton.isEnabled = true
-        
+
     }
-    
     
     
     @IBAction func imagePressed(_ sender: Any) {

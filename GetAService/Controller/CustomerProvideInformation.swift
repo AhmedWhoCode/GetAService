@@ -34,7 +34,10 @@ class CustomerProvideInformation: UIViewController {
         designingView()
         
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.isToolbarHidden = true
+        navigationItem.hidesBackButton = false
+    }
     
     @IBAction func proceedPressed(_ sender: UIButton) {
         

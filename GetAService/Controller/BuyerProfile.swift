@@ -45,7 +45,10 @@ class BuyerProfile: UIViewController {
         designingView()
         // Do any additional setup after loading the view.
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.isToolbarHidden = true
+        navigationItem.hidesBackButton = false
+    }
     
     @IBAction func submitPressed(_ sender: UIButton) {
         //converting image to data , compatible for uploading in storage

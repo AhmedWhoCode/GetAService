@@ -17,8 +17,9 @@ class MeetupViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        navigationController?.isToolbarHidden = true
+        navigationController?.isNavigationBarHidden = false
         navigationItem.hidesBackButton = true
-        hidesBottomBarWhenPushed = true
     }
 
     @IBAction func completePressed(_ sender: UIButton) {

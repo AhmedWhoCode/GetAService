@@ -46,6 +46,11 @@ class SellerDashboardViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
+        navigationController?.isToolbarHidden = false
+        navigationController?.isNavigationBarHidden = false
+        navigationItem.hidesBackButton = true
+        
+        
         let userDefault = UserDefaults.standard
         
         //checking if the service was started or not

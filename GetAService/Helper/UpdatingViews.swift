@@ -28,11 +28,12 @@ extension SellerProfile {
     func designingView() {
         
         ///MARK: - adjusting position of keyboard
+        //method are defined in a view controller
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(keyboardWillShow),
                                                name:UIResponder.keyboardWillShowNotification,
                                                object: nil)
-        
+
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(keyboardWillHide),
                                                name:UIResponder.keyboardWillHideNotification,

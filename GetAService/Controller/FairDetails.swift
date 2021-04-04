@@ -72,6 +72,10 @@ class FairDetails: UIViewController {
         designingView()
         // Do any additional setup after loading the view.
     }
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.isToolbarHidden = true
+        navigationItem.hidesBackButton = false
+    }
     
     func designingView() {
         navigationItem.hidesBackButton = false
