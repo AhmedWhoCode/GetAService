@@ -18,7 +18,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         GMSServices.provideAPIKey(APIKeys.googleMapAPi)
         GMSPlacesClient.provideAPIKey(APIKeys.googleMapAPi)
-        
+//        let viewController = ViewController()
+//
+//        if Auth.auth().currentUser != nil
+//        {
+//            viewController.checkingUserType()
+//        }
+
         return true
     }
 

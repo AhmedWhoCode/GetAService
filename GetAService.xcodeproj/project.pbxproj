@@ -73,6 +73,7 @@
 		93981BDA2618500000E6EC61 /* SellerDashboardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93981BD92618500000E6EC61 /* SellerDashboardExtension.swift */; };
 		93981BDF261854DF00E6EC61 /* SellerInfoExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93981BDE261854DF00E6EC61 /* SellerInfoExtension.swift */; };
 		93A7936225ED13D000064AA0 /* SellerWaitingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A7936125ED13D000064AA0 /* SellerWaitingViewController.swift */; };
+		93B2A837261AEF4E00260945 /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B2A836261AEF4E00260945 /* ViewControllerExtension.swift */; };
 		93BE8E5625EE00CE008103DA /* SellerDashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BE8E5525EE00CE008103DA /* SellerDashboardViewController.swift */; };
 		93BE8E5B25EE1359008103DA /* ShowToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BE8E5A25EE1359008103DA /* ShowToast.swift */; };
 		93C95D8D2600985100F8E3C2 /* GoogleMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C95D8C2600985100F8E3C2 /* GoogleMapViewController.swift */; };
@@ -185,6 +186,8 @@
 		93981BD92618500000E6EC61 /* SellerDashboardExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellerDashboardExtension.swift; sourceTree = "<group>"; };
 		93981BDE261854DF00E6EC61 /* SellerInfoExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellerInfoExtension.swift; sourceTree = "<group>"; };
 		93A7936125ED13D000064AA0 /* SellerWaitingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellerWaitingViewController.swift; sourceTree = "<group>"; };
+		93B2A836261AEF4E00260945 /* ViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerExtension.swift; sourceTree = "<group>"; };
+		93B2A83B261AF2B400260945 /* GetAService.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GetAService.entitlements; sourceTree = "<group>"; };
 		93BE8E5525EE00CE008103DA /* SellerDashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellerDashboardViewController.swift; sourceTree = "<group>"; };
 		93BE8E5A25EE1359008103DA /* ShowToast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowToast.swift; sourceTree = "<group>"; };
 		93C95D8C2600985100F8E3C2 /* GoogleMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMapViewController.swift; sourceTree = "<group>"; };
@@ -282,6 +285,7 @@
 				93DBF77726172421003C9B03 /* MyUserDefaults.swift */,
 				93981BD92618500000E6EC61 /* SellerDashboardExtension.swift */,
 				93981BDE261854DF00E6EC61 /* SellerInfoExtension.swift */,
+				93B2A836261AEF4E00260945 /* ViewControllerExtension.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -387,6 +391,7 @@
 		937EAAB525B6F13A002CD6EC /* GetAService */ = {
 			isa = PBXGroup;
 			children = (
+				93B2A83B261AF2B400260945 /* GetAService.entitlements */,
 				9354847125E8CC9D00A76C22 /* Helper */,
 				93B8E2FA25C9482E00F3034E /* gif */,
 				9378C7FB25B8260200B6A183 /* Model */,
@@ -719,6 +724,7 @@
 			files = (
 				937EAABB25B6F13A002CD6EC /* ViewController.swift in Sources */,
 				932C488C25C99E8C00F57308 /* Constants.swift in Sources */,
+				93B2A837261AEF4E00260945 /* ViewControllerExtension.swift in Sources */,
 				9346426525F8BA2E0096F114 /* ChatBrain.swift in Sources */,
 				932C488725C9980700F57308 /* ServiceStartedBuyer.swift in Sources */,
 				936783B225B9915000A93B28 /* SellerLists.swift in Sources */,
@@ -959,9 +965,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = GetAService/GetAService.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 5;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = BXQHK9SN8A;
 				INFOPLIST_FILE = GetAService/Info.plist;
@@ -984,9 +991,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = GetAService/GetAService.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 5;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = BXQHK9SN8A;
 				INFOPLIST_FILE = GetAService/Info.plist;
