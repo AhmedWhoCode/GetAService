@@ -9,12 +9,14 @@ import UIKit
 import Firebase
 import GoogleMaps
 import GooglePlaces
+import DropDown
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        DropDown.startListeningToKeyboard()
         FirebaseApp.configure()
         GMSServices.provideAPIKey(APIKeys.googleMapAPi)
         GMSPlacesClient.provideAPIKey(APIKeys.googleMapAPi)

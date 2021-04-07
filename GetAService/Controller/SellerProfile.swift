@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import iOSDropDown
+import DropDown
 import YPImagePicker
 import FirebaseAuth
 import FirebaseStorage
@@ -14,6 +14,7 @@ import FirebaseFirestore
 import Firebase
 class SellerProfile: UIViewController {
     
+    @IBOutlet weak var selectServiceButton: UIButton!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var sellerCountryTextField: UITextField!
     @IBOutlet weak var sellerDescriptionTextVIew: UITextView!
@@ -28,8 +29,9 @@ class SellerProfile: UIViewController {
     
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var genderChooser: UISegmentedControl!
-    @IBOutlet weak var artistServicesDropDown: DropDown!
+//    @IBOutlet weak var artistServicesDropDown: DropDown!
     
+    @IBOutlet weak var progressView: UIProgressView!
     var selectedImage : UIImage?
     
     //storing profile image selected by the user as data
@@ -44,14 +46,14 @@ class SellerProfile: UIViewController {
     // to check if the source vs is artist profile so that we can retrieve the data, its value comes from segue
     var isSourceVcArtistProfile : Bool = false
     
-    
     var isDestinationSubService : Bool?
-    
+
+    let artistServicesDropDownList = DropDown()
     override func viewDidLoad() {
         super.viewDidLoad()
         hidesBottomBarWhenPushed = true
         submitButton.isEnabled = true
-        
+        artistServicesDropDownList.anchorView = selectServiceButton
         //attaching touch sensor with a view, whenever you press a view keyboard will disappear
         initializeHideKeyboard()
         
@@ -62,22 +64,36 @@ class SellerProfile: UIViewController {
             retriveData()
         }
         
+        
         designingView()
-        //will be pressed when the drop down option selects
-        artistServicesDropDown.didSelect { (text, index, id) in
-            self.selectedService = text
-        }
+        
+    
+        //artistServicesDropDown.selectionAction
+        artistServicesDropDownList.selectionAction = { [unowned self] (index: Int, item: String) in
+            artistServicesDropDownList.hide()
+            self.selectServiceButton.setTitle(item, for: .normal)
+            print("Selected item: \(item) at index: \(index)")
+            self.selectedService = item
+
+          }
+
         // Do any additional setup after loading the view.
     }
-//    override func viewWillAppear(_ animated: Bool) {
-//        navigationController?.hidesBottomBarWhenPushed = true
-//        
-//    }
+    
+    
+    @IBAction func selectServicePressed(_ sender: UIButton) {
+        artistServicesDropDownList.show()
+    }
+    
+    //    override func viewWillAppear(_ animated: Bool) {
+    //        navigationController?.hidesBottomBarWhenPushed = true
+    //
+    //    }
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.isToolbarHidden = true
         navigationItem.hidesBackButton = false
         submitButton.isEnabled = true
-
+        
     }
     
     
@@ -120,7 +136,9 @@ class SellerProfile: UIViewController {
         isDestinationSubService = true
         
         storeDataToFirebase()
-        
+        ERProgressHud.sharedInstance.show(withTitle: "Uploading data....")
+
+
     }
     
     
@@ -129,7 +147,7 @@ class SellerProfile: UIViewController {
         isDestinationSubService = false
         sender.isEnabled = false
         storeDataToFirebase()
-        
+        ERProgressHud.sharedInstance.show(withTitle: "Uploading data....")
         
     }
     
@@ -168,8 +186,9 @@ class SellerProfile: UIViewController {
             self.artistPriceTextField.text = data.price
             self.selectedService = data.service
             self.sellerCountryTextField.text = data.country
-            self.artistServicesDropDown.selectedIndex = self.artistServicesDropDown.optionArray.firstIndex(of: self.selectedService)!
-            self.artistServicesDropDown.text = self.selectedService
+            let index : Int =  self.artistServicesDropDownList.dataSource.firstIndex(of: data.service)!
+            self.artistServicesDropDownList.selectRow(index)
+            self.selectServiceButton.setTitle(data.service, for: .normal)
             self.sellerDescriptionTextVIew.text = data.description
             
             self.datePicker.setDate(data.dob, animated: true)
@@ -214,9 +233,18 @@ class SellerProfile: UIViewController {
 extension SellerProfile : DataUploadedSeller
 {
     func didsendData() {
+        ERProgressHud.sharedInstance.hide()
+
         if isDestinationSubService!
         {
-            performSegue(withIdentifier: Constants.seguesNames.profileToSubservices, sender:self)
+            if selectServiceButton.currentTitle != ""
+            {
+                performSegue(withIdentifier: Constants.seguesNames.profileToSubservices, sender:self)
+            }
+            else
+            {
+                showToast1(controller: self, message: "Kindly select service", seconds: 1, color: .red)
+            }
         }
         else
         {

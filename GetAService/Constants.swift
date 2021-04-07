@@ -88,6 +88,7 @@ struct Constants {
         static let notificationsToStarted = "notificationsToStarted"
         static let servicesToStarted = "servicesToStarted"
         static let sellerDashToMeetup = "sellerDashToMeetup"
+        static let orderInfoToSellerDash = "orderInfoToSellerDash"
     }
     
 }

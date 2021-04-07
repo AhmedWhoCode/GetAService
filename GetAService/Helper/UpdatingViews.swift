@@ -7,7 +7,7 @@
 
 import Foundation
 import UIKit
-
+import DropDown
 extension SellerProfile {
     func initializeHideKeyboard(){
         
@@ -45,7 +45,7 @@ extension SellerProfile {
         //        saveBarButton.title = ""
         navigationItem.hidesBackButton = false
         //providing dummy  data to dro down
-        artistServicesDropDown.optionArray = ["Face treatments"
+        artistServicesDropDownList.dataSource = ["Face treatments"
                                               ,"Hair removel"
                                               ,"Hair salon"
                                               ,"Makeup"
@@ -53,6 +53,11 @@ extension SellerProfile {
                                               ,"Nails"
                                               ,"Tanning"
                                               ,"Tattoo"]
+        
+        artistServicesDropDownList.isMultipleTouchEnabled = false
+        artistServicesDropDownList.bottomOffset = CGPoint(x: 0, y:(artistServicesDropDownList.anchorView!.plainView.bounds.height))
+        DropDown.appearance().selectionBackgroundColor = UIColor.yellow
+
         
         ///MARK: - designing views
         artistImage.layer.masksToBounds = true
@@ -140,15 +145,16 @@ extension SellerProfile {
         
         
         //To apply padding
-        let paddingView6 : UIView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: artistServicesDropDown.frame.height))
-        artistServicesDropDown.leftView = paddingView6
-        artistServicesDropDown.leftViewMode = UITextField.ViewMode.always
+//        let paddingView6 : UIView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: artistServicesDropDownList.frame.height))
+        selectServiceButton.titleEdgeInsets = UIEdgeInsets(top: 10,left: 10,bottom: 10,right: 10)
+        //selectServiceButton.layer.left(paddingView6)
+     //selectServiceButton.layer.leftViewMode = UITextField.ViewMode.always
         
         //shadow
-        artistServicesDropDown.layer.shadowColor = UIColor.gray.cgColor
-        artistServicesDropDown.layer.shadowOpacity = 0.5
-        artistServicesDropDown.layer.shadowOffset = CGSize.zero
-        artistServicesDropDown.layer.shadowRadius = 7
+        selectServiceButton.layer.shadowColor = UIColor.white.cgColor
+        selectServiceButton.layer.shadowOpacity = 0.5
+        selectServiceButton.layer.shadowOffset = CGSize.zero
+        selectServiceButton.layer.shadowRadius = 7
         
         sellerCountryTextField.layer.shadowColor = UIColor.gray.cgColor
         sellerCountryTextField.layer.shadowOpacity = 0.5

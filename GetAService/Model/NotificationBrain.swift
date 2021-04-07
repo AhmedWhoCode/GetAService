@@ -121,6 +121,24 @@ class NotificationBrain {
         
     }
     
+//    func updateNavigationStatus(with status : String ,
+//                                buyerId : String ,
+//                                notificationId : String) {
+//        
+//        
+//        self.db.collection("Bookings")
+//            .document("Seller")
+//            .collection("AllSellerWhoReceivedOrders")
+//            .document(self.currentUser!)
+//            .collection("BookedBy")
+//            .document(buyerId)
+//            .collection("WithBookingID")
+//            .document(notificationId)
+//            .collection("tracking")
+//            .document("TrackBooking")
+//            .
+//    }
+    
     
     func updateBookingStatus(
         with status : String ,
@@ -272,7 +290,7 @@ class NotificationBrain {
                             {
                                 if let snap = snapshot?.data()
                                 {
-                                    if (snap.count) > 0
+                                    if snap.count > 0
                                     {
                                         let response = snapshot?.data()!["acknowlegdeStatus"] as? String
                                         BookingBrain.sharedInstance.sellerId = self.currentUser

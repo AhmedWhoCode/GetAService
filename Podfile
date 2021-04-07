@@ -16,7 +16,7 @@ pod 'Firebase/Storage'
 #google sign in
 pod 'GoogleSignIn'
 #drop down list
-pod 'iOSDropDown'
+#pod 'iOSDropDown'
 #image picker
 pod 'YPImagePicker'
 #caching image
@@ -29,7 +29,14 @@ pod 'GoogleMaps'
 pod 'GooglePlaces'
 #floating panel
 pod 'FloatingPanel'
+# Add the Firebase pod for Google Analytics
+pod 'Firebase/Analytics'
 
+#pod for drop down
+pod 'DropDown'
+
+# Add the pod for Firebase Cloud Messaging
+pod 'Firebase/Messaging'
 
   target 'GetAServiceTests' do
     inherit! :search_paths

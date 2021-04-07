@@ -5,6 +5,11 @@
 //  Created by Geek on 26/01/2021.
 //
 
+struct InfoToBeSend {
+    var name : String
+    var image : String
+}
+
 import UIKit
 
 class NotificationsList: UITableViewController, NotificationBrainDelegant {
@@ -19,6 +24,8 @@ class NotificationsList: UITableViewController, NotificationBrainDelegant {
     var buyerID : String?
     var buyerImage : String?
     var buyerName : String?
+    
+    var userInfoToBeSend = [String:InfoToBeSend]()
     
     var cell2 : NotificationsTableViewCell?
     
@@ -59,14 +66,26 @@ class NotificationsList: UITableViewController, NotificationBrainDelegant {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.cellIdentifierNotification, for: indexPath) as? NotificationsTableViewCell
-        buyerName = notifications[indexPath.row].buyerName
-        buyerImage = notifications[indexPath.row].buyerImage
+      
         cell?.customerImage.loadCacheImage(with: notifications[indexPath.row].buyerImage )
         cell?.customerName.text = notifications[indexPath.row].buyerName
         cell?.customerCountry.text = notifications[indexPath.row].buyerCountry
         cell?.button.setTitle( notifications[indexPath.row].buyerUID , for: .normal)
+        //buyerName = notifications[indexPath.row].buyerName
+        //buyerImage = notifications[indexPath.row].buyerImage
         cell?.buttonDelegantNotification = self
         cell2 = cell
+        
+        // adding value to dictionary
+       
+            let infoToBeSend = InfoToBeSend(name: notifications[indexPath.row].buyerName,
+                                            image: notifications[indexPath.row].buyerImage
+                                            )
+            userInfoToBeSend[notifications[indexPath.row].buyerUID] = infoToBeSend
+        
+        
+        
+
         return cell!
     }
     
@@ -81,6 +100,8 @@ class NotificationsList: UITableViewController, NotificationBrainDelegant {
                 guard let buyerImage = buyerImage else {return}
                 guard let buyerName = buyerName else {return}
                 
+                print("this is iddd" , buyerID)
+                
                 destinationSegue.buyerName = buyerName
                 destinationSegue.buyerImage = buyerImage
                 destinationSegue.buyerID = buyerID
@@ -93,11 +114,21 @@ extension NotificationsList : ButtonPressed
 {
     func didButtonPressed(with value: String) {
         
-        buyerID = value
-        
-        print("idb \(value)")
+        if userInfoToBeSend.keys.contains(value)
+        {
+            buyerName = userInfoToBeSend[value]?.name
+            buyerImage = userInfoToBeSend[value]?.image
+            buyerID = value
+        }
+        else
+        {
+            showToast1(controller: self, message: "Error while retriving values", seconds: 1, color: .red)
+        }
+                
+       // print("idb \(value)")
         
         notificationBrain.navigateToCorrectScreen(with: buyerID!) { (response) in
+            print("hey here " , response)
             if response == "started"
             {
                 
@@ -106,6 +137,10 @@ extension NotificationsList : ButtonPressed
              else if response == "completed"
             {
                 showToast1(controller: self, message: "The service was completed", seconds: 1, color: .red)
+            }
+             else if response == "rejected"
+            {
+                showToast1(controller: self, message: "The service was rejected", seconds: 1, color: .red)
             }
              
             else

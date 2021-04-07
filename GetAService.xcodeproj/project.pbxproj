@@ -19,6 +19,7 @@
 		93226A312601E5BF001A7A86 /* LocationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93226A2F2601E5BF001A7A86 /* LocationTableViewCell.xib */; };
 		93233E8726071CDB00812732 /* BookingBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93233E8626071CDB00812732 /* BookingBrain.swift */; };
 		93233E9526072B2800812732 /* NotificationBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93233E9426072B2800812732 /* NotificationBrain.swift */; };
+		9329C280261D8ECD00DCB084 /* ERProgressHud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9329C27F261D8ECD00DCB084 /* ERProgressHud.swift */; };
 		932C487225C97AF700F57308 /* myGif.gif in Resources */ = {isa = PBXBuildFile; fileRef = 932C487125C97AF500F57308 /* myGif.gif */; };
 		932C487A25C9823700F57308 /* myGreenGif.gif in Resources */ = {isa = PBXBuildFile; fileRef = 932C487925C9823700F57308 /* myGreenGif.gif */; };
 		932C488225C9979800F57308 /* inProgress.gif in Resources */ = {isa = PBXBuildFile; fileRef = 932C488125C9979700F57308 /* inProgress.gif */; };
@@ -125,6 +126,7 @@
 		93226A2F2601E5BF001A7A86 /* LocationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LocationTableViewCell.xib; sourceTree = "<group>"; };
 		93233E8626071CDB00812732 /* BookingBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingBrain.swift; sourceTree = "<group>"; };
 		93233E9426072B2800812732 /* NotificationBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationBrain.swift; sourceTree = "<group>"; };
+		9329C27F261D8ECD00DCB084 /* ERProgressHud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ERProgressHud.swift; sourceTree = "<group>"; };
 		932C487125C97AF500F57308 /* myGif.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = myGif.gif; sourceTree = "<group>"; };
 		932C487925C9823700F57308 /* myGreenGif.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = myGreenGif.gif; sourceTree = "<group>"; };
 		932C488125C9979700F57308 /* inProgress.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = inProgress.gif; sourceTree = "<group>"; };
@@ -330,6 +332,7 @@
 				93226A2F2601E5BF001A7A86 /* LocationTableViewCell.xib */,
 				935E31C82612226100D3CCD5 /* ReviewsTableViewCell.swift */,
 				935E31C92612226100D3CCD5 /* ReviewsTableViewCell.xib */,
+				9329C27F261D8ECD00DCB084 /* ERProgressHud.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -744,6 +747,7 @@
 				9360136E2603A4780096BCEF /* GoogleMapBrain.swift in Sources */,
 				931D669825C03AC2002C239E /* SellerProfile.swift in Sources */,
 				935E31BF2611AEE900D3CCD5 /* ReviewsAndRatingsViewController.swift in Sources */,
+				9329C280261D8ECD00DCB084 /* ERProgressHud.swift in Sources */,
 				9352712025E7899100F368B1 /* BuyerProfileModel.swift in Sources */,
 				9352608125BD63270052C0A3 /* FairDetails.swift in Sources */,
 				9334E70026105C0F0046EB0C /* MeetupViewController.swift in Sources */,

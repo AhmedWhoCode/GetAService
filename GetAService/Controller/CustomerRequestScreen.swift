@@ -87,7 +87,10 @@ class CustomerRequestScreen: UIViewController {
     
     @IBAction func rejectPressed(_ sender: UIButton) {
         notificationBrain.updateBookingStatus(with: "rejected", buyerId: buyerID!, notificationId: notificationId!)
+        BookingBrain.sharedInstance.updateAcknowledgeStatus(value: "rejected") {
+        self.performSegue(withIdentifier: Constants.seguesNames.orderInfoToSellerDash, sender: self)
 
+        }
     }
 
     
