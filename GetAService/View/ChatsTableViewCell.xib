@@ -83,6 +83,7 @@
                 <outlet property="chatCountry" destination="u5c-UN-RMn" id="fPe-iu-ntI"/>
                 <outlet property="chatImage" destination="Vwg-lv-AY9" id="o3i-K4-8kQ"/>
                 <outlet property="chatName" destination="Tsh-dn-qzH" id="ZBu-p5-K6U"/>
+                <outlet property="view" destination="AFp-cW-jgL" id="qjf-TE-It2"/>
             </connections>
             <point key="canvasLocation" x="-183.33333333333334" y="-24.441964285714285"/>
         </tableViewCell>

@@ -113,7 +113,8 @@ class NotificationsList: UITableViewController, NotificationBrainDelegant {
 extension NotificationsList : ButtonPressed
 {
     func didButtonPressed(with value: String) {
-        
+        ERProgressHud.sharedInstance.show(withTitle: "Checking status please wait")
+
         if userInfoToBeSend.keys.contains(value)
         {
             buyerName = userInfoToBeSend[value]?.name
@@ -128,6 +129,7 @@ extension NotificationsList : ButtonPressed
        // print("idb \(value)")
         
         notificationBrain.navigateToCorrectScreen(with: buyerID!) { (response) in
+            ERProgressHud.sharedInstance.hide()
             print("hey here " , response)
             if response == "started"
             {

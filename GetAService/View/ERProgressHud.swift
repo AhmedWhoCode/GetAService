@@ -107,7 +107,7 @@ class ERProgressHud {
         
         container.backgroundColor = UIColor.clear
         
-        subContainer.backgroundColor = UIColor.systemGroupedBackground
+        subContainer.backgroundColor = UIColor.yellow
         subContainer.center = CGPoint(x: SCREEN_WIDTH / 2, y: SCREEN_HEIGHT / 2)
         container.addSubview(subContainer)
         
