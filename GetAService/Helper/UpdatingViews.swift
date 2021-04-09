@@ -8,6 +8,9 @@
 import Foundation
 import UIKit
 import DropDown
+
+
+
 extension SellerProfile {
     func initializeHideKeyboard(){
         
@@ -142,6 +145,11 @@ extension SellerProfile {
         submitButton.layer.cornerRadius = 20
         submitButton.layer.borderWidth = 1
         submitButton.layer.borderColor = UIColor.black.cgColor
+        
+        //sth view
+        uploadFile.layer.cornerRadius = 20
+        uploadFile.layer.borderWidth = 1
+        uploadFile.layer.borderColor = UIColor.black.cgColor
         
         
         //To apply padding

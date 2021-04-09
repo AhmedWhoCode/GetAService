@@ -12,13 +12,15 @@ import FirebaseAuth
 import FirebaseStorage
 import FirebaseFirestore
 import Firebase
+import UniformTypeIdentifiers
+
 class SellerProfile: UIViewController {
     
     @IBOutlet weak var selectServiceButton: UIButton!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var sellerCountryTextField: UITextField!
     @IBOutlet weak var sellerDescriptionTextVIew: UITextView!
-    @IBOutlet weak var saveBarButton: UIBarButtonItem!
+    @IBOutlet weak var uploadFile: UIButton!
     @IBOutlet weak var artistImage: UIImageView!
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var artistNameTextField: UITextField!
@@ -42,7 +44,7 @@ class SellerProfile: UIViewController {
     let sellerProfileBrain = SellerProfileBrain()
     //stores selected main service selected  by the user
     var selectedService:String!
-    
+    var sellerDocument : String!
     // to check if the source vs is artist profile so that we can retrieve the data, its value comes from segue
     var isSourceVcArtistProfile : Bool = false
     
@@ -78,6 +80,15 @@ class SellerProfile: UIViewController {
           }
 
         // Do any additional setup after loading the view.
+    }
+    
+    @IBAction func uploadFilePressed(_ sender: UIButton) {
+        let supportedTypes: [UTType] = [UTType.image , UTType.pdf , UTType.zip , UTType.text ,UTType.plainText]
+        let documentPicker = UIDocumentPickerViewController(forOpeningContentTypes: supportedTypes, asCopy: true)
+        //Call Delegate
+        documentPicker.delegate = self
+        documentPicker.allowsMultipleSelection = false
+        self.present(documentPicker, animated: true)
     }
     
     
@@ -136,7 +147,6 @@ class SellerProfile: UIViewController {
         isDestinationSubService = true
         
         storeDataToFirebase()
-        ERProgressHud.sharedInstance.show(withTitle: "Uploading data....")
 
 
     }
@@ -153,6 +163,15 @@ class SellerProfile: UIViewController {
     
     
     func storeDataToFirebase() {
+        
+        guard let documentToUpload = sellerDocument else
+        {
+            showToast1(controller: self, message: "kindly upload driving license or ID card", seconds: 2, color: .red)
+            submitButton.isEnabled = true
+            return
+        }
+        ERProgressHud.sharedInstance.show(withTitle: "Uploading data....")
+
         //converting image to data , compatible for uploading in storage
         profileImageData = (artistImage.image?.jpegData(compressionQuality: 0.4)!)!
         // uncomment this code to upload image to database
@@ -169,7 +188,9 @@ class SellerProfile: UIViewController {
                                                 country: self.sellerCountryTextField.text!,
                                                 description: self.sellerDescriptionTextVIew.text! ,
                                                 dob: self.datePicker.date,
-                                                gender: self.genderChooser.titleForSegment(at: self.genderChooser.selectedSegmentIndex)!)
+                                                gender: self.genderChooser.titleForSegment(at: self.genderChooser.selectedSegmentIndex)!,
+                                                document: documentToUpload)
+                                                
             
             self.sellerProfileBrain.storingProfileDataToFireBase(with: sellerData)
         }    }
@@ -190,7 +211,8 @@ class SellerProfile: UIViewController {
             self.artistServicesDropDownList.selectRow(index)
             self.selectServiceButton.setTitle(data.service, for: .normal)
             self.sellerDescriptionTextVIew.text = data.description
-            
+            self.sellerDocument = data.document
+
             self.datePicker.setDate(data.dob, animated: true)
             
             if data.gender == "Male"
@@ -230,6 +252,26 @@ class SellerProfile: UIViewController {
     
 }
 
+
+///MARK: - Getting response from the Picker
+extension SellerProfile : UIDocumentPickerDelegate
+{
+    
+    func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
+        ERProgressHud.sharedInstance.show(withTitle: "uploading data,it may take time")
+        sellerProfileBrain.uploadingDocument(with: urls[0]) { (url) in
+            ERProgressHud.sharedInstance.hide()
+            self.sellerDocument = url.absoluteString
+        }
+        
+        
+
+    }
+
+}
+
+
+///MARK: -   Getting response if the profile data is uploaded
 extension SellerProfile : DataUploadedSeller
 {
     func didsendData() {

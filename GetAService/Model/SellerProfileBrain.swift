@@ -63,8 +63,10 @@ class SellerProfileBrain {
                 let desc = snap["description"]! as! String
                 let country = snap["country"]! as! String
                 let subServices = snap["SubServices"]
+                let document = snap["documentUrl"]
+
                 
-                let sellerProfileModel = SellerProfileModel(uid:uid1, imageRef: imageRef1 , name: name1, email:email1, address: address1, phone: phone1, price: price1, service: service1, country: country, description: desc, dob:dob1, gender: gender1)
+                let sellerProfileModel = SellerProfileModel(uid:uid1, imageRef: imageRef1 , name: name1, email:email1, address: address1, phone: phone1, price: price1, service: service1, country: country, description: desc, dob:dob1, gender: gender1,document: document as! String)
                 
                 completion(sellerProfileModel , subServices as? [String])
             }
@@ -92,6 +94,8 @@ class SellerProfileBrain {
         sellerProfileData["description"] = sellerProfileModel.description
         sellerProfileData["country"] = sellerProfileModel.country
         sellerProfileData["status"] = Constants.online
+        sellerProfileData["documentUrl"] = sellerProfileModel.document
+
         
         
         if let userid = Auth.auth().currentUser?.uid {
@@ -340,6 +344,34 @@ class SellerProfileBrain {
         
         
         
+        
+        
+    }
+    
+    func uploadingDocument(with data:URL,  completion :@escaping (URL)->() ){
+        let userId = Auth.auth().currentUser!.uid
+        
+        //filePath or unique name of an image , also used a name
+        let storageRef = self.fireStorage.reference().child("documents").child(userId)
+        
+        
+        storageRef.putFile(from : data, metadata: nil) { (meta, error) in
+            if  error != nil
+            {
+                print("error uploadind a file\(error?.localizedDescription ?? "Error")")
+                
+            }
+            else
+            {
+                //getting url
+                storageRef.downloadURL { (url,error) in
+                    print(url?.absoluteURL ?? "nil")
+                    completion(url!.absoluteURL)
+                }
+                print("document uploaded")
+                
+            }
+        }
         
         
     }
