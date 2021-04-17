@@ -17,15 +17,16 @@ import CoreLocation
 
 class FairDetails: UIViewController {
 
-    @IBOutlet weak var artistImage: UIImageView!
+    @IBOutlet weak var sellerImage: UIImageView!
     @IBOutlet weak var ModelPriceView: UIView!
     @IBOutlet weak var estimatedPriceView: UIView!
     @IBOutlet weak var uberFairView: UIView!
     @IBOutlet weak var confirmBooking: UIButton!
+    @IBOutlet weak var sellerName: UILabel!
     
     
     @IBOutlet weak var uberEstimatedLabel: UILabel!
-    @IBOutlet weak var modelPriceLabel: UILabel!
+    @IBOutlet weak var sellerPriceLabel: UILabel!
     @IBOutlet weak var totalEstimatedLabel: UILabel!
 
 
@@ -62,9 +63,10 @@ class FairDetails: UIViewController {
             let distance = buyerCoordinates.distance(from: sellerCoordinates) / 1000
             
             self.uberEstimatedLabel.text = String(format: "%.1f", distance) + " KM"
-            self.modelPriceLabel.text = price
+            self.sellerPriceLabel.text = price
             self.totalEstimatedLabel.text = address
-            
+            self.sellerImage.loadCacheImage(with: BookingBrain.sharedInstance.sellerImage!)
+            self.sellerName.text = BookingBrain.sharedInstance.sellerName!
 
 
         }
@@ -99,10 +101,10 @@ class FairDetails: UIViewController {
         confirmBooking.layer.borderWidth = 1
         confirmBooking.layer.borderColor = UIColor.black.cgColor
         
-        artistImage.layer.masksToBounds = true
-        artistImage.layer.borderColor = UIColor.black.cgColor
-        artistImage.layer.cornerRadius=artistImage.frame.size.height/2
-        artistImage.contentMode = .scaleAspectFill
+        sellerImage.layer.masksToBounds = true
+        sellerImage.layer.borderColor = UIColor.black.cgColor
+        sellerImage.layer.cornerRadius=sellerImage.frame.size.height/2
+        sellerImage.contentMode = .scaleAspectFill
         
     }
 

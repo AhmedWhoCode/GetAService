@@ -63,10 +63,11 @@ class SellerProfileBrain {
                 let desc = snap["description"]! as! String
                 let country = snap["country"]! as! String
                 let subServices = snap["SubServices"]
-                let document = snap["documentUrl"]
-
+                let document = snap["documentUrl"] as! String
+                let documentName = snap["documentName"] as! String
                 
-                let sellerProfileModel = SellerProfileModel(uid:uid1, imageRef: imageRef1 , name: name1, email:email1, address: address1, phone: phone1, price: price1, service: service1, country: country, description: desc, dob:dob1, gender: gender1,document: document as! String)
+                
+                let sellerProfileModel = SellerProfileModel(uid:uid1, imageRef: imageRef1 , name: name1, email:email1, address: address1, phone: phone1, price: price1, service: service1, country: country, description: desc, dob:dob1, gender: gender1,document: document , documentName: documentName)
                 
                 completion(sellerProfileModel , subServices as? [String])
             }
@@ -95,6 +96,7 @@ class SellerProfileBrain {
         sellerProfileData["country"] = sellerProfileModel.country
         sellerProfileData["status"] = Constants.online
         sellerProfileData["documentUrl"] = sellerProfileModel.document
+        sellerProfileData["documentName"] = sellerProfileModel.documentName
 
         
         

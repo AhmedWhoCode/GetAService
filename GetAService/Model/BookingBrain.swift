@@ -28,7 +28,10 @@ class BookingBrain {
     
     //its the current booking id, the most recent one , its value updated when we call insertBookingInformation and before that it will be null, , it may be null so be carefully while using it
     var currentBookingDocumentId : String?
-    
+    var buyerId : String?
+    var sellerId : String?
+    var sellerName : String?
+    var sellerImage : String?
     // to get seller defualt price
     var sellerProfileBrain = SellerProfileBrain()
     
@@ -41,8 +44,7 @@ class BookingBrain {
     
     let db = Firestore.firestore()
     
-    var buyerId : String?
-    var sellerId : String?
+   
     
     //its value will come from database
     var sellerPrice : String?
@@ -189,7 +191,7 @@ class BookingBrain {
                     let sellerLongitude = snap["sellerLongitude"] as? String
                     let sellerAddress = snap["sellerAddress"] as? String
                     let sellerPrice = snap["sellerPrice"] as? String
-                    
+
                     completion(sellerLatitude!,sellerLongitude!,sellerAddress!,sellerPrice!)
                     
                     

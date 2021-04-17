@@ -213,6 +213,8 @@ class SellerInformation: UIViewController {
     
     @IBAction func bookNow(_ sender: Any) {
         performSegue(withIdentifier: Constants.seguesNames.sellerInfoToInformation, sender: self)
+        BookingBrain.sharedInstance.sellerName = sellerNameToSend
+        BookingBrain.sharedInstance.sellerImage = sellerImageToSend
     }
     
     

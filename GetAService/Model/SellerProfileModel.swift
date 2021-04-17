@@ -21,6 +21,7 @@ struct SellerProfileModel {
    var dob:Date
    var gender:String
    var document:String
+   var documentName:String
 
 }
 

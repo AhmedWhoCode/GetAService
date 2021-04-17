@@ -31,6 +31,9 @@ class SellerProfile: UIViewController {
     
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var genderChooser: UISegmentedControl!
+    
+    @IBOutlet weak var documentNameTextField: UITextField!
+    
 //    @IBOutlet weak var artistServicesDropDown: DropDown!
     
     @IBOutlet weak var progressView: UIProgressView!
@@ -44,7 +47,8 @@ class SellerProfile: UIViewController {
     let sellerProfileBrain = SellerProfileBrain()
     //stores selected main service selected  by the user
     var selectedService:String!
-    var sellerDocument : String!
+    var sellerSelectedDocument : String!
+    var selectedDocumentName : String!
     // to check if the source vs is artist profile so that we can retrieve the data, its value comes from segue
     var isSourceVcArtistProfile : Bool = false
     
@@ -52,6 +56,7 @@ class SellerProfile: UIViewController {
 
     let artistServicesDropDownList = DropDown()
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         hidesBottomBarWhenPushed = true
         submitButton.isEnabled = true
@@ -96,10 +101,7 @@ class SellerProfile: UIViewController {
         artistServicesDropDownList.show()
     }
     
-    //    override func viewWillAppear(_ animated: Bool) {
-    //        navigationController?.hidesBottomBarWhenPushed = true
-    //
-    //    }
+ 
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.isToolbarHidden = true
         navigationItem.hidesBackButton = false
@@ -164,7 +166,7 @@ class SellerProfile: UIViewController {
     
     func storeDataToFirebase() {
         
-        guard let documentToUpload = sellerDocument else
+        guard let documentToUpload = sellerSelectedDocument else
         {
             showToast1(controller: self, message: "kindly upload driving license or ID card", seconds: 2, color: .red)
             submitButton.isEnabled = true
@@ -189,7 +191,9 @@ class SellerProfile: UIViewController {
                                                 description: self.sellerDescriptionTextVIew.text! ,
                                                 dob: self.datePicker.date,
                                                 gender: self.genderChooser.titleForSegment(at: self.genderChooser.selectedSegmentIndex)!,
-                                                document: documentToUpload)
+                                                document: documentToUpload,
+                                                documentName: self.selectedDocumentName
+                                                )
                                                 
             
             self.sellerProfileBrain.storingProfileDataToFireBase(with: sellerData)
@@ -207,12 +211,13 @@ class SellerProfile: UIViewController {
             self.artistPriceTextField.text = data.price
             self.selectedService = data.service
             self.sellerCountryTextField.text = data.country
+            self.documentNameTextField.text = data.documentName
             let index : Int =  self.artistServicesDropDownList.dataSource.firstIndex(of: data.service)!
             self.artistServicesDropDownList.selectRow(index)
             self.selectServiceButton.setTitle(data.service, for: .normal)
             self.sellerDescriptionTextVIew.text = data.description
-            self.sellerDocument = data.document
-
+            self.sellerSelectedDocument = data.document
+            self.selectedDocumentName = data.documentName
             self.datePicker.setDate(data.dob, animated: true)
             
             if data.gender == "Male"
@@ -258,10 +263,14 @@ extension SellerProfile : UIDocumentPickerDelegate
 {
     
     func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
+        
+        selectedDocumentName =   urls[0].lastPathComponent
+        documentNameTextField.text = selectedDocumentName
+        
         ERProgressHud.sharedInstance.show(withTitle: "uploading data,it may take time")
         sellerProfileBrain.uploadingDocument(with: urls[0]) { (url) in
             ERProgressHud.sharedInstance.hide()
-            self.sellerDocument = url.absoluteString
+            self.sellerSelectedDocument = url.absoluteString
         }
         
         
