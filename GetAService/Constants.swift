@@ -43,6 +43,10 @@ struct Constants {
     static let reviewCell = "reviewCell"
     static let reviewsTableViewCell = "ReviewsTableViewCell"
     
+    //portfolio constants
+    static let portfolioCell = "portfolioCell"
+    static let portfolioImagesTableViewCell = "PortfolioImagesTableViewCell"
+    
     struct gifNames {
         static let inProgressGif = "inProgress.gif"
         static let greenCheckGif = "myGreenGif.gif"

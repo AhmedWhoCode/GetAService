@@ -55,6 +55,11 @@ class SellerProfile: UIViewController {
     var isDestinationSubService : Bool?
 
     let artistServicesDropDownList = DropDown()
+    
+    
+    var selectedImages = [UIImage]()
+
+    @IBOutlet weak var collectionView: UICollectionView!
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -87,6 +92,41 @@ class SellerProfile: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    @IBAction func addWorkPressed(_ sender: UIButton) {
+        selectedImages.removeAll()
+        var config = YPImagePickerConfiguration()
+        config.library.defaultMultipleSelection  = true
+        config.library.maxNumberOfItems = 8
+        config.library.mediaType = YPlibraryMediaType.photo
+        
+        let picker = YPImagePicker(configuration: config)
+        
+        
+        present(picker, animated: true, completion: nil)
+        
+        picker.didFinishPicking { [unowned picker] items, cancelled in
+            
+            picker.dismiss(animated: true, completion: nil)
+            
+            for item in items {
+                
+                switch item {
+                case .photo(let item):
+                    self.selectedImages.append(item.originalImage)
+                default:
+                    print("wont happen")
+                }
+                
+            }
+            
+            
+            self.collectionView.reloadData()
+        }
+        
+        
+    }
+    
+    
     @IBAction func uploadFilePressed(_ sender: UIButton) {
         let supportedTypes: [UTType] = [UTType.image , UTType.pdf , UTType.zip , UTType.text ,UTType.plainText]
         let documentPicker = UIDocumentPickerViewController(forOpeningContentTypes: supportedTypes, asCopy: true)
@@ -111,7 +151,12 @@ class SellerProfile: UIViewController {
     
     
     @IBAction func imagePressed(_ sender: Any) {
-        let picker = YPImagePicker()
+        var config = YPImagePickerConfiguration()
+        config.library.defaultMultipleSelection  = false
+        
+        let picker = YPImagePicker(configuration: config)
+        
+        
         present(picker, animated: true, completion: nil)
         picker.didFinishPicking { [unowned picker] items, _ in
             if let photo = items.singlePhoto {
@@ -305,6 +350,25 @@ extension SellerProfile : DataUploadedSeller
     
 }
 
+
+extension SellerProfile : UICollectionViewDelegate , UICollectionViewDataSource
+{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return selectedImages.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "portfolioCollectionCell", for: indexPath) as? PortfolioCollectionViewCell
+        
+        cell?.portfolioImage.image = selectedImages[indexPath.row]
+        return cell!
+    }
+    
+    
+    
+}
 
 
 //            self.fireStorage.reference().child("Images/profile_images").child(Auth.auth().currentUser!.uid).getData(maxSize: 1 * 1024 * 1024) { (data1, error) in

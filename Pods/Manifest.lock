@@ -383,7 +383,7 @@ PODS:
   - PryntTrimmerView (4.0.2)
   - SteviaLayout (4.7.3)
   - SwiftyGif (5.4.0)
-  - YPImagePicker (4.4.0):
+  - YPImagePicker (4.5.0):
     - PryntTrimmerView (~> 4.0.2)
     - SteviaLayout (~> 4.7.3)
 
@@ -476,7 +476,7 @@ SPEC CHECKSUMS:
   PryntTrimmerView: 6a43cc90df5d99addeabd33d4ba09b1365322130
   SteviaLayout: c2ecdcff57d44e38fd2f65e54ad52aeae28ca0c4
   SwiftyGif: 5d4af95df24caf1c570dbbcb32a3b8a0763bc6d7
-  YPImagePicker: 15aed8bcaa4dad976e11b6114126d731a2f9f3c9
+  YPImagePicker: 6f410f475bd22fa8cd430495b54d4b2f15865c2d
 
 PODFILE CHECKSUM: ffd98935bc7c86fa96a3180d2ef189a12d768588
 

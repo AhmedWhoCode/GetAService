@@ -16,8 +16,11 @@ class SellerLists: UITableViewController {
     var selectedService  : String!
     
     var selectedSellerId : String!
+    
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        
         navigationItem.hidesBackButton = false
         hidesBottomBarWhenPushed = true
         print(selectedService!)
@@ -58,7 +61,6 @@ class SellerLists: UITableViewController {
         cell?.sellerNameLabel.text = sellerShortInfo[indexPath.row].name
         cell?.sellerCountryLabel.text = sellerShortInfo[indexPath.row].country
         cell?.sellerAvailabilityLabel.text = sellerShortInfo[indexPath.row].availability
-        
         cell?.sellerInfoButton.setTitle(sellerShortInfo[indexPath.row].uid, for: .normal)
         if let image = sellerImagesRef
         {

@@ -9,12 +9,15 @@
 /* Begin PBXBuildFile section */
 		222F70D46DF72EAC85E4D6E6 /* Pods_GetAServiceTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 477D327B80E7FD74729F9831 /* Pods_GetAServiceTests.framework */; };
 		9318F8AB25C5767D009A6712 /* CustomerRequestScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9318F8AA25C5767D009A6712 /* CustomerRequestScreen.swift */; };
+		931A9310262CBE4D007117C6 /* PortfolioCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931A930F262CBE4D007117C6 /* PortfolioCollectionViewCell.swift */; };
 		931CFA2925DED734007C2EE9 /* SubServicesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931CFA2825DED734007C2EE9 /* SubServicesTableViewController.swift */; };
 		931D669825C03AC2002C239E /* SellerProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931D669725C03AC2002C239E /* SellerProfile.swift */; };
 		931D669D25C0660E002C239E /* CustomerProvideInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931D669C25C0660E002C239E /* CustomerProvideInformation.swift */; };
 		931D66A225C0873E002C239E /* NotificationsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931D66A125C0873E002C239E /* NotificationsList.swift */; };
 		931D66AB25C087EF002C239E /* NotificationsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931D66A925C087EF002C239E /* NotificationsTableViewCell.swift */; };
 		931D66AC25C087EF002C239E /* NotificationsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 931D66AA25C087EF002C239E /* NotificationsTableViewCell.xib */; };
+		9321A99B262B01BA0015FCDC /* PortfolioImagesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9321A999262B01BA0015FCDC /* PortfolioImagesTableViewCell.swift */; };
+		9321A99C262B01BA0015FCDC /* PortfolioImagesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9321A99A262B01BA0015FCDC /* PortfolioImagesTableViewCell.xib */; };
 		93226A302601E5BF001A7A86 /* LocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93226A2E2601E5BF001A7A86 /* LocationTableViewCell.swift */; };
 		93226A312601E5BF001A7A86 /* LocationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93226A2F2601E5BF001A7A86 /* LocationTableViewCell.xib */; };
 		93233E8726071CDB00812732 /* BookingBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93233E8626071CDB00812732 /* BookingBrain.swift */; };
@@ -30,6 +33,7 @@
 		932C89C325DAE072008D72D9 /* NotificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932C89C225DAE072008D72D9 /* NotificationModel.swift */; };
 		932DD7C22609D73A007BD665 /* CustomerScreenExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932DD7C12609D73A007BD665 /* CustomerScreenExtension.swift */; };
 		932DD7CA2609F69E007BD665 /* BuyerWaitingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932DD7C92609F69E007BD665 /* BuyerWaitingViewController.swift */; };
+		9332DF22262B041100346FD9 /* PortfolioImagesUITableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9332DF21262B041100346FD9 /* PortfolioImagesUITableViewController.swift */; };
 		9334E70026105C0F0046EB0C /* MeetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9334E6FF26105C0F0046EB0C /* MeetupViewController.swift */; };
 		9339113125C828C100913D3E /* AcceptOrDecline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9339113025C828C100913D3E /* AcceptOrDecline.swift */; };
 		9339113C25C8341D00913D3E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9339113B25C8341C00913D3E /* Assets.xcassets */; };
@@ -116,12 +120,15 @@
 		737F5F68A459B787E3DF3AA7 /* Pods-GetAServiceTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GetAServiceTests.release.xcconfig"; path = "Target Support Files/Pods-GetAServiceTests/Pods-GetAServiceTests.release.xcconfig"; sourceTree = "<group>"; };
 		87B86DA5DF5E613514E30A51 /* Pods-GetAService.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GetAService.release.xcconfig"; path = "Target Support Files/Pods-GetAService/Pods-GetAService.release.xcconfig"; sourceTree = "<group>"; };
 		9318F8AA25C5767D009A6712 /* CustomerRequestScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerRequestScreen.swift; sourceTree = "<group>"; };
+		931A930F262CBE4D007117C6 /* PortfolioCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioCollectionViewCell.swift; sourceTree = "<group>"; };
 		931CFA2825DED734007C2EE9 /* SubServicesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubServicesTableViewController.swift; sourceTree = "<group>"; };
 		931D669725C03AC2002C239E /* SellerProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellerProfile.swift; sourceTree = "<group>"; };
 		931D669C25C0660E002C239E /* CustomerProvideInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerProvideInformation.swift; sourceTree = "<group>"; };
 		931D66A125C0873E002C239E /* NotificationsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsList.swift; sourceTree = "<group>"; };
 		931D66A925C087EF002C239E /* NotificationsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsTableViewCell.swift; sourceTree = "<group>"; };
 		931D66AA25C087EF002C239E /* NotificationsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationsTableViewCell.xib; sourceTree = "<group>"; };
+		9321A999262B01BA0015FCDC /* PortfolioImagesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioImagesTableViewCell.swift; sourceTree = "<group>"; };
+		9321A99A262B01BA0015FCDC /* PortfolioImagesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PortfolioImagesTableViewCell.xib; sourceTree = "<group>"; };
 		93226A2E2601E5BF001A7A86 /* LocationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTableViewCell.swift; sourceTree = "<group>"; };
 		93226A2F2601E5BF001A7A86 /* LocationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LocationTableViewCell.xib; sourceTree = "<group>"; };
 		93233E8626071CDB00812732 /* BookingBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingBrain.swift; sourceTree = "<group>"; };
@@ -137,6 +144,7 @@
 		932C89C225DAE072008D72D9 /* NotificationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationModel.swift; sourceTree = "<group>"; };
 		932DD7C12609D73A007BD665 /* CustomerScreenExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerScreenExtension.swift; sourceTree = "<group>"; };
 		932DD7C92609F69E007BD665 /* BuyerWaitingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyerWaitingViewController.swift; sourceTree = "<group>"; };
+		9332DF21262B041100346FD9 /* PortfolioImagesUITableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioImagesUITableViewController.swift; sourceTree = "<group>"; };
 		9334E6FF26105C0F0046EB0C /* MeetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetupViewController.swift; sourceTree = "<group>"; };
 		9339113025C828C100913D3E /* AcceptOrDecline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptOrDecline.swift; sourceTree = "<group>"; };
 		9339113B25C8341C00913D3E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -333,6 +341,8 @@
 				935E31C82612226100D3CCD5 /* ReviewsTableViewCell.swift */,
 				935E31C92612226100D3CCD5 /* ReviewsTableViewCell.xib */,
 				9329C27F261D8ECD00DCB084 /* ERProgressHud.swift */,
+				9321A999262B01BA0015FCDC /* PortfolioImagesTableViewCell.swift */,
+				9321A99A262B01BA0015FCDC /* PortfolioImagesTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -365,6 +375,8 @@
 				9334E6FF26105C0F0046EB0C /* MeetupViewController.swift */,
 				935E31BE2611AEE900D3CCD5 /* ReviewsAndRatingsViewController.swift */,
 				935E31C32612221600D3CCD5 /* ReviewsTableViewController.swift */,
+				9332DF21262B041100346FD9 /* PortfolioImagesUITableViewController.swift */,
+				931A930F262CBE4D007117C6 /* PortfolioCollectionViewCell.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -561,6 +573,7 @@
 				932C487225C97AF700F57308 /* myGif.gif in Resources */,
 				931D66AC25C087EF002C239E /* NotificationsTableViewCell.xib in Resources */,
 				936783AD25B9896E00A93B28 /* SellerListXibTableViewTableViewCell.xib in Resources */,
+				9321A99C262B01BA0015FCDC /* PortfolioImagesTableViewCell.xib in Resources */,
 				9339113C25C8341D00913D3E /* Assets.xcassets in Resources */,
 				9378C81A25B829DE00B6A183 /* ListOfServicesXibTableViewCell.xib in Resources */,
 				932C487A25C9823700F57308 /* myGreenGif.gif in Resources */,
@@ -751,6 +764,7 @@
 				9352712025E7899100F368B1 /* BuyerProfileModel.swift in Sources */,
 				9352608125BD63270052C0A3 /* FairDetails.swift in Sources */,
 				9334E70026105C0F0046EB0C /* MeetupViewController.swift in Sources */,
+				9321A99B262B01BA0015FCDC /* PortfolioImagesTableViewCell.swift in Sources */,
 				932C89B025DAC8E3008D72D9 /* ServicesModel.swift in Sources */,
 				931D669D25C0660E002C239E /* CustomerProvideInformation.swift in Sources */,
 				93A7936225ED13D000064AA0 /* SellerWaitingViewController.swift in Sources */,
@@ -762,6 +776,7 @@
 				932DD7CA2609F69E007BD665 /* BuyerWaitingViewController.swift in Sources */,
 				936D2CB325F740BA00F677F8 /* Messages.swift in Sources */,
 				932C89BB25DAD893008D72D9 /* ChatModel.swift in Sources */,
+				9332DF22262B041100346FD9 /* PortfolioImagesUITableViewController.swift in Sources */,
 				9355988325FCC03B0049CF28 /* Helper Functions.swift in Sources */,
 				93C95E062600BEF500F8E3C2 /* AppleMapViewController.swift in Sources */,
 				93DBF77826172421003C9B03 /* MyUserDefaults.swift in Sources */,
@@ -786,6 +801,7 @@
 				933929EF25F66B0C00DB10FD /* OneToOneChatViewController.swift in Sources */,
 				936783AC25B9896E00A93B28 /* SellerListXibTableViewTableViewCell.swift in Sources */,
 				937EAAB925B6F13A002CD6EC /* SceneDelegate.swift in Sources */,
+				931A9310262CBE4D007117C6 /* PortfolioCollectionViewCell.swift in Sources */,
 				936D2CB825F7614200F677F8 /* MessageBrain.swift in Sources */,
 				93593BC925FA7BA700BFCA71 /* UpdatingViews.swift in Sources */,
 				9318F8AB25C5767D009A6712 /* CustomerRequestScreen.swift in Sources */,
