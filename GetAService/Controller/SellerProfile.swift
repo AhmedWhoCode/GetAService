@@ -34,9 +34,7 @@ class SellerProfile: UIViewController {
     
     @IBOutlet weak var documentNameTextField: UITextField!
     
-//    @IBOutlet weak var artistServicesDropDown: DropDown!
     
-    @IBOutlet weak var progressView: UIProgressView!
     var selectedImage : UIImage?
     
     //storing profile image selected by the user as data
@@ -53,79 +51,110 @@ class SellerProfile: UIViewController {
     var isSourceVcArtistProfile : Bool = false
     
     var isDestinationSubService : Bool?
-
+    
     let artistServicesDropDownList = DropDown()
     
     
-    var selectedImages = [UIImage]()
-
+    var selectedPortfolioImages = [UIImage]()
+    var selectedPortfolioImagesData : Data?
+    var selectedPortfolioImagesInString = [String]()
+    var isPortfolioImageSourceFirestore = false
+    
     @IBOutlet weak var collectionView: UICollectionView!
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        hidesBottomBarWhenPushed = true
-        submitButton.isEnabled = true
         artistServicesDropDownList.anchorView = selectServiceButton
         //attaching touch sensor with a view, whenever you press a view keyboard will disappear
         initializeHideKeyboard()
         
         sellerProfileBrain.dataUplodedDelegant = self
         
+        //checking the source VC
         if isSourceVcArtistProfile
         {
-            retriveData()
+            retriveDataForFields()
         }
         
         
         designingView()
         
-    
+        
         //artistServicesDropDown.selectionAction
         artistServicesDropDownList.selectionAction = { [unowned self] (index: Int, item: String) in
             artistServicesDropDownList.hide()
             self.selectServiceButton.setTitle(item, for: .normal)
-            print("Selected item: \(item) at index: \(index)")
+            //print("Selected item: \(item) at index: \(index)")
             self.selectedService = item
-
-          }
-
-        // Do any additional setup after loading the view.
+            
+        }
+        
     }
     
     @IBAction func addWorkPressed(_ sender: UIButton) {
-        selectedImages.removeAll()
-        var config = YPImagePickerConfiguration()
-        config.library.defaultMultipleSelection  = true
-        config.library.maxNumberOfItems = 8
-        config.library.mediaType = YPlibraryMediaType.photo
+        isPortfolioImageSourceFirestore = false
+        selectImageWithYPImagePicker { (image) in
+            guard let image = image else
+            {
+                return
+            }
+            self.selectedPortfolioImages.append(image)
+            self.selectedPortfolioImagesData = image.jpegData(compressionQuality:0.1)!
+            self.collectionView.reloadData()
+            self.storingSelectedPortfolioImages()
+            ERProgressHud.sharedInstance.show(withTitle: "Image uploading,wait")
+            //selectedPortfolioImages.removeAll()
+        }
         
-        let picker = YPImagePicker(configuration: config)
+        //        var config = YPImagePickerConfiguration()
+        //        config.library.defaultMultipleSelection  = true
+        //        config.library.maxNumberOfItems = 8
+        //        config.library.mediaType = YPlibraryMediaType.photo
+        //
+        //        let picker = YPImagePicker(configuration: config)
+        //
+        //
+        //        present(picker, animated: true, completion: nil)
+        //
+        //        picker.didFinishPicking { [unowned picker] items, cancelled in
+        //
+        //            picker.dismiss(animated: true, completion: nil)
+        //
+        //            for item in items {
+        //
+        //                switch item {
+        //                case .photo(let item):
+        //                    self.selectedPortfolioImages.append(item.originalImage)
+        //                    self.selectedPortfolioImagesData.append(item.originalImage.jpegData(compressionQuality:0.2)!)
+        //                default:
+        //                    print("wont happen")
+        //                }
+        //
+        //            }
+        //
+        //
+        //
+        //        }
         
         
-        present(picker, animated: true, completion: nil)
+    }
+    
+    
+    ///MARK: - storing portfolio images
+    
+    func storingSelectedPortfolioImages() {
         
-        picker.didFinishPicking { [unowned picker] items, cancelled in
-            
-            picker.dismiss(animated: true, completion: nil)
-            
-            for item in items {
-                
-                switch item {
-                case .photo(let item):
-                    self.selectedImages.append(item.originalImage)
-                default:
-                    print("wont happen")
-                }
-                
+        if let data = selectedPortfolioImagesData
+        {
+            sellerProfileBrain.uploadPortFolioToStorage(with: data) {
+                ERProgressHud.sharedInstance.hide()
+                return
             }
             
-            
-            self.collectionView.reloadData()
         }
         
         
     }
-    
     
     @IBAction func uploadFilePressed(_ sender: UIButton) {
         let supportedTypes: [UTType] = [UTType.image , UTType.pdf , UTType.zip , UTType.text ,UTType.plainText]
@@ -141,7 +170,7 @@ class SellerProfile: UIViewController {
         artistServicesDropDownList.show()
     }
     
- 
+    
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.isToolbarHidden = true
         navigationItem.hidesBackButton = false
@@ -151,24 +180,67 @@ class SellerProfile: UIViewController {
     
     
     @IBAction func imagePressed(_ sender: Any) {
+        
+        selectImageWithYPImagePicker { (image) in
+            
+            guard let image = image else
+            {
+                return
+            }
+            
+            self.artistImage.image = image
+            self.selectedImage = image
+        }
+        
+        
+        
+        //        var config = YPImagePickerConfiguration()
+        //        config.library.defaultMultipleSelection  = false
+        //
+        //        let picker = YPImagePicker(configuration: config)
+        //
+        //
+        //        present(picker, animated: true, completion: nil)
+        //        picker.didFinishPicking { [unowned picker] items, _ in
+        //            if let photo = items.singlePhoto {
+        //
+        //                self.artistImage.image=photo.image // Final image selected by the user
+        //                self.selectedImage = photo.image
+        //            }
+        //            picker.dismiss(animated: true, completion: nil)
+        //        }
+        
+    }
+    
+    ///MARK: - Call whenever you want to select an image
+    func selectImageWithYPImagePicker(completion:@escaping (UIImage?) -> ()) {
         var config = YPImagePickerConfiguration()
+        var image = UIImage(named: "servicesimageplaceholder")!
         config.library.defaultMultipleSelection  = false
         
         let picker = YPImagePicker(configuration: config)
         
-        
         present(picker, animated: true, completion: nil)
-        picker.didFinishPicking { [unowned picker] items, _ in
+        
+        picker.didFinishPicking { [unowned picker] items, cancel in
+            
             if let photo = items.singlePhoto {
                 
-                self.artistImage.image=photo.image // Final image selected by the user
-                self.selectedImage = photo.image
+                image = photo.image
+                completion(image)
+                picker.dismiss(animated: true, completion: nil)
+                
             }
-            picker.dismiss(animated: true, completion: nil)
+            
+            if cancel
+            {
+                picker.dismiss(animated: true, completion: nil)
+                
+            }
+            
         }
         
     }
-    
     
     
     
@@ -194,8 +266,8 @@ class SellerProfile: UIViewController {
         isDestinationSubService = true
         
         storeDataToFirebase()
-
-
+        
+        
     }
     
     
@@ -209,6 +281,7 @@ class SellerProfile: UIViewController {
     }
     
     
+    ///MARK: - storing data to database
     func storeDataToFirebase() {
         
         guard let documentToUpload = sellerSelectedDocument else
@@ -218,7 +291,7 @@ class SellerProfile: UIViewController {
             return
         }
         ERProgressHud.sharedInstance.show(withTitle: "Uploading data....")
-
+        
         //converting image to data , compatible for uploading in storage
         profileImageData = (artistImage.image?.jpegData(compressionQuality: 0.4)!)!
         // uncomment this code to upload image to database
@@ -238,14 +311,17 @@ class SellerProfile: UIViewController {
                                                 gender: self.genderChooser.titleForSegment(at: self.genderChooser.selectedSegmentIndex)!,
                                                 document: documentToUpload,
                                                 documentName: self.selectedDocumentName
-                                                )
-                                                
+            )
+            
             
             self.sellerProfileBrain.storingProfileDataToFireBase(with: sellerData)
-        }    }
+        }
+        
+    }
     
     
-    func retriveData(){
+    ///MARK: - Retriving data to be shown in fields
+    func retriveDataForFields(){
         sellerProfileBrain.retrivingProfileData { (data,subservices) in
             self.artistImage.loadCacheImage(with: data.imageRef)
             
@@ -277,6 +353,12 @@ class SellerProfile: UIViewController {
             
             
             
+        }
+        sellerProfileBrain.retrivingPortfolioImages(using: Auth.auth().currentUser!.uid) { (portfolioImages) in
+          
+            self.selectedPortfolioImagesInString = portfolioImages
+            self.isPortfolioImageSourceFirestore = true
+            self.collectionView.reloadData()
         }
         
     }
@@ -319,9 +401,9 @@ extension SellerProfile : UIDocumentPickerDelegate
         }
         
         
-
+        
     }
-
+    
 }
 
 
@@ -330,7 +412,7 @@ extension SellerProfile : DataUploadedSeller
 {
     func didsendData() {
         ERProgressHud.sharedInstance.hide()
-
+        
         if isDestinationSubService!
         {
             if selectServiceButton.currentTitle != ""
@@ -350,11 +432,18 @@ extension SellerProfile : DataUploadedSeller
     
 }
 
-
+///MARK: - collectionView for portfolio
 extension SellerProfile : UICollectionViewDelegate , UICollectionViewDataSource
 {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return selectedImages.count
+        if isPortfolioImageSourceFirestore
+        {
+            return selectedPortfolioImagesInString.count
+        }
+        else
+        {
+        return selectedPortfolioImages.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -362,7 +451,20 @@ extension SellerProfile : UICollectionViewDelegate , UICollectionViewDataSource
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "portfolioCollectionCell", for: indexPath) as? PortfolioCollectionViewCell
         
-        cell?.portfolioImage.image = selectedImages[indexPath.row]
+        if isPortfolioImageSourceFirestore
+        {
+            
+            cell?.portfolioImage.loadCacheImage(with: selectedPortfolioImagesInString[indexPath.row],completion: {
+                self.selectedPortfolioImages.append(cell!.portfolioImage.image!)
+                //print("images are" , self.selectedPortfolioImages[indexPath.row-1])
+
+            })
+            
+        }
+        else
+        {
+        cell?.portfolioImage.image = selectedPortfolioImages[indexPath.row]
+        }
         return cell!
     }
     
@@ -370,13 +472,3 @@ extension SellerProfile : UICollectionViewDelegate , UICollectionViewDataSource
     
 }
 
-
-//            self.fireStorage.reference().child("Images/profile_images").child(Auth.auth().currentUser!.uid).getData(maxSize: 1 * 1024 * 1024) { (data1, error) in
-//                if let data1 = data1
-//                {
-//                    print(data1)
-//                    self.artistImage.image = UIImage(data: data1)
-//
-//                }
-//
-//            }

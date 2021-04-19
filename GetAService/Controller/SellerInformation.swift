@@ -9,19 +9,19 @@ import UIKit
 import Firebase
 
 class SellerInformation: UIViewController {
-
+    
     @IBOutlet weak var countryView: UIView!
     @IBOutlet weak var priceView: UIView!
     @IBOutlet weak var statusView: UIView!
     
     @IBOutlet weak var sellerImage: UIImageView!
-
+    
     @IBOutlet weak var sellerName: UILabel!
     @IBOutlet weak var sellerCountryLabel: UILabel!
     @IBOutlet weak var sellerPriceLabel: UILabel!
     @IBOutlet weak var sellerStatusLabel: UILabel!
     @IBOutlet weak var sellerDetailLabel: UILabel!
-
+    
     
     @IBOutlet weak var bookNowButton: UIButton!
     
@@ -33,13 +33,14 @@ class SellerInformation: UIViewController {
     @IBOutlet weak var subService4: UILabel!
     @IBOutlet weak var subService5: UILabel!
     @IBOutlet weak var subService6: UILabel!
-
+    
+    @IBOutlet weak var collectionView: UICollectionView!
     
     //value of this variable will come from the previous screen
     var selectedSellerId : String!
     
     var fireStorage = Storage.storage()
-
+    
     var sellerProfileBrain = SellerProfileBrain()
     
     //to be send to chats
@@ -48,8 +49,13 @@ class SellerInformation: UIViewController {
     
     //review list
     var reviewList  = [SellerRetrievalReviewsModel]()
+    
     // adding the star
     var totalStar = 0.0
+    
+    // portfolio images list
+    var selectedPortfolioImagesInString = [String]()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         designingViews()
@@ -74,11 +80,17 @@ class SellerInformation: UIViewController {
             self.sellerStatusLabel.text = "available"
             self.sellerDetailLabel.text = data.description
             self.showSubServices(with: subservices)
-        
+            
             self.sellerImageToSend = data.imageRef
             
             self.sellerImage.loadCacheImage(with: self.sellerImageToSend)
-           
+            
+        }
+        sellerProfileBrain.retrivingPortfolioImages(using: selectedSellerId) { (portfolioImages) in
+          
+            self.selectedPortfolioImagesInString = portfolioImages
+            //self.isPortfolioImageSourceFirestore = true
+            self.collectionView.reloadData()
         }
         
     }
@@ -155,7 +167,7 @@ class SellerInformation: UIViewController {
     @IBAction func messageButton(_ sender: UIButton) {
         performSegue(withIdentifier: Constants.seguesNames.sellerInfoToMessages, sender: self)
     }
-  
+    
     
     func retrivingReviewsInformation() {
         sellerProfileBrain.retrivingSellerReviews(with: selectedSellerId!) { (reviews) in
@@ -175,41 +187,41 @@ class SellerInformation: UIViewController {
     }
     
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-       
+        
         if segue.identifier == Constants.seguesNames.sellerInfoToMessages
         {
             if let destinationSegue = segue.destination as? OneToOneChatViewController
-          {
+            {
                 destinationSegue.otherUserID = selectedSellerId
                 destinationSegue.otherUserName = sellerNameToSend
                 destinationSegue.otherUserImage = sellerImageToSend
-          }
+            }
         }
         
         else if segue.identifier == Constants.seguesNames.sellerInfoToInformation
         {
             if let destinationSegue = segue.destination as? CustomerProvideInformation
-          {
+            {
                 destinationSegue.sellerId = selectedSellerId
                 
-          }
+            }
         }
         else if segue.identifier == Constants.seguesNames.sellerInfoToReviews
         {
             if let destinationSegue = segue.destination as? ReviewsTableViewController
-          {
+            {
                 destinationSegue.sellerId  = selectedSellerId
                 destinationSegue.reviewList = reviewList
                 
-          }
+            }
         }
         
     }
     
-
+    
     
     @IBAction func bookNow(_ sender: Any) {
         performSegue(withIdentifier: Constants.seguesNames.sellerInfoToInformation, sender: self)
@@ -224,8 +236,31 @@ class SellerInformation: UIViewController {
     
     
     
-//    @IBAction func BookNow(_ sender: UIBarButtonItem) {
-//        performSegue(withIdentifier: Constants.seguesNames.artistInfoToProfile, sender:self)
-//    }
+    //    @IBAction func BookNow(_ sender: UIBarButtonItem) {
+    //        performSegue(withIdentifier: Constants.seguesNames.artistInfoToProfile, sender:self)
+    //    }
+    
+}
+
+
+extension SellerInformation : UICollectionViewDelegate , UICollectionViewDataSource
+{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+       
+        return selectedPortfolioImagesInString.count
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "portfolioCollectionCell", for: indexPath) as? PortfolioCollectionViewCell
+     
+            
+            cell?.portfolioImage.loadCacheImage(with: selectedPortfolioImagesInString[indexPath.row])
+        return cell!
+    }
+    
+    
     
 }

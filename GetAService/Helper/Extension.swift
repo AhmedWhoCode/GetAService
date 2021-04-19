@@ -32,7 +32,7 @@ let imageCache = NSCache<NSString , ImageCache>()
 
 extension UIImageView{
     
-    func loadCacheImage(with imageRefURL:String)
+    func loadCacheImage(with imageRefURL:String , completion:@escaping () ->() = {})
     {
         if let cachImage = imageCache.object(forKey: imageRefURL as NSString){
             
@@ -43,7 +43,6 @@ extension UIImageView{
         }
         
         let imageUrl = URL(string: imageRefURL)
-        print("from internet")
 
         //download image from the internet using thread
         URLSession.shared.dataTask(with: imageUrl!) { (data, response, error) in
@@ -65,6 +64,7 @@ extension UIImageView{
                         if self?.image != nil
                         {
                         self!.image = downloadImage
+                            completion()
                         }
                     }
                     

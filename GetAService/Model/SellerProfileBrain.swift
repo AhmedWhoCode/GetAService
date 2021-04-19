@@ -24,19 +24,13 @@ class SellerProfileBrain {
     var sellerProfileData = [String:Any]()
     
     var dataUplodedDelegant:DataUploadedSeller?
-    //
-    //    if let userId1 = Auth.auth().currentUser?.uid
-    //    {
-    //        print("ss")
-    //    }
-    
-    // let userId = Auth.auth().currentUser!.uid
-    
+
     let db = Firestore.firestore()
+    
     var fireStorage = Storage.storage()
     
     var reviewsList = [SellerRetrievalReviewsModel]()
-    
+    var portfolioImages = [String]()
     
     func retrivingProfileData(using userUid :String = Auth.auth().currentUser!.uid,completion : @escaping (SellerProfileModel,[String]?) -> ()) {
         
@@ -64,7 +58,7 @@ class SellerProfileBrain {
                 let country = snap["country"]! as! String
                 let subServices = snap["SubServices"]
                 let document = snap["documentUrl"] as! String
-                let documentName = snap["documentName"] as! String
+                guard let documentName = snap["documentName"] as? String else {return}
                 
                 
                 let sellerProfileModel = SellerProfileModel(uid:uid1, imageRef: imageRef1 , name: name1, email:email1, address: address1, phone: phone1, price: price1, service: service1, country: country, description: desc, dob:dob1, gender: gender1,document: document , documentName: documentName)
@@ -97,7 +91,7 @@ class SellerProfileBrain {
         sellerProfileData["status"] = Constants.online
         sellerProfileData["documentUrl"] = sellerProfileModel.document
         sellerProfileData["documentName"] = sellerProfileModel.documentName
-
+        
         
         
         if let userid = Auth.auth().currentUser?.uid {
@@ -376,6 +370,103 @@ class SellerProfileBrain {
         }
         
         
+    }
+    
+    ///MARK: - Adding portfolio images to storage
+    
+    func uploadPortFolioToStorage(with data : Data , completion :@escaping  () -> ()) {
+        let userId = Auth.auth().currentUser!.uid
+        
+        //for unique id
+        let date = Date()
+        let df = DateFormatter()
+        df.dateFormat = "yyyy-MM-dd HH:mm:ss.SSSS"
+        let dateString = df.string(from: date)
+        
+        let metaData = StorageMetadata()
+        metaData.contentType = "image/jpeg"
+        //filePath or unique name of an image , also used a name
+        let storageRef = self.fireStorage.reference().child("sellerportFolioImages").child(userId).child(dateString)
+        
+        
+        
+        storageRef.putData(data, metadata: metaData) { (meta, error) in
+            if  error != nil
+            {
+                print("error uploadind a file\(error?.localizedDescription ?? "Error")")
+                
+            }
+            else
+            {
+                //getting url
+                storageRef.downloadURL { (url,error) in
+                    print(url?.absoluteURL ?? "nil")
+                    //Adding portfolio images data to firestore
+                    self.addingPortfolioImagesUrlToFirestore(with: dateString, imageUrl: url!.absoluteString, sellerId: userId) {
+                        
+                        completion()
+                    }
+                }
+            }
+        }
+        
+    }
+    
+    ///MARK: - Adding portfolio images data to firestore
+    func addingPortfolioImagesUrlToFirestore(with imageId : String ,
+                                             imageUrl : String ,
+                                             sellerId : String,
+                                             completion :@escaping  () -> ()
+    )
+    {
+        db.collection("UserProfileData")
+            .document("Seller")
+            .collection("AllSellers")
+            .document(sellerId)
+            .collection("PortfolioImages")
+            .document(imageId)
+            .setData(["imageUrl" : imageUrl], merge: true) { (error) in
+                
+                if let e = error
+                {
+                    print("error while addingPortfolioImagesUrlToFirestore" , e.localizedDescription)
+                }
+                else
+                {
+                    print("successfully addingPortfolioImagesUrlToFirestore")
+                    completion()
+                }
+                
+            }
+    }
+    
+    
+    func retrivingPortfolioImages(using sellerId : String , completion : @escaping ([String]) -> ()) {
+        db.collection("UserProfileData")
+            .document("Seller")
+            .collection("AllSellers")
+            .document(sellerId)
+            .collection("PortfolioImages")
+            .getDocuments { (snapshot, error) in
+                
+                if let snap = snapshot?.documents
+                {
+                
+                    snap.forEach { (data) in
+                       //print( data.data()["imageUrl"] )
+                        let image = data.data()["imageUrl"] as? String
+                        self.portfolioImages.append(image!)
+                    }
+                    
+                    completion(self.portfolioImages)
+                }
+                
+                else
+                {
+                    print("error while retriving portfolio images" , error?.localizedDescription)
+                }
+                
+            }
     }
 }
 

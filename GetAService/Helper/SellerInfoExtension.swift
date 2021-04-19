@@ -11,6 +11,11 @@ extension SellerInformation
 {
     
     func designingViews(){
+        //designing collection view
+        collectionView.layer.cornerRadius = 10
+        collectionView.layer.borderWidth = 1
+        collectionView.layer.borderColor =  UIColor.black.cgColor
+        
         navigationItem.hidesBackButton = false
         
         subService1.isHidden = true

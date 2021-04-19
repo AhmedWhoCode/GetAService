@@ -62,6 +62,8 @@ extension SellerProfile {
         DropDown.appearance().selectionBackgroundColor = UIColor.yellow
 
         
+        
+        
         ///MARK: - designing views
         artistImage.layer.masksToBounds = true
         artistImage.layer.borderColor = UIColor.black.cgColor
@@ -172,6 +174,12 @@ extension SellerProfile {
         let paddingViewC : UIView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: sellerCountryTextField.frame.height))
         sellerCountryTextField.leftView = paddingViewC
         sellerCountryTextField.leftViewMode = UITextField.ViewMode.always
+        
+        
+        //designing collection view
+        collectionView.layer.cornerRadius = 10
+        collectionView.layer.borderWidth = 1
+        collectionView.layer.borderColor =  UIColor.black.cgColor
     }
 }
 
