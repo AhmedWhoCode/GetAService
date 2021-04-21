@@ -35,6 +35,7 @@
 		932DD7CA2609F69E007BD665 /* BuyerWaitingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932DD7C92609F69E007BD665 /* BuyerWaitingViewController.swift */; };
 		9332DF22262B041100346FD9 /* PortfolioImagesUITableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9332DF21262B041100346FD9 /* PortfolioImagesUITableViewController.swift */; };
 		9334E70026105C0F0046EB0C /* MeetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9334E6FF26105C0F0046EB0C /* MeetupViewController.swift */; };
+		93359492263077B500F03C52 /* PushNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93359491263077B500F03C52 /* PushNotificationManager.swift */; };
 		9339113125C828C100913D3E /* AcceptOrDecline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9339113025C828C100913D3E /* AcceptOrDecline.swift */; };
 		9339113C25C8341D00913D3E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9339113B25C8341C00913D3E /* Assets.xcassets */; };
 		933929EF25F66B0C00DB10FD /* OneToOneChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933929EE25F66B0C00DB10FD /* OneToOneChatViewController.swift */; };
@@ -91,6 +92,7 @@
 		93CE5C9525CBF257002A916E /* ButtonPressed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CE5C9425CBF257002A916E /* ButtonPressed.swift */; };
 		93DBF77826172421003C9B03 /* MyUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DBF77726172421003C9B03 /* MyUserDefaults.swift */; };
 		93E3F8DB25E23BEC00FB74C3 /* ServicesBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E3F8DA25E23BEC00FB74C3 /* ServicesBrain.swift */; };
+		93E4394026308C8500834CC5 /* PushNotificationSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E4393F26308C8500834CC5 /* PushNotificationSender.swift */; };
 		E7CB7608C4737307D01F9320 /* Pods_GetAService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ABBE2378B21E0A110DB8A65 /* Pods_GetAService.framework */; };
 		E804C129398C500E56A4C5A8 /* Pods_GetAService_GetAServiceUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2234B55B1A6E846296569767 /* Pods_GetAService_GetAServiceUITests.framework */; };
 /* End PBXBuildFile section */
@@ -146,6 +148,7 @@
 		932DD7C92609F69E007BD665 /* BuyerWaitingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyerWaitingViewController.swift; sourceTree = "<group>"; };
 		9332DF21262B041100346FD9 /* PortfolioImagesUITableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioImagesUITableViewController.swift; sourceTree = "<group>"; };
 		9334E6FF26105C0F0046EB0C /* MeetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetupViewController.swift; sourceTree = "<group>"; };
+		93359491263077B500F03C52 /* PushNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationManager.swift; sourceTree = "<group>"; };
 		9339113025C828C100913D3E /* AcceptOrDecline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptOrDecline.swift; sourceTree = "<group>"; };
 		9339113B25C8341C00913D3E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		933929EE25F66B0C00DB10FD /* OneToOneChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneToOneChatViewController.swift; sourceTree = "<group>"; };
@@ -210,6 +213,7 @@
 		93CE5C9425CBF257002A916E /* ButtonPressed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonPressed.swift; sourceTree = "<group>"; };
 		93DBF77726172421003C9B03 /* MyUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyUserDefaults.swift; sourceTree = "<group>"; };
 		93E3F8DA25E23BEC00FB74C3 /* ServicesBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesBrain.swift; sourceTree = "<group>"; };
+		93E4393F26308C8500834CC5 /* PushNotificationSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationSender.swift; sourceTree = "<group>"; };
 		959110249FFA8B6C172BD4D1 /* Pods-GetAService.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GetAService.debug.xcconfig"; path = "Target Support Files/Pods-GetAService/Pods-GetAService.debug.xcconfig"; sourceTree = "<group>"; };
 		B66B316AE8DE4536DF445148 /* Pods-GetAServiceTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GetAServiceTests.debug.xcconfig"; path = "Target Support Files/Pods-GetAServiceTests/Pods-GetAServiceTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B83EAC511C05F6B8715834FE /* Pods-GetAService-GetAServiceUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GetAService-GetAServiceUITests.debug.xcconfig"; path = "Target Support Files/Pods-GetAService-GetAServiceUITests/Pods-GetAService-GetAServiceUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -290,7 +294,6 @@
 				93593BC825FA7BA700BFCA71 /* UpdatingViews.swift */,
 				936BFFCF260E404300394B22 /* APIKeys.swift */,
 				93C95E0F26010F9800F8E3C2 /* LocationManager.swift */,
-				9355988225FCC03B0049CF28 /* Helper Functions.swift */,
 				932DD7C12609D73A007BD665 /* CustomerScreenExtension.swift */,
 				93DBF77726172421003C9B03 /* MyUserDefaults.swift */,
 				93981BD92618500000E6EC61 /* SellerDashboardExtension.swift */,
@@ -303,6 +306,7 @@
 		9378C7FB25B8260200B6A183 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				9355988225FCC03B0049CF28 /* Helper Functions.swift */,
 				932C89AF25DAC8E3008D72D9 /* ServicesModel.swift */,
 				93E3F8DA25E23BEC00FB74C3 /* ServicesBrain.swift */,
 				932C89BA25DAD893008D72D9 /* ChatModel.swift */,
@@ -320,6 +324,8 @@
 				9360136D2603A4780096BCEF /* GoogleMapBrain.swift */,
 				93233E9426072B2800812732 /* NotificationBrain.swift */,
 				932C89C225DAE072008D72D9 /* NotificationModel.swift */,
+				93359491263077B500F03C52 /* PushNotificationManager.swift */,
+				93E4393F26308C8500834CC5 /* PushNotificationSender.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -772,6 +778,7 @@
 				93C95E1026010F9800F8E3C2 /* LocationManager.swift in Sources */,
 				931D66A225C0873E002C239E /* NotificationsList.swift in Sources */,
 				9354847B25E8DF8A00A76C22 /* BuyerProfileBrain.swift in Sources */,
+				93359492263077B500F03C52 /* PushNotificationManager.swift in Sources */,
 				93233E8726071CDB00812732 /* BookingBrain.swift in Sources */,
 				932DD7CA2609F69E007BD665 /* BuyerWaitingViewController.swift in Sources */,
 				936D2CB325F740BA00F677F8 /* Messages.swift in Sources */,
@@ -795,6 +802,7 @@
 				937994D825BC39C700C85404 /* SellerInformation.swift in Sources */,
 				931CFA2925DED734007C2EE9 /* SubServicesTableViewController.swift in Sources */,
 				93BE8E5B25EE1359008103DA /* ShowToast.swift in Sources */,
+				93E4394026308C8500834CC5 /* PushNotificationSender.swift in Sources */,
 				9378C81925B829DE00B6A183 /* ListOfServicesXibTableViewCell.swift in Sources */,
 				936D2CBD25F76A2B00F677F8 /* MessageStructer.swift in Sources */,
 				932C89C325DAE072008D72D9 /* NotificationModel.swift in Sources */,
@@ -988,7 +996,7 @@
 				CODE_SIGN_ENTITLEMENTS = GetAService/GetAService.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = BXQHK9SN8A;
 				INFOPLIST_FILE = GetAService/Info.plist;
@@ -1014,7 +1022,7 @@
 				CODE_SIGN_ENTITLEMENTS = GetAService/GetAService.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = BXQHK9SN8A;
 				INFOPLIST_FILE = GetAService/Info.plist;

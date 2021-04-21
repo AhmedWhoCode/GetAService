@@ -108,6 +108,7 @@ class OneToOneChatViewController: MessagesViewController{
     
     //sending data on pressing send
     func sendData() {
+      
         let date = Date()
         let df = DateFormatter()
         df.dateFormat = "yyyy-MM-dd HH:mm:ss.SSSS"
@@ -120,6 +121,8 @@ class OneToOneChatViewController: MessagesViewController{
         
         messageBrian.storeMessageToFireBase(with: message)
         {
+            let sender = PushNotificationSender()
+            sender.sendPushNotification(to: BookingBrain.sharedInstance.sellerTokenId!, title: "You have a message", body: "kindly open an app")
             self.messagesCollectionView.reloadData()
             
             print("successful")

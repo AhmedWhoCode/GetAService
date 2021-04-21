@@ -68,7 +68,7 @@ class CustomerProvideInformation: UIViewController {
                                          sellerPrice: "Nil for now"
                 
         )
-
+        
         performSegue(withIdentifier: Constants.seguesNames.informationToMaps, sender: self)
         
     }

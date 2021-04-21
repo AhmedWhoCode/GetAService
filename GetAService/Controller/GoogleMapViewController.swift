@@ -99,6 +99,9 @@ class GoogleMapViewController: UIViewController, BookingBrainDelegate{
             if let booking = bookingModel
             {
                 BookingBrain.sharedInstance.insertBookingInfomationToFirebase(with: booking)
+                
+                let sender = PushNotificationSender()
+                sender.sendPushNotification(to: BookingBrain.sharedInstance.sellerTokenId!, title: "You have a booking", body: "kindly open an app")
             }
         }
     }

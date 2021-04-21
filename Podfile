@@ -35,8 +35,10 @@ pod 'Firebase/Analytics'
 #pod for drop down
 pod 'DropDown'
 
+
 # Add the pod for Firebase Cloud Messaging
 pod 'Firebase/Messaging'
+
 
   target 'GetAServiceTests' do
     inherit! :search_paths

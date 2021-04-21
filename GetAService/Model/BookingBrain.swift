@@ -32,6 +32,7 @@ class BookingBrain {
     var sellerId : String?
     var sellerName : String?
     var sellerImage : String?
+    var sellerTokenId : String?
     // to get seller defualt price
     var sellerProfileBrain = SellerProfileBrain()
     

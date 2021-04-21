@@ -10,6 +10,7 @@ import Firebase
 import GoogleMaps
 import GooglePlaces
 import DropDown
+import FirebaseAuth
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -20,12 +21,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         GMSServices.provideAPIKey(APIKeys.googleMapAPi)
         GMSPlacesClient.provideAPIKey(APIKeys.googleMapAPi)
-//        let viewController = ViewController()
-//
-//        if Auth.auth().currentUser != nil
-//        {
-//            viewController.checkingUserType()
-//        }
+        
+        let pushManager = PushNotificationManager()
+          pushManager.registerForPushNotifications()
 
         return true
     }

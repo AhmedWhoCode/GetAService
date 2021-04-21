@@ -97,7 +97,7 @@ class ChatList: UITableViewController {
         userId = chatList[indexPath.row].userId
         userName = chatList[indexPath.row].name
         userImage = chatList[indexPath.row].image
-
+        BookingBrain.sharedInstance.sellerTokenId = chatList[indexPath.row].tokenId
         performSegue(withIdentifier: Constants.seguesNames.chatsToMessages , sender: self)
         //tableView.cellForRow(at: indexPath)
     }

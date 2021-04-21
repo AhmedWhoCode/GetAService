@@ -24,7 +24,7 @@ class SellerProfileBrain {
     var sellerProfileData = [String:Any]()
     
     var dataUplodedDelegant:DataUploadedSeller?
-
+    
     let db = Firestore.firestore()
     
     var fireStorage = Storage.storage()
@@ -59,7 +59,10 @@ class SellerProfileBrain {
                 let subServices = snap["SubServices"]
                 let document = snap["documentUrl"] as! String
                 guard let documentName = snap["documentName"] as? String else {return}
-                
+                guard let tokenId = snap["tokenId"] as? String else {return}
+     
+                //storing tokenID of a current user in booking brain class
+                BookingBrain.sharedInstance.sellerTokenId = tokenId
                 
                 let sellerProfileModel = SellerProfileModel(uid:uid1, imageRef: imageRef1 , name: name1, email:email1, address: address1, phone: phone1, price: price1, service: service1, country: country, description: desc, dob:dob1, gender: gender1,document: document , documentName: documentName)
                 
@@ -91,7 +94,8 @@ class SellerProfileBrain {
         sellerProfileData["status"] = Constants.online
         sellerProfileData["documentUrl"] = sellerProfileModel.document
         sellerProfileData["documentName"] = sellerProfileModel.documentName
-        
+        sellerProfileData["tokenId"] = "not defined yet"
+
         
         
         if let userid = Auth.auth().currentUser?.uid {
@@ -215,9 +219,11 @@ class SellerProfileBrain {
                 let imageRef1 = snap["imageRef"]! as! String
                 let name1 = snap["name"]! as! String
                 let country = snap["country"]! as! String
+                let tokenId = snap["tokenId"]! as! String
+
                 let userId = userUid
                 
-                let chatModel = ChatModel(image: imageRef1, name: name1, country: country, userId: userId)
+                let chatModel = ChatModel(image: imageRef1, name: name1, country: country, userId: userId, tokenId: tokenId)
                 
                 completion(chatModel)
             }
@@ -451,9 +457,9 @@ class SellerProfileBrain {
                 
                 if let snap = snapshot?.documents
                 {
-                
+                    
                     snap.forEach { (data) in
-                       //print( data.data()["imageUrl"] )
+                        //print( data.data()["imageUrl"] )
                         let image = data.data()["imageUrl"] as? String
                         self.portfolioImages.append(image!)
                     }
@@ -467,6 +473,28 @@ class SellerProfileBrain {
                 }
                 
             }
+    }
+    
+    
+    func addingTokenToProfile(with token : String){
+        guard let id = Auth.auth().currentUser else {return}
+        
+        self.db.collection("UserProfileData")
+            .document("Seller")
+            .collection("AllSellers")
+            .document(id.uid)
+            .updateData(["tokenId" : token]) { (error) in
+                if let e = error
+                {
+                    print("error while updating token id : \(e)")
+                }
+                else
+                {
+                    print("updated seller token id")
+                    
+                }
+            }
+
     }
 }
 

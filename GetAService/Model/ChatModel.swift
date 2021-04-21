@@ -13,4 +13,6 @@ struct ChatModel {
     let name : String
     let country : String
     let userId : String
+    let tokenId : String
+
 }

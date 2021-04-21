@@ -62,6 +62,9 @@ class SellerInformation: UIViewController {
         
         retrivingData()
         retrivingReviewsInformation()
+        
+
+        
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {

@@ -75,6 +75,7 @@ class BuyerProfileBrain {
         buyerProfileData["dob"] = buyerProfileModel.dob
         buyerProfileData["gender"] = buyerProfileModel.gender
         buyerProfileData["country"] = buyerProfileModel.country
+        buyerProfileData["tokenId"] = "not defined yet"
 
         
         if let userid = Auth.auth().currentUser?.uid {
@@ -138,9 +139,11 @@ class BuyerProfileBrain {
                 let imageRef1 = snap["imageRef"]! as! String
                 let name1 = snap["name"]! as! String
                 let country = snap["country"]! as! String
+                let tokenId = snap["tokenId"]! as! String
+
                 let userId = userUid
                 
-                let chatModel = ChatModel(image: imageRef1, name: name1, country: country, userId: userId )
+                let chatModel = ChatModel(image: imageRef1, name: name1, country: country, userId: userId,tokenId: tokenId )
                 
                 completion(chatModel)
             }
@@ -194,5 +197,25 @@ class BuyerProfileBrain {
             }
     }
 
+    func addingTokenToProfile(with token : String){
+        guard let id = Auth.auth().currentUser else {return}
+        
+        self.db.collection("UserProfileData")
+            .document("Buyer")
+            .collection("AllBuyers")
+            .document(id.uid)
+            .updateData(["tokenId" : token]) { (error) in
+                if let e = error
+                {
+                    print("error while updating token id : \(e)")
+                }
+                else
+                {
+                    print("updated seller token id")
+                    
+                }
+            }
+
+    }
 }
 

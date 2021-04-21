@@ -24,7 +24,7 @@ class ListOfServices: UITableViewController, DataManipulation {
         //calling method to retrieve data
         serviceBrain.retrivingServicesFromDatabase()
         
-       // modifyingUi()
+        
         
         //registering table view
         tableView.register(UINib(nibName:Constants.cellNibNameServicesList, bundle: nil),forCellReuseIdentifier:Constants.cellIdentifierServicesList)
