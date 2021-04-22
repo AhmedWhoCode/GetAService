@@ -17,6 +17,7 @@ class NotificationsTableViewCell: UITableViewCell {
     @IBOutlet weak var button: UIButton!
     var buttonDelegantNotification:ButtonPressed?
 
+    @IBOutlet weak var innerVIew: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

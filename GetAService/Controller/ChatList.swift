@@ -28,10 +28,11 @@ class ChatList: UITableViewController {
         //navigationItem.hidesBackButton = false
         
         
-        retrivingChats()
        // addingDummyData()
         
+        
         tableView.register(UINib(nibName:Constants.cellNibNameChatList, bundle: nil),forCellReuseIdentifier:Constants.cellIdentifierChatList)
+        tableView.tableFooterView = UIView()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
@@ -39,13 +40,14 @@ class ChatList: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     override func viewWillAppear(_ animated: Bool) {
+        retrivingChats()
+
         navigationController?.isToolbarHidden = true
         navigationController?.isNavigationBarHidden = false
         navigationItem.hidesBackButton = false
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        print("ye kia ha")
         hidesBottomBarWhenPushed = false
         //navigationController?.hidesBottomBarWhenPushed = false
     }
@@ -57,7 +59,7 @@ class ChatList: UITableViewController {
             
             //after getting all chats id now we are getting info of those ids
             self.chatBrain.gettingUserInfo(with: data) { (infoData) in
-                
+                print("seq" , infoData)
                 self.chatList = infoData
                 self.tableView.reloadData()
                 print("check \(infoData.count)")

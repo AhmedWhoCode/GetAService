@@ -306,6 +306,7 @@
 		9378C7FB25B8260200B6A183 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				9329C27F261D8ECD00DCB084 /* ERProgressHud.swift */,
 				9355988225FCC03B0049CF28 /* Helper Functions.swift */,
 				932C89AF25DAC8E3008D72D9 /* ServicesModel.swift */,
 				93E3F8DA25E23BEC00FB74C3 /* ServicesBrain.swift */,
@@ -346,7 +347,6 @@
 				93226A2F2601E5BF001A7A86 /* LocationTableViewCell.xib */,
 				935E31C82612226100D3CCD5 /* ReviewsTableViewCell.swift */,
 				935E31C92612226100D3CCD5 /* ReviewsTableViewCell.xib */,
-				9329C27F261D8ECD00DCB084 /* ERProgressHud.swift */,
 				9321A999262B01BA0015FCDC /* PortfolioImagesTableViewCell.swift */,
 				9321A99A262B01BA0015FCDC /* PortfolioImagesTableViewCell.xib */,
 			);

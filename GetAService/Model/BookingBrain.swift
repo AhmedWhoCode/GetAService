@@ -18,9 +18,10 @@ protocol BookingBrainDelegate {
 
 
 class BookingBrain {
+    
     let defaults = UserDefaults.standard
 
-    //var sellerCoordinates : CLLocationCoordinate2D?
+    //buyer location
     var buyerCoordinates : CLLocationCoordinate2D?
     var buyerLatitude : String?
     var buyerLongitude : String?
@@ -33,26 +34,19 @@ class BookingBrain {
     var sellerName : String?
     var sellerImage : String?
     var sellerTokenId : String?
+    
+    
     // to get seller defualt price
     var sellerProfileBrain = SellerProfileBrain()
-    
-    
-    var bookingBrainDelegate : BookingBrainDelegate?
-    
-    static let sharedInstance = BookingBrain()
-    
-    var bookingInfoMap = [String:Any]()
-    
     let db = Firestore.firestore()
-    
-   
-    
+    var bookingBrainDelegate : BookingBrainDelegate?
+    static let sharedInstance = BookingBrain()
+    //booking information to firebase
+    var bookingInfoMap = [String:Any]()
     //its value will come from database
     var sellerPrice : String?
-    
-    //to prevent duplicate callling of a protocol function
+    //to prevent duplicate calling of a protocol function
     var check = true
-    
     
     
     func insertBookingInfomationToFirebase(with bookingData : BookingModel) {
@@ -100,6 +94,7 @@ class BookingBrain {
         bookingInfoMap["sellerAddress"] = bookingData.sellerLocationAddress
         bookingInfoMap["sellerPrice"] = sellerPrice
         
+        
         defaults.set(bookingData.sellerId, forKey: Constants.sellerIdForNavigation)
         defaults.set(bookingData.dateForUniqueId, forKey: Constants.notificationIdForNavigation)
 
@@ -138,7 +133,7 @@ class BookingBrain {
             .document(bookingData.sellerId)
             .collection("BookedBy")
             .document(bookingData.buyerId)
-            .setData(["dd" : "dd"]) { (error) in
+            .setData(["date" : bookingData.timeOfOrder]) { (error) in
                 
                 if let e = error
                 {

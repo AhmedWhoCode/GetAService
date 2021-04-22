@@ -31,6 +31,9 @@ class NotificationsList: UITableViewController, NotificationBrainDelegant {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        notificationBrain.retrivingNotifications()
+        ERProgressHud.sharedInstance.show()
+
         navigationController?.isToolbarHidden = true
         navigationController?.isNavigationBarHidden = false
         
@@ -38,17 +41,25 @@ class NotificationsList: UITableViewController, NotificationBrainDelegant {
         notificationBrain.notificationBrainDelegant = self
         
         tableView.register(UINib(nibName:Constants.cellNibNameNotification, bundle: nil),forCellReuseIdentifier:Constants.cellIdentifierNotification)
-        //addingDummyData()
         
-        notificationBrain.retrivingNotifications()
+        //to hide extra line
+         tableView.tableFooterView = UIView()
+
         
         
+        
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        //ERProgressHud.sharedInstance.show()
+
     }
     
     func didReceiveTheData(values: [NotificationModel]) {
         notifications = values
+        ERProgressHud.sharedInstance.hide()
+
         tableView.reloadData()
-        print(values)
+        print("yarr",values)
     }
     
     // MARK: - Table view data source
@@ -67,6 +78,11 @@ class NotificationsList: UITableViewController, NotificationBrainDelegant {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.cellIdentifierNotification, for: indexPath) as? NotificationsTableViewCell
       
+        if notifications[indexPath.row].bookingStatus == "unSeen"
+        {
+            cell?.innerVIew.backgroundColor = .systemBlue
+            cell?.button.backgroundColor = .systemBlue
+        }
         cell?.customerImage.loadCacheImage(with: notifications[indexPath.row].buyerImage )
         cell?.customerName.text = notifications[indexPath.row].buyerName
         cell?.customerCountry.text = notifications[indexPath.row].buyerCountry
@@ -126,7 +142,6 @@ extension NotificationsList : ButtonPressed
             showToast1(controller: self, message: "Error while retriving values", seconds: 1, color: .red)
         }
                 
-       // print("idb \(value)")
         
         notificationBrain.navigateToCorrectScreen(with: buyerID!) { (response) in
             ERProgressHud.sharedInstance.hide()

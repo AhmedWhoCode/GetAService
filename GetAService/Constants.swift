@@ -9,6 +9,7 @@ import Foundation
 
 
 struct Constants {
+    
     static let buyerIdForNavigation = "buyerIdForNavigation"
     static let sellerIdForNavigation = "sellerIdForNavigation"
     static let notificationIdForNavigation = "notificationIdForNavigation"

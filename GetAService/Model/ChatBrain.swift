@@ -23,7 +23,11 @@ class ChatBrain {
     
     func retrivingChatsFromDatabase(completion :@escaping ([String]) -> ()) {
         
-        db.collection("Chats").document(currentUser!).collection("ChatWith").addSnapshotListener{ (snapShot, error) in
+        db.collection("Chats")
+            .document(currentUser!)
+            .collection("ChatWith")
+            .order(by: "date" , descending: false)
+            .addSnapshotListener{ (snapShot, error) in
             self.chatIds.removeAll()
             if let snap = snapShot?.documents
             {

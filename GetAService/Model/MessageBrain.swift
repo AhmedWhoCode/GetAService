@@ -62,6 +62,11 @@ class MessageBrain {
     
     func storeMessageToFireBase(with data : MessageStructer ,completion : @escaping ()-> ()) {
         
+        // to show recent chat at the top
+        let date = Date()
+        let df = DateFormatter()
+        df.dateFormat = "yyyy-MM-dd HH:mm:ss.SSSS"
+        
         message["body"] = data.body
         message["senderId"] = data.senderId
         message["date"] = data.date
@@ -69,8 +74,12 @@ class MessageBrain {
         message["receiverId"] = data.receiverId
         // using timeStamp for unique message id
         
-        //storing the redundant data to prevent the bug
-        db.collection("Chats").document(currentUser).collection("ChatWith").document(data.receiverId).setData(["mm" : "mm"]) { (error) in
+        // Date that will help to show latest chats on top
+            db.collection("Chats")
+                .document(currentUser)
+                .collection("ChatWith")
+                .document(data.receiverId)
+                .setData(["date" : date]) { (error) in
             
             if let e = error
             {
@@ -80,16 +89,25 @@ class MessageBrain {
             else
             {
                 // stroing data on current user side
-                self.db.collection("Chats").document(self.currentUser).collection("ChatWith").document(data.receiverId).collection("AllSingleChat").document(data.date).setData(self.message) { (error) in
+                self.db.collection("Chats")
+                    .document(self.currentUser)
+                    .collection("ChatWith")
+                    .document(data.receiverId)
+                    .collection("AllSingleChat")
+                    .document(data.date)
+                    .setData(self.message) { (error) in
                     if let e = error
                     {
                         print("error while storing message: \(e.localizedDescription)")
                     }
                     else
                     {
-                        //storing the redundant data to prevent the bug
-                        
-                        self.db.collection("Chats").document(data.receiverId).collection("ChatWith").document(self.currentUser).setData(["mm" : "mm"]) { (error) in
+                        // Date that will help to show latest chats on top
+                        self.db.collection("Chats")
+                            .document(data.receiverId)
+                            .collection("ChatWith")
+                            .document(self.currentUser)
+                            .setData(["date" : date]) { (error) in
                             if let e = error
                             {
                                 print("seller ki chat \(e.localizedDescription)")

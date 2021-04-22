@@ -139,7 +139,7 @@ class BuyerProfileBrain {
                 let imageRef1 = snap["imageRef"]! as! String
                 let name1 = snap["name"]! as! String
                 let country = snap["country"]! as! String
-                let tokenId = snap["tokenId"]! as! String
+                guard  let tokenId = (snap["tokenId"]! as? String) else {return}
 
                 let userId = userUid
                 

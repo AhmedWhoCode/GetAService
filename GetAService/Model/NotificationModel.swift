@@ -12,6 +12,7 @@ struct NotificationModel {
     var buyerName : String
     var buyerCountry : String
     var buyerUID : String
+    var bookingStatus : String? = "not defined"
 
 }
 
