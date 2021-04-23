@@ -12,7 +12,7 @@ struct InfoToBeSend {
 
 import UIKit
 
-class NotificationsList: UITableViewController, NotificationBrainDelegant {
+class NotificationsList: UITableViewController, NotificationBrainDelegate {
     
     var notifications = [NotificationModel]()
     

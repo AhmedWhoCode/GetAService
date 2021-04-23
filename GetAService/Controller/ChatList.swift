@@ -9,8 +9,17 @@ import UIKit
 import FirebaseAuth
 import Firebase
 
-class ChatList: UITableViewController {
-   // var chats = [Chats]()
+class ChatList: UITableViewController, ChatBrainDelegate {
+    
+    func didReceiveTheData(values: [ChatModel]) {
+        ERProgressHud.sharedInstance.hide()
+
+        self.chatList = values
+        self.tableView.reloadData()
+        
+    }
+    
+    // var chats = [Chats]()
     var chatBrain = ChatBrain()
     
     var currentUser = Auth.auth().currentUser?.uid
@@ -24,11 +33,11 @@ class ChatList: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //hides back button of top navigation
-        //navigationItem.hidesBackButton = false
-        
-        
-       // addingDummyData()
+        chatBrain.chatBrainDelegant = self
+        retrivingChats()
+        ERProgressHud.sharedInstance.show(withTitle: "wait")
+
+    
         
         
         tableView.register(UINib(nibName:Constants.cellNibNameChatList, bundle: nil),forCellReuseIdentifier:Constants.cellIdentifierChatList)
@@ -40,8 +49,7 @@ class ChatList: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     override func viewWillAppear(_ animated: Bool) {
-        retrivingChats()
-
+        
         navigationController?.isToolbarHidden = true
         navigationController?.isNavigationBarHidden = false
         navigationItem.hidesBackButton = false
@@ -51,19 +59,14 @@ class ChatList: UITableViewController {
         hidesBottomBarWhenPushed = false
         //navigationController?.hidesBottomBarWhenPushed = false
     }
-   
+    
     
     func retrivingChats() {
         
         chatBrain.retrivingChatsFromDatabase { (data) in
             
             //after getting all chats id now we are getting info of those ids
-            self.chatBrain.gettingUserInfo(with: data) { (infoData) in
-                print("seq" , infoData)
-                self.chatList = infoData
-                self.tableView.reloadData()
-                print("check \(infoData.count)")
-            }
+            self.chatBrain.gettingUserInfo(with: data)
             
             
         }
@@ -118,6 +121,6 @@ class ChatList: UITableViewController {
         }
         
     }
-
+    
     
 }

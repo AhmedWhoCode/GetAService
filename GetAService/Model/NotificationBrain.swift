@@ -12,14 +12,14 @@ import FirebaseFirestore
 import Firebase
 
 
-protocol NotificationBrainDelegant {
+protocol NotificationBrainDelegate {
     func didReceiveTheData(values : [NotificationModel])
 }
 
 
 class NotificationBrain {
     
-    var notificationBrainDelegant : NotificationBrainDelegant?
+    var notificationBrainDelegant : NotificationBrainDelegate?
     var currentUser = Auth.auth().currentUser?.uid
     let db = Firestore.firestore()
     var buyerIds = [String]()
