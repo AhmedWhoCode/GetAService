@@ -151,7 +151,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1651" y="1318"/>
+            <point key="canvasLocation" x="-1610" y="2169"/>
         </scene>
         <!--Services-->
         <scene sceneID="7ED-x3-8s4">
@@ -1461,12 +1461,12 @@
         <scene sceneID="SVY-h5-7Dc">
             <objects>
                 <tableViewController id="F7j-ni-ReI" customClass="SubServicesTableViewController" customModule="GetAService" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelectionDuringEditing="YES" allowsMultipleSelection="YES" allowsMultipleSelectionDuringEditing="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Enb-Pk-Na0">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" allowsSelectionDuringEditing="YES" allowsMultipleSelection="YES" allowsMultipleSelectionDuringEditing="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Enb-Pk-Na0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="subServicesCell" rowHeight="59" id="zgH-sW-z1c">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="subServicesCell" rowHeight="59" id="zgH-sW-z1c" customClass="SubServicesTableViewCell" customModule="GetAService" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="59"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zgH-sW-z1c" id="to2-N6-I9l">
@@ -1474,19 +1474,31 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hair" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LYO-RZ-aN7">
-                                            <rect key="frame" x="40" y="19" width="334" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                            <rect key="frame" x="40" y="19" width="31" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$2022" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jnU-jb-CHx">
+                                            <rect key="frame" x="293" y="19" width="51" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailingMargin" secondItem="LYO-RZ-aN7" secondAttribute="trailing" constant="20" id="7MT-lr-Dc1"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="jnU-jb-CHx" secondAttribute="bottom" constant="8" id="GMj-qB-Eky"/>
+                                        <constraint firstItem="jnU-jb-CHx" firstAttribute="top" secondItem="to2-N6-I9l" secondAttribute="topMargin" constant="8" id="TLr-xK-3L2"/>
                                         <constraint firstItem="LYO-RZ-aN7" firstAttribute="leading" secondItem="to2-N6-I9l" secondAttribute="leadingMargin" constant="20" id="VFN-Vn-c6f"/>
                                         <constraint firstItem="LYO-RZ-aN7" firstAttribute="top" secondItem="to2-N6-I9l" secondAttribute="topMargin" constant="8" id="We0-m4-Hev"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="jnU-jb-CHx" secondAttribute="trailing" constant="50" id="eX6-YC-prr"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="LYO-RZ-aN7" secondAttribute="bottom" constant="8" id="ggN-Ea-ulJ"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="name" destination="LYO-RZ-aN7" id="Bbj-Qm-71g"/>
+                                    <outlet property="price" destination="jnU-jb-CHx" id="tOh-SX-ACd"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -1507,7 +1519,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cGm-3y-WOs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1541" y="1102"/>
+            <point key="canvasLocation" x="1540.5797101449277" y="1101.5625"/>
         </scene>
         <!--Order Information-->
         <scene sceneID="OUq-zz-sci">
@@ -2828,7 +2840,7 @@ you complete the service.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ROX-gN-VEb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="9268" y="-779"/>
+            <point key="canvasLocation" x="512" y="2169"/>
         </scene>
         <!--Apple Map View Controller-->
         <scene sceneID="IHB-mh-IHO">
@@ -3746,9 +3758,6 @@ once the service completed</string>
                     <toolbarItems>
                         <barButtonItem title="Item" image="house" catalog="system" width="95" id="zmO-98-MU9">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <connections>
-                                <segue destination="F24-9c-HvI" kind="show" id="2In-II-89O"/>
-                            </connections>
                         </barButtonItem>
                         <barButtonItem title="Item" image="bell" catalog="system" width="95" id="d7a-Y0-XMv">
                             <color key="tintColor" red="0.2274509804" green="0.2274509804" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -3833,7 +3842,7 @@ once the service completed</string>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pnl-IN-K9X" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2330.434782608696" y="1902.4553571428571"/>
+            <point key="canvasLocation" x="-481" y="2169"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

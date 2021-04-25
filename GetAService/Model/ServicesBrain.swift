@@ -27,8 +27,10 @@ class ServicesBrain {
     var servicesData = [ServicesModel]()
     var subServices = [String]()
     
-    var selectedSubServices = [String]()
     
+    var selectedSubServices = [String]()
+    var selectedSubSerWithPrice = [String:String]()
+
     
     func retrivingServicesFromDatabase() {
         
@@ -98,6 +100,46 @@ class ServicesBrain {
                 }
             }
         }
+        
+    }
+    
+    
+    func retrieveSelectedSubservicesWithPrice(
+        
+        
+        using userId : String = Auth.auth().currentUser!.uid ,
+        completion :@escaping ([String:String]) ->())
+    
+    {
+        db.collection("UserProfileData")
+            .document("Seller")
+            .collection("AllSellers")
+            .document(userId)
+            .collection("subservices")
+            .getDocuments { (snapshot, error) in
+                
+                if let e = error
+                {
+                    print("error while retriving selectedsubservices with price:" , e.localizedDescription)
+                }
+                else
+                {
+                    if let snap = snapshot
+                    {
+                        
+                        for doc in snap.documents
+                        {
+                         
+                            self.selectedSubSerWithPrice[doc.documentID] = doc.data()["price"] as? String
+                            
+                        }                        
+                        completion(self.selectedSubSerWithPrice)
+                        
+                    }
+                    
+                }
+                
+            }
         
     }
 }

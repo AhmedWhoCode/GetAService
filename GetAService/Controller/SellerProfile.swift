@@ -191,24 +191,7 @@ class SellerProfile: UIViewController {
             self.artistImage.image = image
             self.selectedImage = image
         }
-        
-        
-        
-        //        var config = YPImagePickerConfiguration()
-        //        config.library.defaultMultipleSelection  = false
-        //
-        //        let picker = YPImagePicker(configuration: config)
-        //
-        //
-        //        present(picker, animated: true, completion: nil)
-        //        picker.didFinishPicking { [unowned picker] items, _ in
-        //            if let photo = items.singlePhoto {
-        //
-        //                self.artistImage.image=photo.image // Final image selected by the user
-        //                self.selectedImage = photo.image
-        //            }
-        //            picker.dismiss(animated: true, completion: nil)
-        //        }
+
         
     }
     
@@ -451,6 +434,7 @@ extension SellerProfile : UICollectionViewDelegate , UICollectionViewDataSource
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "portfolioCollectionCell", for: indexPath) as? PortfolioCollectionViewCell
         
+        //checking if the data is coming from database or from image selector
         if isPortfolioImageSourceFirestore
         {
             

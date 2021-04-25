@@ -57,6 +57,7 @@ extension SellerProfile {
                                               ,"Tanning"
                                               ,"Tattoo"]
         
+        
         artistServicesDropDownList.isMultipleTouchEnabled = false
         artistServicesDropDownList.bottomOffset = CGPoint(x: 0, y:(artistServicesDropDownList.anchorView!.plainView.bounds.height))
         DropDown.appearance().selectionBackgroundColor = UIColor.yellow

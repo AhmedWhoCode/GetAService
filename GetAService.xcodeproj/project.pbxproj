@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		222F70D46DF72EAC85E4D6E6 /* Pods_GetAServiceTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 477D327B80E7FD74729F9831 /* Pods_GetAServiceTests.framework */; };
 		93042EE12634025F0043B407 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93042EE02634025F0043B407 /* Main.storyboard */; };
+		93042F2C26340FE30043B407 /* APIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93042F2B26340FE30043B407 /* APIKeys.swift */; };
 		9318F8AB25C5767D009A6712 /* CustomerRequestScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9318F8AA25C5767D009A6712 /* CustomerRequestScreen.swift */; };
 		931A9310262CBE4D007117C6 /* PortfolioCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931A930F262CBE4D007117C6 /* PortfolioCollectionViewCell.swift */; };
 		931CFA2925DED734007C2EE9 /* SubServicesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931CFA2825DED734007C2EE9 /* SubServicesTableViewController.swift */; };
@@ -56,7 +57,6 @@
 		936783AC25B9896E00A93B28 /* SellerListXibTableViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936783AA25B9896E00A93B28 /* SellerListXibTableViewTableViewCell.swift */; };
 		936783AD25B9896E00A93B28 /* SellerListXibTableViewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 936783AB25B9896E00A93B28 /* SellerListXibTableViewTableViewCell.xib */; };
 		936783B225B9915000A93B28 /* SellerLists.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936783B125B9915000A93B28 /* SellerLists.swift */; };
-		936BFFD0260E404300394B22 /* APIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936BFFCF260E404300394B22 /* APIKeys.swift */; };
 		936D2CB325F740BA00F677F8 /* Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936D2CB225F740BA00F677F8 /* Messages.swift */; };
 		936D2CB825F7614200F677F8 /* MessageBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936D2CB725F7614200F677F8 /* MessageBrain.swift */; };
 		936D2CBD25F76A2B00F677F8 /* MessageStructer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936D2CBC25F76A2B00F677F8 /* MessageStructer.swift */; };
@@ -78,6 +78,7 @@
 		938AE25F25DF927F00CC108B /* BuyerOrSeller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938AE25E25DF927F00CC108B /* BuyerOrSeller.swift */; };
 		93981BDA2618500000E6EC61 /* SellerDashboardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93981BD92618500000E6EC61 /* SellerDashboardExtension.swift */; };
 		93981BDF261854DF00E6EC61 /* SellerInfoExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93981BDE261854DF00E6EC61 /* SellerInfoExtension.swift */; };
+		939B457E2635687300693F62 /* SubServicesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939B457D2635687300693F62 /* SubServicesTableViewCell.swift */; };
 		93A7936225ED13D000064AA0 /* SellerWaitingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A7936125ED13D000064AA0 /* SellerWaitingViewController.swift */; };
 		93B2A837261AEF4E00260945 /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B2A836261AEF4E00260945 /* ViewControllerExtension.swift */; };
 		93BE8E5625EE00CE008103DA /* SellerDashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BE8E5525EE00CE008103DA /* SellerDashboardViewController.swift */; };
@@ -122,6 +123,7 @@
 		737F5F68A459B787E3DF3AA7 /* Pods-GetAServiceTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GetAServiceTests.release.xcconfig"; path = "Target Support Files/Pods-GetAServiceTests/Pods-GetAServiceTests.release.xcconfig"; sourceTree = "<group>"; };
 		87B86DA5DF5E613514E30A51 /* Pods-GetAService.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GetAService.release.xcconfig"; path = "Target Support Files/Pods-GetAService/Pods-GetAService.release.xcconfig"; sourceTree = "<group>"; };
 		93042EE02634025F0043B407 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = GetAService/View/Main.storyboard; sourceTree = SOURCE_ROOT; };
+		93042F2B26340FE30043B407 /* APIKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeys.swift; sourceTree = "<group>"; };
 		9318F8AA25C5767D009A6712 /* CustomerRequestScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerRequestScreen.swift; sourceTree = "<group>"; };
 		931A930F262CBE4D007117C6 /* PortfolioCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioCollectionViewCell.swift; sourceTree = "<group>"; };
 		931CFA2825DED734007C2EE9 /* SubServicesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubServicesTableViewController.swift; sourceTree = "<group>"; };
@@ -169,7 +171,6 @@
 		936783AA25B9896E00A93B28 /* SellerListXibTableViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellerListXibTableViewTableViewCell.swift; sourceTree = "<group>"; };
 		936783AB25B9896E00A93B28 /* SellerListXibTableViewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SellerListXibTableViewTableViewCell.xib; sourceTree = "<group>"; };
 		936783B125B9915000A93B28 /* SellerLists.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellerLists.swift; sourceTree = "<group>"; };
-		936BFFCF260E404300394B22 /* APIKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIKeys.swift; sourceTree = "<group>"; };
 		936D2CB225F740BA00F677F8 /* Messages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Messages.swift; sourceTree = "<group>"; };
 		936D2CB725F7614200F677F8 /* MessageBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBrain.swift; sourceTree = "<group>"; };
 		936D2CBC25F76A2B00F677F8 /* MessageStructer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageStructer.swift; sourceTree = "<group>"; };
@@ -198,6 +199,7 @@
 		938AE25E25DF927F00CC108B /* BuyerOrSeller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyerOrSeller.swift; sourceTree = "<group>"; };
 		93981BD92618500000E6EC61 /* SellerDashboardExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellerDashboardExtension.swift; sourceTree = "<group>"; };
 		93981BDE261854DF00E6EC61 /* SellerInfoExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellerInfoExtension.swift; sourceTree = "<group>"; };
+		939B457D2635687300693F62 /* SubServicesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubServicesTableViewCell.swift; sourceTree = "<group>"; };
 		93A7936125ED13D000064AA0 /* SellerWaitingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellerWaitingViewController.swift; sourceTree = "<group>"; };
 		93B2A836261AEF4E00260945 /* ViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerExtension.swift; sourceTree = "<group>"; };
 		93B2A83B261AF2B400260945 /* GetAService.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GetAService.entitlements; sourceTree = "<group>"; };
@@ -278,11 +280,14 @@
 			path = "Old Storyboard";
 			sourceTree = "<group>";
 		};
-		9316302D25E008AD00A2E4C4 /* Other Files */ = {
+		9316302D25E008AD00A2E4C4 /* Redundant Files */ = {
 			isa = PBXGroup;
 			children = (
+				9321A999262B01BA0015FCDC /* PortfolioImagesTableViewCell.swift */,
+				9321A99A262B01BA0015FCDC /* PortfolioImagesTableViewCell.xib */,
+				9332DF21262B041100346FD9 /* PortfolioImagesUITableViewController.swift */,
 			);
-			path = "Other Files";
+			path = "Redundant Files";
 			sourceTree = "<group>";
 		};
 		9354847125E8CC9D00A76C22 /* Helper */ = {
@@ -292,13 +297,13 @@
 				93BE8E5A25EE1359008103DA /* ShowToast.swift */,
 				936D2CB225F740BA00F677F8 /* Messages.swift */,
 				93593BC825FA7BA700BFCA71 /* UpdatingViews.swift */,
-				936BFFCF260E404300394B22 /* APIKeys.swift */,
 				93C95E0F26010F9800F8E3C2 /* LocationManager.swift */,
 				932DD7C12609D73A007BD665 /* CustomerScreenExtension.swift */,
 				93DBF77726172421003C9B03 /* MyUserDefaults.swift */,
 				93981BD92618500000E6EC61 /* SellerDashboardExtension.swift */,
 				93981BDE261854DF00E6EC61 /* SellerInfoExtension.swift */,
 				93B2A836261AEF4E00260945 /* ViewControllerExtension.swift */,
+				93042F2B26340FE30043B407 /* APIKeys.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -347,8 +352,8 @@
 				93226A2F2601E5BF001A7A86 /* LocationTableViewCell.xib */,
 				935E31C82612226100D3CCD5 /* ReviewsTableViewCell.swift */,
 				935E31C92612226100D3CCD5 /* ReviewsTableViewCell.xib */,
-				9321A999262B01BA0015FCDC /* PortfolioImagesTableViewCell.swift */,
-				9321A99A262B01BA0015FCDC /* PortfolioImagesTableViewCell.xib */,
+				931A930F262CBE4D007117C6 /* PortfolioCollectionViewCell.swift */,
+				939B457D2635687300693F62 /* SubServicesTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -381,8 +386,6 @@
 				9334E6FF26105C0F0046EB0C /* MeetupViewController.swift */,
 				935E31BE2611AEE900D3CCD5 /* ReviewsAndRatingsViewController.swift */,
 				935E31C32612221600D3CCD5 /* ReviewsTableViewController.swift */,
-				9332DF21262B041100346FD9 /* PortfolioImagesUITableViewController.swift */,
-				931A930F262CBE4D007117C6 /* PortfolioCollectionViewCell.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -425,7 +428,7 @@
 				937EAAB625B6F13A002CD6EC /* AppDelegate.swift */,
 				937EAAB825B6F13A002CD6EC /* SceneDelegate.swift */,
 				932C488B25C99E8C00F57308 /* Constants.swift */,
-				9316302D25E008AD00A2E4C4 /* Other Files */,
+				9316302D25E008AD00A2E4C4 /* Redundant Files */,
 				9316302925E0085000A2E4C4 /* Old Storyboard */,
 			);
 			path = GetAService;
@@ -757,9 +760,9 @@
 				93226A302601E5BF001A7A86 /* LocationTableViewCell.swift in Sources */,
 				93C95E0B2600BF8500F8E3C2 /* SearchViewController.swift in Sources */,
 				9370176625E1289C00CE177B /* SellerProfileModel.swift in Sources */,
-				936BFFD0260E404300394B22 /* APIKeys.swift in Sources */,
 				93233E9526072B2800812732 /* NotificationBrain.swift in Sources */,
 				9354847325E8CCD000A76C22 /* Extension.swift in Sources */,
+				93042F2C26340FE30043B407 /* APIKeys.swift in Sources */,
 				93C9691B25C5C0AD00A6217E /* ChatList.swift in Sources */,
 				9370176125E123B100CE177B /* SellerProfileBrain.swift in Sources */,
 				935E31C42612221600D3CCD5 /* ReviewsTableViewController.swift in Sources */,
@@ -794,6 +797,7 @@
 				93BE8E5625EE00CE008103DA /* SellerDashboardViewController.swift in Sources */,
 				93CE5C9525CBF257002A916E /* ButtonPressed.swift in Sources */,
 				938AE25F25DF927F00CC108B /* BuyerOrSeller.swift in Sources */,
+				939B457E2635687300693F62 /* SubServicesTableViewCell.swift in Sources */,
 				93981BDA2618500000E6EC61 /* SellerDashboardExtension.swift in Sources */,
 				93C9692125C5C14800A6217E /* ChatsTableViewCell.swift in Sources */,
 				931D66AB25C087EF002C239E /* NotificationsTableViewCell.swift in Sources */,

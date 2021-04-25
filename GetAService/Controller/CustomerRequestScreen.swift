@@ -65,7 +65,8 @@ class CustomerRequestScreen: UIViewController {
     
     @IBAction func confirmPressed(_ sender: UIButton) {
         sender.isEnabled = false
-        showInputDialog(title: "Add your price", subtitle: "if you pressed retain then your profile price will be used", actionTitle: "Add", cancelTitle: "Retain the price", inputPlaceholder: "New price", inputKeyboardType: .numberPad) { (alert) in
+        //this function is defined in extention file
+        showInputDialog(viewController: self,title: "Add your price", subtitle: "if you pressed retain then your profile price will be used", actionTitle: "Add", cancelTitle: "Retain the price", inputPlaceholder: "New price", inputKeyboardType: .numberPad) { (alert) in
             
             self.sellerProfileBrain.retrivingProfileDataForBooking(using:(Auth.auth().currentUser?.uid)! , completion: { (sellerPrice) in
                 self.sellerUpdatedPrice = sellerPrice
@@ -136,30 +137,32 @@ class CustomerRequestScreen: UIViewController {
     }
 
 }
-extension CustomerRequestScreen {
-    func showInputDialog(title:String? = nil,
-                         subtitle:String? = nil,
-                         actionTitle:String? = "Add",
-                         cancelTitle:String? = "Cancel",
-                         inputPlaceholder:String? = nil,
-                         inputKeyboardType:UIKeyboardType = UIKeyboardType.default,
-                         cancelHandler: ((UIAlertAction) -> Swift.Void)? = nil,
-                         actionHandler: ((_ text: String?) -> Void)? = nil) {
-        
-        let alert = UIAlertController(title: title, message: subtitle, preferredStyle: .alert)
-        alert.addTextField { (textField:UITextField) in
-            textField.placeholder = inputPlaceholder
-            textField.keyboardType = inputKeyboardType
-        }
-        alert.addAction(UIAlertAction(title: actionTitle, style: .default, handler: { (action:UIAlertAction) in
-            guard let textField =  alert.textFields?.first else {
-                actionHandler?(nil)
-                return
-            }
-            actionHandler?(textField.text)
-        }))
-        alert.addAction(UIAlertAction(title: cancelTitle, style: .cancel, handler: cancelHandler))
-        
-        self.present(alert, animated: true, completion: nil)
-    }
-}
+//extension CustomerRequestScreen {
+//    func showInputDialog(
+//                         viewController : UIViewController,
+//                         title:String? = nil,
+//                         subtitle:String? = nil,
+//                         actionTitle:String? = "Add",
+//                         cancelTitle:String? = "Cancel",
+//                         inputPlaceholder:String? = nil,
+//                         inputKeyboardType:UIKeyboardType = UIKeyboardType.default,
+//                         cancelHandler: ((UIAlertAction) -> Swift.Void)? = nil,
+//                         actionHandler: ((_ text: String?) -> Void)? = nil) {
+//
+//        let alert = UIAlertController(title: title, message: subtitle, preferredStyle: .alert)
+//        alert.addTextField { (textField:UITextField) in
+//            textField.placeholder = inputPlaceholder
+//            textField.keyboardType = inputKeyboardType
+//        }
+//        alert.addAction(UIAlertAction(title: actionTitle, style: .default, handler: { (action:UIAlertAction) in
+//            guard let textField =  alert.textFields?.first else {
+//                actionHandler?(nil)
+//                return
+//            }
+//            actionHandler?(textField.text)
+//        }))
+//        alert.addAction(UIAlertAction(title: cancelTitle, style: .cancel, handler: cancelHandler))
+//
+//        viewController.present(alert, animated: true, completion: nil)
+//    }
+//}

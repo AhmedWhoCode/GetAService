@@ -60,7 +60,7 @@ class SellerProfileBrain {
                 let document = snap["documentUrl"] as! String
                 guard let documentName = snap["documentName"] as? String else {return}
                 guard let tokenId = snap["tokenId"] as? String else {return}
-     
+                
                 //storing tokenID of a current user in booking brain class
                 BookingBrain.sharedInstance.sellerTokenId = tokenId
                 
@@ -95,7 +95,7 @@ class SellerProfileBrain {
         sellerProfileData["documentUrl"] = sellerProfileModel.document
         sellerProfileData["documentName"] = sellerProfileModel.documentName
         sellerProfileData["tokenId"] = "not defined yet"
-
+        
         
         
         if let userid = Auth.auth().currentUser?.uid {
@@ -152,20 +152,56 @@ class SellerProfileBrain {
     
     
     
-    func storeSubServivesToFirebase(with subServices:[String] ,  completion :@escaping () -> ()) {
+    func storeSubServivesToFirebase(with subServices:[String],
+                                    withPrice:[String:String],
+                                    completion :@escaping () -> ())
+    {
         
+        print("here2", withPrice)
         let userId = Auth.auth().currentUser!.uid
         
-        db.collection("UserProfileData").document("Seller").collection("AllSellers").document(userId).setData(["SubServices" : subServices], merge: true) { (error) in
-            if let e = error
-            {
-                print(e)
+        db.collection("UserProfileData")
+            .document("Seller")
+            .collection("AllSellers")
+            .document(userId)
+            .setData(["SubServices" : subServices], merge: true) { (error) in
+                if let e = error
+                {
+                    print("error while storing the subservices:",e)
+                }
+                else
+                {
+                    //now  adding each item of withprice dictionary in the firebase
+                    for key in withPrice.keys
+                    {
+                        print("here5" , key)
+
+                        guard let price = withPrice[key] else {return}
+                        
+                        self.db.collection("UserProfileData")
+                            .document("Seller")
+                            .collection("AllSellers")
+                            .document(userId)
+                            .collection("subservices")
+                            .document(key)
+                            .setData(["price" : price] , merge: false)
+                            { (error) in
+                                
+                                if let e = error
+                                {
+                                    print("error while storing the subservices:",e)
+                                }
+                                else
+                                {
+                                    completion()
+                                    
+                                }
+                                
+                            }
+                        
+                    }
+                }
             }
-            else
-            {
-                completion()
-            }
-        }
         
         
     }
@@ -220,7 +256,7 @@ class SellerProfileBrain {
                 let name1 = snap["name"]! as! String
                 let country = snap["country"]! as! String
                 let tokenId = snap["tokenId"]! as! String
-
+                
                 let userId = userUid
                 
                 let chatModel = ChatModel(image: imageRef1, name: name1, country: country, userId: userId, tokenId: tokenId)
@@ -469,7 +505,7 @@ class SellerProfileBrain {
                 
                 else
                 {
-                    print("error while retriving portfolio images" , error?.localizedDescription)
+                    print("error while retriving portfolio images" , error?.localizedDescription as Any)
                 }
                 
             }
@@ -494,8 +530,11 @@ class SellerProfileBrain {
                     
                 }
             }
-
+        
     }
+    
+    
+  
 }
 
 
