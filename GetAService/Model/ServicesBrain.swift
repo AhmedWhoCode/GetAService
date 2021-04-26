@@ -142,4 +142,27 @@ class ServicesBrain {
             }
         
     }
+    
+    func retrieveSubservicesWithPriceForPublicProfile(
+                                                    with sellerId : String
+                                                    ,subservices: [String]
+                                                    ,completion :@escaping ([String:String]) -> ()
+    )
+        {
+        retrieveSelectedSubservicesWithPrice(using: sellerId) { (subservicesWithPrice) in
+            
+            var updatedSubserviceWithPrice = [String:String]()
+            
+            for service in subservices
+            {
+                if let price = subservicesWithPrice[service]
+                {
+                    updatedSubserviceWithPrice[service] = price
+                }
+                
+            }
+            print("yahoo" , updatedSubserviceWithPrice)
+            completion(updatedSubserviceWithPrice)
+        }
+    }
 }

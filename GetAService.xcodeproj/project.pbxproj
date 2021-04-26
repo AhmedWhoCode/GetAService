@@ -1000,7 +1000,7 @@
 				CODE_SIGN_ENTITLEMENTS = GetAService/GetAService.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = BXQHK9SN8A;
 				INFOPLIST_FILE = GetAService/Info.plist;
@@ -1026,7 +1026,7 @@
 				CODE_SIGN_ENTITLEMENTS = GetAService/GetAService.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = BXQHK9SN8A;
 				INFOPLIST_FILE = GetAService/Info.plist;

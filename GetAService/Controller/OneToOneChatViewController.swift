@@ -40,7 +40,7 @@ class OneToOneChatViewController: MessagesViewController{
         //setting up current user
         currentUser = Sender(senderId: Auth.auth().currentUser!.uid, displayName: "roy")
         //setting other user
-        sender = Sender(senderId: otherUserID, displayName: otherUserName)
+        sender = Sender(senderId: otherUserID, displayName: otherUserName ?? "")
         //title of navbar
         title = otherUserName
         

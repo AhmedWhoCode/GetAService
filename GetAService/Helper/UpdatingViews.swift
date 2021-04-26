@@ -55,7 +55,8 @@ extension SellerProfile {
                                               ,"Med spa"
                                               ,"Nails"
                                               ,"Tanning"
-                                              ,"Tattoo"]
+                                              ,"Tattoo"
+                                              ,"Barber"]
         
         
         artistServicesDropDownList.isMultipleTouchEnabled = false

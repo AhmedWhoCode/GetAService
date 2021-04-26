@@ -12,7 +12,7 @@ import Firebase
 class ChatList: UITableViewController, ChatBrainDelegate {
     
     func didReceiveTheData(values: [ChatModel]) {
-        ERProgressHud.sharedInstance.hide()
+        //ERProgressHud.sharedInstance.hide()
 
         self.chatList = values
         self.tableView.reloadData()
@@ -35,7 +35,7 @@ class ChatList: UITableViewController, ChatBrainDelegate {
         super.viewDidLoad()
         chatBrain.chatBrainDelegant = self
         retrivingChats()
-        ERProgressHud.sharedInstance.show(withTitle: "wait")
+       // ERProgressHud.sharedInstance.show(withTitle: "wait")
 
     
         

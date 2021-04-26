@@ -57,7 +57,7 @@ class SellerProfileBrain {
                 let desc = snap["description"]! as! String
                 let country = snap["country"]! as! String
                 let subServices = snap["SubServices"]
-                let document = snap["documentUrl"] as! String
+                guard let document = snap["documentUrl"] as? String else {return}
                 guard let documentName = snap["documentName"] as? String else {return}
                 guard let tokenId = snap["tokenId"] as? String else {return}
                 

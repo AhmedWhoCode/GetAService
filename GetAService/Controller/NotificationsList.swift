@@ -32,7 +32,7 @@ class NotificationsList: UITableViewController, NotificationBrainDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         notificationBrain.retrivingNotifications()
-        ERProgressHud.sharedInstance.show()
+        //ERProgressHud.sharedInstance.show()
 
         navigationController?.isToolbarHidden = true
         navigationController?.isNavigationBarHidden = false
@@ -56,7 +56,7 @@ class NotificationsList: UITableViewController, NotificationBrainDelegate {
     
     func didReceiveTheData(values: [NotificationModel]) {
         notifications = values
-        ERProgressHud.sharedInstance.hide()
+        //ERProgressHud.sharedInstance.hide()
 
         tableView.reloadData()
         print("yarr",values)

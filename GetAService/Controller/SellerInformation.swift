@@ -27,14 +27,15 @@ class SellerInformation: UIViewController {
     
     @IBOutlet weak var starAverageLabel: UILabel!
     
-    @IBOutlet weak var subService1: UILabel!
-    @IBOutlet weak var subService2: UILabel!
-    @IBOutlet weak var subService3: UILabel!
-    @IBOutlet weak var subService4: UILabel!
-    @IBOutlet weak var subService5: UILabel!
-    @IBOutlet weak var subService6: UILabel!
+//    @IBOutlet weak var subService1: UILabel!
+//    @IBOutlet weak var subService2: UILabel!
+//    @IBOutlet weak var subService3: UILabel!
+//    @IBOutlet weak var subService4: UILabel!
+//    @IBOutlet weak var subService5: UILabel!
+//    @IBOutlet weak var subService6: UILabel!
     
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var tableView: UITableView!
     
     //value of this variable will come from the previous screen
     var selectedSellerId : String!
@@ -42,6 +43,8 @@ class SellerInformation: UIViewController {
     var fireStorage = Storage.storage()
     
     var sellerProfileBrain = SellerProfileBrain()
+    var serviceBrain = ServicesBrain()
+
     
     //to be send to chats
     var sellerNameToSend : String!
@@ -56,6 +59,8 @@ class SellerInformation: UIViewController {
     // portfolio images list
     var selectedPortfolioImagesInString = [String]()
 
+    var sellerSubservices = [String]()
+    var sellerSubservicesWithPrice = [String:String]()
     override func viewDidLoad() {
         super.viewDidLoad()
         designingViews()
@@ -75,14 +80,25 @@ class SellerInformation: UIViewController {
     
     func retrivingData()  {
         sellerProfileBrain.retrivingProfileData (using : selectedSellerId){ (data,subservices) in
-            
+        
+            //storing subServices
+            if let sub = subservices
+            {
+                self.serviceBrain.retrieveSubservicesWithPriceForPublicProfile(with: self.selectedSellerId, subservices: sub) { (data) in
+                    self.sellerSubservicesWithPrice = data
+                    self.sellerSubservices = sub
+                    self.tableView.reloadData()
+                }
+               
+            }
+        
             self.sellerName.text = data.name
             self.sellerNameToSend = data.name
             self.sellerCountryLabel.text = data.country
             self.sellerPriceLabel.text = data.price
             self.sellerStatusLabel.text = "available"
             self.sellerDetailLabel.text = data.description
-            self.showSubServices(with: subservices)
+           // self.showSubServices(with: subservices)
             
             self.sellerImageToSend = data.imageRef
             
@@ -98,74 +114,74 @@ class SellerInformation: UIViewController {
         
     }
     
-    
-    func showSubServices(with subServices:[String]?) {
-        
-        if let subServices = subServices
-        {
-            let numberOfSubServices = subServices.count
-            
-            switch numberOfSubServices {
-            case 1:
-                subService1.isHidden = false
-                subService1.text = subServices[0]
-            case 2:
-                subService1.isHidden = false
-                subService2.isHidden = false
-                subService1.text = subServices[0]
-                subService2.text = subServices[1]
-            case 3:
-                subService1.isHidden = false
-                subService2.isHidden = false
-                subService3.isHidden = false
-                
-                subService1.text = subServices[0]
-                subService2.text = subServices[1]
-                subService3.text = subServices[2]
-            case 4:
-                subService1.isHidden = false
-                subService2.isHidden = false
-                subService3.isHidden = false
-                subService4.isHidden = false
-                
-                subService1.text = subServices[0]
-                subService2.text = subServices[1]
-                subService3.text = subServices[2]
-                subService4.text = subServices[3]
-            case 5:
-                subService1.isHidden = false
-                subService2.isHidden = false
-                subService3.isHidden = false
-                subService4.isHidden = false
-                subService5.isHidden = false
-                
-                subService1.text = subServices[0]
-                subService2.text = subServices[1]
-                subService3.text = subServices[2]
-                subService4.text = subServices[3]
-                subService5.text = subServices[4]
-                
-            case 6:
-                subService1.isHidden = false
-                subService2.isHidden = false
-                subService3.isHidden = false
-                subService4.isHidden = false
-                subService5.isHidden = false
-                subService6.isHidden = false
-                
-                subService1.text = subServices[0]
-                subService2.text = subServices[1]
-                subService3.text = subServices[2]
-                subService4.text = subServices[3]
-                subService5.text = subServices[4]
-                subService6.text = subServices[5]
-                
-            default:
-                print("no services")
-            }
-        }
-        
-    }
+//
+//    func showSubServices(with subServices:[String]?) {
+//
+//        if let subServices = subServices
+//        {
+//            let numberOfSubServices = subServices.count
+//
+//            switch numberOfSubServices {
+//            case 1:
+//                subService1.isHidden = false
+//                subService1.text = subServices[0]
+//            case 2:
+//                subService1.isHidden = false
+//                subService2.isHidden = false
+//                subService1.text = subServices[0]
+//                subService2.text = subServices[1]
+//            case 3:
+//                subService1.isHidden = false
+//                subService2.isHidden = false
+//                subService3.isHidden = false
+//
+//                subService1.text = subServices[0]
+//                subService2.text = subServices[1]
+//                subService3.text = subServices[2]
+//            case 4:
+//                subService1.isHidden = false
+//                subService2.isHidden = false
+//                subService3.isHidden = false
+//                subService4.isHidden = false
+//
+//                subService1.text = subServices[0]
+//                subService2.text = subServices[1]
+//                subService3.text = subServices[2]
+//                subService4.text = subServices[3]
+//            case 5:
+//                subService1.isHidden = false
+//                subService2.isHidden = false
+//                subService3.isHidden = false
+//                subService4.isHidden = false
+//                subService5.isHidden = false
+//
+//                subService1.text = subServices[0]
+//                subService2.text = subServices[1]
+//                subService3.text = subServices[2]
+//                subService4.text = subServices[3]
+//                subService5.text = subServices[4]
+//
+//            case 6:
+//                subService1.isHidden = false
+//                subService2.isHidden = false
+//                subService3.isHidden = false
+//                subService4.isHidden = false
+//                subService5.isHidden = false
+//                subService6.isHidden = false
+//
+//                subService1.text = subServices[0]
+//                subService2.text = subServices[1]
+//                subService3.text = subServices[2]
+//                subService4.text = subServices[3]
+//                subService5.text = subServices[4]
+//                subService6.text = subServices[5]
+//
+//            default:
+//                print("no services")
+//            }
+//        }
+//
+//    }
     
     @IBAction func messageButton(_ sender: UIButton) {
         performSegue(withIdentifier: Constants.seguesNames.sellerInfoToMessages, sender: self)
@@ -265,5 +281,25 @@ extension SellerInformation : UICollectionViewDelegate , UICollectionViewDataSou
     }
     
     
+}
+
+extension SellerInformation : UITableViewDelegate , UITableViewDataSource
+{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        sellerSubservices.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+          
+        let cell = tableView.dequeueReusableCell(withIdentifier: "sellerSubservices", for: indexPath) as? SubServicesTableViewCell
+        
+        cell?.name.text = sellerSubservices[indexPath.row]
+        cell?.price.text = sellerSubservicesWithPrice[(cell?.name.text)!]
+        
+        return cell!
+        
+    }
+    
+   
     
 }
