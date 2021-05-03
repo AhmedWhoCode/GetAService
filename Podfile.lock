@@ -381,6 +381,7 @@ PODS:
   - nanopb/encode (2.30908.0)
   - PromisesObjC (1.2.12)
   - PryntTrimmerView (4.0.2)
+  - SkeletonView (1.15.0)
   - SteviaLayout (4.7.3)
   - SwiftyGif (5.4.0)
   - YPImagePicker (4.5.0):
@@ -400,6 +401,7 @@ DEPENDENCIES:
   - GoogleSignIn
   - Kingfisher (~> 6.1)
   - MessageKit
+  - SkeletonView
   - SwiftyGif
   - YPImagePicker
 
@@ -437,6 +439,7 @@ SPEC REPOS:
     - nanopb
     - PromisesObjC
     - PryntTrimmerView
+    - SkeletonView
     - SteviaLayout
     - SwiftyGif
     - YPImagePicker
@@ -474,10 +477,11 @@ SPEC CHECKSUMS:
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   PryntTrimmerView: 6a43cc90df5d99addeabd33d4ba09b1365322130
+  SkeletonView: cac18a3ac4f893b09d99e65072d806ef08377aae
   SteviaLayout: c2ecdcff57d44e38fd2f65e54ad52aeae28ca0c4
   SwiftyGif: 5d4af95df24caf1c570dbbcb32a3b8a0763bc6d7
   YPImagePicker: 6f410f475bd22fa8cd430495b54d4b2f15865c2d
 
-PODFILE CHECKSUM: d36efcfbfb31141a9efa949900c38918780fad3f
+PODFILE CHECKSUM: b1d77e511b24211b172b20938bb9f10ab05aaa5a
 
 COCOAPODS: 1.10.1

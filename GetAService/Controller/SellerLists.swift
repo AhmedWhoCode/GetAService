@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SkeletonView
 
 class SellerLists: UITableViewController {
     var sellerShortInfo = [SellerShortInfo]()
@@ -23,17 +24,24 @@ class SellerLists: UITableViewController {
         
         navigationItem.hidesBackButton = false
         hidesBottomBarWhenPushed = true
-        print(selectedService!)
+        
         sellerProfileBrain.retrivingFilteredSellers(with: selectedService) { (data) in
-            print(data)
+            
             self.sellerShortInfo = data
             self.tableView.reloadData()
+            self.tableView.stopSkeletonAnimation()
+            self.tableView.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.001))
         }
         //addingDummyData()
         
         
         
         tableView.register(UINib(nibName:Constants.cellNibNameSellerList, bundle: nil),forCellReuseIdentifier:Constants.cellIdentifierSellerList)
+        tableView.tableFooterView = UIView()
+        
+        tableView.isSkeletonable = true
+        //view.isSkeletonable = true
+        tableView.showAnimatedGradientSkeleton(usingGradient: .init(baseColor: .brown), animation: nil, transition: .crossDissolve(0.1))
         
         
     }
@@ -166,4 +174,16 @@ extension SellerLists: ButtonPressed
     
     
     
+}
+
+extension SellerLists : SkeletonTableViewDataSource
+{
+    
+    func collectionSkeletonView(_ skeletonView: UITableView, cellIdentifierForRowAt indexPath: IndexPath) -> ReusableCellIdentifier {
+        return Constants.cellIdentifierSellerList
+    }
+    func collectionSkeletonView(_ skeletonView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
+        return 6
+    }
 }

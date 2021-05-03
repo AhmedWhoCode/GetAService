@@ -8,13 +8,14 @@
 import UIKit
 import FirebaseAuth
 import Firebase
+import SkeletonView
 
 class ChatList: UITableViewController, ChatBrainDelegate {
     
     func didReceiveTheData(values: [ChatModel]) {
-        //ERProgressHud.sharedInstance.hide()
-
         self.chatList = values
+        self.tableView.stopSkeletonAnimation()
+        self.tableView.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.001))
         self.tableView.reloadData()
         
     }
@@ -35,19 +36,16 @@ class ChatList: UITableViewController, ChatBrainDelegate {
         super.viewDidLoad()
         chatBrain.chatBrainDelegant = self
         retrivingChats()
-       // ERProgressHud.sharedInstance.show(withTitle: "wait")
-
     
         
         
         tableView.register(UINib(nibName:Constants.cellNibNameChatList, bundle: nil),forCellReuseIdentifier:Constants.cellIdentifierChatList)
         tableView.tableFooterView = UIView()
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        tableView.isSkeletonable = true
+        tableView.showAnimatedGradientSkeleton(usingGradient: .init(baseColor: .brown), animation: nil, transition: .crossDissolve(0.1))
+       
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         
         navigationController?.isToolbarHidden = true
@@ -123,4 +121,15 @@ class ChatList: UITableViewController, ChatBrainDelegate {
     }
     
     
+}
+extension ChatList : SkeletonTableViewDataSource
+{
+    
+    func collectionSkeletonView(_ skeletonView: UITableView, cellIdentifierForRowAt indexPath: IndexPath) -> ReusableCellIdentifier {
+        return Constants.cellIdentifierChatList
+    }
+    func collectionSkeletonView(_ skeletonView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
+        return 6
+    }
 }

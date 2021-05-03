@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -1126,14 +1126,14 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="artistAddressTextField" destination="c5U-LZ-gZC" id="b65-CJ-9Yf"/>
-                        <outlet property="artistEmailTextField" destination="eGR-MG-uBI" id="PNw-iu-U6P"/>
                         <outlet property="artistImage" destination="m5O-PO-vu8" id="cnu-mc-cmw"/>
                         <outlet property="artistNameTextField" destination="etd-bj-hMf" id="tkf-4X-jkN"/>
-                        <outlet property="artistNumberTextField" destination="9nm-rp-EBy" id="eO2-LH-Ljq"/>
-                        <outlet property="artistPriceTextField" destination="3Zy-Lg-y20" id="94x-Vx-YPV"/>
                         <outlet property="datePicker" destination="rJk-SE-RaV" id="iSU-Wa-cap"/>
                         <outlet property="genderChooser" destination="Qv6-u4-vfI" id="wTt-oa-8Gv"/>
+                        <outlet property="sellerEmailTextField" destination="eGR-MG-uBI" id="PNw-iu-U6P"/>
+                        <outlet property="sellerNumberTextField" destination="9nm-rp-EBy" id="eO2-LH-Ljq"/>
+                        <outlet property="sellerPriceTextField" destination="3Zy-Lg-y20" id="94x-Vx-YPV"/>
+                        <outlet property="sellerStateTextField" destination="c5U-LZ-gZC" id="b65-CJ-9Yf"/>
                         <outlet property="submitButton" destination="gJ9-Lq-qyV" id="a1T-Ob-YHc"/>
                     </connections>
                 </viewController>

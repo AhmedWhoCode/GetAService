@@ -22,3 +22,8 @@ struct NotificationDetailModel {
     var eventlocationAddress : String
     var eventDescription : String
 }
+
+struct InfoToBeSend {
+    var name : String
+    var image : String
+}

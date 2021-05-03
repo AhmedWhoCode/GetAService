@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import SkeletonView
 class NotificationsTableViewCell: UITableViewCell {
     @IBOutlet weak var view: UIView!
     
@@ -16,11 +16,13 @@ class NotificationsTableViewCell: UITableViewCell {
     
     @IBOutlet weak var button: UIButton!
     var buttonDelegantNotification:ButtonPressed?
-
+    @IBOutlet weak var innerStack: UIStackView!
+    
     @IBOutlet weak var innerVIew: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        view.isSkeletonable = true
         // Initialization code
         //customerImage.layer.borderWidth = 1
          customerImage.layer.masksToBounds = true

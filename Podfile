@@ -31,13 +31,12 @@ pod 'GooglePlaces'
 pod 'FloatingPanel'
 # Add the Firebase pod for Google Analytics
 pod 'Firebase/Analytics'
-
 #pod for drop down
 pod 'DropDown'
-
-
 # Add the pod for Firebase Cloud Messaging
 pod 'Firebase/Messaging'
+#pod for shimmering view
+pod 'SkeletonView'
 
 
   target 'GetAServiceTests' do

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -29,17 +29,17 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nicolas" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tsh-dn-qzH">
                                                 <rect key="frame" x="1" y="3" width="56" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" name="paragraphTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="USA" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u5c-UN-RMn">
                                                 <rect key="frame" x="2" y="36.5" width="34" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" name="paragraphTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <color key="backgroundColor" name="screenBackgroundDark"/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="u5c-UN-RMn" secondAttribute="bottom" constant="2" id="ALB-TJ-LwE"/>
                                             <constraint firstItem="u5c-UN-RMn" firstAttribute="leading" secondItem="X0a-3z-MgG" secondAttribute="leading" constant="2" id="LuE-iy-gPk"/>
@@ -47,8 +47,14 @@
                                             <constraint firstItem="Tsh-dn-qzH" firstAttribute="top" secondItem="X0a-3z-MgG" secondAttribute="top" constant="3" id="v7A-k0-A2n"/>
                                             <constraint firstItem="u5c-UN-RMn" firstAttribute="top" secondItem="Tsh-dn-qzH" secondAttribute="bottom" constant="13" id="vob-lg-sdu"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
                                     </view>
                                 </subviews>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                             </stackView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ArtistProfile" translatesAutoresizingMaskIntoConstraints="NO" id="Vwg-lv-AY9">
                                 <rect key="frame" x="1" y="5" width="70" height="70"/>
@@ -56,9 +62,12 @@
                                     <constraint firstAttribute="width" constant="70" id="C9X-0e-slu"/>
                                     <constraint firstAttribute="height" constant="70" id="xLK-A0-cYp"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" name="screenBackgroundDark"/>
                         <constraints>
                             <constraint firstItem="Vwg-lv-AY9" firstAttribute="top" secondItem="AFp-cW-jgL" secondAttribute="top" constant="5" id="ApW-8f-mbr"/>
                             <constraint firstAttribute="trailing" secondItem="ZHo-iX-JWT" secondAttribute="trailing" constant="5" id="Tfv-el-Gx5"/>
@@ -67,9 +76,12 @@
                             <constraint firstAttribute="bottom" secondItem="ZHo-iX-JWT" secondAttribute="bottom" constant="10" id="khb-EN-2ds"/>
                             <constraint firstItem="ZHo-iX-JWT" firstAttribute="top" secondItem="AFp-cW-jgL" secondAttribute="top" constant="10" id="o5z-hj-xeE"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                        </userDefinedRuntimeAttributes>
                     </view>
                 </subviews>
-                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <color key="backgroundColor" name="screenBackgroundDark"/>
                 <color key="tintColor" red="0.94901960780000005" green="0.98823529409999999" blue="0.99607843139999996" alpha="1" colorSpace="calibratedRGB"/>
                 <constraints>
                     <constraint firstItem="AFp-cW-jgL" firstAttribute="top" secondItem="3Hc-Kh-0RW" secondAttribute="top" constant="5" id="0bM-pt-FMv"/>
@@ -77,8 +89,14 @@
                     <constraint firstItem="AFp-cW-jgL" firstAttribute="leading" secondItem="3Hc-Kh-0RW" secondAttribute="leading" constant="5" id="aBD-14-LWu"/>
                     <constraint firstAttribute="trailing" secondItem="AFp-cW-jgL" secondAttribute="trailing" constant="5" id="sGC-Kw-ojq"/>
                 </constraints>
+                <userDefinedRuntimeAttributes>
+                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                </userDefinedRuntimeAttributes>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="Ph3-4w-hvI"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+            </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="chatCountry" destination="u5c-UN-RMn" id="fPe-iu-ntI"/>
                 <outlet property="chatImage" destination="Vwg-lv-AY9" id="o3i-K4-8kQ"/>
@@ -90,8 +108,11 @@
     </objects>
     <resources>
         <image name="ArtistProfile" width="121" height="50.5"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
+        <namedColor name="paragraphTextColor">
+            <color red="0.96100002527236938" green="0.96100002527236938" blue="0.96100002527236938" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="screenBackgroundDark">
+            <color red="0.55699998140335083" green="0.47499999403953552" blue="0.24300000071525574" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

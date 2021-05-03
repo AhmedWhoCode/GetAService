@@ -49,8 +49,11 @@ class OneToOneChatViewController: MessagesViewController{
         messagesCollectionView.messagesDataSource = self
         messagesCollectionView.messagesLayoutDelegate = self
         messagesCollectionView.messagesDisplayDelegate = self
-        
-        
+        messagesCollectionView.backgroundColor = .init(named: "screenBackgroundDark")
+        messageInputBar.contentView.backgroundColor = .init(named: "screenBackgroundDark")
+        messageInputBar.backgroundView.backgroundColor = .init(named: "screenBackgroundDark")
+        messageInputBar.sendButton.tintColor = .init(named: "screenBackgroundDark")
+        messageInputBar.sendButton.setTitleColor(UIColor.init(named: "paragraphTextColor"), for: .normal)
         //retriving current user image form firebase
         messageBrian.gettingCurrentUserImage(with: currentUser.senderId) { (imageInString) in
             self.currentUserImage = imageInString
@@ -122,7 +125,14 @@ class OneToOneChatViewController: MessagesViewController{
         messageBrian.storeMessageToFireBase(with: message)
         {
             let sender = PushNotificationSender()
-            sender.sendPushNotification(to: BookingBrain.sharedInstance.sellerTokenId!, title: "You have a message", body: "kindly open an app")
+            guard let token = BookingBrain.sharedInstance.sellerTokenId else
+            {
+                showToast1(controller: self, message: "couldnot send the notification", seconds: 1, color: .alizarin)
+                return
+                
+            }
+            
+            sender.sendPushNotification(to: token, title: "You have a message", body: "kindly open an app")
             self.messagesCollectionView.reloadData()
             
             print("successful")

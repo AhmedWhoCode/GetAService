@@ -18,16 +18,16 @@ class SellerProfile: UIViewController {
     
     @IBOutlet weak var selectServiceButton: UIButton!
     @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var sellerCountryTextField: UITextField!
+    @IBOutlet weak var sellerCityTextField: UITextField!
     @IBOutlet weak var sellerDescriptionTextVIew: UITextView!
     @IBOutlet weak var uploadFile: UIButton!
     @IBOutlet weak var artistImage: UIImageView!
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var artistNameTextField: UITextField!
-    @IBOutlet weak var artistAddressTextField: UITextField!
-    @IBOutlet weak var artistEmailTextField: UITextField!
-    @IBOutlet weak var artistPriceTextField: UITextField!
-    @IBOutlet weak var artistNumberTextField: UITextField!
+    @IBOutlet weak var sellerStateTextField: UITextField!
+    @IBOutlet weak var sellerEmailTextField: UITextField!
+    @IBOutlet weak var sellerPriceTextField: UITextField!
+    @IBOutlet weak var sellerNumberTextField: UITextField!
     
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var genderChooser: UISegmentedControl!
@@ -283,12 +283,12 @@ class SellerProfile: UIViewController {
             let sellerData = SellerProfileModel(uid: Auth.auth().currentUser!.uid,
                                                 imageRef: url.absoluteString,
                                                 name: self.artistNameTextField.text!,
-                                                email: self.artistEmailTextField.text!,
-                                                address: self.artistAddressTextField.text!,
-                                                phone: self.artistNumberTextField.text!,
-                                                price: self.artistPriceTextField.text!,
+                                                email: self.sellerEmailTextField.text!,
+                                                address: self.sellerStateTextField.text!,
+                                                phone: self.sellerNumberTextField.text!,
+                                                price: self.sellerPriceTextField.text!,
                                                 service: self.selectedService,
-                                                country: self.sellerCountryTextField.text!,
+                                                country: self.sellerCityTextField.text!,
                                                 description: self.sellerDescriptionTextVIew.text! ,
                                                 dob: self.datePicker.date,
                                                 gender: self.genderChooser.titleForSegment(at: self.genderChooser.selectedSegmentIndex)!,
@@ -309,12 +309,12 @@ class SellerProfile: UIViewController {
             self.artistImage.loadCacheImage(with: data.imageRef)
             
             self.artistNameTextField.text = data.name
-            self.artistEmailTextField.text = data.email
-            self.artistAddressTextField.text = data.address
-            self.artistNumberTextField.text = data.phone
-            self.artistPriceTextField.text = data.price
+            self.sellerEmailTextField.text = data.email
+            self.sellerStateTextField.text = data.address
+            self.sellerNumberTextField.text = data.phone
+            self.sellerPriceTextField.text = data.price
             self.selectedService = data.service
-            self.sellerCountryTextField.text = data.country
+            self.sellerCityTextField.text = data.country
             self.documentNameTextField.text = data.documentName
             let index : Int =  self.artistServicesDropDownList.dataSource.firstIndex(of: data.service)!
             self.artistServicesDropDownList.selectRow(index)

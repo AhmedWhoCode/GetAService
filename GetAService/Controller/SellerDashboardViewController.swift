@@ -26,21 +26,25 @@ class SellerDashboardViewController: UIViewController {
     
     @IBOutlet weak var sellerRating: UILabel!
     
-    @IBOutlet weak var subService1: UILabel!
-    @IBOutlet weak var subService2: UILabel!
-    @IBOutlet weak var subService3: UILabel!
-    @IBOutlet weak var subService4: UILabel!
-    @IBOutlet weak var subService5: UILabel!
-    @IBOutlet weak var subService6: UILabel!
+//    @IBOutlet weak var subService1: UILabel!
+//    @IBOutlet weak var subService2: UILabel!
+//    @IBOutlet weak var subService3: UILabel!
+//    @IBOutlet weak var subService4: UILabel!
+//    @IBOutlet weak var subService5: UILabel!
+//    @IBOutlet weak var subService6: UILabel!
+    
+    @IBOutlet weak var tableView: UITableView!
     var fireStorage = Storage.storage()
     
     var sellerProfileBrain = SellerProfileBrain()
+    var serviceBrain = ServicesBrain()
     
+    var sellerSubservices = [String]()
+    var sellerSubservicesWithPrice = [String:String]()
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //hidesBottomBarWhenPushed = false
-        
         designingViews()
         retrivingReviewsInformation()
         // Do any additional setup after loading the view.
@@ -85,6 +89,11 @@ class SellerDashboardViewController: UIViewController {
     
     
     func retrivingData()  {
+        
+        guard let sellerId = Auth.auth().currentUser?.uid else {
+            print("could not find seller id in seller dashboard")
+            return
+        }
         sellerProfileBrain.retrivingProfileData { (data,subservices) in
             
             self.sellerNameTextField.text = data.name
@@ -92,8 +101,17 @@ class SellerDashboardViewController: UIViewController {
             self.sellerPriceLabel.text = data.price
             self.sellerStatusLabel.text = "available"
             self.sellerDetailLabel.text = data.description
-            self.showSubServices(with: subservices)
-            
+            //self.showSubServices(with: subservices)
+            if let sub = subservices
+            {
+                self.serviceBrain.retrieveSubservicesWithPriceForPublicProfile(with:sellerId, subservices: sub){ (data) in
+                    self.sellerSubservicesWithPrice = data
+                    self.sellerSubservices = sub
+                    self.tableView.reloadData()
+                }
+               
+            }
+
             self.sellerImage.loadCacheImage(with: data.imageRef)
             
         }
@@ -119,74 +137,74 @@ class SellerDashboardViewController: UIViewController {
     
     
     
-    func showSubServices(with subServices:[String]?) {
-        //sellerProfileBrain.updateOnlineStatus(with: Constants.online)
-        
-        if let subServices = subServices
-        {
-            let numberOfSubServices = subServices.count
-            
-            switch numberOfSubServices {
-            case 1:
-                subService1.isHidden = false
-                subService1.text = subServices[0]
-            case 2:
-                subService1.isHidden = false
-                subService2.isHidden = false
-                subService1.text = subServices[0]
-                subService2.text = subServices[1]
-            case 3:
-                subService1.isHidden = false
-                subService2.isHidden = false
-                subService3.isHidden = false
-                
-                subService1.text = subServices[0]
-                subService2.text = subServices[1]
-                subService3.text = subServices[2]
-            case 4:
-                subService1.isHidden = false
-                subService2.isHidden = false
-                subService3.isHidden = false
-                subService4.isHidden = false
-                
-                subService1.text = subServices[0]
-                subService2.text = subServices[1]
-                subService3.text = subServices[2]
-                subService4.text = subServices[3]
-            case 5:
-                subService1.isHidden = false
-                subService2.isHidden = false
-                subService3.isHidden = false
-                subService4.isHidden = false
-                subService5.isHidden = false
-                
-                subService1.text = subServices[0]
-                subService2.text = subServices[1]
-                subService3.text = subServices[2]
-                subService4.text = subServices[3]
-                subService5.text = subServices[4]
-                
-            case 6:
-                subService1.isHidden = false
-                subService2.isHidden = false
-                subService3.isHidden = false
-                subService4.isHidden = false
-                subService5.isHidden = false
-                subService6.isHidden = false
-                
-                subService1.text = subServices[0]
-                subService2.text = subServices[1]
-                subService3.text = subServices[2]
-                subService4.text = subServices[3]
-                subService5.text = subServices[4]
-                subService6.text = subServices[5]
-                
-            default:
-                print("no services")
-            }
-        }
-        
-    }
+//    func showSubServices(with subServices:[String]?) {
+//        //sellerProfileBrain.updateOnlineStatus(with: Constants.online)
+//
+//        if let subServices = subServices
+//        {
+//            let numberOfSubServices = subServices.count
+//
+//            switch numberOfSubServices {
+//            case 1:
+//                subService1.isHidden = false
+//                subService1.text = subServices[0]
+//            case 2:
+//                subService1.isHidden = false
+//                subService2.isHidden = false
+//                subService1.text = subServices[0]
+//                subService2.text = subServices[1]
+//            case 3:
+//                subService1.isHidden = false
+//                subService2.isHidden = false
+//                subService3.isHidden = false
+//
+//                subService1.text = subServices[0]
+//                subService2.text = subServices[1]
+//                subService3.text = subServices[2]
+//            case 4:
+//                subService1.isHidden = false
+//                subService2.isHidden = false
+//                subService3.isHidden = false
+//                subService4.isHidden = false
+//
+//                subService1.text = subServices[0]
+//                subService2.text = subServices[1]
+//                subService3.text = subServices[2]
+//                subService4.text = subServices[3]
+//            case 5:
+//                subService1.isHidden = false
+//                subService2.isHidden = false
+//                subService3.isHidden = false
+//                subService4.isHidden = false
+//                subService5.isHidden = false
+//
+//                subService1.text = subServices[0]
+//                subService2.text = subServices[1]
+//                subService3.text = subServices[2]
+//                subService4.text = subServices[3]
+//                subService5.text = subServices[4]
+//
+//            case 6:
+//                subService1.isHidden = false
+//                subService2.isHidden = false
+//                subService3.isHidden = false
+//                subService4.isHidden = false
+//                subService5.isHidden = false
+//                subService6.isHidden = false
+//
+//                subService1.text = subServices[0]
+//                subService2.text = subServices[1]
+//                subService3.text = subServices[2]
+//                subService4.text = subServices[3]
+//                subService5.text = subServices[4]
+//                subService6.text = subServices[5]
+//
+//            default:
+//                print("no services")
+//            }
+//        }
+//
+//    }
     
     
     
@@ -237,5 +255,26 @@ class SellerDashboardViewController: UIViewController {
     @IBAction func profileClicked(_ sender: UIBarButtonItem) {
         performSegue(withIdentifier: Constants.seguesNames.sellerDashboardToProfile, sender:self)
     }
+    
+}
+
+extension SellerDashboardViewController : UITableViewDelegate , UITableViewDataSource
+{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        sellerSubservices.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+          
+        let cell = tableView.dequeueReusableCell(withIdentifier: "subservicesCellSellerDashboard", for: indexPath) as? SubServicesTableViewCell
+        
+        cell?.name.text = sellerSubservices[indexPath.row]
+        cell?.price.text = sellerSubservicesWithPrice[(cell?.name.text)!]
+        
+        return cell!
+        
+    }
+    
+   
     
 }

@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import SkeletonView
 
 class SellerInformation: UIViewController {
     
@@ -67,7 +68,8 @@ class SellerInformation: UIViewController {
         
         retrivingData()
         retrivingReviewsInformation()
-        
+        collectionView.isSkeletonable = true
+  collectionView.showAnimatedGradientSkeleton(usingGradient: .init(baseColor: .gray), animation: nil, transition: .crossDissolve(0.2))
 
         
         // Do any additional setup after loading the view.
@@ -84,7 +86,7 @@ class SellerInformation: UIViewController {
             //storing subServices
             if let sub = subservices
             {
-                self.serviceBrain.retrieveSubservicesWithPriceForPublicProfile(with: self.selectedSellerId, subservices: sub) { (data) in
+    self.serviceBrain.retrieveSubservicesWithPriceForPublicProfile(with: self.selectedSellerId, subservices: sub){ (data) in
                     self.sellerSubservicesWithPrice = data
                     self.sellerSubservices = sub
                     self.tableView.reloadData()
@@ -108,80 +110,15 @@ class SellerInformation: UIViewController {
         sellerProfileBrain.retrivingPortfolioImages(using: selectedSellerId) { (portfolioImages) in
           
             self.selectedPortfolioImagesInString = portfolioImages
+            self.collectionView.stopSkeletonAnimation()
+            self.collectionView.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.0001))
             //self.isPortfolioImageSourceFirestore = true
             self.collectionView.reloadData()
         }
         
     }
     
-//
-//    func showSubServices(with subServices:[String]?) {
-//
-//        if let subServices = subServices
-//        {
-//            let numberOfSubServices = subServices.count
-//
-//            switch numberOfSubServices {
-//            case 1:
-//                subService1.isHidden = false
-//                subService1.text = subServices[0]
-//            case 2:
-//                subService1.isHidden = false
-//                subService2.isHidden = false
-//                subService1.text = subServices[0]
-//                subService2.text = subServices[1]
-//            case 3:
-//                subService1.isHidden = false
-//                subService2.isHidden = false
-//                subService3.isHidden = false
-//
-//                subService1.text = subServices[0]
-//                subService2.text = subServices[1]
-//                subService3.text = subServices[2]
-//            case 4:
-//                subService1.isHidden = false
-//                subService2.isHidden = false
-//                subService3.isHidden = false
-//                subService4.isHidden = false
-//
-//                subService1.text = subServices[0]
-//                subService2.text = subServices[1]
-//                subService3.text = subServices[2]
-//                subService4.text = subServices[3]
-//            case 5:
-//                subService1.isHidden = false
-//                subService2.isHidden = false
-//                subService3.isHidden = false
-//                subService4.isHidden = false
-//                subService5.isHidden = false
-//
-//                subService1.text = subServices[0]
-//                subService2.text = subServices[1]
-//                subService3.text = subServices[2]
-//                subService4.text = subServices[3]
-//                subService5.text = subServices[4]
-//
-//            case 6:
-//                subService1.isHidden = false
-//                subService2.isHidden = false
-//                subService3.isHidden = false
-//                subService4.isHidden = false
-//                subService5.isHidden = false
-//                subService6.isHidden = false
-//
-//                subService1.text = subServices[0]
-//                subService2.text = subServices[1]
-//                subService3.text = subServices[2]
-//                subService4.text = subServices[3]
-//                subService5.text = subServices[4]
-//                subService6.text = subServices[5]
-//
-//            default:
-//                print("no services")
-//            }
-//        }
-//
-//    }
+
     
     @IBAction func messageButton(_ sender: UIButton) {
         performSegue(withIdentifier: Constants.seguesNames.sellerInfoToMessages, sender: self)
@@ -253,7 +190,11 @@ class SellerInformation: UIViewController {
         performSegue(withIdentifier: Constants.seguesNames.sellerInfoToReviews, sender: self)
     }
     
-    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+//              collectionView.isSkeletonable = true
+//        collectionView.showAnimatedGradientSkeleton(usingGradient: .init(baseColor: .gray), animation: nil, transition: .crossDissolve(0.0001))
+    }
     
     //    @IBAction func BookNow(_ sender: UIBarButtonItem) {
     //        performSegue(withIdentifier: Constants.seguesNames.artistInfoToProfile, sender:self)
@@ -262,8 +203,12 @@ class SellerInformation: UIViewController {
 }
 
 
-extension SellerInformation : UICollectionViewDelegate , UICollectionViewDataSource
+extension SellerInformation : UICollectionViewDelegate , SkeletonCollectionViewDataSource
 {
+    func collectionSkeletonView(_ skeletonView: UICollectionView, cellIdentifierForItemAt indexPath: IndexPath) -> ReusableCellIdentifier {
+        return "portfolioCollectionCell"
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
        
         return selectedPortfolioImagesInString.count
@@ -276,8 +221,13 @@ extension SellerInformation : UICollectionViewDelegate , UICollectionViewDataSou
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "portfolioCollectionCell", for: indexPath) as? PortfolioCollectionViewCell
      
             
-            cell?.portfolioImage.loadCacheImage(with: selectedPortfolioImagesInString[indexPath.row])
+        cell?.portfolioImage.loadCacheImage(with: selectedPortfolioImagesInString[indexPath.row])
         return cell!
+    }
+    
+    private func collectionSkeletonView(_ skeletonView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
+        return 5
     }
     
     

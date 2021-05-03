@@ -26,7 +26,7 @@ extension CustomerRequestScreen
         
         //MARK: - adding shadow to info view
         customerInfoView.layer.cornerRadius = 10
-        customerInfoView.layer.shadowColor = UIColor.gray.cgColor
+        customerInfoView.layer.shadowColor = UIColor.black.cgColor
         customerInfoView.layer.shadowOpacity = 1
         customerInfoView.layer.shadowRadius = 10
         
@@ -37,7 +37,7 @@ extension CustomerRequestScreen
         
         //MARK: - adding shadow to info view
         locationView.layer.cornerRadius = 10
-        locationView.layer.shadowColor = UIColor.gray.cgColor
+        locationView.layer.shadowColor = UIColor.black.cgColor
         locationView.layer.shadowOpacity = 1
         locationView.layer.shadowRadius = 10
         
