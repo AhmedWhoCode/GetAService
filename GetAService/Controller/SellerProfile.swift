@@ -34,6 +34,7 @@ class SellerProfile: UIViewController {
     
     @IBOutlet weak var documentNameTextField: UITextField!
     
+    @IBOutlet weak var documentView: UIView!
     
     var selectedImage : UIImage?
     
@@ -64,6 +65,8 @@ class SellerProfile: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        datePicker.backgroundColor = UIColor.init(named: "paragraphTextColor")
+        datePicker.tintColor = .black
         artistServicesDropDownList.anchorView = selectServiceButton
         //attaching touch sensor with a view, whenever you press a view keyboard will disappear
         initializeHideKeyboard()

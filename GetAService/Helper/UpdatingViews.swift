@@ -72,10 +72,11 @@ extension SellerProfile {
         artistImage.layer.cornerRadius = artistImage.frame.size.height/2
         artistImage.contentMode = .scaleAspectFill
         
-        sellerDescriptionTextVIew.layer.shadowColor = UIColor.gray.cgColor
-        sellerDescriptionTextVIew.layer.shadowOpacity = 0.5
-        sellerDescriptionTextVIew.layer.shadowOffset = CGSize.zero
-        sellerDescriptionTextVIew.layer.shadowRadius = 7
+        sellerDescriptionTextVIew.layer.masksToBounds = true
+        sellerDescriptionTextVIew.layer.shadowColor = UIColor.black.cgColor
+        sellerDescriptionTextVIew.layer.shadowOpacity = 1
+        //sellerDescriptionTextVIew.layer.shadowOffset = CGSize.zero
+        sellerDescriptionTextVIew.layer.cornerRadius = 10
         //sellerDescriptionTextVIew.delegate = self
         
         
@@ -83,11 +84,16 @@ extension SellerProfile {
         //artistNameTextField.delegate = self
         artistNameTextField.layer.shadowColor = UIColor.gray.cgColor
         artistNameTextField.layer.shadowOpacity = 0.5
-        artistNameTextField.layer.shadowOffset = CGSize.zero
-        artistNameTextField.layer.shadowRadius = 7
+        sellerDescriptionTextVIew.layer.cornerRadius = 10
         // artistNameTextField.delegate = self
         
         
+        documentView.layer.shadowColor = UIColor.gray.cgColor
+        documentView.layer.shadowOpacity = 0.5
+        documentView.layer.shadowOffset = CGSize.zero
+        documentView.layer.borderWidth = 0.3
+        documentView.layer.cornerRadius = 10
+
         
         //To apply padding
         let paddingView : UIView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: artistNameTextField.frame.height))
@@ -151,10 +157,10 @@ extension SellerProfile {
         submitButton.layer.borderColor = UIColor.black.cgColor
         
         //sth view
-        uploadFile.layer.cornerRadius = 20
-        uploadFile.layer.borderWidth = 1
-        uploadFile.layer.borderColor = UIColor.black.cgColor
-        
+//        uploadFile.layer.cornerRadius = 20
+//        uploadFile.layer.borderWidth = 1
+//        uploadFile.layer.borderColor = UIColor.black.cgColor
+//
         
         //To apply padding
 //        let paddingView6 : UIView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: artistServicesDropDownList.frame.height))
@@ -179,9 +185,12 @@ extension SellerProfile {
         
         
         //designing collection view
+        collectionView.layer.shadowColor = UIColor.gray.cgColor
+        collectionView.layer.shadowOpacity = 0.5
+        collectionView.layer.shadowOffset = CGSize.zero
+        collectionView.layer.borderWidth = 0.3
         collectionView.layer.cornerRadius = 10
-        collectionView.layer.borderWidth = 1
-        collectionView.layer.borderColor =  UIColor.black.cgColor
+
     }
 }
 
