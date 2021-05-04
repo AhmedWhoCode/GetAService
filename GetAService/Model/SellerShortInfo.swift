@@ -12,7 +12,8 @@ struct SellerShortInfo {
     var image : String
     var price : String
     var name : String
-    var country : String
+    var state : String
     var availability  : String
     var status  : String
+    var city : String
 }

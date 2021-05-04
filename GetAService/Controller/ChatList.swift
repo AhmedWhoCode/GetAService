@@ -89,7 +89,7 @@ class ChatList: UITableViewController, ChatBrainDelegate {
         //userImage = chatList[indexPath.row].image
         cell?.chatImage.loadCacheImage(with: chatList[indexPath.row].image)
         cell?.chatName.text = chatList[indexPath.row].name
-        cell?.chatCountry.text = chatList[indexPath.row].country
+        cell?.chatCountry.text = chatList[indexPath.row].state
         // Configure the cell...
         
         return cell!

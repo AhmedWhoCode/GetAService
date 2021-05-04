@@ -32,6 +32,7 @@ class SellerProfileBrain {
     var reviewsList = [SellerRetrievalReviewsModel]()
     var portfolioImages = [String]()
     
+    
     func retrivingProfileData(using userUid :String = Auth.auth().currentUser!.uid,completion : @escaping (SellerProfileModel,[String]?) -> ()) {
         
         // let userId = Auth.auth().currentUser!.uid
@@ -43,20 +44,22 @@ class SellerProfileBrain {
             {
                 
                 
-                let imageRef1 = snap["imageRef"]! as! String
-                let name1 = snap["name"]! as! String
-                let email1 = snap["email"]! as! String
-                let address1 = snap["address"]! as! String
-                let phone1 = snap["phone"]! as! String
-                let price1 = snap["price"]! as! String
-                let service1 = snap["service"]! as! String
-                let gender1 = snap["gender"]! as! String
-                let dob = snap["dob"]! as! Timestamp
-                let dob1 = dob.dateValue()
-                let uid1 = snap["uid"]! as! String
-                let desc = snap["description"]! as! String
-                let country = snap["country"]! as! String
-                let subServices = snap["SubServices"]
+                guard let imageRef1 = snap["imageRef"] as? String else {return}
+                guard let name1 = snap["name"] as? String else {return}
+                guard let email1 = snap["email"] as? String else {return}
+                guard let state = snap["state"] as? String else {return}
+                guard let phone1 = snap["phone"] as? String else {return}
+                guard let price1 = snap["price"] as? String else {return}
+                guard let service1 = snap["service"] as? String else {return}
+                guard let gender1 = snap["gender"] as? String else {return}
+                guard let dob = snap["dob"] as? Timestamp else {return}
+                 let dob1 = dob.dateValue()
+                guard let uid1 = snap["uid"] as? String else {return}
+                guard let desc = snap["description"] as? String else {return}
+                guard let city = snap["city"] as? String else {return}
+                
+                 let subServices = snap["SubServices"]
+                
                 guard let document = snap["documentUrl"] as? String else {return}
                 guard let documentName = snap["documentName"] as? String else {return}
                 guard let tokenId = snap["tokenId"] as? String else {return}
@@ -64,7 +67,7 @@ class SellerProfileBrain {
                 //storing tokenID of a current user in booking brain class
                 BookingBrain.sharedInstance.sellerTokenId = tokenId
                 
-                let sellerProfileModel = SellerProfileModel(uid:uid1, imageRef: imageRef1 , name: name1, email:email1, address: address1, phone: phone1, price: price1, service: service1, country: country, description: desc, dob:dob1, gender: gender1,document: document , documentName: documentName)
+                let sellerProfileModel = SellerProfileModel(uid:uid1, imageRef: imageRef1 , name: name1, email:email1, state: state, phone: phone1, price: price1, service: service1, city: city, description: desc, dob:dob1, gender: gender1,document: document , documentName: documentName)
                 
                 completion(sellerProfileModel , subServices as? [String])
             }
@@ -83,14 +86,14 @@ class SellerProfileBrain {
         sellerProfileData["imageRef"] = sellerProfileModel.imageRef
         sellerProfileData["name"] = sellerProfileModel.name
         sellerProfileData["email"] = sellerProfileModel.email
-        sellerProfileData["address"] = sellerProfileModel.address
+        sellerProfileData["state"] = sellerProfileModel.state
         sellerProfileData["phone"] = sellerProfileModel.phone
         sellerProfileData["price"] = sellerProfileModel.price
         sellerProfileData["service"] = sellerProfileModel.service
         sellerProfileData["dob"] = sellerProfileModel.dob
         sellerProfileData["gender"] = sellerProfileModel.gender
         sellerProfileData["description"] = sellerProfileModel.description
-        sellerProfileData["country"] = sellerProfileModel.country
+        sellerProfileData["city"] = sellerProfileModel.city
         sellerProfileData["status"] = Constants.online
         sellerProfileData["documentUrl"] = sellerProfileModel.document
         sellerProfileData["documentName"] = sellerProfileModel.documentName
@@ -220,21 +223,24 @@ class SellerProfileBrain {
                 {
                     for i in 0...snap.count - 1
                     {
-                        let uid = snap[i].data()["uid"] as! String
-                        let image = snap[i].data()["imageRef"] as! String
-                        let price = snap[i].data()["price"] as! String
-                        let name = snap[i].data()["name"] as! String
-                        let country = snap[i].data()["country"] as! String
-                        let status = snap[i].data()["status"] as! String
+                        guard let uid = snap[i].data()["uid"] as? String else {return}
+                        guard  let image = snap[i].data()["imageRef"] as? String else {return}
+                        guard let price = snap[i].data()["price"] as? String else {return}
+                        guard let name = snap[i].data()["name"] as? String else {return}
+                        guard let state = snap[i].data()["state"] as? String else {return}
+                        guard let city = snap[i].data()["city"] as? String else {return}
+                        guard let status = snap[i].data()["status"] as? String else {return}
                         
-                        let s = SellerShortInfo(uid : uid,image: image, price: price, name: name, country: country, availability: "available",status: status)
+                        let s = SellerShortInfo(uid : uid,image: image, price: price, name: name, state: state, availability: "available",status: status,city: city)
                         self.sellerShortInfoArray.append(s)
                         
                     }
+                    completion(self.sellerShortInfoArray)
+
                 }
+
             }
             
-            completion(self.sellerShortInfoArray)
         }
         
     }
@@ -252,14 +258,14 @@ class SellerProfileBrain {
             {
                 
                 
-                let imageRef1 = snap["imageRef"]! as! String
-                let name1 = snap["name"]! as! String
-                let country = snap["country"]! as! String
-                let tokenId = snap["tokenId"]! as! String
+                guard let imageRef1 = snap["imageRef"] as? String else {return}
+                guard let name1 = snap["name"] as?  String else {return}
+                guard let state = snap["state"] as?  String else {return}
+                guard let tokenId = snap["tokenId"] as?  String else {return}
                 
                 let userId = userUid
                 
-                let chatModel = ChatModel(image: imageRef1, name: name1, country: country, userId: userId, tokenId: tokenId)
+                let chatModel = ChatModel(image: imageRef1, name: name1, state: state, userId: userId, tokenId: tokenId)
                 
                 completion(chatModel)
             }

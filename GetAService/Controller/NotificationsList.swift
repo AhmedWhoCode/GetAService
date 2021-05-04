@@ -85,7 +85,7 @@ class NotificationsList: UITableViewController, NotificationBrainDelegate {
         }
         cell?.customerImage.loadCacheImage(with: notifications[indexPath.row].buyerImage )
         cell?.customerName.text = notifications[indexPath.row].buyerName
-        cell?.customerCountry.text = notifications[indexPath.row].buyerCountry
+        cell?.customerCountry.text = notifications[indexPath.row].buyerState
         cell?.button.setTitle( notifications[indexPath.row].buyerUID , for: .normal)
         //buyerName = notifications[indexPath.row].buyerName
         //buyerImage = notifications[indexPath.row].buyerImage

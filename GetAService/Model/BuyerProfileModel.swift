@@ -12,10 +12,10 @@ struct BuyerProfileModel {
     var imageRef:String
     var name:String
     var email:String
-    var address:String
+    var state:String
     var phone:String
     var dob:Date
     var gender:String
-    var country : String
+    var city : String
      
 }

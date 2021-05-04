@@ -87,6 +87,7 @@ extension SellerProfile {
         sellerDescriptionTextVIew.layer.cornerRadius = 10
         // artistNameTextField.delegate = self
         
+   
         
         documentView.layer.shadowColor = UIColor.gray.cgColor
         documentView.layer.shadowOpacity = 0.5
@@ -128,10 +129,10 @@ extension SellerProfile {
         //4rth view
         
         //shadow
-        sellerPriceTextField.layer.shadowColor = UIColor.gray.cgColor
-        sellerPriceTextField.layer.shadowOpacity = 0.5
-        sellerPriceTextField.layer.shadowOffset = CGSize.zero
-        sellerPriceTextField.layer.shadowRadius = 7
+//        sellerPriceTextField.layer.shadowColor = UIColor.gray.cgColor
+//        sellerPriceTextField.layer.shadowOpacity = 0.5
+//        sellerPriceTextField.layer.shadowOffset = CGSize.zero
+//        sellerPriceTextField.layer.shadowRadius = 7
         
         //To apply padding
         let paddingView4 : UIView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: sellerStateTextField.frame.height))
@@ -164,11 +165,12 @@ extension SellerProfile {
         
         //To apply padding
 //        let paddingView6 : UIView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: artistServicesDropDownList.frame.height))
-        selectServiceButton.titleEdgeInsets = UIEdgeInsets(top: 10,left: 10,bottom: 10,right: 10)
         //selectServiceButton.layer.left(paddingView6)
      //selectServiceButton.layer.leftViewMode = UITextField.ViewMode.always
         
         //shadow
+        selectServiceButton.titleEdgeInsets = UIEdgeInsets(top: 10,left: 10,bottom: 10,right: 10)
+
         selectServiceButton.layer.shadowColor = UIColor.white.cgColor
         selectServiceButton.layer.shadowOpacity = 0.5
         selectServiceButton.layer.shadowOffset = CGSize.zero
@@ -190,6 +192,12 @@ extension SellerProfile {
         collectionView.layer.shadowOffset = CGSize.zero
         collectionView.layer.borderWidth = 0.3
         collectionView.layer.cornerRadius = 10
+        
+        priceInnerStack.layer.borderColor = UIColor.white.cgColor
+       // priceInnerStack.layer.shadowOpacity = 1
+       //priceInnerStack.layer.shadowOffset = CGSize.zero
+        priceInnerStack.layer.borderWidth = 2
+        priceInnerStack.layer.cornerRadius = 20
 
     }
 }
@@ -253,15 +261,15 @@ extension BuyerProfile {
         
         //  2nd view
         //shadow
-        buyerAddressTextField.layer.shadowColor = UIColor.gray.cgColor
-        buyerAddressTextField.layer.shadowOpacity = 0.5
-        buyerAddressTextField.layer.shadowOffset = CGSize.zero
-        buyerAddressTextField.layer.shadowRadius = 7
+        buyerStateTextField.layer.shadowColor = UIColor.gray.cgColor
+        buyerStateTextField.layer.shadowOpacity = 0.5
+        buyerStateTextField.layer.shadowOffset = CGSize.zero
+        buyerStateTextField.layer.shadowRadius = 7
         
         //To apply padding
-        let paddingView2 : UIView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: buyerAddressTextField.frame.height))
-        buyerAddressTextField.leftView = paddingView2
-        buyerAddressTextField.leftViewMode = UITextField.ViewMode.always
+        let paddingView2 : UIView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: buyerStateTextField.frame.height))
+        buyerStateTextField.leftView = paddingView2
+        buyerStateTextField.leftViewMode = UITextField.ViewMode.always
         
         
         // 3rd view
@@ -272,7 +280,7 @@ extension BuyerProfile {
         buyerEmailTextField.layer.shadowRadius = 7
         
         //To apply padding
-        let paddingView3 : UIView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: buyerAddressTextField.frame.height))
+        let paddingView3 : UIView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: buyerStateTextField.frame.height))
         buyerEmailTextField.leftView = paddingView3
         buyerEmailTextField.leftViewMode = UITextField.ViewMode.always
         
@@ -285,7 +293,7 @@ extension BuyerProfile {
         buyerPriceTextField.layer.shadowRadius = 7
         
         //To apply padding
-        let paddingView4 : UIView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: buyerAddressTextField.frame.height))
+        let paddingView4 : UIView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: buyerStateTextField.frame.height))
         buyerPriceTextField.leftView = paddingView4
         buyerPriceTextField.leftViewMode = UITextField.ViewMode.always
         
@@ -298,7 +306,7 @@ extension BuyerProfile {
         buyerNumberTextField.layer.shadowRadius = 7
         
         //To apply padding
-        let paddingView5 : UIView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: buyerAddressTextField.frame.height))
+        let paddingView5 : UIView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: buyerStateTextField.frame.height))
         buyerNumberTextField.leftView = paddingView5
         buyerNumberTextField.leftViewMode = UITextField.ViewMode.always
         
@@ -309,15 +317,15 @@ extension BuyerProfile {
         
         // 3rd view
         //shadow
-        buyerCountry.layer.shadowColor = UIColor.gray.cgColor
-        buyerCountry.layer.shadowOpacity = 0.5
-        buyerCountry.layer.shadowOffset = CGSize.zero
-        buyerCountry.layer.shadowRadius = 7
+        buyerCityTextField.layer.shadowColor = UIColor.gray.cgColor
+        buyerCityTextField.layer.shadowOpacity = 0.5
+        buyerCityTextField.layer.shadowOffset = CGSize.zero
+        buyerCityTextField.layer.shadowRadius = 7
         
         //To apply padding
-        let paddingViewC : UIView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: buyerCountry.frame.height))
-        buyerCountry.leftView = paddingViewC
-        buyerCountry.leftViewMode = UITextField.ViewMode.always
+        let paddingViewC : UIView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: buyerCityTextField.frame.height))
+        buyerCityTextField.leftView = paddingViewC
+        buyerCityTextField.leftViewMode = UITextField.ViewMode.always
         
         
     }

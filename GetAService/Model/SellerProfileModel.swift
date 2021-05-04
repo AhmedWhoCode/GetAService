@@ -12,11 +12,11 @@ struct SellerProfileModel {
    var imageRef:String
    var name:String
    var email:String
-   var address:String
+   var state:String
    var phone:String
    var price:String
    var service:String
-   var country:String
+   var city:String
    var description:String
    var dob:Date
    var gender:String

@@ -18,7 +18,7 @@ class SellerInformation: UIViewController {
     @IBOutlet weak var sellerImage: UIImageView!
     
     @IBOutlet weak var sellerName: UILabel!
-    @IBOutlet weak var sellerCountryLabel: UILabel!
+    @IBOutlet weak var sellerStateLabel: UILabel!
     @IBOutlet weak var sellerPriceLabel: UILabel!
     @IBOutlet weak var sellerStatusLabel: UILabel!
     @IBOutlet weak var sellerDetailLabel: UILabel!
@@ -93,20 +93,17 @@ class SellerInformation: UIViewController {
                 }
                
             }
-        
             self.sellerName.text = data.name
             self.sellerNameToSend = data.name
-            self.sellerCountryLabel.text = data.country
+            self.sellerStateLabel.text = data.state
             self.sellerPriceLabel.text = data.price
             self.sellerStatusLabel.text = "available"
             self.sellerDetailLabel.text = data.description
-           // self.showSubServices(with: subservices)
-            
             self.sellerImageToSend = data.imageRef
-            
             self.sellerImage.loadCacheImage(with: self.sellerImageToSend)
             
         }
+        
         sellerProfileBrain.retrivingPortfolioImages(using: selectedSellerId) { (portfolioImages) in
           
             self.selectedPortfolioImagesInString = portfolioImages

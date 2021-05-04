@@ -42,22 +42,22 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <stackView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="WRq-QS-oC5">
-                                <rect key="frame" x="105" y="10" width="140" height="80"/>
+                                <rect key="frame" x="105" y="10" width="180" height="80"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="price placeholder" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bXR-m7-epi">
-                                        <rect key="frame" x="0.0" y="0.0" width="140" height="23.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="180" height="23.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" name="paragraphTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="placeholder" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sbl-ah-TBX">
-                                        <rect key="frame" x="0.0" y="28.5" width="140" height="23"/>
+                                        <rect key="frame" x="0.0" y="28.5" width="180" height="23"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" name="paragraphTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="placeholder" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="70D-jZ-pXH">
-                                        <rect key="frame" x="0.0" y="56.5" width="140" height="23.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="placeholder,placeholder" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="70D-jZ-pXH">
+                                        <rect key="frame" x="0.0" y="56.5" width="180" height="23.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" name="paragraphTextColor"/>
                                         <nil key="highlightedColor"/>
@@ -65,14 +65,14 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="Bms-3z-ami"/>
-                                    <constraint firstAttribute="width" constant="140" id="Dvu-ZU-ne5"/>
+                                    <constraint firstAttribute="width" constant="180" id="Dvu-ZU-ne5"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Available" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BDw-dE-RWj">
-                                <rect key="frame" x="287" y="69" width="70" height="21"/>
+                                <rect key="frame" x="297" y="69" width="70" height="21"/>
                                 <color key="backgroundColor" red="0.2274509804" green="0.2274509804" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="IiL-tg-c30"/>
@@ -110,7 +110,7 @@
                             <constraint firstItem="S3u-Pe-OmK" firstAttribute="leading" secondItem="MCG-1t-hA1" secondAttribute="leading" constant="2" id="YAO-os-vp4"/>
                             <constraint firstAttribute="bottom" secondItem="S3u-Pe-OmK" secondAttribute="bottom" constant="10" id="eqn-rp-kbX"/>
                             <constraint firstAttribute="bottom" secondItem="BDw-dE-RWj" secondAttribute="bottom" constant="18" id="fEo-qs-7JO"/>
-                            <constraint firstAttribute="trailing" secondItem="BDw-dE-RWj" secondAttribute="trailing" constant="15" id="xqc-EF-wzd"/>
+                            <constraint firstAttribute="trailing" secondItem="BDw-dE-RWj" secondAttribute="trailing" constant="5" id="xqc-EF-wzd"/>
                             <constraint firstItem="WRq-QS-oC5" firstAttribute="leading" secondItem="S3u-Pe-OmK" secondAttribute="trailing" constant="15" id="zSG-GS-y31"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
@@ -149,7 +149,7 @@
             <color red="0.96100002527236938" green="0.96100002527236938" blue="0.96100002527236938" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="screenBackgroundDark">
-            <color red="0.55699998140335083" green="0.47499999403953552" blue="0.24300000071525574" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.3880000114440918" green="0.27799999713897705" blue="0.067000001668930054" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemGreenColor">
             <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

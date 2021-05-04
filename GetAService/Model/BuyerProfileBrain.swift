@@ -37,25 +37,24 @@ class BuyerProfileBrain {
                 
                 let imageRef1 = snap["imageRef"]! as! String
                 
-                print("debuk1\(imageRef1)")
-                let name1 = snap["name"]! as! String
-                let email1 = snap["email"]! as! String
-                let address1 = snap["address"]! as! String
-                let phone1 = snap["phone"]! as! String
-                let gender1 = snap["gender"]! as! String
-                let dob = snap["dob"]! as! Timestamp
-                let dob1 = dob.dateValue()
-                let uid1 = snap["uid"]! as! String
-                let country1 = snap["country"]! as! String
+               // print("debuk1\(imageRef1)")
+                guard  let name1 = snap["name"]  as? String else {return}
+                guard let email1 = snap["email"] as? String else {return}
+                guard let state = snap["state"] as? String else {return}
+                guard let phone1 = snap["phone"] as? String else {return}
+                guard let gender1 = snap["gender"] as? String else {return}
+                guard let dob = snap["dob"] as? Timestamp else {return}
+                 let dob1 = dob.dateValue()
+                guard let uid1 = snap["uid"] as? String else {return}
+                guard let city = snap["city"] as? String else {return}
 
                 
-                let buyerProfileModel = BuyerProfileModel(uid:uid1, imageRef: imageRef1 , name: name1, email:email1, address: address1, phone: phone1, dob:dob1, gender: gender1,country: country1)
-                print("hey yyy")
+                let buyerProfileModel = BuyerProfileModel(uid:uid1, imageRef: imageRef1 , name: name1, email:email1, state: state, phone: phone1, dob:dob1, gender: gender1,city: city)
                 completion(buyerProfileModel)
             }
             else
             {
-                print("nononono")
+                print("error while retriving buyer profile data")
             }
             
         }
@@ -70,11 +69,11 @@ class BuyerProfileBrain {
         buyerProfileData["imageRef"] = buyerProfileModel.imageRef
         buyerProfileData["name"] = buyerProfileModel.name
         buyerProfileData["email"] = buyerProfileModel.email
-        buyerProfileData["address"] = buyerProfileModel.address
+        buyerProfileData["state"] = buyerProfileModel.state
         buyerProfileData["phone"] = buyerProfileModel.phone
         buyerProfileData["dob"] = buyerProfileModel.dob
         buyerProfileData["gender"] = buyerProfileModel.gender
-        buyerProfileData["country"] = buyerProfileModel.country
+        buyerProfileData["city"] = buyerProfileModel.city
         buyerProfileData["tokenId"] = "not defined yet"
 
         
@@ -138,12 +137,12 @@ class BuyerProfileBrain {
                 
                 let imageRef1 = snap["imageRef"]! as! String
                 let name1 = snap["name"]! as! String
-                let country = snap["country"]! as! String
+                let state = snap["state"]! as! String
                 guard  let tokenId = (snap["tokenId"] as? String) else {return}
 
                 let userId = userUid
                 
-                let chatModel = ChatModel(image: imageRef1, name: name1, country: country, userId: userId,tokenId: tokenId )
+                let chatModel = ChatModel(image: imageRef1, name: name1, state: state, userId: userId,tokenId: tokenId )
                 
                 completion(chatModel)
             }
@@ -164,10 +163,10 @@ class BuyerProfileBrain {
                 
                 let imageRef1 = snap["imageRef"]! as! String
                 let name1 = snap["name"]! as! String
-                let country = snap["country"]! as! String
+                let state = snap["state"]! as! String
                 let uid = snap["uid"]! as! String
 
-                let notificationModel = NotificationModel(buyerImage: imageRef1, buyerName: name1, buyerCountry: country,buyerUID: uid)
+                let notificationModel = NotificationModel(buyerImage: imageRef1, buyerName: name1, buyerState: state,buyerUID: uid)
                 
                 completion(notificationModel)
             }

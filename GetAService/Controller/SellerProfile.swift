@@ -36,6 +36,8 @@ class SellerProfile: UIViewController {
     
     @IBOutlet weak var documentView: UIView!
     
+    @IBOutlet weak var priceInnerStack: UIStackView!
+    
     var selectedImage : UIImage?
     
     //storing profile image selected by the user as data
@@ -287,11 +289,11 @@ class SellerProfile: UIViewController {
                                                 imageRef: url.absoluteString,
                                                 name: self.artistNameTextField.text!,
                                                 email: self.sellerEmailTextField.text!,
-                                                address: self.sellerStateTextField.text!,
+                                                state: self.sellerStateTextField.text!,
                                                 phone: self.sellerNumberTextField.text!,
                                                 price: self.sellerPriceTextField.text!,
                                                 service: self.selectedService,
-                                                country: self.sellerCityTextField.text!,
+                                                city: self.sellerCityTextField.text!,
                                                 description: self.sellerDescriptionTextVIew.text! ,
                                                 dob: self.datePicker.date,
                                                 gender: self.genderChooser.titleForSegment(at: self.genderChooser.selectedSegmentIndex)!,
@@ -313,11 +315,11 @@ class SellerProfile: UIViewController {
             
             self.artistNameTextField.text = data.name
             self.sellerEmailTextField.text = data.email
-            self.sellerStateTextField.text = data.address
+            self.sellerStateTextField.text = data.state
             self.sellerNumberTextField.text = data.phone
             self.sellerPriceTextField.text = data.price
             self.selectedService = data.service
-            self.sellerCityTextField.text = data.country
+            self.sellerCityTextField.text = data.city
             self.documentNameTextField.text = data.documentName
             let index : Int =  self.artistServicesDropDownList.dataSource.firstIndex(of: data.service)!
             self.artistServicesDropDownList.selectRow(index)

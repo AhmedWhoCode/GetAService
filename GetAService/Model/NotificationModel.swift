@@ -10,7 +10,7 @@ import UIKit
 struct NotificationModel {
     var buyerImage : String
     var buyerName : String
-    var buyerCountry : String
+    var buyerState : String
     var buyerUID : String
     var bookingStatus : String? = "not defined"
 

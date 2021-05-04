@@ -16,12 +16,12 @@ class BuyerProfile: UIViewController {
     @IBOutlet weak var buyerImage: UIImageView!
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var buyerNameTextField: UITextField!
-    @IBOutlet weak var buyerAddressTextField: UITextField!
+    @IBOutlet weak var buyerStateTextField: UITextField!
     @IBOutlet weak var buyerEmailTextField: UITextField!
     @IBOutlet weak var buyerPriceTextField: UITextField!
     @IBOutlet weak var buyerNumberTextField: UITextField!
     
-    @IBOutlet weak var buyerCountry: UITextField!
+    @IBOutlet weak var buyerCityTextField: UITextField!
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var genderChooser: UISegmentedControl!
     
@@ -60,11 +60,11 @@ class BuyerProfile: UIViewController {
                                                imageRef: url.absoluteString,
                                                name: self.buyerNameTextField.text!,
                                                email: self.buyerEmailTextField.text!,
-                                               address: self.buyerAddressTextField.text!,
+                                               state: self.buyerStateTextField.text!,
                                                phone: self.buyerNumberTextField.text!,
                                                dob: self.datePicker.date,
                                                gender: self.genderChooser.titleForSegment(at: self.genderChooser.selectedSegmentIndex)!,
-                                               country: self.buyerCountry.text!
+                                               city: self.buyerCityTextField.text!
             )
             
             self.buyerProfileBrain.storingProfileDataToFireBase(with: buyersData)
@@ -100,9 +100,9 @@ class BuyerProfile: UIViewController {
             
             self.buyerNameTextField.text = data.name
             self.buyerEmailTextField.text = data.email
-            self.buyerAddressTextField.text = data.address
+            self.buyerStateTextField.text = data.state
             self.buyerNumberTextField.text = data.phone
-            self.buyerCountry.text = data.country
+            self.buyerCityTextField.text = data.city
             self.datePicker.setDate(data.dob, animated: true)
             
             if data.gender == "Male"

@@ -645,10 +645,10 @@
                         <outlet property="bookNowButton" destination="hit-yW-Osi" id="EMq-3X-cQu"/>
                         <outlet property="countryView" destination="Awn-Sd-YNz" id="ehH-uH-fcJ"/>
                         <outlet property="priceView" destination="Exm-l1-tUh" id="04W-Fd-Zan"/>
-                        <outlet property="sellerCountryLabel" destination="3d1-Is-rk1" id="A0o-C7-70U"/>
                         <outlet property="sellerDetailLabel" destination="ct7-YC-LLl" id="m9Z-wu-e1E"/>
                         <outlet property="sellerImage" destination="lYm-P2-r1r" id="tmF-2f-9OG"/>
                         <outlet property="sellerPriceLabel" destination="m3r-Jg-EVz" id="mUJ-aF-9lX"/>
+                        <outlet property="sellerStateLabel" destination="3d1-Is-rk1" id="A0o-C7-70U"/>
                         <outlet property="sellerStatusLabel" destination="cfx-kL-OsE" id="DOx-9Y-Y0C"/>
                         <outlet property="statusView" destination="msc-C5-zZs" id="ajN-R7-ZW5"/>
                     </connections>

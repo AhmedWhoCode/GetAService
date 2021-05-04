@@ -97,7 +97,7 @@ class SellerDashboardViewController: UIViewController {
         sellerProfileBrain.retrivingProfileData { (data,subservices) in
             
             self.sellerNameTextField.text = data.name
-            self.sellerCountryLabel.text = data.country
+            self.sellerCountryLabel.text = data.state
             self.sellerPriceLabel.text = data.price
             self.sellerStatusLabel.text = "available"
             self.sellerDetailLabel.text = data.description

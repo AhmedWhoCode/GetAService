@@ -67,7 +67,8 @@ class SellerLists: UITableViewController {
         let sellerImagesRef :String? = sellerShortInfo[indexPath.row].image
         cell?.sellerPriceLabel.text = sellerShortInfo[indexPath.row].price
         cell?.sellerNameLabel.text = sellerShortInfo[indexPath.row].name
-        cell?.sellerCountryLabel.text = sellerShortInfo[indexPath.row].country
+        let sellerLocation = "\(sellerShortInfo[indexPath.row].state),\(sellerShortInfo[indexPath.row].city)"
+        cell?.sellerCountryLabel.text = sellerLocation
         cell?.sellerAvailabilityLabel.text = sellerShortInfo[indexPath.row].availability
         cell?.sellerInfoButton.setTitle(sellerShortInfo[indexPath.row].uid, for: .normal)
         if let image = sellerImagesRef
