@@ -12,6 +12,7 @@ import FirebaseFirestore
 import Firebase
 
 class MessageBrain {
+    
     let db = Firestore.firestore()
     var fireStorage = Storage.storage()
     var message = [String:Any]()
@@ -22,7 +23,6 @@ class MessageBrain {
     
     
     //getting current user image by calling a function which is placed in a swift file named helper function
-    
     func gettingCurrentUserImage(with uid : String ,completion: @escaping (String)->() ) {
         
         isUserSellerOrBuyer(userID: uid, completion: { (response) in
@@ -49,6 +49,7 @@ class MessageBrain {
                 }
                 
             }
+            
             else
             {
                 print(response)
@@ -75,71 +76,71 @@ class MessageBrain {
         // using timeStamp for unique message id
         
         // Date that will help to show latest chats on top
-            db.collection("Chats")
-                .document(currentUser)
-                .collection("ChatWith")
-                .document(data.receiverId)
-                .setData(["date" : date]) { (error) in
-            
-            if let e = error
-            {
-                print("error while creating message to firebase \(e.localizedDescription)")
+        db.collection("Chats")
+            .document(currentUser)
+            .collection("ChatWith")
+            .document(data.receiverId)
+            .setData(["date" : date]) { (error) in
                 
-            }
-            else
-            {
-                // stroing data on current user side
-                self.db.collection("Chats")
-                    .document(self.currentUser)
-                    .collection("ChatWith")
-                    .document(data.receiverId)
-                    .collection("AllSingleChat")
-                    .document(data.date)
-                    .setData(self.message) { (error) in
-                    if let e = error
-                    {
-                        print("error while storing message: \(e.localizedDescription)")
-                    }
-                    else
-                    {
-                        // Date that will help to show latest chats on top
-                        self.db.collection("Chats")
-                            .document(data.receiverId)
-                            .collection("ChatWith")
-                            .document(self.currentUser)
-                            .setData(["date" : date]) { (error) in
+                if let e = error
+                {
+                    print("error while creating message to firebase \(e.localizedDescription)")
+                    
+                }
+                else
+                {
+                    // stroing data on current user side
+                    self.db.collection("Chats")
+                        .document(self.currentUser)
+                        .collection("ChatWith")
+                        .document(data.receiverId)
+                        .collection("AllSingleChat")
+                        .document(data.date)
+                        .setData(self.message) { (error) in
                             if let e = error
                             {
-                                print("seller ki chat \(e.localizedDescription)")
+                                print("error while storing message: \(e.localizedDescription)")
                             }
                             else
                             {
-                                // stroing data on other user side
-                                self.db.collection("Chats").document(data.receiverId).collection("ChatWith").document(self.currentUser).collection("AllSingleChat").document(data.date).setData(self.message){ (error) in
-                                    
-                                    if let e = error
-                                    {
-                                        print(e)
+                                // Date that will help to show latest chats on top
+                                self.db.collection("Chats")
+                                    .document(data.receiverId)
+                                    .collection("ChatWith")
+                                    .document(self.currentUser)
+                                    .setData(["date" : date]) { (error) in
+                                        if let e = error
+                                        {
+                                            print("seller ki chat \(e.localizedDescription)")
+                                        }
+                                        else
+                                        {
+                                            // stroing data on other user side
+                                            self.db.collection("Chats").document(data.receiverId).collection("ChatWith").document(self.currentUser).collection("AllSingleChat").document(data.date).setData(self.message){ (error) in
+                                                
+                                                if let e = error
+                                                {
+                                                    print(e)
+                                                }
+                                                else
+                                                {
+                                                    completion()
+                                                    
+                                                }
+                                                
+                                                
+                                            }
+                                        }
                                     }
-                                    else
-                                    {
-                                        completion()
-                                        
-                                    }
-                                    
-                                    
-                                }
+                                
+                                
+                                
+                                print("message saved")
                             }
                         }
-                        
-                        
-                        
-                        print("message saved")
-                    }
                 }
+                
             }
-            
-        }
         
         
     }

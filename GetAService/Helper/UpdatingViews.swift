@@ -49,7 +49,7 @@ extension SellerProfile {
         navigationItem.hidesBackButton = false
         //providing dummy  data to dro down
         artistServicesDropDownList.dataSource = ["Face treatments"
-                                              ,"Hair removel"
+                                              ,"Hair removal"
                                               ,"Hair salon"
                                               ,"Makeup"
                                               ,"Med spa"

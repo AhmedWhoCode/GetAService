@@ -47,11 +47,15 @@ class ChatBrain {
                         {
                             self.chatIds.append(snap[i].documentID)
                         }
+                        completion(self.chatIds)
+                        
                     }
-                    //print("pl22 \(self.chatIds)")
-                    //gett
-                    completion(self.chatIds)
+                    else
+                    {
+                        completion(self.chatIds)
+                    }
                 }
+                
                 
             }
         
@@ -74,7 +78,6 @@ class ChatBrain {
                 
                 if response.elementsEqual("seller")
                 {
-                    print("here3")
                     
                     let sellerProfile = SellerProfileBrain()
                     
@@ -94,14 +97,12 @@ class ChatBrain {
                 
                 else if response.elementsEqual("buyer")
                 {
-                    print("here4")
                     
                     let buyerProfile = BuyerProfileBrain()
                     buyerProfile.retrivingProfileDataForChats(using: id) { (data) in
                         self.chats.append(data)
                         if self.chats.count == ids.count
                         {
-                            print("here5")
                             print(self.chats)
                             self.chatBrainDelegant?.didReceiveTheData(values: self.chats)
                         }

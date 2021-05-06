@@ -325,7 +325,7 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Exm-l1-tUh" userLabel="PriceView">
                                                         <rect key="frame" x="132.5" y="0.0" width="129" height="50"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="yYt-DT-AVw">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Estimated price" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="yYt-DT-AVw">
                                                                 <rect key="frame" x="1" y="1" width="127" height="20.5"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <color key="textColor" name="paragraphTextColor"/>
@@ -416,7 +416,7 @@
                                                     <constraint firstAttribute="height" constant="50" id="pFQ-s8-rb4"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="22"/>
-                                                <state key="normal" title="BookNow">
+                                                <state key="normal" title="Book Now">
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
@@ -2777,109 +2777,6 @@ you complete the service.</string>
             </objects>
             <point key="canvasLocation" x="8064" y="84"/>
         </scene>
-        <!--Completed-->
-        <scene sceneID="veE-as-XwL">
-            <objects>
-                <viewController id="cid-Kj-Xa1" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="wJa-Q6-7cG">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E7K-gE-TAb">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RZR-5K-uDe" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="900"/>
-                                        <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PinkGradient" translatesAutoresizingMaskIntoConstraints="NO" id="C3Z-RW-IkV">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="900"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="900" id="jek-tI-2Wo"/>
-                                                </constraints>
-                                            </imageView>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pink phone" translatesAutoresizingMaskIntoConstraints="NO" id="627-Gc-8l8">
-                                                <rect key="frame" x="107" y="150" width="200" height="150"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="150" id="1pX-VD-SPM"/>
-                                                    <constraint firstAttribute="width" constant="200" id="U0B-Oo-joA"/>
-                                                </constraints>
-                                            </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Service has been completed" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sn3-Jp-4n0">
-                                                <rect key="frame" x="81" y="438.5" width="252.5" height="23"/>
-                                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
-                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                                <size key="shadowOffset" width="0.0" height="0.0"/>
-                                            </label>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="xO8-Po-GIM" userLabel="Accept or rejectStack View">
-                                                <rect key="frame" x="10" y="561.5" width="394" height="50"/>
-                                                <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jyX-dc-X7d">
-                                                        <rect key="frame" x="0.0" y="0.0" width="187" height="50"/>
-                                                        <color key="backgroundColor" red="0.03116670169" green="0.3293439306" blue="0.053883072980000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <state key="normal" title="Book an artist">
-                                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                        </state>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Vw-Zk-xYy">
-                                                        <rect key="frame" x="207" y="0.0" width="187" height="50"/>
-                                                        <color key="backgroundColor" red="0.83981092049999995" green="0.1716851486" blue="0.1299096193" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <state key="normal" title="Request an uber">
-                                                            <color key="titleColor" red="0.94901960780000005" green="0.98823529409999999" blue="0.99607843139999996" alpha="1" colorSpace="calibratedRGB"/>
-                                                        </state>
-                                                    </button>
-                                                </subviews>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="50" id="tv6-nh-9lM"/>
-                                                </constraints>
-                                            </stackView>
-                                        </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <constraints>
-                                            <constraint firstItem="sn3-Jp-4n0" firstAttribute="centerX" secondItem="RZR-5K-uDe" secondAttribute="centerX" id="4lT-Ij-96D"/>
-                                            <constraint firstItem="627-Gc-8l8" firstAttribute="top" secondItem="RZR-5K-uDe" secondAttribute="top" constant="150" id="MDa-yu-x3u"/>
-                                            <constraint firstAttribute="bottom" secondItem="C3Z-RW-IkV" secondAttribute="bottom" id="OGU-wL-tYG"/>
-                                            <constraint firstItem="xO8-Po-GIM" firstAttribute="leading" secondItem="RZR-5K-uDe" secondAttribute="leading" constant="10" id="UnK-vX-LCY"/>
-                                            <constraint firstItem="C3Z-RW-IkV" firstAttribute="leading" secondItem="RZR-5K-uDe" secondAttribute="leading" id="VjB-tQ-ZQx"/>
-                                            <constraint firstItem="xO8-Po-GIM" firstAttribute="top" secondItem="sn3-Jp-4n0" secondAttribute="bottom" constant="100" id="eyI-Va-e6n"/>
-                                            <constraint firstItem="sn3-Jp-4n0" firstAttribute="centerY" secondItem="RZR-5K-uDe" secondAttribute="centerY" id="lbU-jk-sfa"/>
-                                            <constraint firstItem="627-Gc-8l8" firstAttribute="centerX" secondItem="RZR-5K-uDe" secondAttribute="centerX" id="pcJ-xy-cOd"/>
-                                            <constraint firstItem="C3Z-RW-IkV" firstAttribute="top" secondItem="RZR-5K-uDe" secondAttribute="top" id="qIj-ZV-kUj"/>
-                                            <constraint firstAttribute="trailing" secondItem="C3Z-RW-IkV" secondAttribute="trailing" id="rbh-Fi-hhS"/>
-                                            <constraint firstItem="xO8-Po-GIM" firstAttribute="centerX" secondItem="RZR-5K-uDe" secondAttribute="centerX" id="sho-u7-Ddk"/>
-                                        </constraints>
-                                    </view>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="RZR-5K-uDe" secondAttribute="bottom" id="8QF-B4-VEW"/>
-                                    <constraint firstItem="RZR-5K-uDe" firstAttribute="width" secondItem="E7K-gE-TAb" secondAttribute="width" id="RdJ-bs-gd6"/>
-                                    <constraint firstItem="RZR-5K-uDe" firstAttribute="leading" secondItem="E7K-gE-TAb" secondAttribute="leading" id="mSc-D9-Pv1"/>
-                                    <constraint firstItem="RZR-5K-uDe" firstAttribute="top" secondItem="E7K-gE-TAb" secondAttribute="top" id="vTw-np-pl0"/>
-                                    <constraint firstAttribute="trailing" secondItem="RZR-5K-uDe" secondAttribute="trailing" id="vwy-se-MZy"/>
-                                </constraints>
-                            </scrollView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="AkN-xX-c6d"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstAttribute="bottom" secondItem="E7K-gE-TAb" secondAttribute="bottom" id="Azu-OW-Tkj"/>
-                            <constraint firstItem="E7K-gE-TAb" firstAttribute="top" secondItem="wJa-Q6-7cG" secondAttribute="top" id="S2R-bO-YTy"/>
-                            <constraint firstAttribute="trailing" secondItem="E7K-gE-TAb" secondAttribute="trailing" id="cpd-OK-pgR"/>
-                            <constraint firstItem="E7K-gE-TAb" firstAttribute="leading" secondItem="wJa-Q6-7cG" secondAttribute="leading" id="naY-w3-gce"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="Completed" id="CXm-QD-Kn5"/>
-                    <connections>
-                        <outlet property="confirmButton" destination="jyX-dc-X7d" id="bTv-tJ-XkY"/>
-                        <outlet property="rejectButton" destination="9Vw-Zk-xYy" id="FQm-cB-Ojt"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ROX-gN-VEb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="512" y="2169"/>
-        </scene>
         <!--Apple Map View Controller-->
         <scene sceneID="IHB-mh-IHO">
             <objects>
@@ -3156,7 +3053,7 @@ once the service completed</string>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your name" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="ElB-8p-VZ9">
                                                         <rect key="frame" x="0.0" y="35" width="366" height="34"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" textContentType="name"/>
+                                                        <textInputTraits key="textInputTraits" textContentType="name"/>
                                                     </textField>
                                                 </subviews>
                                             </stackView>
@@ -3172,7 +3069,7 @@ once the service completed</string>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your email" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="VNZ-gF-3Ax">
                                                         <rect key="frame" x="0.0" y="35" width="366" height="34"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" textContentType="name"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="name"/>
                                                     </textField>
                                                 </subviews>
                                             </stackView>
@@ -3188,7 +3085,7 @@ once the service completed</string>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your phone" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="YOT-sz-qcQ">
                                                         <rect key="frame" x="0.0" y="35" width="366" height="34"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" textContentType="name"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" keyboardType="phonePad" textContentType="name"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="textContainer.lineFragmentPadding">
                                                                 <integer key="value" value="20"/>
@@ -3226,7 +3123,7 @@ once the service completed</string>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your city" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="HHH-6Y-3G7">
                                                         <rect key="frame" x="0.0" y="35" width="366" height="34"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" textContentType="name"/>
+                                                        <textInputTraits key="textInputTraits" textContentType="name"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="textContainer.lineFragmentPadding">
                                                                 <integer key="value" value="20"/>
@@ -3458,11 +3355,10 @@ once the service completed</string>
                                         </state>
                                         <connections>
                                             <action selector="buttonPressed:" destination="yo7-KR-hd9" eventType="touchUpInside" id="3ft-QA-rc8"/>
-                                            <segue destination="fcx-BZ-X0G" kind="show" identifier="userTypeToBuyer" id="Ze1-OI-Ihq"/>
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" name="screenBackgroundDark"/>
                                 <constraints>
                                     <constraint firstItem="Zoh-ej-VeN" firstAttribute="leading" secondItem="IOh-ai-ct9" secondAttribute="leading" id="GY4-cw-hyc"/>
                                     <constraint firstAttribute="height" constant="54" id="Oi2-oW-PWs"/>
@@ -3476,6 +3372,7 @@ once the service completed</string>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ap6-Xl-mmT" userLabel="sellerButton">
                                         <rect key="frame" x="0.0" y="0.0" width="254" height="54"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                         <state key="normal" title="Seller">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -3485,7 +3382,7 @@ once the service completed</string>
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" name="screenBackgroundDark"/>
                                 <constraints>
                                     <constraint firstItem="ap6-Xl-mmT" firstAttribute="leading" secondItem="qBD-Up-nDf" secondAttribute="leading" id="8pz-Pi-q3e"/>
                                     <constraint firstAttribute="bottom" secondItem="ap6-Xl-mmT" secondAttribute="bottom" id="Tvo-FR-quc"/>
@@ -3517,6 +3414,7 @@ once the service completed</string>
                         <outlet property="buyerButtonPressed" destination="Zoh-ej-VeN" id="tUw-ZO-1ap"/>
                         <outlet property="sellerButtonPressed" destination="ap6-Xl-mmT" id="YRt-CZ-1hy"/>
                         <segue destination="pKH-eb-wd4" kind="show" identifier="userTypeToSeller" id="K6c-bh-6kY"/>
+                        <segue destination="fcx-BZ-X0G" kind="show" identifier="userTypeToBuyer" id="mZv-8L-uia"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Erx-cx-lDx" sceneMemberID="firstResponder"/>
@@ -3579,7 +3477,7 @@ once the service completed</string>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lm2-9H-dHJ" userLabel="PriceView">
                                                         <rect key="frame" x="132.5" y="0.0" width="129" height="50"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="B8j-iQ-Aut">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Estimated price" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="B8j-iQ-Aut">
                                                                 <rect key="frame" x="1" y="1" width="127" height="20.5"/>
                                                                 <color key="backgroundColor" name="screenBackgroundDark"/>
                                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
@@ -3843,41 +3741,11 @@ once the service completed</string>
             </objects>
             <point key="canvasLocation" x="2537.68115942029" y="1101.5625"/>
         </scene>
-        <!--Add your work-->
-        <scene sceneID="hFV-4R-xLb">
-            <objects>
-                <tableViewController hidesBottomBarWhenPushed="YES" id="F24-9c-HvI" customClass="PortfolioImagesUITableViewController" customModule="GetAService" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="ub7-te-Pd9">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <color key="separatorColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <connections>
-                            <outlet property="dataSource" destination="F24-9c-HvI" id="QiD-Bg-1ts"/>
-                            <outlet property="delegate" destination="F24-9c-HvI" id="e6c-Rg-AdV"/>
-                        </connections>
-                    </tableView>
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Add your work" id="6j1-BV-a8m">
-                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="add" id="LB7-XS-1j1">
-                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <connections>
-                                <action selector="addImages:" destination="F24-9c-HvI" id="Zu1-wO-xO6"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics"/>
-                    <nil key="simulatedBottomBarMetrics"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Pnl-IN-K9X" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-481" y="2169"/>
-        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="8iB-0r-Oea"/>
         <segue reference="tpA-6M-1df"/>
-        <segue reference="Ze1-OI-Ihq"/>
+        <segue reference="mZv-8L-uia"/>
         <segue reference="Qph-vG-nAO"/>
         <segue reference="6y5-1I-D0G"/>
         <segue reference="xwK-iI-p82"/>

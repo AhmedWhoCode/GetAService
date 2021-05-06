@@ -81,11 +81,10 @@ class BuyerProfileBrain {
             
             db.collection("UserProfileData").document("Buyer").collection("AllBuyers").document(userid).setData(buyerProfileData) { (error) in
                 if let error = error {
-                    print("Error writing document: \(error)")
+                    print("Error while storingProfileDataToFireBase: \(error.localizedDescription)")
                 } else {
                     
                     self.dataUplodedDelegant?.didsendData()
-                    print("Document successfully written!")
                     
                 }
             }
@@ -96,28 +95,30 @@ class BuyerProfileBrain {
     func uploadingProfileImage(with profileImage:Data,  completion :@escaping (URL)->() ){
         
         //filePath or unique name of an image , also used a name
-        let filePath = Auth.auth().currentUser!.uid
-        let storageRef = self.fireStorage.reference().child("Images/profile_images").child(filePath)
+        guard let filePath = Auth.auth().currentUser else {return}
+        
+        let storageRef = self.fireStorage.reference().child("Images/profile_images").child(filePath.uid)
         // meta data such as format of image
         let metaData = StorageMetadata()
+        
         metaData.contentType = "image/jpeg"
         
         
         
         storageRef.putData(profileImage, metadata: metaData) { (meta, error) in
-            if  error != nil
+            if let e = error
             {
-                print("error uploadind a file\(error?.localizedDescription ?? "Error")")
+                print("error uploadind a file\(e.localizedDescription)")
                 
             }
             else
             {
                 //getting url
                 storageRef.downloadURL { (url,error) in
-                    print(url?.absoluteURL ?? "nil")
-                    completion(url!.absoluteURL)
+                    guard let notNullUrl = url else {return}
+                    
+                    completion(notNullUrl)
                 }
-                print("image uploaded")
                 
             }
         }
@@ -135,10 +136,10 @@ class BuyerProfileBrain {
             {
                 
                 
-                let imageRef1 = snap["imageRef"]! as! String
-                let name1 = snap["name"]! as! String
-                let state = snap["state"]! as! String
-                guard  let tokenId = (snap["tokenId"] as? String) else {return}
+                guard let imageRef1 = snap["imageRef"] as? String else {return}
+                guard let name1 = snap["name"] as? String else {return}
+                guard let state = snap["state"] as? String else {return}
+                guard let tokenId = (snap["tokenId"] as? String) else {return}
 
                 let userId = userUid
                 
@@ -161,10 +162,10 @@ class BuyerProfileBrain {
             {
                 
                 
-                let imageRef1 = snap["imageRef"]! as! String
-                let name1 = snap["name"]! as! String
-                let state = snap["state"]! as! String
-                let uid = snap["uid"]! as! String
+                guard  let imageRef1 = snap["imageRef"] as? String else {return}
+                guard  let name1 = snap["name"] as? String else {return}
+                guard  let state = snap["state"] as? String else {return}
+                guard  let uid = snap["uid"] as? String else {return}
 
                 let notificationModel = NotificationModel(buyerImage: imageRef1, buyerName: name1, buyerState: state,buyerUID: uid)
                 
@@ -186,7 +187,7 @@ class BuyerProfileBrain {
                 
                 if let e = error
                 {
-                    print("error while addind reviews to buyer side : \(e)")
+                    print("error while addind reviews to buyer side : \(e.localizedDescription)")
                 }
                 else
                 {
@@ -206,7 +207,7 @@ class BuyerProfileBrain {
             .updateData(["tokenId" : token]) { (error) in
                 if let e = error
                 {
-                    print("error while updating token id : \(e)")
+                    print("error while updating token id : \(e.localizedDescription)")
                 }
                 else
                 {

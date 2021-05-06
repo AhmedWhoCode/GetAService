@@ -63,10 +63,25 @@ class ChatList: UITableViewController, ChatBrainDelegate {
         
         chatBrain.retrivingChatsFromDatabase { (data) in
             
+            if data.count < 1
+            {
+            self.tableView.stopSkeletonAnimation()
+            self.tableView.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.001))
+            showToast1(controller: self, message: "No chats for now", seconds: 2, color: .red)
+
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
+                    self.navigationController?.popViewController(animated: true)
+
+                }
+
+                
+            }
+            else
+            {
             //after getting all chats id now we are getting info of those ids
             self.chatBrain.gettingUserInfo(with: data)
             
-            
+            }
         }
     }
     

@@ -43,7 +43,7 @@ class ServicesBrain {
                 for i in 0...totalServices
                 {
                     //getting service name
-                    let serviceName = snap[i].documentID
+                    let serviceName = snap[i].documentID 
                     let serviceImage = snap[i].data()["ImageRef"]
                     //passing data to servicemodel class
                     let services = ServicesModel(serviceName: serviceName, serviceImage: serviceImage as? String)

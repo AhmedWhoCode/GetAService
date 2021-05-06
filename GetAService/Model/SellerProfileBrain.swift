@@ -53,12 +53,12 @@ class SellerProfileBrain {
                 guard let service1 = snap["service"] as? String else {return}
                 guard let gender1 = snap["gender"] as? String else {return}
                 guard let dob = snap["dob"] as? Timestamp else {return}
-                 let dob1 = dob.dateValue()
+                let dob1 = dob.dateValue()
                 guard let uid1 = snap["uid"] as? String else {return}
                 guard let desc = snap["description"] as? String else {return}
                 guard let city = snap["city"] as? String else {return}
                 
-                 let subServices = snap["SubServices"]
+                let subServices = snap["SubServices"]
                 
                 guard let document = snap["documentUrl"] as? String else {return}
                 guard let documentName = snap["documentName"] as? String else {return}
@@ -178,7 +178,7 @@ class SellerProfileBrain {
                     for key in withPrice.keys
                     {
                         print("here5" , key)
-
+                        
                         guard let price = withPrice[key] else {return}
                         
                         self.db.collection("UserProfileData")
@@ -236,9 +236,9 @@ class SellerProfileBrain {
                         
                     }
                     completion(self.sellerShortInfoArray)
-
+                    
                 }
-
+                
             }
             
         }
@@ -286,7 +286,7 @@ class SellerProfileBrain {
             {
                 
                 
-                let price = snap["price"]! as! String
+                guard let price = snap["price"] as? String else {return}
                 
                 completion(price)
             }
@@ -309,7 +309,7 @@ class SellerProfileBrain {
                 
                 if let e = error
                 {
-                    print("error while addind reviews to seller side : \(e)")
+                    print("error while addind reviews to seller side : \(e.localizedDescription)")
                 }
                 else
                 {
@@ -332,7 +332,7 @@ class SellerProfileBrain {
                 
                 if let e = error
                 {
-                    print("error while retriving seller reviews \(e)")
+                    print("error while retriving seller reviews \(e.localizedDescription)")
                 }
                 
                 else
@@ -341,9 +341,9 @@ class SellerProfileBrain {
                     if snapshot!.count > 0
                     {
                         snapshot?.documents.forEach({ (data) in
-                            let star =  data.data()["star"] as? String
-                            let comment =  data.data()["comment"] as? String
-                            let review = SellerRetrievalReviewsModel(star: star!, comment:comment!)
+                            guard let star =  data.data()["star"] as? String else {return}
+                            guard  let comment =  data.data()["comment"] as? String else {return}
+                            let review = SellerRetrievalReviewsModel(star: star, comment:comment)
                             
                             self.reviewsList.append(review)
                         })
@@ -409,8 +409,10 @@ class SellerProfileBrain {
             {
                 //getting url
                 storageRef.downloadURL { (url,error) in
-                    print(url?.absoluteURL ?? "nil")
-                    completion(url!.absoluteURL)
+                    if let u = url
+                    {
+                        completion(u.absoluteURL)
+                    }
                 }
                 print("document uploaded")
                 
@@ -448,9 +450,9 @@ class SellerProfileBrain {
             {
                 //getting url
                 storageRef.downloadURL { (url,error) in
-                    print(url?.absoluteURL ?? "nil")
+                    guard let notNullUrl = url else {return}
                     //Adding portfolio images data to firestore
-                    self.addingPortfolioImagesUrlToFirestore(with: dateString, imageUrl: url!.absoluteString, sellerId: userId) {
+                    self.addingPortfolioImagesUrlToFirestore(with: dateString, imageUrl: notNullUrl.absoluteString, sellerId: userId) {
                         
                         completion()
                     }
@@ -501,9 +503,9 @@ class SellerProfileBrain {
                 {
                     
                     snap.forEach { (data) in
-                        //print( data.data()["imageUrl"] )
-                        let image = data.data()["imageUrl"] as? String
-                        self.portfolioImages.append(image!)
+                        
+                        guard let image = data.data()["imageUrl"] as? String else {return}
+                        self.portfolioImages.append(image)
                     }
                     
                     completion(self.portfolioImages)
@@ -528,7 +530,7 @@ class SellerProfileBrain {
             .updateData(["tokenId" : token]) { (error) in
                 if let e = error
                 {
-                    print("error while updating token id : \(e)")
+                    print("error while updating token id : \(e.localizedDescription)")
                 }
                 else
                 {
@@ -540,7 +542,7 @@ class SellerProfileBrain {
     }
     
     
-  
+    
 }
 
 

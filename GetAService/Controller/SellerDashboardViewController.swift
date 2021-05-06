@@ -98,7 +98,7 @@ class SellerDashboardViewController: UIViewController {
             
             self.sellerNameTextField.text = data.name
             self.sellerCountryLabel.text = data.state
-            self.sellerPriceLabel.text = data.price
+            self.sellerPriceLabel.text = "$\(data.price)"
             self.sellerStatusLabel.text = "available"
             self.sellerDetailLabel.text = data.description
             //self.showSubServices(with: subservices)

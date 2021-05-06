@@ -59,10 +59,10 @@ class FairDetails: UIViewController {
             let sellerCoordinates =  CLLocation(latitude: sellerLat!, longitude: sellerLong!)
             let buyerCoordinates =   CLLocation(latitude: buyerLat!, longitude: buyerLong!)
 
-           //getting distance
-            let distance = buyerCoordinates.distance(from: sellerCoordinates) / 1000
+           //getting distance in meters and converting to miles
+            let distance = buyerCoordinates.distance(from: sellerCoordinates) / 1609.344
             
-            self.uberEstimatedLabel.text = String(format: "%.1f", distance) + " KM"
+            self.uberEstimatedLabel.text = String(format: "%.1f", distance) + "Mi"
             self.sellerPriceLabel.text = price
             self.totalEstimatedLabel.text = address
             self.sellerImage.loadCacheImage(with: BookingBrain.sharedInstance.sellerImage!)

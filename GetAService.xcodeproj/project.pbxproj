@@ -283,6 +283,9 @@
 		9316302D25E008AD00A2E4C4 /* Redundant Files */ = {
 			isa = PBXGroup;
 			children = (
+				93226A2E2601E5BF001A7A86 /* LocationTableViewCell.swift */,
+				93226A2F2601E5BF001A7A86 /* LocationTableViewCell.xib */,
+				93C95E0A2600BF8500F8E3C2 /* SearchViewController.swift */,
 				9321A999262B01BA0015FCDC /* PortfolioImagesTableViewCell.swift */,
 				9321A99A262B01BA0015FCDC /* PortfolioImagesTableViewCell.xib */,
 				9332DF21262B041100346FD9 /* PortfolioImagesUITableViewController.swift */,
@@ -348,8 +351,6 @@
 				931D66AA25C087EF002C239E /* NotificationsTableViewCell.xib */,
 				93C9691F25C5C14800A6217E /* ChatsTableViewCell.swift */,
 				93C9692025C5C14800A6217E /* ChatsTableViewCell.xib */,
-				93226A2E2601E5BF001A7A86 /* LocationTableViewCell.swift */,
-				93226A2F2601E5BF001A7A86 /* LocationTableViewCell.xib */,
 				935E31C82612226100D3CCD5 /* ReviewsTableViewCell.swift */,
 				935E31C92612226100D3CCD5 /* ReviewsTableViewCell.xib */,
 				931A930F262CBE4D007117C6 /* PortfolioCollectionViewCell.swift */,
@@ -381,7 +382,6 @@
 				93C95D8C2600985100F8E3C2 /* GoogleMapViewController.swift */,
 				93C95E052600BEF500F8E3C2 /* AppleMapViewController.swift */,
 				93BE8E5525EE00CE008103DA /* SellerDashboardViewController.swift */,
-				93C95E0A2600BF8500F8E3C2 /* SearchViewController.swift */,
 				932DD7C92609F69E007BD665 /* BuyerWaitingViewController.swift */,
 				9334E6FF26105C0F0046EB0C /* MeetupViewController.swift */,
 				935E31BE2611AEE900D3CCD5 /* ReviewsAndRatingsViewController.swift */,
@@ -1000,7 +1000,7 @@
 				CODE_SIGN_ENTITLEMENTS = GetAService/GetAService.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 10;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = BXQHK9SN8A;
 				INFOPLIST_FILE = GetAService/Info.plist;
@@ -1026,7 +1026,7 @@
 				CODE_SIGN_ENTITLEMENTS = GetAService/GetAService.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 10;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = BXQHK9SN8A;
 				INFOPLIST_FILE = GetAService/Info.plist;

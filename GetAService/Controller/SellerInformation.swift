@@ -96,7 +96,7 @@ class SellerInformation: UIViewController {
             self.sellerName.text = data.name
             self.sellerNameToSend = data.name
             self.sellerStateLabel.text = data.state
-            self.sellerPriceLabel.text = data.price
+            self.sellerPriceLabel.text = "$\(data.price)"
             self.sellerStatusLabel.text = "available"
             self.sellerDetailLabel.text = data.description
             self.sellerImageToSend = data.imageRef

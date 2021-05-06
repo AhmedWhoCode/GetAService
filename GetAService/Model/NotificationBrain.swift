@@ -14,6 +14,7 @@ import Firebase
 
 protocol NotificationBrainDelegate {
     func didReceiveTheData(values : [NotificationModel])
+    func didReceiveAnEmptyData(value : Bool)
 }
 
 
@@ -25,7 +26,6 @@ class NotificationBrain {
     var buyerIds = [String]()
     var buyerProfileBrain = BuyerProfileBrain()
     
-    let dispatchGroup1 = DispatchGroup()
 
     var notifications = [NotificationModel]()
     
@@ -53,13 +53,16 @@ class NotificationBrain {
                             self.buyerIds.append(s[i].documentID)
                             
                         }
-                        print("seq1" , self.buyerIds)
                         self.getProfileInformations()
+                    }
+                    else
+                    {
+                        self.notificationBrainDelegant?.didReceiveAnEmptyData(value: true)
                     }
                 }
                 else
                 {
-                    print(error?.localizedDescription)
+                    print("error while retriving notifications",error?.localizedDescription ?? "no error")
                 }
             }
         
@@ -166,14 +169,10 @@ class NotificationBrain {
                 
                 if let q = query?.documents
                 {
-                    
-                    print(q[0].data())
-                    
-                    
-                    let servicesNeeded = (q[0].data()["servicesNeeded"] as? String)!
-                    let eventTimeAndDate = (q[0].data()["eventTimeAndDate"] as? String)!
-                    let eventlocationAddress = (q[0].data()["eventLocationAddress"] as? String)!
-                    let eventDescription  = (q[0].data()["eventDescription"] as? String)!
+                    guard  let servicesNeeded = q[0].data()["servicesNeeded"] as? String else {return}
+                    guard  let eventTimeAndDate = q[0].data()["eventTimeAndDate"] as? String else {return}
+                    guard  let eventlocationAddress = q[0].data()["eventLocationAddress"] as? String else {return}
+                    guard  let eventDescription  = q[0].data()["eventDescription"] as? String else {return}
                     
                     
                     let notificationDetail = NotificationDetailModel(serivceNeeded: servicesNeeded,
@@ -246,7 +245,6 @@ class NotificationBrain {
                 }
                 else
                 {
-                    print("updated the document")
                     self.updatingBuyerSide(with: notificationId, buyerID: buyerId, status: status,sellerLatitude: sellerLatitude, sellerLongitude: sellerLongitude , sellerAddress:sellerAddress,sellerUpdatedPrice: sellerUpdatedPrice)
                 }
             }
@@ -333,6 +331,7 @@ class NotificationBrain {
         
         //checking if the user is buyer or buyer
         isUserSellerOrBuyer(userID: currentUser!) { (response) in
+            
             if response == "seller"
             {
                 //getting notification id
@@ -360,11 +359,11 @@ class NotificationBrain {
                                 {
                                     if snap.count > 0
                                     {
-                                        let response = snapshot?.data()!["acknowlegdeStatus"] as? String
+                                        guard let response = snapshot?.data()!["acknowlegdeStatus"] as? String else{return}
                                         BookingBrain.sharedInstance.sellerId = self.currentUser
                                         BookingBrain.sharedInstance.buyerId = buyerId
                                         BookingBrain.sharedInstance.currentBookingDocumentId = notificationId
-                                        completion(response!)
+                                        completion(response)
                                     }
                                     else
                                     {

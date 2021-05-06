@@ -12,6 +12,28 @@ import SkeletonView
 
 class NotificationsList: UITableViewController, NotificationBrainDelegate {
     
+    func didReceiveTheData(values: [NotificationModel]) {
+        notifications = values
+        //ERProgressHud.sharedInstance.hide()
+        
+        tableView.reloadData()
+        self.tableView.stopSkeletonAnimation()
+        self.tableView.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.001))
+    }
+    
+    func didReceiveAnEmptyData(value: Bool) {
+        if value
+        {
+            self.tableView.stopSkeletonAnimation()
+            self.tableView.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.001))
+            showToast1(controller: self, message: "No notfications for now", seconds: 2, color: .red)
+
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
+                    self.navigationController?.popViewController(animated: true)
+
+                }
+        }
+    }
     
     
     var notifications = [NotificationModel]()
@@ -51,14 +73,7 @@ class NotificationsList: UITableViewController, NotificationBrainDelegate {
     }
     
     
-    func didReceiveTheData(values: [NotificationModel]) {
-        notifications = values
-        //ERProgressHud.sharedInstance.hide()
-        
-        tableView.reloadData()
-        self.tableView.stopSkeletonAnimation()
-        self.tableView.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.001))
-    }
+  
     
     // MARK: - Table view data source
     

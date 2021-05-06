@@ -20,14 +20,15 @@ protocol BookingBrainDelegate {
 class BookingBrain {
     
     let defaults = UserDefaults.standard
-
+    
     //buyer location
     var buyerCoordinates : CLLocationCoordinate2D?
     var buyerLatitude : String?
     var buyerLongitude : String?
     
     
-    //its the current booking id, the most recent one , its value updated when we call insertBookingInformation and before that it will be null, , it may be null so be carefully while using it
+    //its the current booking id, the most recent one , its value updated when we call insertBookingInformation and before that it will be null, , it may be null so be carefully while using it.
+    //these are the global values
     var currentBookingDocumentId : String?
     var buyerId : String?
     var sellerId : String?
@@ -58,10 +59,10 @@ class BookingBrain {
         guard let longitude = bookingData.eventLocation?.coordinates.longitude.description  else {
             return
         }
+        //storing info as a global
         buyerId = bookingData.buyerId
         sellerId = bookingData.sellerId
         
-        // dateForUniqueId = String(format: "%.1f", bookingData.dateForUniqueId)
         
         sellerProfileBrain.retrivingProfileDataForBooking(using: bookingData.sellerId) { (price) in
             self.sellerPrice = price
@@ -97,8 +98,8 @@ class BookingBrain {
         
         defaults.set(bookingData.sellerId, forKey: Constants.sellerIdForNavigation)
         defaults.set(bookingData.dateForUniqueId, forKey: Constants.notificationIdForNavigation)
-
-        //storing current document id
+        
+        //storing current document id as a global
         currentBookingDocumentId = bookingData.dateForUniqueId
         buyerLatitude = latitude
         buyerLongitude = longitude
@@ -137,7 +138,7 @@ class BookingBrain {
                 
                 if let e = error
                 {
-                    print(e)
+                    print("error while making booking" , e.localizedDescription)
                 }
                 
                 else
@@ -183,12 +184,12 @@ class BookingBrain {
                 
                 if let snap = snapShot?.data()
                 {
-                    let sellerLatitude = snap["sellerLatitude"] as? String
-                    let sellerLongitude = snap["sellerLongitude"] as? String
-                    let sellerAddress = snap["sellerAddress"] as? String
-                    let sellerPrice = snap["sellerPrice"] as? String
-
-                    completion(sellerLatitude!,sellerLongitude!,sellerAddress!,sellerPrice!)
+                    guard let sellerLatitude = snap["sellerLatitude"] as? String else {return}
+                    guard let sellerLongitude = snap["sellerLongitude"] as? String else {return}
+                    guard let sellerAddress = snap["sellerAddress"] as? String else {return}
+                    guard let sellerPrice = snap["sellerPrice"] as? String else {return}
+                    
+                    completion(sellerLatitude,sellerLongitude,sellerAddress,sellerPrice)
                     
                     
                 }
@@ -217,8 +218,9 @@ class BookingBrain {
                 print("how many times")
                 if let q = query?.documents
                 {
+                    guard let response = q[0].data()["bookingStatus"] as? String else {return}
                     
-                    if (q[0].data()["bookingStatus"] as? String)! == "accepted"
+                    if response == "accepted"
                     {
                         //the snapshot was provoking this line again and again so i put the condition to execute this
                         //command for once
@@ -227,17 +229,15 @@ class BookingBrain {
                             
                             self.bookingBrainDelegate?.didSellerRespond(result : "accepted")
                             self.check = false
-                            print("yes, its happen")
                         }
                     }
-                    else if (q[0].data()["bookingStatus"] as? String)! == "rejected"
+                    else if response == "rejected"
                     {
                         if self.check == true
                         {
                             
                             self.bookingBrainDelegate?.didSellerRespond(result : "rejected")
                             self.check = false
-                            print("noooooooooo")
                             
                         }
                     }
@@ -294,7 +294,6 @@ class BookingBrain {
     }
     
     func acknowledgmentUpdated()  {
-        print("why22")
         db.collection("Bookings")
             .document("Seller")
             .collection("AllSellerWhoReceivedOrders")
@@ -309,13 +308,15 @@ class BookingBrain {
                 
                 if let snap = snapshot?.data()
                 {
-                    print("why 1.5")
-                    if (snap["acknowlegdeStatus"] as? String)! == "started"
+                    
+                    guard let acknowlegdeStatus = snap["acknowlegdeStatus"] as? String else {return}
+                    
+                    if acknowlegdeStatus == "started"
                     {
-                        print("why 2")
                         self.bookingBrainDelegate?.didAcknowledgementChange(result: "started")
                     }
-                    else if (snap["acknowlegdeStatus"] as? String)! == "completed"
+                    
+                    else if acknowlegdeStatus == "completed"
                     {
                         self.bookingBrainDelegate?.didAcknowledgementChange(result: "completed")
                         
@@ -333,7 +334,6 @@ class BookingBrain {
     
     func sellerToBuyerReview(with star : String , comment : String , completion:@escaping () -> ()) {
         
-        print("here2")
         db.collection("Bookings")
             .document("Seller")
             .collection("AllSellerWhoReceivedOrders")
@@ -353,7 +353,7 @@ class BookingBrain {
                 
                 else
                 {
-                    print("here 3")
+                    // updating buyer side to
                     self.db.collection("Bookings")
                         .document("Buyer")
                         .collection("AllBuyersWhoOrdered")
@@ -382,9 +382,9 @@ class BookingBrain {
                 
             }
     }
+    
     func buyerToSellerReview(with star : String , comment : String , completion:@escaping () -> ()) {
         
-        print("here2")
         db.collection("Bookings")
             .document("Seller")
             .collection("AllSellerWhoReceivedOrders")
@@ -404,6 +404,7 @@ class BookingBrain {
                 
                 else
                 {
+                    //updating buyer side
                     self.db.collection("Bookings")
                         .document("Buyer")
                         .collection("AllBuyersWhoOrdered")

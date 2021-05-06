@@ -31,7 +31,7 @@
                                     <action selector="buttonClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="0gn-Z4-zT1"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test" translatesAutoresizingMaskIntoConstraints="NO" id="S3u-Pe-OmK">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="servicesimageplaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="S3u-Pe-OmK">
                                 <rect key="frame" x="2" y="10" width="88" height="88"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="88" id="BKs-gI-UME"/>
@@ -144,7 +144,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="test" width="29.333333969116211" height="29.333333969116211"/>
+        <image name="servicesimageplaceholder" width="512" height="256"/>
         <namedColor name="paragraphTextColor">
             <color red="0.96100002527236938" green="0.96100002527236938" blue="0.96100002527236938" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
