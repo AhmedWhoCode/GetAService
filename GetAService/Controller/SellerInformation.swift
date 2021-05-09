@@ -62,6 +62,8 @@ class SellerInformation: UIViewController {
 
     var sellerSubservices = [String]()
     var sellerSubservicesWithPrice = [String:String]()
+    
+    var selectedImageToEnlarge : String?
     override func viewDidLoad() {
         super.viewDidLoad()
         designingViews()
@@ -162,15 +164,24 @@ class SellerInformation: UIViewController {
                 
             }
         }
-        else if segue.identifier == Constants.seguesNames.sellerInfoToReviews
+        
+        else if segue.identifier == Constants.seguesNames.toEnlargedImage
         {
-            if let destinationSegue = segue.destination as? ReviewsTableViewController
+            if let destinationSegue = segue.destination as? EnlargedImageViewController
             {
-                destinationSegue.sellerId  = selectedSellerId
-                destinationSegue.reviewList = reviewList
-                
+                if let image = selectedImageToEnlarge
+                {
+                destinationSegue.image = image
+                }
+                else
+                {
+                    return
+                }
             }
         }
+        
+        
+        
         
     }
     
@@ -227,6 +238,13 @@ extension SellerInformation : UICollectionViewDelegate , SkeletonCollectionViewD
         return 5
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        selectedImageToEnlarge = selectedPortfolioImagesInString[indexPath.row]
+
+        performSegue(withIdentifier: Constants.seguesNames.toEnlargedImage, sender: self)
+        //print(selectedPortfolioImagesInString[indexPath.row])
+    }
+    
     
 }
 
@@ -246,6 +264,7 @@ extension SellerInformation : UITableViewDelegate , UITableViewDataSource
         return cell!
         
     }
+    
     
    
     

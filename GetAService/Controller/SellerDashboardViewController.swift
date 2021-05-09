@@ -41,6 +41,8 @@ class SellerDashboardViewController: UIViewController {
     
     var sellerSubservices = [String]()
     var sellerSubservicesWithPrice = [String:String]()
+    var selectedImageToEnlarge : String?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         

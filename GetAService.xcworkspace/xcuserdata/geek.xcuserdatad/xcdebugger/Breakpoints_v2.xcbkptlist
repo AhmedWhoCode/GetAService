@@ -126,8 +126,8 @@
             filePath = "GetAService/Controller/SellerDashboardViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "216"
-            endingLineNumber = "216"
+            startingLineNumber = "218"
+            endingLineNumber = "218"
             landmarkName = "SellerDashboardViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -361,8 +361,8 @@
             filePath = "GetAService/Controller/SellerProfile.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "288"
-            endingLineNumber = "288"
+            startingLineNumber = "275"
+            endingLineNumber = "275"
             landmarkName = "storeDataToFirebase()"
             landmarkType = "7">
          </BreakpointContent>
@@ -377,8 +377,8 @@
             filePath = "GetAService/Controller/SellerProfile.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "287"
-            endingLineNumber = "287"
+            startingLineNumber = "274"
+            endingLineNumber = "274"
             landmarkName = "storeDataToFirebase()"
             landmarkType = "7">
          </BreakpointContent>

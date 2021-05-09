@@ -94,6 +94,7 @@ struct Constants {
         static let servicesToStarted = "servicesToStarted"
         static let sellerDashToMeetup = "sellerDashToMeetup"
         static let orderInfoToSellerDash = "orderInfoToSellerDash"
+        static let toEnlargedImage = "toEnlargedImage"
     }
     
 }

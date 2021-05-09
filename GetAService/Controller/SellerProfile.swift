@@ -64,6 +64,8 @@ class SellerProfile: UIViewController {
     var isPortfolioImageSourceFirestore = false
     
     @IBOutlet weak var collectionView: UICollectionView!
+    
+    var selectedImageToEnlarge :  String?
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -110,36 +112,7 @@ class SellerProfile: UIViewController {
             ERProgressHud.sharedInstance.show(withTitle: "Image uploading,wait")
             //selectedPortfolioImages.removeAll()
         }
-        
-        //        var config = YPImagePickerConfiguration()
-        //        config.library.defaultMultipleSelection  = true
-        //        config.library.maxNumberOfItems = 8
-        //        config.library.mediaType = YPlibraryMediaType.photo
-        //
-        //        let picker = YPImagePicker(configuration: config)
-        //
-        //
-        //        present(picker, animated: true, completion: nil)
-        //
-        //        picker.didFinishPicking { [unowned picker] items, cancelled in
-        //
-        //            picker.dismiss(animated: true, completion: nil)
-        //
-        //            for item in items {
-        //
-        //                switch item {
-        //                case .photo(let item):
-        //                    self.selectedPortfolioImages.append(item.originalImage)
-        //                    self.selectedPortfolioImagesData.append(item.originalImage.jpegData(compressionQuality:0.2)!)
-        //                default:
-        //                    print("wont happen")
-        //                }
-        //
-        //            }
-        //
-        //
-        //
-        //        }
+
         
         
     }
@@ -241,6 +214,20 @@ class SellerProfile: UIViewController {
             
             {
                 nextViewController.mainService = selectedService
+            }
+        }
+        else if segue.identifier == Constants.seguesNames.toEnlargedImage
+        {
+            if let destinationSegue = segue.destination as? EnlargedImageViewController
+            {
+                if let image = selectedImageToEnlarge
+                {
+                destinationSegue.image = image
+                }
+                else
+                {
+                    return
+                }
             }
         }
     }
@@ -423,6 +410,15 @@ extension SellerProfile : DataUploadedSeller
 ///MARK: - collectionView for portfolio
 extension SellerProfile : UICollectionViewDelegate , UICollectionViewDataSource
 {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("im pressed")
+        selectedImageToEnlarge = selectedPortfolioImagesInString[indexPath.row]
+
+        performSegue(withIdentifier: Constants.seguesNames.toEnlargedImage, sender: self)
+    }
+    
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if isPortfolioImageSourceFirestore
         {
@@ -436,7 +432,6 @@ extension SellerProfile : UICollectionViewDelegate , UICollectionViewDataSource
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "portfolioCollectionCell", for: indexPath) as? PortfolioCollectionViewCell
         
         //checking if the data is coming from database or from image selector
@@ -445,8 +440,6 @@ extension SellerProfile : UICollectionViewDelegate , UICollectionViewDataSource
             
             cell?.portfolioImage.loadCacheImage(with: selectedPortfolioImagesInString[indexPath.row],completion: {
                 self.selectedPortfolioImages.append(cell!.portfolioImage.image!)
-                //print("images are" , self.selectedPortfolioImages[indexPath.row-1])
-
             })
             
         }
@@ -456,8 +449,6 @@ extension SellerProfile : UICollectionViewDelegate , UICollectionViewDataSource
         }
         return cell!
     }
-    
-    
     
     
 }

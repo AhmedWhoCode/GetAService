@@ -26,7 +26,7 @@ class NotificationsList: UITableViewController, NotificationBrainDelegate {
         {
             self.tableView.stopSkeletonAnimation()
             self.tableView.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.001))
-            showToast1(controller: self, message: "No notfications for now", seconds: 2, color: .red)
+            //showToast1(controller: self, message: "No notfications for now", seconds: 2, color: .red)
 
                 DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
                     self.navigationController?.popViewController(animated: true)

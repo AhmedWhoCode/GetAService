@@ -697,6 +697,7 @@
                         <segue destination="cRZ-y6-dYl" kind="show" identifier="sellerInfoToMessages" id="vKk-Kv-Ynh"/>
                         <segue destination="Vz8-Qo-IYR" kind="show" identifier="sellerInfoToInformation" id="eec-53-9L7"/>
                         <segue destination="ms5-Km-pR4" kind="show" identifier="sellerInfoToReviews" id="I08-ty-Mtk"/>
+                        <segue destination="8mZ-l5-Yll" kind="presentation" identifier="toEnlargedImage" id="TIN-8y-Gmq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8lx-P7-31H" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1249,7 +1250,7 @@
                                                     <constraint firstItem="YfX-38-r11" firstAttribute="top" secondItem="Igm-Td-zIH" secondAttribute="top" id="zul-ae-q2Q"/>
                                                 </constraints>
                                             </view>
-                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gcf-10-ze2">
+                                            <collectionView clipsSubviews="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gcf-10-ze2">
                                                 <rect key="frame" x="5" y="1227.5" width="401" height="130"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
@@ -1262,10 +1263,10 @@
                                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 </collectionViewFlowLayout>
                                                 <cells>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" reuseIdentifier="portfolioCollectionCell" id="eGe-sV-PMH" customClass="PortfolioCollectionViewCell" customModule="GetAService" customModuleProvider="target">
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" reuseIdentifier="portfolioCollectionCell" id="eGe-sV-PMH" customClass="PortfolioCollectionViewCell" customModule="GetAService" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="1" width="151" height="128"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="jSP-aD-EcN">
+                                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="jSP-aD-EcN">
                                                             <rect key="frame" x="0.0" y="0.0" width="151" height="128"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
@@ -1431,11 +1432,12 @@
                         <segue destination="yo7-KR-hd9" kind="show" identifier="sellerProfileToUserType" id="tpA-6M-1df"/>
                         <segue destination="F7j-ni-ReI" kind="show" identifier="profileToSubservices" id="pnu-kE-Asm"/>
                         <segue destination="awf-ln-FaI" kind="show" identifier="sellerProfileToDashboard" id="8iB-0r-Oea"/>
+                        <segue destination="8mZ-l5-Yll" kind="presentation" identifier="toEnlargedImage" id="iGv-1a-oxj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zb9-kS-HJh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="327.536231884058" y="1101.5625"/>
+            <point key="canvasLocation" x="488" y="1102"/>
         </scene>
         <!--Notifications-->
         <scene sceneID="vek-dX-a2Z">
@@ -1483,6 +1485,36 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WmA-fH-dMy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2699" y="82"/>
+        </scene>
+        <!--Enlarged Image View Controller-->
+        <scene sceneID="jyn-VG-EaO">
+            <objects>
+                <viewController id="8mZ-l5-Yll" customClass="EnlargedImageViewController" customModule="GetAService" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2O5-pe-TgR">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="servicesimageplaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="eKP-Le-GIJ">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ZgK-vT-lOq"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="eKP-Le-GIJ" firstAttribute="leading" secondItem="ZgK-vT-lOq" secondAttribute="leading" id="9zk-TI-hQi"/>
+                            <constraint firstItem="eKP-Le-GIJ" firstAttribute="bottom" secondItem="ZgK-vT-lOq" secondAttribute="bottom" id="F5q-PI-dAg"/>
+                            <constraint firstItem="eKP-Le-GIJ" firstAttribute="trailing" secondItem="ZgK-vT-lOq" secondAttribute="trailing" id="No0-aV-Dyr"/>
+                            <constraint firstItem="eKP-Le-GIJ" firstAttribute="top" secondItem="ZgK-vT-lOq" secondAttribute="top" id="lEc-CC-PbW"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="I0V-3C-Hel"/>
+                    <connections>
+                        <outlet property="imageView" destination="eKP-Le-GIJ" id="XrA-ig-vFJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ds3-zG-GaK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3517.3913043478265" y="80.357142857142847"/>
         </scene>
         <!--Subservices-->
         <scene sceneID="SVY-h5-7Dc">
@@ -3752,7 +3784,8 @@ once the service completed</string>
         <segue reference="wyi-Hb-zAq"/>
         <segue reference="vKk-Kv-Ynh"/>
         <segue reference="USO-OD-zsZ"/>
-        <segue reference="cfC-8v-WYB"/>
+        <segue reference="iGv-1a-oxj"/>
+        <segue reference="ldl-2q-ipN"/>
         <segue reference="Vzu-9e-zcL"/>
         <segue reference="aQa-n4-JAu"/>
     </inferredMetricsTieBreakers>

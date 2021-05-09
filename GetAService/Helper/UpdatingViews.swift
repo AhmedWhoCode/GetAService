@@ -18,6 +18,8 @@ extension SellerProfile {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(
             target: self,
             action: #selector(dismissMyKeyboard))
+        tap.cancelsTouchesInView = false
+
         //Add this tap gesture recognizer to the parent view
         view.addGestureRecognizer(tap)
     }
@@ -43,9 +45,7 @@ extension SellerProfile {
                                                object: nil)
         
         
-        
-        //        saveBarButton.isEnabled = false
-        //        saveBarButton.title = ""
+    
         navigationItem.hidesBackButton = false
         //providing dummy  data to dro down
         artistServicesDropDownList.dataSource = ["Face treatments"
@@ -126,13 +126,7 @@ extension SellerProfile {
         sellerEmailTextField.leftView = paddingView3
         sellerEmailTextField.leftViewMode = UITextField.ViewMode.always
         
-        //4rth view
-        
-        //shadow
-//        sellerPriceTextField.layer.shadowColor = UIColor.gray.cgColor
-//        sellerPriceTextField.layer.shadowOpacity = 0.5
-//        sellerPriceTextField.layer.shadowOffset = CGSize.zero
-//        sellerPriceTextField.layer.shadowRadius = 7
+  
         
         //To apply padding
         let paddingView4 : UIView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: sellerStateTextField.frame.height))
@@ -156,17 +150,7 @@ extension SellerProfile {
         submitButton.layer.cornerRadius = 20
         submitButton.layer.borderWidth = 1
         submitButton.layer.borderColor = UIColor.black.cgColor
-        
-        //sth view
-//        uploadFile.layer.cornerRadius = 20
-//        uploadFile.layer.borderWidth = 1
-//        uploadFile.layer.borderColor = UIColor.black.cgColor
-//
-        
-        //To apply padding
-//        let paddingView6 : UIView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: artistServicesDropDownList.frame.height))
-        //selectServiceButton.layer.left(paddingView6)
-     //selectServiceButton.layer.leftViewMode = UITextField.ViewMode.always
+    
         
         //shadow
         selectServiceButton.titleEdgeInsets = UIEdgeInsets(top: 10,left: 10,bottom: 10,right: 10)
@@ -192,10 +176,9 @@ extension SellerProfile {
         collectionView.layer.shadowOffset = CGSize.zero
         collectionView.layer.borderWidth = 0.3
         collectionView.layer.cornerRadius = 10
+        collectionView.isUserInteractionEnabled = true
         
         priceInnerStack.layer.borderColor = UIColor.white.cgColor
-       // priceInnerStack.layer.shadowOpacity = 1
-       //priceInnerStack.layer.shadowOffset = CGSize.zero
         priceInnerStack.layer.borderWidth = 2
         priceInnerStack.layer.cornerRadius = 20
 

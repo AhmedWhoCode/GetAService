@@ -36,6 +36,7 @@
 		932DD7C22609D73A007BD665 /* CustomerScreenExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932DD7C12609D73A007BD665 /* CustomerScreenExtension.swift */; };
 		932DD7CA2609F69E007BD665 /* BuyerWaitingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932DD7C92609F69E007BD665 /* BuyerWaitingViewController.swift */; };
 		9332DF22262B041100346FD9 /* PortfolioImagesUITableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9332DF21262B041100346FD9 /* PortfolioImagesUITableViewController.swift */; };
+		93341F982646A3D8009F6A26 /* EnlargedImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93341F972646A3D8009F6A26 /* EnlargedImageViewController.swift */; };
 		9334E70026105C0F0046EB0C /* MeetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9334E6FF26105C0F0046EB0C /* MeetupViewController.swift */; };
 		93359492263077B500F03C52 /* PushNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93359491263077B500F03C52 /* PushNotificationManager.swift */; };
 		9339113125C828C100913D3E /* AcceptOrDecline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9339113025C828C100913D3E /* AcceptOrDecline.swift */; };
@@ -150,6 +151,7 @@
 		932DD7C12609D73A007BD665 /* CustomerScreenExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerScreenExtension.swift; sourceTree = "<group>"; };
 		932DD7C92609F69E007BD665 /* BuyerWaitingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyerWaitingViewController.swift; sourceTree = "<group>"; };
 		9332DF21262B041100346FD9 /* PortfolioImagesUITableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioImagesUITableViewController.swift; sourceTree = "<group>"; };
+		93341F972646A3D8009F6A26 /* EnlargedImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnlargedImageViewController.swift; sourceTree = "<group>"; };
 		9334E6FF26105C0F0046EB0C /* MeetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetupViewController.swift; sourceTree = "<group>"; };
 		93359491263077B500F03C52 /* PushNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationManager.swift; sourceTree = "<group>"; };
 		9339113025C828C100913D3E /* AcceptOrDecline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptOrDecline.swift; sourceTree = "<group>"; };
@@ -386,6 +388,7 @@
 				9334E6FF26105C0F0046EB0C /* MeetupViewController.swift */,
 				935E31BE2611AEE900D3CCD5 /* ReviewsAndRatingsViewController.swift */,
 				935E31C32612221600D3CCD5 /* ReviewsTableViewController.swift */,
+				93341F972646A3D8009F6A26 /* EnlargedImageViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -772,6 +775,7 @@
 				9329C280261D8ECD00DCB084 /* ERProgressHud.swift in Sources */,
 				9352712025E7899100F368B1 /* BuyerProfileModel.swift in Sources */,
 				9352608125BD63270052C0A3 /* FairDetails.swift in Sources */,
+				93341F982646A3D8009F6A26 /* EnlargedImageViewController.swift in Sources */,
 				9334E70026105C0F0046EB0C /* MeetupViewController.swift in Sources */,
 				9321A99B262B01BA0015FCDC /* PortfolioImagesTableViewCell.swift in Sources */,
 				932C89B025DAC8E3008D72D9 /* ServicesModel.swift in Sources */,
@@ -1000,7 +1004,7 @@
 				CODE_SIGN_ENTITLEMENTS = GetAService/GetAService.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 11;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = BXQHK9SN8A;
 				INFOPLIST_FILE = GetAService/Info.plist;
@@ -1026,7 +1030,7 @@
 				CODE_SIGN_ENTITLEMENTS = GetAService/GetAService.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 11;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = BXQHK9SN8A;
 				INFOPLIST_FILE = GetAService/Info.plist;
