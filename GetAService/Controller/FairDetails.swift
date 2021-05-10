@@ -17,34 +17,39 @@ import CoreLocation
 
 class FairDetails: UIViewController {
 
+    //MARK: - IBOutlet variables
     @IBOutlet weak var sellerImage: UIImageView!
     @IBOutlet weak var ModelPriceView: UIView!
     @IBOutlet weak var estimatedPriceView: UIView!
     @IBOutlet weak var uberFairView: UIView!
     @IBOutlet weak var confirmBooking: UIButton!
     @IBOutlet weak var sellerName: UILabel!
-    
-    
     @IBOutlet weak var uberEstimatedLabel: UILabel!
     @IBOutlet weak var sellerPriceLabel: UILabel!
     @IBOutlet weak var totalEstimatedLabel: UILabel!
 
 
+    //MARK: - Local variables
+      var buyerId : String?
+      var sellerId : String?
     
-    var buyerId : String?
-    var sellerId : String?
- 
-    //var fairDetailDelegate : FairDetailsDelegate?
-    override func viewDidLoad() {
+     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //MARK: - Updating global values
         buyerId = BookingBrain.sharedInstance.buyerId
         sellerId = BookingBrain.sharedInstance.sellerId
-        
-        // changing this varible to allow proceed button work
-        BookingBrain.sharedInstance.check = true
- 
-        
+        BookingBrain.sharedInstance.check = true // changing this varible to allow proceed button work
+
+        //MARK: - calling functions
+        retrivingInfoAndSettingViews()
+        designingView()
+    }
+    
+    
+    //MARK: - Calling database functions
+    
+    func retrivingInfoAndSettingViews() {
         BookingBrain.sharedInstance.gettingSellerLocation(with: buyerId!, sellerId: sellerId!) { (lat, long, address,price) in
             //converting seller lat, lon to double
             let sellerLat = Double(lat)
@@ -68,17 +73,10 @@ class FairDetails: UIViewController {
             self.sellerImage.loadCacheImage(with: BookingBrain.sharedInstance.sellerImage!)
             self.sellerName.text = BookingBrain.sharedInstance.sellerName!
 
-
         }
-
-        designingView()
-        // Do any additional setup after loading the view.
-    }
-    override func viewWillAppear(_ animated: Bool) {
-        navigationController?.isToolbarHidden = true
-        navigationItem.hidesBackButton = false
     }
     
+    //MARK: - Local functions
     func designingView() {
         navigationItem.hidesBackButton = false
         ///MARK: - designing views
@@ -107,23 +105,20 @@ class FairDetails: UIViewController {
         sellerImage.contentMode = .scaleAspectFill
         
     }
-
+    
+    //MARK: - Onclick functions
+    
     @IBAction func startServicePressed(_ sender: UIButton) {
         
        // fairDetailDelegate?.buyerDidConfirm()
         BookingBrain.sharedInstance.updateAcknowledgeStatus(value: "started") {
-            print("why")
             self.performSegue(withIdentifier: Constants.seguesNames.locationInfoToStarted, sender:  nil)
         }
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    //MARK: - Ovveriden functions
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.isToolbarHidden = true
+        navigationItem.hidesBackButton = false
     }
-    */
-
 }

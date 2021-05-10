@@ -11,15 +11,26 @@ class AcceptOrDecline: UIViewController {
 
     @IBOutlet weak var confirmButton: UIButton!
     @IBOutlet weak var rejectButton: UIButton!
-
     @IBOutlet weak var imageView: UIImageView!
-    //@IBOutlet weak var //animateView: AnimationView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
        designingView()
         
         // Do any additional setup after loading the view.
     }
+    
+    //MARK: - Calling database functions
+    
+    //MARK: - Local functions
+    
+    //MARK: - Onclick functions
+    
+    //MARK: - Ovveriden functions
+    
+    //MARK: - Misc functions
+    
+    
     func designingView() {
         
         //Showing gif to imageView
@@ -33,11 +44,6 @@ class AcceptOrDecline: UIViewController {
         {
             
         }
-              
-        
-        
-        
-        
         
         rejectButton.layer.cornerRadius = 25
         rejectButton.layer.borderWidth = 1
@@ -49,15 +55,5 @@ class AcceptOrDecline: UIViewController {
         
         
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

@@ -7,7 +7,7 @@
 
 import UIKit
 
-extension CustomerRequestScreen
+extension BuyerRequestScreen
 {
 
     
@@ -18,17 +18,17 @@ extension CustomerRequestScreen
         navigationItem.hidesBackButton = false
 
         //MARK: - adding roundness to image
-        customerImage.layer.masksToBounds = true
-        customerImage.layer.borderWidth = 1
-        customerImage.layer.borderColor = UIColor.black.cgColor
-        customerImage.layer.cornerRadius = customerImage.frame.size.height/2
-        customerImage.contentMode = .scaleAspectFill
+        buyerImageImageView.layer.masksToBounds = true
+        buyerImageImageView.layer.borderWidth = 1
+        buyerImageImageView.layer.borderColor = UIColor.black.cgColor
+        buyerImageImageView.layer.cornerRadius = buyerImageImageView.frame.size.height/2
+        buyerImageImageView.contentMode = .scaleAspectFill
         
         //MARK: - adding shadow to info view
-        customerInfoView.layer.cornerRadius = 10
-        customerInfoView.layer.shadowColor = UIColor.black.cgColor
-        customerInfoView.layer.shadowOpacity = 1
-        customerInfoView.layer.shadowRadius = 10
+        buyerInfoView.layer.cornerRadius = 10
+        buyerInfoView.layer.shadowColor = UIColor.black.cgColor
+        buyerInfoView.layer.shadowOpacity = 1
+        buyerInfoView.layer.shadowRadius = 10
         
         //MARK: -making views round
 //      locationView.layer.cornerRadius = 25

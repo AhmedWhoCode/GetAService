@@ -10,31 +10,55 @@ import Firebase
 
 class ListOfServices: UITableViewController, DataManipulation {
     
+    //MARK: - Local variables
     var selectedService : String!
-    //var services = [ServicesModel]()
     var serviceBrain = ServicesBrain()
     var servicesData  = [ServicesModel]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         BookingBrain.sharedInstance.check = true
-       // hidesBottomBarWhenPushed = false
-        //navigationController?.hidesBottomBarWhenPushed = false
+        
         //registering this class so that it could receive data from data model
         serviceBrain.dataManipulationDelegant = self
         //calling method to retrieve data
         serviceBrain.retrivingServicesFromDatabase()
         
         
-        
         //registering table view
         tableView.register(UINib(nibName:Constants.cellNibNameServicesList, bundle: nil),forCellReuseIdentifier:Constants.cellIdentifierServicesList)
         
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
+    
+    //MARK: - Calling database functions
+    
+    func didReceiveData(with data: [ServicesModel]) {
+        self.servicesData = data
+        tableView.reloadData()
+    }
+    
+    
+    //MARK: - Local functions
+    
+    //MARK: - Onclick functions
+    
+    
+    //MARK: - Ovveriden functions
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == Constants.seguesNames.servicesToSellers
+        {
+            if let destinationSegue = segue.destination as? SellerLists
+            {
+                destinationSegue.selectedService = selectedService!
+            }
+        }
+        
+        
+    }
+    
+    
     override func viewWillAppear(_ animated: Bool) {
         modifyingUi()
         //hidesBottomBarWhenPushed = false
@@ -44,33 +68,30 @@ class ListOfServices: UITableViewController, DataManipulation {
         //checking if the service was started or not
         if userDefault.string(forKey: Constants.navigationInfo) == "started"
         {
-                    //setting global values
-                    if let sellerId = userDefault.string(forKey: Constants.sellerIdForNavigation)
-                    {
-                        BookingBrain.sharedInstance.sellerId = sellerId
-                    }
-                    
-                    if let notificationId = userDefault.string(forKey: Constants.notificationIdForNavigation)
-                    {
-                        BookingBrain.sharedInstance.currentBookingDocumentId = notificationId
-                    }
-                    
-                    if let buyerId = userDefault.string(forKey: Constants.buyerIdForNavigation)
-                    {
-                        BookingBrain.sharedInstance.buyerId = buyerId
-                    }
-                    performSegue(withIdentifier: Constants.seguesNames.servicesToStarted, sender: self)
-                    navigationItem.hidesBackButton = true
-                    hidesBottomBarWhenPushed = true
-         
+            //setting global values
+            if let sellerId = userDefault.string(forKey: Constants.sellerIdForNavigation)
+            {
+                BookingBrain.sharedInstance.sellerId = sellerId
+            }
+            
+            if let notificationId = userDefault.string(forKey: Constants.notificationIdForNavigation)
+            {
+                BookingBrain.sharedInstance.currentBookingDocumentId = notificationId
+            }
+            
+            if let buyerId = userDefault.string(forKey: Constants.buyerIdForNavigation)
+            {
+                BookingBrain.sharedInstance.buyerId = buyerId
+            }
+            performSegue(withIdentifier: Constants.seguesNames.servicesToStarted, sender: self)
+            navigationItem.hidesBackButton = true
+            hidesBottomBarWhenPushed = true
+            
         }
     }
-    ///MARK: - will be called when firebase returns data 
-    func didReceiveData(with data: [ServicesModel]) {
-        self.servicesData = data
-        tableView.reloadData()
-    }
     
+    
+    //MARK: - Misc functions
     func modifyingUi()  {
         
         
@@ -115,7 +136,6 @@ class ListOfServices: UITableViewController, DataManipulation {
             
         }
         
-        
         //registering for the buttonPressed protocol
         cell?.buttonDelegantServices = self
         return cell!
@@ -150,66 +170,8 @@ extension ListOfServices:ButtonPressed
         //print(selectedService!)
         performSegue(withIdentifier: Constants.seguesNames.servicesToSellers, sender: nil)
     }
-    /*
-     // Override to support conditional editing of the table view.
-     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the specified item to be editable.
-     return true
-     }
-     */
-    
-    /*
-     // Override to support editing the table view.
-     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-     if editingStyle == .delete {
-     // Delete the row from the data source
-     tableView.deleteRows(at: [indexPath], with: .fade)
-     } else if editingStyle == .insert {
-     // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-     }
-     }
-     */
-    
-    /*
-     // Override to support rearranging the table view.
-     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-     
-     }
-     */
-    
-    /*
-     // Override to support conditional rearranging of the table view.
-     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the item to be re-orderable.
-     return true
-     }
-     */
-    
-    
-    
-    //MARK: - Navigation
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == Constants.seguesNames.servicesToSellers
-        {
-            if let destinationSegue = segue.destination as? SellerLists
-            {
-                destinationSegue.selectedService = selectedService!
-            }
-        }
-        
-    }
-    
     
 }
-////MARK: - its  an extention function to convert UIimage type to string
-//extension UIImage {
-//    func toString() -> String? {
-//        let data: Data? = self.pngData()
-//        return data?.base64EncodedString(options: .endLineWithLineFeed)
-//    }
-//
-//}
 
 
 

@@ -8,10 +8,11 @@
 import UIKit
 
 class BuyerWaitingViewController: UIViewController , BookingBrainDelegate {
-    
+    //MARK: - IBOutlet variables
     @IBOutlet weak var imageView: UIImageView!
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         BookingBrain.sharedInstance.bookingBrainDelegate = self
         do
@@ -26,6 +27,13 @@ class BuyerWaitingViewController: UIViewController , BookingBrainDelegate {
         BookingBrain.sharedInstance.sellerResponded()
     }
     
+    //MARK: - Calling database functions
+    
+    //MARK: - Local functions
+    
+    //MARK: - Onclick functions
+    
+    //MARK: - Ovveriden functions
     func didSendTheBookingDetails(){}
     func didAcknowledgementChange(result: String){}
     
@@ -52,31 +60,9 @@ class BuyerWaitingViewController: UIViewController , BookingBrainDelegate {
         }
     }
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        print("this")
-//
-//        if segue.identifier == Constants.seguesNames.waitingToUberInfo
-//        {
-//            print("this2")
-//
-//            if let destinationSegue = segue.destination as? FairDetails
-//            {
-//                print("this3")
-//                 print(buyerId)
-//                print(sellerId)
-//                
-//                guard let buyerID = buyerId else {return}
-//                guard let sellerID = sellerId else {return}
-//                
-//                print("11 \(buyerID)")
-//                print("11 \(sellerID)")
-//
-//                destinationSegue.buyerId = buyerID
-//                destinationSegue.sellerId = sellerID
-//            }
-//        }
-//    
-//    }
+    //MARK: - Misc functions
+    
+    
 
     
 }

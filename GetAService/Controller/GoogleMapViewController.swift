@@ -11,22 +11,18 @@ import GooglePlaces
 import CoreLocation
 class GoogleMapViewController: UIViewController, BookingBrainDelegate{
     
-    
-    
-    var bookingModel : BookingModel?
-    
+    //MARK: - IBOutlet variables
     @IBOutlet weak var mapView: GMSMapView!
-    
     @IBOutlet weak var searchPressed: UIButton!
     @IBOutlet weak var proceedButton: UIButton!
-    
-    var autocompleteController : GMSAutocompleteViewController?
-    
     @IBOutlet weak var addressLabel: UILabel!
     
+    //MARK: - Local variables
     let locationManager = CLLocationManager()
+    var bookingModel : BookingModel?
+    var autocompleteController : GMSAutocompleteViewController?
     
-    
+    //MARK: - Local variables specific to seller
     //if the control is coming from seller side
     var isSellerASourceVc = false
     var notificationId : String?
@@ -38,13 +34,14 @@ class GoogleMapViewController: UIViewController, BookingBrainDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //autocomplete view controll initilized
-        autocompleteController = GMSAutocompleteViewController()
-        
         //track the location changes
         locationManager.delegate = self
         
         BookingBrain.sharedInstance.bookingBrainDelegate = self
+        
+        
+        //autocomplete view controll initilized
+        autocompleteController = GMSAutocompleteViewController()
         
         designView()
         
@@ -52,69 +49,24 @@ class GoogleMapViewController: UIViewController, BookingBrainDelegate{
         
     }
     
+    //MARK: - Calling database functions
     
-    func didSendTheBookingDetails() {
-        
-        performSegue(withIdentifier:Constants.seguesNames.locationToWaiting, sender: self)
-    }
-    
-    //these are the optional method, not needed
-    func didSellerRespond(result: String){}
-    func didAcknowledgementChange(result: String) {}
-    
-    
-    @IBAction func proceedButton(_ sender: UIButton) {
-        
-        sender.isUserInteractionEnabled = false
-        
-        if isSellerASourceVc
-        {
-            //BookingBrain.sharedInstance.sellerCoordinates = locationManager.location?.coordinate
-            
-            guard let latitude = locationManager.location?.coordinate.latitude.description else {
-                return
-            }
-            guard let longitude = locationManager.location?.coordinate.longitude.description else {
-                return
-            }
-            guard let address = addressLabel.text else {
-                return
-            }
-    
-            notificationBrain.updateBookingStatus(with: "accepted",
-                                                  buyerId: buyerId!,
-                                                  notificationId:notificationId!,
-                                                  sellerLatitude: latitude,
-                                                  sellerLongitude: longitude,
-                                                  sellerAddress: address,
-                                                  sellerUpdatedPrice: sellerPriceUpdated!
-                                                                   )
-            performSegue(withIdentifier: Constants.seguesNames.mapsToSellerWaiting, sender: self)
+    //MARK: - Local functions
+    func designView() {
+        if isSellerASourceVc{
+            searchPressed.isHidden = true
         }
         
-        else
+        proceedButton.layer.cornerRadius = 25
+        proceedButton.layer.borderWidth = 1
+        proceedButton.layer.borderColor = UIColor.black.cgColor
         
-        {
-            print("buyer")
-            if let booking = bookingModel
-            {
-                BookingBrain.sharedInstance.insertBookingInfomationToFirebase(with: booking)
-                
-                let sender = PushNotificationSender()
-                sender.sendPushNotification(to: BookingBrain.sharedInstance.sellerTokenId!, title: "You have a booking", body: "kindly open an app")
-            }
-        }
+        
+        searchPressed.layer.cornerRadius = 25
+        searchPressed.layer.borderWidth = 1
+        searchPressed.layer.borderColor = UIColor.black.cgColor
     }
     
-    
-    
-    @IBAction func getLocation(_ sender: UIButton) {
-        // to know the selected location of user
-        autocompleteController!.delegate = self
-        
-        presentAutoComplete()
-        
-    }
     
     //converting coordinates into address
     func reverseGeocode(with location: CLLocation) {
@@ -159,30 +111,76 @@ class GoogleMapViewController: UIViewController, BookingBrainDelegate{
         present(autocompleteController!, animated: true, completion: nil)
         
     }
+
     
-    
-    func designView() {
-        if isSellerASourceVc{
-            searchPressed.isHidden = true
+    //MARK: - Onclick functions
+    @IBAction func proceedButton(_ sender: UIButton) {
+         sender.isUserInteractionEnabled = false
+        
+        if isSellerASourceVc
+        {
+            
+            guard let latitude = locationManager.location?.coordinate.latitude.description else {
+                return
+            }
+            guard let longitude = locationManager.location?.coordinate.longitude.description else {
+                return
+            }
+            guard let address = addressLabel.text else {
+                return
+            }
+            
+            notificationBrain.updateBookingStatus(with: "accepted",
+                                                  buyerId: buyerId!,
+                                                  notificationId:notificationId!,
+                                                  sellerLatitude: latitude,
+                                                  sellerLongitude: longitude,
+                                                  sellerAddress: address,
+                                                  sellerUpdatedPrice: sellerPriceUpdated!
+            )
+            performSegue(withIdentifier: Constants.seguesNames.mapsToSellerWaiting, sender: self)
         }
         
-        proceedButton.layer.cornerRadius = 25
-        proceedButton.layer.borderWidth = 1
-        proceedButton.layer.borderColor = UIColor.black.cgColor
+        else
         
-        
-        searchPressed.layer.cornerRadius = 25
-        searchPressed.layer.borderWidth = 1
-        searchPressed.layer.borderColor = UIColor.black.cgColor
+        {
+            if let booking = bookingModel
+            {
+                BookingBrain.sharedInstance.insertBookingInfomationToFirebase(with: booking)
+                
+                let sender = PushNotificationSender()
+                sender.sendPushNotification(to: BookingBrain.sharedInstance.sellerTokenId!, title: "You have a booking", body: "kindly open an app")
+            }
+        }
     }
     
+    
+    @IBAction func getLocation(_ sender: UIButton) {
+        // to know the selected location of user
+        autocompleteController!.delegate = self
+        
+        presentAutoComplete()
+        
+    }
+    
+    //MARK: - Ovveriden functions
+    func didSendTheBookingDetails() {
+        
+        performSegue(withIdentifier:Constants.seguesNames.locationToWaiting, sender: self)
+    }
+    
+    //these are the optional method, not needed
+    func didSellerRespond(result: String){}
+    func didAcknowledgementChange(result: String) {}
+    
+    
+    //MARK: - Misc functions
     
     func updatingLocation(with address : String , coordinates  : CLLocationCoordinate2D) {
         
         let locationModel = LocationModel(address: address, coordinates: coordinates)
         bookingModel?.eventLocation = locationModel
         
-        //print("2ndTime \(bookingModel.unsafelyUnwrapped)")
     }
     
 }

@@ -10,21 +10,11 @@ import FirebaseAuth
 import Firebase
 import SkeletonView
 
-class ChatList: UITableViewController, ChatBrainDelegate {
+class ChatList: UITableViewController {
     
-    func didReceiveTheData(values: [ChatModel]) {
-        self.chatList = values
-        self.tableView.stopSkeletonAnimation()
-        self.tableView.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.001))
-        self.tableView.reloadData()
-        
-    }
-    
-    // var chats = [Chats]()
+    //MARK: - Local variables
     var chatBrain = ChatBrain()
-    
     var currentUser = Auth.auth().currentUser?.uid
-    
     //payload to send to messages contains the info of pressed user
     var userId : String!
     var userName : String!
@@ -35,30 +25,12 @@ class ChatList: UITableViewController, ChatBrainDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         chatBrain.chatBrainDelegant = self
+        settingTableAndSkeletonView()
         retrivingChats()
     
-        
-        
-        tableView.register(UINib(nibName:Constants.cellNibNameChatList, bundle: nil),forCellReuseIdentifier:Constants.cellIdentifierChatList)
-        tableView.tableFooterView = UIView()
-        tableView.isSkeletonable = true
-        tableView.showAnimatedGradientSkeleton(usingGradient: .init(baseColor: .brown), animation: nil, transition: .crossDissolve(0.1))
-       
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        
-        navigationController?.isToolbarHidden = true
-        navigationController?.isNavigationBarHidden = false
-        navigationItem.hidesBackButton = false
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        hidesBottomBarWhenPushed = false
-        //navigationController?.hidesBottomBarWhenPushed = false
-    }
-    
-    
+    //MARK: - Calling database functions
     func retrivingChats() {
         
         chatBrain.retrivingChatsFromDatabase { (data) in
@@ -73,8 +45,6 @@ class ChatList: UITableViewController, ChatBrainDelegate {
                     self.navigationController?.popViewController(animated: true)
 
                 }
-
-                
             }
             else
             {
@@ -84,6 +54,45 @@ class ChatList: UITableViewController, ChatBrainDelegate {
             }
         }
     }
+    
+    //MARK: - Local functions
+    
+    func settingTableAndSkeletonView() {
+        tableView.register(UINib(nibName:Constants.cellNibNameChatList, bundle: nil),forCellReuseIdentifier:Constants.cellIdentifierChatList)
+        tableView.tableFooterView = UIView()
+        tableView.isSkeletonable = true
+        tableView.showAnimatedGradientSkeleton(usingGradient: .init(baseColor: .brown), animation: nil, transition: .crossDissolve(0.1))
+    }
+
+    
+    //MARK: - Ovveriden functions
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        navigationController?.isToolbarHidden = true
+        navigationController?.isNavigationBarHidden = false
+        navigationItem.hidesBackButton = false
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        hidesBottomBarWhenPushed = false
+        //navigationController?.hidesBottomBarWhenPushed = false
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == Constants.seguesNames.chatsToMessages
+        {
+            if let destinationSegue = segue.destination as? OneToOneChatViewController
+            {
+                destinationSegue.otherUserID = userId
+                destinationSegue.otherUserName = userName
+                destinationSegue.otherUserImage = userImage
+            }
+        }
+        
+    }
+
     
     // MARK: - Table view data source
     
@@ -101,12 +110,9 @@ class ChatList: UITableViewController, ChatBrainDelegate {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier:Constants.cellIdentifierChatList, for: indexPath) as? ChatsTableViewCell
         
-        //userImage = chatList[indexPath.row].image
         cell?.chatImage.loadCacheImage(with: chatList[indexPath.row].image)
         cell?.chatName.text = chatList[indexPath.row].name
         cell?.chatCountry.text = chatList[indexPath.row].state
-        // Configure the cell...
-        
         return cell!
     }
     
@@ -117,26 +123,25 @@ class ChatList: UITableViewController, ChatBrainDelegate {
         userImage = chatList[indexPath.row].image
         BookingBrain.sharedInstance.sellerTokenId = chatList[indexPath.row].tokenId
         performSegue(withIdentifier: Constants.seguesNames.chatsToMessages , sender: self)
-        //tableView.cellForRow(at: indexPath)
-    }
-    
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if segue.identifier == Constants.seguesNames.chatsToMessages
-        {
-            if let destinationSegue = segue.destination as? OneToOneChatViewController
-            {
-                destinationSegue.otherUserID = userId
-                destinationSegue.otherUserName = userName
-                destinationSegue.otherUserImage = userImage
-            }
-        }
-        
     }
     
     
 }
+
+//MARK: - receiving chats
+extension ChatList : ChatBrainDelegate
+{
+    func didReceiveTheData(values: [ChatModel]) {
+        self.chatList = values
+        self.tableView.stopSkeletonAnimation()
+        self.tableView.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.001))
+        self.tableView.reloadData()
+        
+    }
+    
+}
+
+//MARK: - skeletonview
 extension ChatList : SkeletonTableViewDataSource
 {
     

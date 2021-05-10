@@ -15,52 +15,39 @@ import Firebase
 
 
 class OneToOneChatViewController: MessagesViewController{
+    //MARK: - local variable
     //Type of message structer supported by messagekit
     var messageType = [Message]()
-    
     var messageBrian = MessageBrain()
-
-    
     //storing current user and other user
     var currentUser :SenderType!
     var sender :SenderType!
-    
     // getting value and name of other user from previous class
     var otherUserID : String!
     var otherUserName : String!
     var otherUserImage : String!
-    
     //message typed by the user
     var messageText : String!
-
-    
     var currentUserImage : String!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         //setting up current user
-        currentUser = Sender(senderId: Auth.auth().currentUser!.uid, displayName: "roy")
+        currentUser = Sender(senderId: Auth.auth().currentUser!.uid, displayName: "")
+        
         //setting other user
         sender = Sender(senderId: otherUserID, displayName: otherUserName ?? "")
-        //title of navbar
-        title = otherUserName
         
+        title = otherUserName      //title of navbar
+        settingUpMessageKitView()
         
-        messageInputBar.delegate = self
-        messagesCollectionView.messagesDataSource = self
-        messagesCollectionView.messagesLayoutDelegate = self
-        messagesCollectionView.messagesDisplayDelegate = self
-        messagesCollectionView.backgroundColor = .init(named: "screenBackgroundDark")
-        messageInputBar.contentView.backgroundColor = .init(named: "screenBackgroundDark")
-        messageInputBar.backgroundView.backgroundColor = .init(named: "screenBackgroundDark")
-        messageInputBar.sendButton.tintColor = .init(named: "screenBackgroundDark")
-        messageInputBar.sendButton.setTitleColor(UIColor.init(named: "paragraphTextColor"), for: .normal)
         //retriving current user image form firebase
         messageBrian.gettingCurrentUserImage(with: currentUser.senderId) { (imageInString) in
             self.currentUserImage = imageInString
             self.messagesCollectionView.reloadData()
 
         }
-        
         
         //calling function to retrive messages with other user using senderID
         messageBrian.retrivingMessagesFormFirebase(with : otherUserID) { (data) in
@@ -71,6 +58,7 @@ class OneToOneChatViewController: MessagesViewController{
         
         // Do any additional setup after loading the view.
     }
+    //MARK: - Calling database functions
     
     //showing messages received from database
     func showMessages(with data : [MessageStructer]) {
@@ -98,17 +86,6 @@ class OneToOneChatViewController: MessagesViewController{
         
     }
     
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
     //sending data on pressing send
     func sendData() {
       
@@ -135,13 +112,36 @@ class OneToOneChatViewController: MessagesViewController{
             sender.sendPushNotification(to: token, title: "You have a message", body: "kindly open an app")
             self.messagesCollectionView.reloadData()
             
-            print("successful")
         }
         
     }
     
+    //MARK: - Local functions
+    
+    func settingUpMessageKitView() {
+        messageInputBar.delegate = self
+        messagesCollectionView.messagesDataSource = self
+        messagesCollectionView.messagesLayoutDelegate = self
+        messagesCollectionView.messagesDisplayDelegate = self
+        messagesCollectionView.backgroundColor = .init(named: "screenBackgroundDark")
+        messageInputBar.contentView.backgroundColor = .init(named: "screenBackgroundDark")
+        messageInputBar.backgroundView.backgroundColor = .init(named: "screenBackgroundDark")
+        messageInputBar.sendButton.tintColor = .init(named: "screenBackgroundDark")
+        messageInputBar.sendButton.setTitleColor(UIColor.init(named: "paragraphTextColor"), for: .normal)
+    }
+    
+    //MARK: - Onclick functions
+    
+    //MARK: - Ovveriden functions
+    
+    //MARK: - Misc functions
+    
+    
+    
     
 }
+
+//MARK: - Meesage kit extentions
 
 extension OneToOneChatViewController : MessagesDataSource,MessagesLayoutDelegate,MessagesDisplayDelegate , InputBarAccessoryViewDelegate
 

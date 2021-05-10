@@ -9,39 +9,34 @@ import UIKit
 import Firebase
 
 class CustomerProvideInformation: UIViewController {
+    //MARK: - IBOutlet variables
     @IBOutlet weak var bookNowButton: UIButton!
     @IBOutlet weak var recepientNameTextField: UITextField!
     @IBOutlet weak var phone: UITextField!
     @IBOutlet weak var serviceNeeded: UITextField!
     @IBOutlet weak var dateAndTime: UIDatePicker!
     @IBOutlet weak var eventDescription: UITextView!
-
     @IBOutlet weak var scrollView: UIScrollView!
     
+    //MARK: - Local variables
     var booking:BookingModel?
-    //this id will come from the sellerInformation class
-    var sellerId : String?
-    
+    var sellerId : String? //this id will come from the sellerInformation class
     var buyerId = Auth.auth().currentUser?.uid
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       // dateAndTime.timeZone = .autoupdatingCurrent
         
         //attaching touch sensor with a view, whenever you press a view keyboard will disappear
         initializeHideKeyboard()
-        //function defined in UpdatingViews file
-        designingView()
+        designingView()  //function defined in UpdatingViews file
+
         
     }
-    override func viewWillAppear(_ animated: Bool) {
-        navigationController?.isToolbarHidden = true
-        navigationItem.hidesBackButton = false
-    }
+
     
-    @IBAction func proceedPressed(_ sender: UIButton) {
-        
-       // let date = Date(timeIntervalSince1970: da)
+    //MARK: - Local functions
+    
+    func savingTheGatheredDataInModelVariable() {
         
         let date = Date()
         let df = DateFormatter()
@@ -49,9 +44,7 @@ class CustomerProvideInformation: UIViewController {
         let dateString = df.string(from: date)
        
 
-
-        booking = BookingModel(
-                                         buyerId :buyerId!,
+        booking = BookingModel( buyerId :buyerId!,
                                          sellerId: sellerId!,
                                          recepientName: recepientNameTextField.text!,
                                          servicesNeeded: serviceNeeded.text!,
@@ -70,13 +63,20 @@ class CustomerProvideInformation: UIViewController {
         )
         
         performSegue(withIdentifier: Constants.seguesNames.informationToMaps, sender: self)
-        
     }
-  
     
-    // MARK: - Navigation
+    //MARK: - Onclick functions
     
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    @IBAction func proceedPressed(_ sender: UIButton) {
+     savingTheGatheredDataInModelVariable()
+    }
+    
+    //MARK: - Ovveriden functions
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.isToolbarHidden = true
+        navigationItem.hidesBackButton = false
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == Constants.seguesNames.informationToMaps
         {
@@ -86,8 +86,9 @@ class CustomerProvideInformation: UIViewController {
             }
         }
     }
-    
-    ///MARK: - To adjust the size of keyboard with scroll view , this function is called from extention
+
+    //MARK: - Misc functions
+    // To adjust the size of keyboard with scroll view , this function is called from extention
     // to adjust keyboard size will typing
     @objc func keyboardWillShow(notification:NSNotification) {
         

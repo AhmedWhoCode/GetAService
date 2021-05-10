@@ -11,46 +11,107 @@ import FirebaseStorage
 import FirebaseFirestore
 class SellerDashboardViewController: UIViewController {
     
+    //MARK: - IBOutlet variables
     @IBOutlet weak var sellerNameTextField: UILabel!
     @IBOutlet weak var countryView: UIView!
     @IBOutlet weak var priceView: UIView!
     @IBOutlet weak var statusView: UIView!
     @IBOutlet weak var sellerImage: UIImageView!
     @IBOutlet weak var sellerDetailLabel: UILabel!
-    
     @IBOutlet weak var sellerCountryLabel: UILabel!
     @IBOutlet weak var sellerPriceLabel: UILabel!
     @IBOutlet weak var sellerStatusLabel: UILabel!
-    
-    @IBOutlet weak var bookNowButton: UIButton!
-    
     @IBOutlet weak var sellerRating: UILabel!
-    
-//    @IBOutlet weak var subService1: UILabel!
-//    @IBOutlet weak var subService2: UILabel!
-//    @IBOutlet weak var subService3: UILabel!
-//    @IBOutlet weak var subService4: UILabel!
-//    @IBOutlet weak var subService5: UILabel!
-//    @IBOutlet weak var subService6: UILabel!
-    
     @IBOutlet weak var tableView: UITableView!
-    var fireStorage = Storage.storage()
     
+    
+    //MARK: - Local variables
     var sellerProfileBrain = SellerProfileBrain()
     var serviceBrain = ServicesBrain()
-    
     var sellerSubservices = [String]()
     var sellerSubservicesWithPrice = [String:String]()
     var selectedImageToEnlarge : String?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //hidesBottomBarWhenPushed = false
         designingViews()
         retrivingReviewsInformation()
         // Do any additional setup after loading the view.
     }
+    //MARK: - Calling database functions
+    func retrivingData()  {
+        
+        guard let sellerId = Auth.auth().currentUser?.uid else {
+            print("could not find seller id in seller dashboard")
+            return
+        }
+        sellerProfileBrain.retrivingProfileData { (data,subservices) in
+            
+            self.sellerNameTextField.text = data.name
+            self.sellerCountryLabel.text = data.state
+            self.sellerPriceLabel.text = "$\(data.price)"
+            self.sellerStatusLabel.text = "available"
+            self.sellerDetailLabel.text = data.description
+            //self.showSubServices(with: subservices)
+            if let sub = subservices
+            {
+                self.serviceBrain.retrieveSubservicesWithPriceForPublicProfile(with:sellerId, subservices: sub){ (data) in
+                    self.sellerSubservicesWithPrice = data
+                    self.sellerSubservices = sub
+                    self.tableView.reloadData()
+                }
+                
+            }
+            
+            self.sellerImage.loadCacheImage(with: data.imageRef)
+            
+        }
+        
+    }
+    
+    func retrivingReviewsInformation() {
+        sellerProfileBrain.retrivingSellerReviews(with: Auth.auth().currentUser!.uid) { (reviews) in
+            let reviewList  = reviews
+            var totalStar = 0.0
+            
+            reviewList.forEach { (data) in
+                totalStar = totalStar + Double(Float(data.star)!)
+            }
+            
+            if reviewList.count > 0
+            {
+                let starAverage = totalStar / Double(Float(reviewList.count))
+                self.sellerRating.text = String(format: "%.1f",starAverage)
+            }
+        }
+        
+    }
+    
+    func logoutUser() {
+        // call from any screen
+        do { try Auth.auth().signOut() }
+        catch { print("already logged out") }
+        
+        navigationController?.popToRootViewController(animated: true)
+    }
+    
+    
+    //MARK: - Onclick functions
+    @IBAction func notificatiobBarButton(_ sender: Any) {
+        performSegue(withIdentifier: Constants.seguesNames.sellerDashboardToNotification, sender: self)
+    }
+    
+    
+    @IBAction func logOutPressed(_ sender: Any) {
+        logoutUser()
+    }
+    
+    @IBAction func profileClicked(_ sender: UIBarButtonItem) {
+        performSegue(withIdentifier: Constants.seguesNames.sellerDashboardToProfile, sender:self)
+    }
+    
+    //MARK: - Ovveriden functions
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.isToolbarHidden = false
         navigationController?.isNavigationBarHidden = false
@@ -88,135 +149,6 @@ class SellerDashboardViewController: UIViewController {
         retrivingData()
     }
     
-    
-    
-    func retrivingData()  {
-        
-        guard let sellerId = Auth.auth().currentUser?.uid else {
-            print("could not find seller id in seller dashboard")
-            return
-        }
-        sellerProfileBrain.retrivingProfileData { (data,subservices) in
-            
-            self.sellerNameTextField.text = data.name
-            self.sellerCountryLabel.text = data.state
-            self.sellerPriceLabel.text = "$\(data.price)"
-            self.sellerStatusLabel.text = "available"
-            self.sellerDetailLabel.text = data.description
-            //self.showSubServices(with: subservices)
-            if let sub = subservices
-            {
-                self.serviceBrain.retrieveSubservicesWithPriceForPublicProfile(with:sellerId, subservices: sub){ (data) in
-                    self.sellerSubservicesWithPrice = data
-                    self.sellerSubservices = sub
-                    self.tableView.reloadData()
-                }
-               
-            }
-
-            self.sellerImage.loadCacheImage(with: data.imageRef)
-            
-        }
-        
-    }
-    func retrivingReviewsInformation() {
-        sellerProfileBrain.retrivingSellerReviews(with: Auth.auth().currentUser!.uid) { (reviews) in
-            let reviewList  = reviews
-            var totalStar = 0.0
-            
-            reviewList.forEach { (data) in
-                totalStar = totalStar + Double(Float(data.star)!)
-            }
-            
-            if reviewList.count > 0
-            {
-                let starAverage = totalStar / Double(Float(reviewList.count))
-                self.sellerRating.text = String(format: "%.1f",starAverage)
-            }
-        }
-        
-    }
-    
-    
-    
-//    func showSubServices(with subServices:[String]?) {
-//        //sellerProfileBrain.updateOnlineStatus(with: Constants.online)
-//
-//        if let subServices = subServices
-//        {
-//            let numberOfSubServices = subServices.count
-//
-//            switch numberOfSubServices {
-//            case 1:
-//                subService1.isHidden = false
-//                subService1.text = subServices[0]
-//            case 2:
-//                subService1.isHidden = false
-//                subService2.isHidden = false
-//                subService1.text = subServices[0]
-//                subService2.text = subServices[1]
-//            case 3:
-//                subService1.isHidden = false
-//                subService2.isHidden = false
-//                subService3.isHidden = false
-//
-//                subService1.text = subServices[0]
-//                subService2.text = subServices[1]
-//                subService3.text = subServices[2]
-//            case 4:
-//                subService1.isHidden = false
-//                subService2.isHidden = false
-//                subService3.isHidden = false
-//                subService4.isHidden = false
-//
-//                subService1.text = subServices[0]
-//                subService2.text = subServices[1]
-//                subService3.text = subServices[2]
-//                subService4.text = subServices[3]
-//            case 5:
-//                subService1.isHidden = false
-//                subService2.isHidden = false
-//                subService3.isHidden = false
-//                subService4.isHidden = false
-//                subService5.isHidden = false
-//
-//                subService1.text = subServices[0]
-//                subService2.text = subServices[1]
-//                subService3.text = subServices[2]
-//                subService4.text = subServices[3]
-//                subService5.text = subServices[4]
-//
-//            case 6:
-//                subService1.isHidden = false
-//                subService2.isHidden = false
-//                subService3.isHidden = false
-//                subService4.isHidden = false
-//                subService5.isHidden = false
-//                subService6.isHidden = false
-//
-//                subService1.text = subServices[0]
-//                subService2.text = subServices[1]
-//                subService3.text = subServices[2]
-//                subService4.text = subServices[3]
-//                subService5.text = subServices[4]
-//                subService6.text = subServices[5]
-//
-//            default:
-//                print("no services")
-//            }
-//        }
-//
-//    }
-    
-    
-    
-    @IBAction func notificatiobBarButton(_ sender: Any) {
-        performSegue(withIdentifier: Constants.seguesNames.sellerDashboardToNotification, sender: self)
-    }
-    
-    // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == Constants.seguesNames.sellerDashboardToProfile
@@ -238,28 +170,9 @@ class SellerDashboardViewController: UIViewController {
     }
     
     
-    @IBAction func logOutPressed(_ sender: Any) {
-        logoutUser()
-    }
-    
-    func logoutUser() {
-        // call from any screen
-        
-        do { try Auth.auth().signOut() }
-        catch { print("already logged out") }
-        
-        navigationController?.popToRootViewController(animated: true)
-    }
-    
-    
-    
-    
-    @IBAction func profileClicked(_ sender: UIBarButtonItem) {
-        performSegue(withIdentifier: Constants.seguesNames.sellerDashboardToProfile, sender:self)
-    }
-    
 }
 
+//MARK: - table view extention
 extension SellerDashboardViewController : UITableViewDelegate , UITableViewDataSource
 {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -267,7 +180,7 @@ extension SellerDashboardViewController : UITableViewDelegate , UITableViewDataS
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-          
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "subservicesCellSellerDashboard", for: indexPath) as? SubServicesTableViewCell
         
         cell?.name.text = sellerSubservices[indexPath.row]
@@ -277,6 +190,6 @@ extension SellerDashboardViewController : UITableViewDelegate , UITableViewDataS
         
     }
     
-   
+    
     
 }

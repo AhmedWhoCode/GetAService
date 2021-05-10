@@ -1585,7 +1585,7 @@
         <!--Customer request-->
         <scene sceneID="OUq-zz-sci">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="FqT-pV-fZh" customClass="CustomerRequestScreen" customModule="GetAService" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="FqT-pV-fZh" customClass="BuyerRequestScreen" customModule="GetAService" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FYl-9z-e1x">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1829,10 +1829,10 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="buyerImageImageView" destination="zoM-EH-RYz" id="XLX-Ez-XUd"/>
+                        <outlet property="buyerInfoView" destination="G0x-5g-Ijl" id="Xnp-sh-Gqf"/>
+                        <outlet property="buyerNameLabel" destination="SF5-1A-36q" id="NtD-Wn-HDE"/>
                         <outlet property="confirmButton" destination="adB-kT-bNw" id="87n-vr-425"/>
-                        <outlet property="customerImage" destination="zoM-EH-RYz" id="XLX-Ez-XUd"/>
-                        <outlet property="customerInfoView" destination="G0x-5g-Ijl" id="Xnp-sh-Gqf"/>
-                        <outlet property="customerName" destination="SF5-1A-36q" id="NtD-Wn-HDE"/>
                         <outlet property="eventDetail" destination="aPz-Xp-bUR" id="H9h-EZ-qRZ"/>
                         <outlet property="eventLocation" destination="bjM-Sr-Hgp" id="fBT-ab-h0I"/>
                         <outlet property="eventTime" destination="aXQ-wP-TQm" id="GEb-We-HuZ"/>
@@ -3775,7 +3775,7 @@ once the service completed</string>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="8iB-0r-Oea"/>
+        <segue reference="a33-0u-UWa"/>
         <segue reference="tpA-6M-1df"/>
         <segue reference="mZv-8L-uia"/>
         <segue reference="Qph-vG-nAO"/>
@@ -3787,7 +3787,7 @@ once the service completed</string>
         <segue reference="iGv-1a-oxj"/>
         <segue reference="ldl-2q-ipN"/>
         <segue reference="Vzu-9e-zcL"/>
-        <segue reference="aQa-n4-JAu"/>
+        <segue reference="Tt4-Au-VLt"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="ArtistProfile" width="121" height="50.5"/>

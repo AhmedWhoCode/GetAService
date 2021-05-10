@@ -1185,7 +1185,7 @@
         <!--Order Information-->
         <scene sceneID="OUq-zz-sci">
             <objects>
-                <viewController id="FqT-pV-fZh" customClass="CustomerRequestScreen" customModule="GetAService" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="FqT-pV-fZh" customClass="BuyerRequestScreen" customModule="GetAService" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FYl-9z-e1x">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1395,12 +1395,12 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="buyerImageImageView" destination="zoM-EH-RYz" id="XLX-Ez-XUd"/>
+                        <outlet property="buyerInfoView" destination="G0x-5g-Ijl" id="Xnp-sh-Gqf"/>
+                        <outlet property="buyerNameLabel" destination="SF5-1A-36q" id="NtD-Wn-HDE"/>
                         <outlet property="changeLocationButton" destination="xki-qr-fIc" id="Nuu-F3-1LI"/>
                         <outlet property="confirmButton" destination="adB-kT-bNw" id="87n-vr-425"/>
                         <outlet property="customerBudgetLabel" destination="aXQ-wP-TQm" id="i21-N6-PeR"/>
-                        <outlet property="customerImage" destination="zoM-EH-RYz" id="XLX-Ez-XUd"/>
-                        <outlet property="customerInfoView" destination="G0x-5g-Ijl" id="Xnp-sh-Gqf"/>
-                        <outlet property="customerName" destination="SF5-1A-36q" id="NtD-Wn-HDE"/>
                         <outlet property="rejectButton" destination="SeL-hJ-skA" id="Alk-wz-YZx"/>
                         <outlet property="serviceNameLabel" destination="0OC-OP-zvX" id="Tp4-9C-w8Z"/>
                     </connections>

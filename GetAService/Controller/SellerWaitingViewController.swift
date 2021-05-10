@@ -8,13 +8,13 @@
 import UIKit
 
 class SellerWaitingViewController: UIViewController,BookingBrainDelegate  {
-  
-    
-   
+
+    //MARK: - IBOutlet variable
     @IBOutlet weak var imageView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         navigationItem.hidesBackButton = false
         BookingBrain.sharedInstance.bookingBrainDelegate = self
         BookingBrain.sharedInstance.acknowledgmentUpdated()
@@ -31,7 +31,14 @@ class SellerWaitingViewController: UIViewController,BookingBrainDelegate  {
 
         // Do any additional setup after loading the view.
     }
-   
+    
+    //MARK: - Calling database functions
+    
+    //MARK: - Local functions
+    
+    //MARK: - Onclick functions
+    
+    //MARK: - Ovveriden functions
     func didSendTheBookingDetails() {}
     
     func didSellerRespond(result: String) {}
@@ -45,6 +52,9 @@ class SellerWaitingViewController: UIViewController,BookingBrainDelegate  {
         }
         
     }
+    //MARK: - Misc functions
+    
+    
 
     /*
     // MARK: - Navigation

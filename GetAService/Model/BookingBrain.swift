@@ -293,6 +293,7 @@ class BookingBrain {
         
     }
     
+    //this will be called when seller confirm the booking
     func acknowledgmentUpdated()  {
         db.collection("Bookings")
             .document("Seller")

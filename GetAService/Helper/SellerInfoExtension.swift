@@ -11,6 +11,11 @@ extension SellerInformation
 {
     
     func designingViews(){
+        
+        collectionView.isSkeletonable = true
+        collectionView.showAnimatedGradientSkeleton(usingGradient: .init(baseColor: .gray), animation: nil, transition: .crossDissolve(0.2))
+        
+        
         //designing collection view
         collectionView.layer.cornerRadius = 10
         collectionView.layer.borderWidth = 1

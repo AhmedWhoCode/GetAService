@@ -9,21 +9,20 @@ import UIKit
 
 class ReviewsAndRatingsViewController: UIViewController {
     
+    //MARK: - IBOutlet variables
     @IBOutlet weak var oneStar: UIImageView!
     @IBOutlet weak var twoStar: UIImageView!
     @IBOutlet weak var threeStar: UIImageView!
     @IBOutlet weak var fourStar: UIImageView!
     @IBOutlet weak var fiveStar: UIImageView!
-    
     @IBOutlet weak var reviewTextView: UITextView!
     @IBOutlet weak var publishButton: UIButton!
-    
     @IBOutlet weak var scrollView: UIScrollView!
     
+    //MARK: - Local variables
     var isGrey = true
     var starCount = 0
     var isSourceAMeetupVc = false
-    
     let sellerProfile =  SellerProfileBrain()
     let buyerProfile  =  BuyerProfileBrain()
     
@@ -38,24 +37,45 @@ class ReviewsAndRatingsViewController: UIViewController {
         
     }
     
-    
-    override func viewWillAppear(_ animated: Bool) {
-        navigationItem.hidesBackButton = true
-        ///MARK: - adjusting position of keyboard
-        //method are defined in a view controller
-        //these methods will invoke when the keyboard is appear and disappear so set the size of scroll view accordingly
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(keyboardWillShow),
-                                               name:UIResponder.keyboardWillShowNotification,
-                                               object: nil)
-
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(keyboardWillHide),
-                                               name:UIResponder.keyboardWillHideNotification,
-                                               object: nil)
+    //MARK: - Calling database functions
+    func addingReviewsSeller(with comment : String) {
+        self.sellerProfile.addReviewsToProfile(with: BookingBrain.sharedInstance.sellerId!,
+                                               buyerId: BookingBrain.sharedInstance.buyerId!,
+                                               star: self.starCount.description,
+                                               comment: comment,
+                                               uniqueId: BookingBrain.sharedInstance.currentBookingDocumentId!) {
+            
+            self.performSegue(withIdentifier: Constants.seguesNames.buyerReviewToServices, sender: self)
+        }
         
     }
     
+    func addingReviewsBuyer(with comment : String) {
+        self.buyerProfile.addReviewsToProfile(with: BookingBrain.sharedInstance.sellerId!,
+                                              buyerId: BookingBrain.sharedInstance.buyerId!,
+                                              star: self.starCount.description,
+                                              comment: comment,
+                                              uniqueId: BookingBrain.sharedInstance.currentBookingDocumentId!) {
+            self.performSegue(withIdentifier: Constants.seguesNames.reviewToSellerDash, sender: self)
+        }
+        
+    }
+    
+    //MARK: - Local functions
+    
+    func makeItGrey() {
+        oneStar.tintColor = .tertiaryLabel
+        twoStar.tintColor = .tertiaryLabel
+        threeStar.tintColor = .tertiaryLabel
+        fourStar.tintColor = .tertiaryLabel
+        fiveStar.tintColor = .tertiaryLabel
+        isGrey = true
+        starCount = 0
+        
+    }
+    
+    
+    //MARK: - Onclick functions
     @IBAction func publishPressed(_ sender: UIButton) {
         if let comment = reviewTextView.text
         {
@@ -85,32 +105,6 @@ class ReviewsAndRatingsViewController: UIViewController {
             showToast1(controller: self, message: "Dont leave comment section empty", seconds: 1, color: .red)
         }
     }
-    
-    
-    func addingReviewsSeller(with comment : String) {
-        self.sellerProfile.addReviewsToProfile(with: BookingBrain.sharedInstance.sellerId!,
-                                               buyerId: BookingBrain.sharedInstance.buyerId!,
-                                               star: self.starCount.description,
-                                               comment: comment,
-                                               uniqueId: BookingBrain.sharedInstance.currentBookingDocumentId!) {
-            
-            self.performSegue(withIdentifier: Constants.seguesNames.buyerReviewToServices, sender: self)
-        }
-        
-    }
-    
-    func addingReviewsBuyer(with comment : String) {
-        self.buyerProfile.addReviewsToProfile(with: BookingBrain.sharedInstance.sellerId!,
-                                              buyerId: BookingBrain.sharedInstance.buyerId!,
-                                              star: self.starCount.description,
-                                              comment: comment,
-                                              uniqueId: BookingBrain.sharedInstance.currentBookingDocumentId!) {
-            self.performSegue(withIdentifier: Constants.seguesNames.reviewToSellerDash, sender: self)
-        }
-        
-    }
-    
-    
     
     @IBAction func oneStar(_ sender: Any) {
         if isGrey
@@ -197,17 +191,26 @@ class ReviewsAndRatingsViewController: UIViewController {
     }
     
     
-    func makeItGrey() {
-        oneStar.tintColor = .tertiaryLabel
-        twoStar.tintColor = .tertiaryLabel
-        threeStar.tintColor = .tertiaryLabel
-        fourStar.tintColor = .tertiaryLabel
-        fiveStar.tintColor = .tertiaryLabel
-        isGrey = true
-        starCount = 0
+    //MARK: - Ovveriden functions
+    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationItem.hidesBackButton = true
+        ///MARK: - adjusting position of keyboard
+        //method are defined in a view controller
+        //these methods will invoke when the keyboard is appear and disappear so set the size of scroll view accordingly
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillShow),
+                                               name:UIResponder.keyboardWillShowNotification,
+                                               object: nil)
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillHide),
+                                               name:UIResponder.keyboardWillHideNotification,
+                                               object: nil)
         
     }
     
+    //MARK: - Misc functions
     func initializeHideKeyboard(){
         //Declare a Tap Gesture Recognizer which will trigger our dismissMyKeyboard() function
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(
@@ -221,8 +224,6 @@ class ReviewsAndRatingsViewController: UIViewController {
         //In short- Dismiss the active keyboard.
         view.endEditing(true)
     }
-
-    
     
     // to adjust keyboard size will typing
     @objc func keyboardWillShow(notification:NSNotification) {
@@ -241,4 +242,5 @@ class ReviewsAndRatingsViewController: UIViewController {
         let contentInset:UIEdgeInsets = UIEdgeInsets.zero
         scrollView.contentInset = contentInset
     }
+    
 }

@@ -10,90 +10,57 @@ import Firebase
 import SkeletonView
 
 class SellerInformation: UIViewController {
-    
+    //MARK: - IBoutlet variables
     @IBOutlet weak var countryView: UIView!
     @IBOutlet weak var priceView: UIView!
     @IBOutlet weak var statusView: UIView!
-    
     @IBOutlet weak var sellerImage: UIImageView!
-    
     @IBOutlet weak var sellerName: UILabel!
     @IBOutlet weak var sellerStateLabel: UILabel!
     @IBOutlet weak var sellerPriceLabel: UILabel!
     @IBOutlet weak var sellerStatusLabel: UILabel!
     @IBOutlet weak var sellerDetailLabel: UILabel!
-    
-    
     @IBOutlet weak var bookNowButton: UIButton!
-    
     @IBOutlet weak var starAverageLabel: UILabel!
-    
-//    @IBOutlet weak var subService1: UILabel!
-//    @IBOutlet weak var subService2: UILabel!
-//    @IBOutlet weak var subService3: UILabel!
-//    @IBOutlet weak var subService4: UILabel!
-//    @IBOutlet weak var subService5: UILabel!
-//    @IBOutlet weak var subService6: UILabel!
-    
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var tableView: UITableView!
     
-    //value of this variable will come from the previous screen
-    var selectedSellerId : String!
-    
+    //MARK: - Local variables
+    var selectedSellerId : String!  //value of this variable will come from the previous screen
     var fireStorage = Storage.storage()
-    
     var sellerProfileBrain = SellerProfileBrain()
     var serviceBrain = ServicesBrain()
-
-    
-    //to be send to chats
-    var sellerNameToSend : String!
+    var sellerNameToSend : String!  //to be send to chats
     var sellerImageToSend : String!
-    
-    //review list
-    var reviewList  = [SellerRetrievalReviewsModel]()
-    
-    // adding the star
-    var totalStar = 0.0
-    
-    // portfolio images list
-    var selectedPortfolioImagesInString = [String]()
-
+    var reviewList  = [SellerRetrievalReviewsModel]() //review list
+    var totalStar = 0.0 // adding the star
+    var selectedPortfolioImagesInString = [String]() // portfolio images list
     var sellerSubservices = [String]()
     var sellerSubservicesWithPrice = [String:String]()
-    
     var selectedImageToEnlarge : String?
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        designingViews()
         
+        designingViews() //defined in helper folder
         retrivingData()
         retrivingReviewsInformation()
-        collectionView.isSkeletonable = true
-  collectionView.showAnimatedGradientSkeleton(usingGradient: .init(baseColor: .gray), animation: nil, transition: .crossDissolve(0.2))
 
-        
-        // Do any additional setup after loading the view.
-    }
-    override func viewWillAppear(_ animated: Bool) {
-        navigationController?.isToolbarHidden = true
-        navigationItem.hidesBackButton = false
     }
     
-    
+    //MARK: - Calling database functions
     func retrivingData()  {
         sellerProfileBrain.retrivingProfileData (using : selectedSellerId){ (data,subservices) in
-        
             //storing subServices
             if let sub = subservices
             {
-    self.serviceBrain.retrieveSubservicesWithPriceForPublicProfile(with: self.selectedSellerId, subservices: sub){ (data) in
+                self.serviceBrain.retrieveSubservicesWithPriceForPublicProfile(with: self.selectedSellerId, subservices: sub){ (data) in
                     self.sellerSubservicesWithPrice = data
                     self.sellerSubservices = sub
                     self.tableView.reloadData()
                 }
-               
+                
             }
             self.sellerName.text = data.name
             self.sellerNameToSend = data.name
@@ -105,9 +72,8 @@ class SellerInformation: UIViewController {
             self.sellerImage.loadCacheImage(with: self.sellerImageToSend)
             
         }
-        
         sellerProfileBrain.retrivingPortfolioImages(using: selectedSellerId) { (portfolioImages) in
-          
+            
             self.selectedPortfolioImagesInString = portfolioImages
             self.collectionView.stopSkeletonAnimation()
             self.collectionView.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.0001))
@@ -116,13 +82,6 @@ class SellerInformation: UIViewController {
         }
         
     }
-    
-
-    
-    @IBAction func messageButton(_ sender: UIButton) {
-        performSegue(withIdentifier: Constants.seguesNames.sellerInfoToMessages, sender: self)
-    }
-    
     
     func retrivingReviewsInformation() {
         sellerProfileBrain.retrivingSellerReviews(with: selectedSellerId!) { (reviews) in
@@ -141,9 +100,30 @@ class SellerInformation: UIViewController {
         
     }
     
-    // MARK: - Navigation
+    //MARK: - Onclick functions
     
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    @IBAction func messageButton(_ sender: UIButton) {
+        performSegue(withIdentifier: Constants.seguesNames.sellerInfoToMessages, sender: self)
+    }
+    
+    @IBAction func bookNow(_ sender: Any) {
+        performSegue(withIdentifier: Constants.seguesNames.sellerInfoToInformation, sender: self)
+        BookingBrain.sharedInstance.sellerName = sellerNameToSend
+        BookingBrain.sharedInstance.sellerImage = sellerImageToSend
+    }
+    
+    
+    @IBAction func reviewsPressed(_ sender: Any) {
+        performSegue(withIdentifier: Constants.seguesNames.sellerInfoToReviews, sender: self)
+    }
+    
+    //MARK: - Ovveriden functions
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.isToolbarHidden = true
+        navigationItem.hidesBackButton = false
+    }
+    
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == Constants.seguesNames.sellerInfoToMessages
@@ -171,7 +151,7 @@ class SellerInformation: UIViewController {
             {
                 if let image = selectedImageToEnlarge
                 {
-                destinationSegue.image = image
+                    destinationSegue.image = image
                 }
                 else
                 {
@@ -180,37 +160,11 @@ class SellerInformation: UIViewController {
             }
         }
         
-        
-        
-        
     }
-    
-    
-    
-    @IBAction func bookNow(_ sender: Any) {
-        performSegue(withIdentifier: Constants.seguesNames.sellerInfoToInformation, sender: self)
-        BookingBrain.sharedInstance.sellerName = sellerNameToSend
-        BookingBrain.sharedInstance.sellerImage = sellerImageToSend
-    }
-    
-    
-    @IBAction func reviewsPressed(_ sender: Any) {
-        performSegue(withIdentifier: Constants.seguesNames.sellerInfoToReviews, sender: self)
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-//              collectionView.isSkeletonable = true
-//        collectionView.showAnimatedGradientSkeleton(usingGradient: .init(baseColor: .gray), animation: nil, transition: .crossDissolve(0.0001))
-    }
-    
-    //    @IBAction func BookNow(_ sender: UIBarButtonItem) {
-    //        performSegue(withIdentifier: Constants.seguesNames.artistInfoToProfile, sender:self)
-    //    }
     
 }
 
-
+//MARK: - extension with collectionview to show portfolio images
 extension SellerInformation : UICollectionViewDelegate , SkeletonCollectionViewDataSource
 {
     func collectionSkeletonView(_ skeletonView: UICollectionView, cellIdentifierForItemAt indexPath: IndexPath) -> ReusableCellIdentifier {
@@ -218,7 +172,7 @@ extension SellerInformation : UICollectionViewDelegate , SkeletonCollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-       
+        
         return selectedPortfolioImagesInString.count
         
     }
@@ -227,8 +181,8 @@ extension SellerInformation : UICollectionViewDelegate , SkeletonCollectionViewD
         
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "portfolioCollectionCell", for: indexPath) as? PortfolioCollectionViewCell
-     
-            
+        
+        
         cell?.portfolioImage.loadCacheImage(with: selectedPortfolioImagesInString[indexPath.row])
         return cell!
     }
@@ -240,14 +194,13 @@ extension SellerInformation : UICollectionViewDelegate , SkeletonCollectionViewD
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectedImageToEnlarge = selectedPortfolioImagesInString[indexPath.row]
-
         performSegue(withIdentifier: Constants.seguesNames.toEnlargedImage, sender: self)
-        //print(selectedPortfolioImagesInString[indexPath.row])
     }
     
     
 }
 
+//MARK: - extention with table view to show subservices with price
 extension SellerInformation : UITableViewDelegate , UITableViewDataSource
 {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -255,7 +208,7 @@ extension SellerInformation : UITableViewDelegate , UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-          
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "sellerSubservices", for: indexPath) as? SubServicesTableViewCell
         
         cell?.name.text = sellerSubservices[indexPath.row]
@@ -264,8 +217,4 @@ extension SellerInformation : UITableViewDelegate , UITableViewDataSource
         return cell!
         
     }
-    
-    
-   
-    
 }

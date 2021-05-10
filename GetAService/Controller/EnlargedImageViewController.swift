@@ -21,6 +21,15 @@ class EnlargedImageViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    //MARK: - Calling database functions
+    
+    //MARK: - Local functions
+    
+    //MARK: - Onclick functions
+    
+    //MARK: - Ovveriden functions
+    
+    //MARK: - Misc functions
 
     /*
     // MARK: - Navigation

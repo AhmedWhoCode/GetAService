@@ -12,7 +12,11 @@ import FirebaseAuth
 import FirebaseStorage
 import FirebaseFirestore
 import Firebase
+
+
 class BuyerProfile: UIViewController {
+    
+    ///MARK: - IB outlets
     @IBOutlet weak var buyerImage: UIImageView!
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var buyerNameTextField: UITextField!
@@ -20,80 +24,30 @@ class BuyerProfile: UIViewController {
     @IBOutlet weak var buyerEmailTextField: UITextField!
     @IBOutlet weak var buyerPriceTextField: UITextField!
     @IBOutlet weak var buyerNumberTextField: UITextField!
-    
     @IBOutlet weak var buyerCityTextField: UITextField!
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var genderChooser: UISegmentedControl!
-    
     @IBOutlet weak var scrollView: UIScrollView!
     
-    //storing profile image selected by the user as data
-    var profileImageData = Data()
-    
+    ///MARK: - Defining local variables
+    var profileImageData = Data() //storing profile image selected by the user as data
     var fireStorage = Storage.storage()
-    
     let buyerProfileBrain = BuyerProfileBrain()
     //stores selected main service selected  by the user
-    var selectedService:String!
+    //var selectedService:String!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         //attaching touch sensor with a view, whenever you press a view keyboard will disappear
         initializeHideKeyboard()
         
         retriveData()
-        
-        designingView()
-        // Do any additional setup after loading the view.
-    }
-    override func viewWillAppear(_ animated: Bool) {
-        navigationController?.isToolbarHidden = true
-        navigationItem.hidesBackButton = false
-    }
-    
-    @IBAction func submitPressed(_ sender: UIButton) {
-        //converting image to data , compatible for uploading in storage
-        profileImageData = (buyerImage.image?.jpegData(compressionQuality: 0.4)!)!
-        // uncomment this code to upload image to database
-        buyerProfileBrain.uploadingProfileImage(with: profileImageData) { (url) in
-            //let filePath = Auth.auth().currentUser?.uid
-            let buyersData = BuyerProfileModel(uid: Auth.auth().currentUser!.uid,
-                                               imageRef: url.absoluteString,
-                                               name: self.buyerNameTextField.text!,
-                                               email: self.buyerEmailTextField.text!,
-                                               state: self.buyerStateTextField.text!,
-                                               phone: self.buyerNumberTextField.text!,
-                                               dob: self.datePicker.date,
-                                               gender: self.genderChooser.titleForSegment(at: self.genderChooser.selectedSegmentIndex)!,
-                                               city: self.buyerCityTextField.text!
-            )
-            
-            self.buyerProfileBrain.storingProfileDataToFireBase(with: buyersData)
-        }
-        
-        
-        
-    }
-    
-    @IBAction func imagePressed(_ sender: Any) {
-        let picker = YPImagePicker()
-        present(picker, animated: true, completion: nil)
-        picker.didFinishPicking { [unowned picker] items, _ in
-            if let photo = items.singlePhoto {
-                print(photo.fromCamera) // Image source (camera or library)
-                self.buyerImage.image=photo.image // Final image selected by the user
-                //print(photo.originalImage) // original image selected by the user, unfiltered
-                //print(photo.modifiedImage!) // Transformed image, can be nil
-                //print(photo.exifMeta!) // Print exif meta data of original image.
-            }
-            picker.dismiss(animated: true, completion: nil)
-        }
-        
+        designingView() //defined in updating view 
     }
     
     
-    
-    
-    
+    // MARK: - Calling database functions
     func retriveData(){
         buyerProfileBrain.retrivingProfileData { (data) in
             self.buyerImage.loadCacheImage(with: data.imageRef)
@@ -114,13 +68,53 @@ class BuyerProfile: UIViewController {
                 self.genderChooser.selectedSegmentIndex = 2
                 
             }
+        }
+    }
+    
+    ///MARK: - Overriden functions
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.isToolbarHidden = true
+        navigationItem.hidesBackButton = false
+    }
+    
+    
+    // MARK: - Onclick functions
+    @IBAction func submitPressed(_ sender: UIButton) {
+        //converting image to data , compatible for uploading in storage
+        profileImageData = (buyerImage.image?.jpegData(compressionQuality: 0.4)!)!
+        // uncomment this code to upload image to database
+        buyerProfileBrain.uploadingProfileImage(with: profileImageData) { (url) in
+            let buyersData = BuyerProfileModel(uid: Auth.auth().currentUser!.uid,
+                                               imageRef: url.absoluteString,
+                                               name: self.buyerNameTextField.text!,
+                                               email: self.buyerEmailTextField.text!,
+                                               state: self.buyerStateTextField.text!,
+                                               phone: self.buyerNumberTextField.text!,
+                                               dob: self.datePicker.date,
+                                               gender: self.genderChooser.titleForSegment(at: self.genderChooser.selectedSegmentIndex)!,
+                                               city: self.buyerCityTextField.text!
+            )
             
-            
-            
+            self.buyerProfileBrain.storingProfileDataToFireBase(with: buyersData)
+        }
+    }
+    
+    @IBAction func imagePressed(_ sender: Any) {
+        let picker = YPImagePicker()
+        present(picker, animated: true, completion: nil)
+        picker.didFinishPicking { [unowned picker] items, _ in
+            if let photo = items.singlePhoto {
+                self.buyerImage.image=photo.image // Final image selected by the user
+                
+            }
+            picker.dismiss(animated: true, completion: nil)
         }
         
     }
     
+    
+    
+    // MARK: - Misc functions
     // to adjust keyboard size will typing
     @objc func keyboardWillShow(notification:NSNotification) {
         
@@ -139,14 +133,5 @@ class BuyerProfile: UIViewController {
         scrollView.contentInset = contentInset
     }
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
     
 }

@@ -32,6 +32,9 @@ extension SellerProfile {
     
     func designingView() {
         
+        datePicker.backgroundColor = UIColor.init(named: "paragraphTextColor")
+        datePicker.tintColor = .black
+        
         ///MARK: - adjusting position of keyboard
         //method are defined in a view controller
         NotificationCenter.default.addObserver(self,

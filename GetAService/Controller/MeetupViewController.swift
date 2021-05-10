@@ -8,27 +8,32 @@
 import UIKit
 
 class MeetupViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         MyUserDefaults.sharedInstance.settingUpUserDefaultValues(with: "started")
-        // Do any additional setup after loading the view.
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        navigationController?.isToolbarHidden = true
-        navigationController?.isNavigationBarHidden = false
-        navigationItem.hidesBackButton = true
-    }
-
+    //MARK: - Calling database functions
+    
+    //MARK: - Local functions
+    
+    //MARK: - Onclick functions
     @IBAction func completePressed(_ sender: UIButton) {
         MyUserDefaults.sharedInstance.updatingNavigationStatus(with: "completed")
-
+        
         BookingBrain.sharedInstance.updateAcknowledgeStatus(value: "completed") {
             self.hidesBottomBarWhenPushed = false
             self.performSegue(withIdentifier: Constants.seguesNames.meetupToReview, sender: self)
         }
+    }
+    
+    //MARK: - Ovveriden functions
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.isToolbarHidden = true
+        navigationController?.isNavigationBarHidden = false
+        navigationItem.hidesBackButton = true
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -37,10 +42,18 @@ class MeetupViewController: UIViewController {
         {
             if let destinationSegue = segue.destination as? ReviewsAndRatingsViewController
             {
-            
+                
                 destinationSegue.isSourceAMeetupVc = true
-
+                
             }
         }
     }
+    
+    //MARK: - Misc functions
+    
+    
+    
+    
+    
+    
 }

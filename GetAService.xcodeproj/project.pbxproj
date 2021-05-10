@@ -10,7 +10,7 @@
 		222F70D46DF72EAC85E4D6E6 /* Pods_GetAServiceTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 477D327B80E7FD74729F9831 /* Pods_GetAServiceTests.framework */; };
 		93042EE12634025F0043B407 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93042EE02634025F0043B407 /* Main.storyboard */; };
 		93042F2C26340FE30043B407 /* APIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93042F2B26340FE30043B407 /* APIKeys.swift */; };
-		9318F8AB25C5767D009A6712 /* CustomerRequestScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9318F8AA25C5767D009A6712 /* CustomerRequestScreen.swift */; };
+		9318F8AB25C5767D009A6712 /* BuyerRequestScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9318F8AA25C5767D009A6712 /* BuyerRequestScreen.swift */; };
 		931A9310262CBE4D007117C6 /* PortfolioCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931A930F262CBE4D007117C6 /* PortfolioCollectionViewCell.swift */; };
 		931CFA2925DED734007C2EE9 /* SubServicesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931CFA2825DED734007C2EE9 /* SubServicesTableViewController.swift */; };
 		931D669825C03AC2002C239E /* SellerProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931D669725C03AC2002C239E /* SellerProfile.swift */; };
@@ -125,7 +125,7 @@
 		87B86DA5DF5E613514E30A51 /* Pods-GetAService.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GetAService.release.xcconfig"; path = "Target Support Files/Pods-GetAService/Pods-GetAService.release.xcconfig"; sourceTree = "<group>"; };
 		93042EE02634025F0043B407 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = GetAService/View/Main.storyboard; sourceTree = SOURCE_ROOT; };
 		93042F2B26340FE30043B407 /* APIKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeys.swift; sourceTree = "<group>"; };
-		9318F8AA25C5767D009A6712 /* CustomerRequestScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerRequestScreen.swift; sourceTree = "<group>"; };
+		9318F8AA25C5767D009A6712 /* BuyerRequestScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyerRequestScreen.swift; sourceTree = "<group>"; };
 		931A930F262CBE4D007117C6 /* PortfolioCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioCollectionViewCell.swift; sourceTree = "<group>"; };
 		931CFA2825DED734007C2EE9 /* SubServicesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubServicesTableViewController.swift; sourceTree = "<group>"; };
 		931D669725C03AC2002C239E /* SellerProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellerProfile.swift; sourceTree = "<group>"; };
@@ -375,7 +375,7 @@
 				931D669725C03AC2002C239E /* SellerProfile.swift */,
 				936783B125B9915000A93B28 /* SellerLists.swift */,
 				931D66A125C0873E002C239E /* NotificationsList.swift */,
-				9318F8AA25C5767D009A6712 /* CustomerRequestScreen.swift */,
+				9318F8AA25C5767D009A6712 /* BuyerRequestScreen.swift */,
 				93C9691A25C5C0AD00A6217E /* ChatList.swift */,
 				9339113025C828C100913D3E /* AcceptOrDecline.swift */,
 				932C488625C9980700F57308 /* ServiceStartedBuyer.swift */,
@@ -820,7 +820,7 @@
 				931A9310262CBE4D007117C6 /* PortfolioCollectionViewCell.swift in Sources */,
 				936D2CB825F7614200F677F8 /* MessageBrain.swift in Sources */,
 				93593BC925FA7BA700BFCA71 /* UpdatingViews.swift in Sources */,
-				9318F8AB25C5767D009A6712 /* CustomerRequestScreen.swift in Sources */,
+				9318F8AB25C5767D009A6712 /* BuyerRequestScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
